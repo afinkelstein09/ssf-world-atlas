@@ -178,9 +178,12 @@ Conservancy return zero matches, while FAO alone accounts for 351 implementing r
 only **27% of activities carry coordinates**, so the map shows where reported work is
 geocoded, not where work is. Both facts are stated in the interface.
 
-**Organisation directory** — 2,156 entries across 147 countries, merged from three
+**Organisation directory** — 2,102 entries across 147 countries, merged from three
 sources and sorted into the categories Rare asked for: government, fisher organisations,
-international NGO, national/local NGO, donors, research, private sector.
+international NGOs and UN agencies, other implementing organisations (mostly national
+NGOs), donors and funders, research, private sector. Each body gets one category per
+country from all the roles it holds there, and IATI's stand-ins for unnamed bodies
+("Name Withheld", "Other multilateral institution") are left out.
 
 The fisher organisations come from **Annex A: SSF Organisations by Region**, 120 bodies
 compiled from WFFP, ICSF and project files and supplied by Rare. They are the fishers' own
@@ -194,13 +197,14 @@ government would answer the wrong question. And named aid agencies are checked b
 government pattern, because most of them are ministries at home — BMZ and Irish Aid are
 departments of foreign affairs.
 
-**416 of the 2,156 are left unclassified**, and deliberately so. Guessing Rare into the
-donor column would be worse than an honest blank.
+**359 of the 2,102 are left unclassified**, and deliberately so: a guessed category
+would be worse than an honest blank. An implementing body the rules do not recognise is
+filed with the other implementing organisations, so that group includes some agencies and
+foreign NGOs; the page says so.
 
-The gap this exposes is the one worth acting on. Of the organisations Rare named as
-examples, **Rare itself appears in zero countries**, The Nature Conservancy zero,
-Environmental Defense Fund zero, WCS one, Blue Ventures one (via ISSF), Conservation
-International three. WWF reaches twelve only because it publishes to IATI. Privately
+The gap this exposes is the one worth acting on. Of the large conservation NGOs, The
+Nature Conservancy appears in zero countries, Environmental Defense Fund zero, WCS one,
+Blue Ventures one (via ISSF), Conservation International three. WWF reaches twelve only because it publishes to IATI. Privately
 funded conservation NGOs do not appear in aid reporting, so the directory sees the donors
 and the fishers clearly and the implementers barely at all.
 
