@@ -1,0 +1,1758 @@
+{
+ "checked": "2026-10-06",
+ "tally": {
+  "ok": 183,
+  "blocked": 25
+ },
+ "links": {
+  "http://worldfisher-forum.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "http://worldfisher-forum.org/",
+   "used_by": [
+    "organisation: wff",
+    "organisation: world forum of fish harvesters & fish workers"
+   ]
+  },
+  "http://www.cbcrm-rc.freeservers.com/": {
+   "class": "ok",
+   "status": 200,
+   "final": "http://www.cbcrm-rc.freeservers.com/",
+   "used_by": [
+    "organisation: cbcrm rc",
+    "organisation: cbcrm resource center"
+   ]
+  },
+  "http://www.fao.org/faolex/results/details/en/c/LEX-FAOC016098": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "access law: PHL"
+   ]
+  },
+  "http://www.fao.org/faolex/results/details/en/c/LEX-FAOC132701": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "access law: LBR"
+   ]
+  },
+  "http://www.redmanglar.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "http://www.redmanglar.org/",
+   "used_by": [
+    "organisation: redmanglar international"
+   ]
+  },
+  "https://akteaplatform.eu/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://akteaplatform.eu/",
+   "used_by": [
+    "organisation: red aktea"
+   ]
+  },
+  "https://akteaplatform.eu/what-we-do/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://akteaplatform.eu/what-we-do/",
+   "used_by": [
+    "organisation: red aktea"
+   ]
+  },
+  "https://asianpeasantcoalition.wordpress.com/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://asianpeasantcoalition.wordpress.com/",
+   "used_by": [
+    "organisation: asian peasant coalition (apc)"
+   ]
+  },
+  "https://awfishnet.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://awfishnet.org/",
+   "used_by": [
+    "organisation: african women fish processors and traders network",
+    "organisation: awfishnet"
+   ]
+  },
+  "https://barnufo.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://barnufo.org/",
+   "used_by": [
+    "organisation: barbados national fisherfolk organisation"
+   ]
+  },
+  "https://bearriverfirstnation.ca/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://bearriverfirstnation.ca/",
+   "used_by": [
+    "organisation: bear river first nation",
+    "organisation: brfn"
+   ]
+  },
+  "https://blog.through-the-gaps.co.uk/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://blog.through-the-gaps.co.uk/",
+   "used_by": [
+    "organisation: through the gaps - fishsense"
+   ]
+  },
+  "https://blueventures.org/where-we-work/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://blueventures.org/where-we-work/",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://cancokenya.net/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://cancokenya.net/",
+   "used_by": [
+    "organisation: canco",
+    "organisation: community-based network for artisanal fishers"
+   ]
+  },
+  "https://caopa.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://caopa.org/",
+   "used_by": [
+    "organisation: african confederation of artisanal fisheries professional organizations (caopa)",
+    "organisation: african confederation of small-scale fisheries professional organisations",
+    "organisation: caopa"
+   ]
+  },
+  "https://carto.com/attributions": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://carto.com/attribution/index.html",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://cnfo.fish/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://cnfo.fish/",
+   "used_by": [
+    "organisation: caribbean network of fisherfolk organisations",
+    "organisation: cnfo"
+   ]
+  },
+  "https://cnfo.fish/cnfo-members/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://cnfo.fish/cnfo-members/",
+   "used_by": [
+    "organisation: antigua and barbuda national fisherfolk organisation",
+    "organisation: dominica national fisherfolk organisation",
+    "organisation: grenada national fisherfolk organisation",
+    "organisation: guyana national fisherfolk organisation"
+   ]
+  },
+  "https://coastbd.net/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://coastbd.net/",
+   "used_by": [
+    "organisation: coast",
+    "organisation: coastal association for social transformation trust"
+   ]
+  },
+  "https://coddeffagolf.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://coddeffagolf.org/",
+   "used_by": [
+    "organisation: coddeffagolf",
+    "organisation: comit\u00e9 para la defensa y desarrollo de la flora y fauna del golfo de fonseca"
+   ]
+  },
+  "https://commission.europa.eu/index_en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://commission.europa.eu/index_en",
+   "used_by": [
+    "organisation: european commission"
+   ]
+  },
+  "https://conapach.cl/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://conapach.cl/",
+   "used_by": [
+    "organisation: conapach",
+    "organisation: confederaci\u00f3n nacional de pescadores artesanales de chile"
+   ]
+  },
+  "https://cooperaccion.org.pe/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://cooperaccion.org.pe/",
+   "used_by": [
+    "organisation: cooperacci\u00f3n"
+   ]
+  },
+  "https://coralreefwatch.noaa.gov/product/marine_heatwave/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://coralreefwatch.noaa.gov/product/marine_heatwave/",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://d-portal.org": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://d-portal.org",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://data.worldbank.org/indicator/ER.MRN.PTMR.ZS": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://data.worldbank.org/indicator/ER.MRN.PTMR.ZS",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://diplomatie.belgium.be/en/about-us/directorate-general-international-cooperation-dg-int": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://diplomatie.belgium.be/en/about-us/directorate-general-international-cooperation-dg-int",
+   "used_by": [
+    "organisation: direction-g\u00e9n\u00e9rale coop\u00e9ration au d\u00e9veloppement et aide humanitaire",
+    "organisation: directorate-general development cooperation and humanitarian aid"
+   ]
+  },
+  "https://doi.org/10.4060/cc4576en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://openknowledge.fao.org/handle/20.500.14283/cc4576en",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://doi.org/10.7924/r40s01h5j": {
+   "class": "ok",
+   "status": 202,
+   "final": "https://research.repository.duke.edu/record/371",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://emedo.or.tz/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://emedo.or.tz/",
+   "used_by": [
+    "organisation: emedo",
+    "organisation: environmental management and economic development organization"
+   ]
+  },
+  "https://english.rvo.nl/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://english.rvo.nl/",
+   "used_by": [
+    "organisation: netherlands enterprise agency"
+   ]
+  },
+  "https://enlargement.ec.europa.eu/index_en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://enlargement.ec.europa.eu/index_en",
+   "used_by": [
+    "organisation: directorate-general for neighbourhood and enlargement negotiations"
+   ]
+  },
+  "https://european-union.europa.eu/index_en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://european-union.europa.eu/index_en",
+   "used_by": [
+    "organisation: european union"
+   ]
+  },
+  "https://fame.spc.int/about/coastal-fisheries-and-aquaculture-programme-0": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://fame.spc.int/about/coastal-fisheries-and-aquaculture-programme-0",
+   "used_by": [
+    "organisation: spc - the pacific community"
+   ]
+  },
+  "https://faolex.fao.org/docs/pdf/chi1227.pdf": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://faolex.fao.org/docs/pdf/chi1227.pdf",
+   "used_by": [
+    "access law: CHL"
+   ]
+  },
+  "https://faolex.fao.org/docs/pdf/per30956.pdf": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://faolex.fao.org/docs/pdf/per30956.pdf",
+   "used_by": [
+    "access law: PER"
+   ]
+  },
+  "https://faolex.fao.org/docs/pdf/sie192561.pdf": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://faolex.fao.org/docs/pdf/sie192561.pdf",
+   "used_by": [
+    "access law: SLE"
+   ]
+  },
+  "https://faolex.fao.org/docs/pdf/som171668.pdf": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://faolex.fao.org/docs/pdf/som171668.pdf",
+   "used_by": [
+    "access law: SOM"
+   ]
+  },
+  "https://faolex.fao.org/docs/pdf/tha159730.pdf": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://faolex.fao.org/docs/pdf/tha159730.pdf",
+   "used_by": [
+    "access law: THA"
+   ]
+  },
+  "https://fipasur.cl/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://fipasur.cl/",
+   "used_by": [
+    "organisation: federaci\u00f3n interregional de pescadores artesanales del sur",
+    "organisation: fipasur"
+   ]
+  },
+  "https://foe-malaysia.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://foe-malaysia.org/",
+   "used_by": [
+    "organisation: sahabat alam malaysia (friends of the earth malaysia)",
+    "organisation: sam"
+   ]
+  },
+  "https://fr.mfu-upm.com/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://fr.mfu-upm.com/",
+   "used_by": [
+    "organisation: maritime fishermen's union",
+    "organisation: mfu"
+   ]
+  },
+  "https://globalnature.org/en/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://globalnature.org/en/",
+   "used_by": [
+    "organisation: global nature fund (gnf)"
+   ]
+  },
+  "https://icsf.net/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/",
+   "used_by": [
+    "organisation: icsf",
+    "organisation: international collective in support of fishworkers"
+   ]
+  },
+  "https://icsf.net/fishworker/collectif-des-organisations-martimes-malgaches/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/collectif-des-organisations-martimes-malgaches/",
+   "used_by": [
+    "organisation: collectif des organisations maritimes malgaches",
+    "organisation: comm"
+   ]
+  },
+  "https://icsf.net/fishworker/community-based-natural-resource-management-learning-cbnrm-li/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/community-based-natural-resource-management-learning-cbnrm-li/",
+   "used_by": [
+    "organisation: cbnrm li",
+    "organisation: community-based natural resource management learning institute"
+   ]
+  },
+  "https://icsf.net/fishworker/el-molo-forum/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/el-molo-forum/",
+   "used_by": [
+    "organisation: el molo forum"
+   ]
+  },
+  "https://icsf.net/fishworker/federation-of-southern-fisherfolk-fsf/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/federation-of-southern-fisherfolk-fsf/",
+   "used_by": [
+    "organisation: federation of southern fisherfolk",
+    "organisation: fsf"
+   ]
+  },
+  "https://icsf.net/fishworker/fisher-apostolat-of-the-sea/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/fisher-apostolat-of-the-sea/",
+   "used_by": [
+    "organisation: fisher apostolat of the sea"
+   ]
+  },
+  "https://icsf.net/fishworker/haor-farmers-and-fishers-alliance-hffa/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/haor-farmers-and-fishers-alliance-hffa/",
+   "used_by": [
+    "organisation: haor farmers and fishers alliance",
+    "organisation: hffa"
+   ]
+  },
+  "https://icsf.net/fishworker/kenya-fisher-peoples-network-kefipen/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/kenya-fisher-peoples-network-kefipen/",
+   "used_by": [
+    "organisation: kefipen",
+    "organisation: kenya fisher people's network"
+   ]
+  },
+  "https://icsf.net/fishworker/kenya-national-federation-of-fisher-folk-associations-kenafa-2/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/kenya-national-federation-of-fisher-folk-associations-kenafa-2/",
+   "used_by": [
+    "organisation: kenafa",
+    "organisation: kenya national federation of fisher folk associations"
+   ]
+  },
+  "https://icsf.net/fishworker/penang-inshore-fisherman-welfare-association-pifwa/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/penang-inshore-fisherman-welfare-association-pifwa/",
+   "used_by": [
+    "organisation: penang inshore fishermen welfare association",
+    "organisation: pifwa"
+   ]
+  },
+  "https://icsf.net/fishworker/persauduraan-perempuan-nelayan-indonesia-ppni-indonesian-fisherwoman-sisterhood/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/persauduraan-perempuan-nelayan-indonesia-ppni-indonesian-fisherwoman-sisterhood/",
+   "used_by": [
+    "organisation: persaudaraan perempuan nelayan indonesia (indonesian fisherwoman sisterhood)",
+    "organisation: ppni"
+   ]
+  },
+  "https://icsf.net/fishworker/provincial-fisheries-association-of-thua-thien-hue-huefis/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/provincial-fisheries-association-of-thua-thien-hue-huefis/",
+   "used_by": [
+    "organisation: huefis",
+    "organisation: provincial fisheries association of thua thien hue"
+   ]
+  },
+  "https://icsf.net/fishworker/sierra-leone-artisanal-fishers-union/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/sierra-leone-artisanal-fishers-union/",
+   "used_by": [
+    "organisation: sierra leone artisanal fishers union",
+    "organisation: slafu"
+   ]
+  },
+  "https://icsf.net/fishworker/sri-lanka-forum-for-small-scale-fisheries-slfssf/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/sri-lanka-forum-for-small-scale-fisheries-slfssf/",
+   "used_by": [
+    "organisation: slfssf",
+    "organisation: sri lanka forum for small-scale fisheries"
+   ]
+  },
+  "https://icsf.net/fishworker/technical-services-for-community-development-tescod/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/technical-services-for-community-development-tescod/",
+   "used_by": [
+    "organisation: technical services for community development",
+    "organisation: tescod"
+   ]
+  },
+  "https://icsf.net/fishworker/the-association-of-southern-fisher-women/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/the-association-of-southern-fisher-women/",
+   "used_by": [
+    "organisation: association of southern fisher women"
+   ]
+  },
+  "https://icsf.net/fishworker/the-budalangi-health-development-organisation/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://icsf.net/fishworker/the-budalangi-health-development-organisation/",
+   "used_by": [
+    "organisation: budalangi health & development organisation",
+    "organisation: buhede"
+   ]
+  },
+  "https://ida.worldbank.org/en/home": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://ida.worldbank.org/en/home",
+   "used_by": [
+    "organisation: international development association"
+   ]
+  },
+  "https://idrc-crdi.ca/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://idrc-crdi.ca/en",
+   "used_by": [
+    "organisation: international development research centre"
+   ]
+  },
+  "https://idrc-crdi.ca/en/initiative/aquadapt": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://idrc-crdi.ca/en/initiative/aquadapt",
+   "used_by": [
+    "organisation: international development research centre"
+   ]
+  },
+  "https://international-partnerships.ec.europa.eu/index_en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://international-partnerships.ec.europa.eu/index_en",
+   "used_by": [
+    "organisation: directorate-general for international partnerships",
+    "organisation: european commission - directorate-general international partnerships, belgium"
+   ]
+  },
+  "https://international-partnerships.ec.europa.eu/policies/climate-environment-and-energy/oceans_en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://international-partnerships.ec.europa.eu/policies/climate-environment-and-energy/oceans_en",
+   "used_by": [
+    "organisation: directorate-general for international partnerships",
+    "organisation: european commission - directorate-general international partnerships, belgium"
+   ]
+  },
+  "https://international.canada.ca/en/global-affairs": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://international.canada.ca/en/global-affairs",
+   "used_by": [
+    "organisation: canada",
+    "organisation: canadian international development agency",
+    "organisation: foreign affairs, trade and development canada"
+   ]
+  },
+  "https://investinternational.nl/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://investinternational.nl/",
+   "used_by": [
+    "organisation: invest international b.v."
+   ]
+  },
+  "https://issfcloud.toobigtoignore.net": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://issfcloud.toobigtoignore.net",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://jafishermen.com/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://jafishermen.com/",
+   "used_by": [
+    "organisation: jamaica national fisherfolk organisation"
+   ]
+  },
+  "https://knti.or.id/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://knti.or.id/",
+   "used_by": [
+    "organisation: kesatuan nelayan tradisional indonesia (indonesian traditional fisherfolk union)",
+    "organisation: knti"
+   ]
+  },
+  "https://lifeplatform.eu/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://lifeplatform.eu/",
+   "used_by": [
+    "organisation: life",
+    "organisation: low impact fishers of europe",
+    "organisation: low impact fishers of europe (life)"
+   ]
+  },
+  "https://lifeplatform.eu/what-we-do/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://lifeplatform.eu/what-we-do/",
+   "used_by": [
+    "organisation: low impact fishers of europe (life)"
+   ]
+  },
+  "https://mauritiuscooperativealliance.com/about-us/affiliates/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://mauritiuscooperativealliance.com/about-us/affiliates/",
+   "used_by": [
+    "organisation: mauritius fishermen cooperative federation ltd."
+   ]
+  },
+  "https://mcdvietnam.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://mcdvietnam.org/",
+   "used_by": [
+    "organisation: centre for marinelife conservation and community development",
+    "organisation: mcd"
+   ]
+  },
+  "https://mihari-network.org/en/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://mihari-network.org/en/",
+   "used_by": [
+    "organisation: mihari",
+    "organisation: mihari network (national lmma network of madagascar)"
+   ]
+  },
+  "https://mwambao.or.tz/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://mwambao.or.tz/",
+   "used_by": [
+    "organisation: mwambao coastal community network"
+   ]
+  },
+  "https://nafso-web.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://nafso-web.org/",
+   "used_by": [
+    "organisation: nafso",
+    "organisation: national fisheries solidarity movement"
+   ]
+  },
+  "https://nagmyanmar.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://nagmyanmar.org/",
+   "used_by": [
+    "organisation: nag",
+    "organisation: network activities group"
+   ]
+  },
+  "https://obis.org": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://obis.org",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://oceanhealthindex.org": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://oceanhealthindex.org",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://oceans-and-fisheries.ec.europa.eu/fisheries-management/small-scale-fisheries_en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://oceans-and-fisheries.ec.europa.eu/fisheries-management/small-scale-fisheries_en",
+   "used_by": [
+    "organisation: european commission",
+    "organisation: european union"
+   ]
+  },
+  "https://ourworldindata.org/grapher/fish-and-seafood-consumption-per-capita": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://ourworldindata.org/grapher/fish-and-seafood-consumption-per-capita",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://pamalakayaweb.wordpress.com/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://pamalakayaweb.wordpress.com/",
+   "used_by": [
+    "organisation: pamalakaya (pambansang lakas ng kilusang mamamalakaya ng pilipinas)"
+   ]
+  },
+  "https://rare.org/program/fish-forever/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://rare.org/program/fish-forever/",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://sdfthai.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://sdfthai.org/",
+   "used_by": [
+    "organisation: sdf",
+    "organisation: sustainable development foundation"
+   ]
+  },
+  "https://sustainableislands.iadb.org/about/blue-economy": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://sustainableislands.iadb.org/about/blue-economy",
+   "used_by": [
+    "organisation: idb - inter-american development bank",
+    "organisation: inter american development bank",
+    "organisation: ordinary capital"
+   ]
+  },
+  "https://tbtiglobal.net/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://tbtiglobal.net/",
+   "used_by": [
+    "organisation: tbti",
+    "organisation: too big to ignore \u2013 global partnership for ssf research"
+   ]
+  },
+  "https://thealaskatrust.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://thealaskatrust.org/",
+   "used_by": [
+    "organisation: alaska sustainable fisheries trust",
+    "organisation: asft"
+   ]
+  },
+  "https://um.dk/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://um.dk/en",
+   "used_by": [
+    "organisation: ministry of foreign affairs, denmark"
+   ]
+  },
+  "https://um.fi/frontpage": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://um.fi/frontpage",
+   "used_by": [
+    "organisation: ministry for foreign affairs of finland"
+   ]
+  },
+  "https://unstats.un.org/sdgs/dataportal": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://unstats.un.org/sdgs/dataportal",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://wffp-web.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://wffp-web.org/",
+   "used_by": [
+    "organisation: wffp",
+    "organisation: world forum of fisher peoples"
+   ]
+  },
+  "https://wffp-web.org/about-us/members/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://wffp-web.org/about-us/members/",
+   "used_by": [
+    "organisation: amssi",
+    "organisation: apelifo",
+    "organisation: artisanal shark fishing association",
+    "organisation: association des p\u00eacheurs et du mali"
+   ]
+  },
+  "https://womeninfisheriesfiji.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://womeninfisheriesfiji.org/",
+   "used_by": [
+    "organisation: wifn-fiji",
+    "organisation: women in fisheries network \u2013 fiji"
+   ]
+  },
+  "https://worldfishcenter.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://worldfishcenter.org/",
+   "used_by": [
+    "organisation: international center for living aquatic resources management"
+   ]
+  },
+  "https://www.adb.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.adb.org/",
+   "used_by": [
+    "organisation: asian development bank"
+   ]
+  },
+  "https://www.adb.org/what-we-do/topics/environment/healthy-oceans-sustainable-blue-economies": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.adb.org/what-we-do/topics/environment/healthy-oceans-sustainable-blue-economies",
+   "used_by": [
+    "organisation: asian development bank"
+   ]
+  },
+  "https://www.afd.fr/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.afd.fr/en",
+   "used_by": [
+    "organisation: afd",
+    "organisation: france"
+   ]
+  },
+  "https://www.afd.fr/en/ressources/afd-and-ocean": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.afd.fr/en/ressources/afd-and-ocean",
+   "used_by": [
+    "organisation: afd",
+    "organisation: france"
+   ]
+  },
+  "https://www.afdb.org/en": {
+   "class": "blocked",
+   "status": 403,
+   "used_by": [
+    "organisation: african development bank"
+   ]
+  },
+  "https://www.afdb.org/en/about-us/corporate-information/african-development-fund-adf": {
+   "class": "blocked",
+   "status": 403,
+   "used_by": [
+    "organisation: african development fund"
+   ]
+  },
+  "https://www.afdb.org/en/topics-and-sectors-initiatives-and-partnerships/middle-income-country-technical-assistance-fund": {
+   "class": "blocked",
+   "status": 403,
+   "used_by": [
+    "organisation: middle income countries fund"
+   ]
+  },
+  "https://www.aics.gov.it/?lang=en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.aics.gov.it/?lang=en",
+   "used_by": [
+    "organisation: aics - italian agency for cooperation and development"
+   ]
+  },
+  "https://www.aics.gov.it/fields-of-action/ambiente-e-uso-del-territorio/mare-e-oceani/?lang=en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.aics.gov.it/fields-of-action/ambiente-e-uso-del-territorio/mare-e-oceani/?lang=en",
+   "used_by": [
+    "organisation: aics - italian agency for cooperation and development"
+   ]
+  },
+  "https://www.alfafish.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.alfafish.org/",
+   "used_by": [
+    "organisation: alaska longline fishermen's association",
+    "organisation: alfa"
+   ]
+  },
+  "https://www.auswaertiges-amt.de/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.auswaertiges-amt.de/en",
+   "used_by": [
+    "organisation: germany - federal foreign office"
+   ]
+  },
+  "https://www.bmz.de/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.bmz.de/en",
+   "used_by": [
+    "organisation: bundesministerium f\u00fcr wirtschaftliche zusammenarbeit und entwicklung (bmz)",
+    "organisation: germany"
+   ]
+  },
+  "https://www.bmz.de/en/issues/biodiversity/biodiversity-and-oceans": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.bmz.de/en/issues/biodiversity/biodiversity-and-oceans",
+   "used_by": [
+    "organisation: bundesministerium f\u00fcr wirtschaftliche zusammenarbeit und entwicklung (bmz)",
+    "organisation: germany"
+   ]
+  },
+  "https://www.cavehill.uwi.edu/cermes/research-projects/gift/overview/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.cavehill.uwi.edu/cermes/research-projects/gift/overview/",
+   "used_by": [
+    "organisation: gender in fisheries team for the caribbean (cermes, uwi)",
+    "organisation: gift"
+   ]
+  },
+  "https://www.ccondem.org.ec/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.ccondem.org.ec/",
+   "used_by": [
+    "organisation: c-condem",
+    "organisation: coordinadora nacional para la defensa del ecosistema manglar"
+   ]
+  },
+  "https://www.cefas.co.uk/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.cefas.co.uk/",
+   "used_by": [
+    "organisation: centre for environment, fisheries and aquaculture science (cefas)"
+   ]
+  },
+  "https://www.cgiar.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.cgiar.org/",
+   "used_by": [
+    "organisation: cgiar system"
+   ]
+  },
+  "https://www.cgiar.org/cgiar-research-portfolio-2025-2030/sustainable-animal-and-aquatic-foods": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.cgiar.org/cgiar-research-portfolio-2025-2030/sustainable-animal-and-aquatic-foods",
+   "used_by": [
+    "organisation: cgiar system"
+   ]
+  },
+  "https://www.cmu.ac.th/en/home": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.cmu.ac.th/en/home",
+   "used_by": [
+    "organisation: chiang mai university"
+   ]
+  },
+  "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://www.crfm.int/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.crfm.int/",
+   "used_by": [
+    "organisation: caribbean regional fisheries mechan"
+   ]
+  },
+  "https://www.crpmem.re/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.crpmem.re/",
+   "used_by": [
+    "organisation: comit\u00e9 r\u00e9gional des p\u00eaches maritimes et des elevages marins de la r\u00e9union",
+    "organisation: crpmem"
+   ]
+  },
+  "https://www.dal.ca/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.dal.ca/",
+   "used_by": [
+    "organisation: dalhousie university international research and development"
+   ]
+  },
+  "https://www.dfat.gov.au/": {
+   "class": "blocked",
+   "status": "no answer",
+   "used_by": [
+    "organisation: australia",
+    "organisation: australia - department of foreign affairs and trade"
+   ],
+   "note": "gave a script no answer; not proof the page is gone"
+  },
+  "https://www.dfat.gov.au/geo/pacific/development-assistance/fisheries-assistance": {
+   "class": "blocked",
+   "status": "no answer",
+   "used_by": [
+    "organisation: australia",
+    "organisation: australia - department of foreign affairs and trade"
+   ],
+   "note": "gave a script no answer; not proof the page is gone"
+  },
+  "https://www.ecoceanos.cl/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.ecoceanos.cl/",
+   "used_by": [
+    "organisation: centro ecoceanos"
+   ]
+  },
+  "https://www.enabel.be/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.enabel.be/",
+   "used_by": [
+    "organisation: belgian agency for international cooperation (enabel)"
+   ]
+  },
+  "https://www.engagement-global.de/en/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.engagement-global.de/en/",
+   "used_by": [
+    "organisation: engagement global ggmbh"
+   ]
+  },
+  "https://www.expertisefrance.fr/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.expertisefrance.fr/en",
+   "used_by": [
+    "organisation: expertise france"
+   ]
+  },
+  "https://www.facebook.com/FisherfolkForumPakistan.PFF/": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: pakistan fisherfolk forum",
+    "organisation: pff"
+   ]
+  },
+  "https://www.facebook.com/MyanmarFisheriesFederation/": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: myanmar fishery federation"
+   ]
+  },
+  "https://www.facebook.com/NFFIndia": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: national fishworkers' forum",
+    "organisation: nff"
+   ]
+  },
+  "https://www.facebook.com/SustainableGrenadines/": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: susgren",
+    "organisation: sustainable grenadines inc."
+   ]
+  },
+  "https://www.facebook.com/belombre.fishermen": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: bel ombre fishermen association"
+   ]
+  },
+  "https://www.facebook.com/fisherfolk.asso/": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: tfff",
+    "organisation: thailand fisher folk federation"
+   ]
+  },
+  "https://www.facebook.com/lucayanseas/": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: bahamas national fisherfolk organisation"
+   ]
+  },
+  "https://www.facebook.com/p/Belize-Fishermen-Cooperative-Association-100065185703349/": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: belize national fisherfolk organisation"
+   ]
+  },
+  "https://www.facebook.com/p/National-Fisherfolk-Organization-NFO-in-SVG-100076548552041/": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: st. vincent and the grenadines national fisherfolk organisation"
+   ]
+  },
+  "https://www.facebook.com/people/F%C3%A9d%C3%A9ration-des-P%C3%AAcheurs-Artisans-de-lOc%C3%A9an-Indien-FPAOI/100067682212767/": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: fpaoi",
+    "organisation: f\u00e9d\u00e9ration des p\u00eacheurs artisans de l'oc\u00e9an indien"
+   ]
+  },
+  "https://www.fao.org/home/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.fao.org/home/en",
+   "used_by": [
+    "organisation: food and agriculture organization (fao)",
+    "organisation: telefood"
+   ]
+  },
+  "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
+   "used_by": [
+    "organisation: food and agriculture organization (fao)"
+   ]
+  },
+  "https://www.foodsovereignty.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.foodsovereignty.org/",
+   "used_by": [
+    "organisation: international planning committee for food sovereignty",
+    "organisation: ipc"
+   ]
+  },
+  "https://www.gatesfoundation.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.gatesfoundation.org/",
+   "used_by": [
+    "organisation: gates foundation"
+   ]
+  },
+  "https://www.giz.de/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.giz.de/en",
+   "used_by": [
+    "organisation: deutsche gesellschaft fur internationale zusammenarbeit (giz) gmbh"
+   ]
+  },
+  "https://www.giz.de/en/expertise/agriculture-food/aquaculture-fisheries": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.giz.de/en/expertise/agriculture-food/aquaculture-fisheries",
+   "used_by": [
+    "organisation: deutsche gesellschaft fur internationale zusammenarbeit (giz) gmbh"
+   ]
+  },
+  "https://www.gov.uk/government/organisations/animal-and-plant-health-agency": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.gov.uk/government/organisations/animal-and-plant-health-agency",
+   "used_by": [
+    "organisation: animal and plant health agency (apha)"
+   ]
+  },
+  "https://www.gov.uk/government/organisations/department-for-business-energy-and-industrial-strategy": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.gov.uk/government/organisations/department-for-business-energy-and-industrial-strategy",
+   "used_by": [
+    "organisation: department for business, energy & industrial strategy"
+   ]
+  },
+  "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs",
+   "used_by": [
+    "organisation: department for environment, food, and rural affairs"
+   ]
+  },
+  "https://www.gov.uk/government/organisations/department-of-health-and-social-care": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.gov.uk/government/organisations/department-of-health-and-social-care",
+   "used_by": [
+    "organisation: united kingdom. department of health and social care"
+   ]
+  },
+  "https://www.gov.uk/government/organisations/uk-space-agency": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.gov.uk/government/organisations/uk-space-agency",
+   "used_by": [
+    "organisation: uk space agency"
+   ]
+  },
+  "https://www.gov.uk/government/organisations/veterinary-medicines-directorate": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.gov.uk/government/organisations/veterinary-medicines-directorate",
+   "used_by": [
+    "organisation: veterinary medicines directorate (vmd)"
+   ]
+  },
+  "https://www.gov.uk/government/publications/blue-planet-fund/blue-planet-fund": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.gov.uk/government/publications/blue-planet-fund/blue-planet-fund",
+   "used_by": [
+    "organisation: department for environment, food, and rural affairs"
+   ]
+  },
+  "https://www.government.nl/ministries/ministry-of-foreign-affairs": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.government.nl/ministries/ministry-of-foreign-affairs",
+   "used_by": [
+    "organisation: ministry of foreign affairs of the netherlands"
+   ]
+  },
+  "https://www.greenclimate.fund/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.greenclimate.fund/",
+   "used_by": [
+    "organisation: gcf - green climate fund (readiness and preparatory support)"
+   ]
+  },
+  "https://www.hesy.com/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.hesy.com/",
+   "used_by": [
+    "organisation: hesy aquaculture b.v."
+   ]
+  },
+  "https://www.hi.no/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.hi.no/en",
+   "used_by": [
+    "organisation: havforskningsinstituttet"
+   ]
+  },
+  "https://www.hi.no/en/hi/forskning/research-groups-1/marine-research-in-developing-countries": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.hi.no/en/hi/forskning/research-groups-1/marine-research-in-developing-countries",
+   "used_by": [
+    "organisation: havforskningsinstituttet"
+   ]
+  },
+  "https://www.hss.mun.ca/research/showcase/too-big-to-ignore/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.hss.mun.ca/research/showcase/too-big-to-ignore/",
+   "used_by": [
+    "organisation: memorial university of newfoundland"
+   ]
+  },
+  "https://www.iadb.org/en": {
+   "class": "blocked",
+   "status": 403,
+   "used_by": [
+    "organisation: idb - inter-american development bank",
+    "organisation: inter american development bank",
+    "organisation: ordinary capital"
+   ]
+  },
+  "https://www.iamb.ciheam.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.iamb.ciheam.org/",
+   "used_by": [
+    "organisation: ciheam - centro internazionale di alti studi agronomici mediterr"
+   ]
+  },
+  "https://www.iamb.ciheam.org/education/sustainable-development-of-coastal-communities/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.iamb.ciheam.org/education/sustainable-development-of-coastal-communities/",
+   "used_by": [
+    "organisation: ciheam - centro internazionale di alti studi agronomici mediterr"
+   ]
+  },
+  "https://www.instagram.com/serikatnelayan/": {
+   "class": "blocked",
+   "status": null,
+   "note": "host refuses scripts; not tested",
+   "used_by": [
+    "organisation: serikat nelayan indonesia (indonesian fisherfolk/fishermen union)",
+    "organisation: sni"
+   ]
+  },
+  "https://www.intracen.org/": {
+   "class": "blocked",
+   "status": 403,
+   "used_by": [
+    "organisation: international trade centre (itc)"
+   ]
+  },
+  "https://www.ireland.ie/en/irish-aid/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.ireland.ie/en/irish-aid/",
+   "used_by": [
+    "organisation: dfat / irish aid"
+   ]
+  },
+  "https://www.iuf.org/who-we-are/sectors/fisheries-and-aquaculture/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.iuf.org/who-we-are/sectors/fisheries-and-aquaculture/",
+   "used_by": [
+    "organisation: fisheries & aquaculture workers' network \u2013 iuf",
+    "organisation: iuf"
+   ]
+  },
+  "https://www.jica.go.jp/english/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.jica.go.jp/english/",
+   "used_by": [
+    "organisation: government of japan",
+    "organisation: japan"
+   ]
+  },
+  "https://www.kfw-entwicklungsbank.de/International-financing/KfW-Entwicklungsbank/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.kfw-entwicklungsbank.de/International-financing/KfW-Entwicklungsbank/",
+   "used_by": [
+    "organisation: kfw bankengruppe (kfw)"
+   ]
+  },
+  "https://www.kfw-entwicklungsbank.de/SDG-portal/SDG-14/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.kfw-entwicklungsbank.de/SDG-portal/SDG-14/",
+   "used_by": [
+    "organisation: kfw bankengruppe (kfw)"
+   ]
+  },
+  "https://www.kiara.or.id/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.kiara.or.id/",
+   "used_by": [
+    "organisation: kiara",
+    "organisation: koalisi rakyat untuk keadilan perikanan (people's coalition for fisheries justice)"
+   ]
+  },
+  "https://www.koica.go.kr/sites/koica_en/index.do": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.koica.go.kr/sites/koica_en/index.do",
+   "used_by": [
+    "organisation: korea international cooperation agency"
+   ]
+  },
+  "https://www.larive.com/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.larive.com/",
+   "used_by": [
+    "organisation: larive international b.v."
+   ]
+  },
+  "https://www.mfat.govt.nz/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.mfat.govt.nz/en",
+   "used_by": [
+    "organisation: new zealand ministry of foreign affairs and trade"
+   ]
+  },
+  "https://www.mfat.govt.nz/en/environment/oceans-and-fisheries": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.mfat.govt.nz/en/environment/oceans-and-fisheries",
+   "used_by": [
+    "organisation: new zealand ministry of foreign affairs and trade"
+   ]
+  },
+  "https://www.mi.mun.ca/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.mi.mun.ca/",
+   "used_by": [
+    "organisation: memorial university of newfoundland - international marine institute"
+   ]
+  },
+  "https://www.mi.mun.ca/departments/miinternational/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.mi.mun.ca/departments/miinternational/",
+   "used_by": [
+    "organisation: memorial university of newfoundland - international marine institute"
+   ]
+  },
+  "https://www.mof.go.jp/english/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.mof.go.jp/english/",
+   "used_by": [
+    "organisation: japan - ministry of finance"
+   ]
+  },
+  "https://www.mof.go.kr/en/index.do": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.mof.go.kr/en/index.do",
+   "used_by": [
+    "organisation: ministry of oceans and fisheries"
+   ]
+  },
+  "https://www.mun.ca/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.mun.ca/",
+   "used_by": [
+    "organisation: memorial university of newfoundland"
+   ]
+  },
+  "https://www.nekmat.com.my/nekmatweb/index.html": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.nekmat.com.my/nekmatweb/index.html",
+   "used_by": [
+    "organisation: national fishermen's association of malaysia",
+    "organisation: nekmat"
+   ]
+  },
+  "https://www.norad.no/en/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.norad.no/en/",
+   "used_by": [
+    "organisation: norad - norwegian agency for development cooperation",
+    "organisation: norway",
+    "organisation: norwegian government"
+   ]
+  },
+  "https://www.norad.no/en/for-partners/partner/the-knowledge-bank/programs-of-the-knowledge-bank-in-2024/#Fish_for_development": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.norad.no/en/for-partners/partner/the-knowledge-bank/programs-of-the-knowledge-bank-in-2024/#Fish_for_development",
+   "used_by": [
+    "organisation: norad - norwegian agency for development cooperation",
+    "organisation: norway",
+    "organisation: norwegian government"
+   ]
+  },
+  "https://www.nuffic.nl/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.nuffic.nl/en",
+   "used_by": [
+    "organisation: nuffic"
+   ]
+  },
+  "https://www.openstreetmap.org/copyright": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.openstreetmap.org/copyright",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://www.oxfam.org.au/": {
+   "class": "blocked",
+   "status": 403,
+   "used_by": [
+    "organisation: oxfam australia"
+   ]
+  },
+  "https://www.oxfamnovib.nl/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.oxfamnovib.nl/",
+   "used_by": [
+    "organisation: oxfam novib"
+   ]
+  },
+  "https://www.pcffa.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.pcffa.org/",
+   "used_by": [
+    "organisation: pacific coast federation of fishermen's associations",
+    "organisation: pcffa"
+   ]
+  },
+  "https://www.regjeringen.no/en/dep/ud/id833/": {
+   "class": "blocked",
+   "status": 403,
+   "used_by": [
+    "organisation: norwegian ministry of foreign affairs - embassies"
+   ]
+  },
+  "https://www.regjeringen.no/en/topics/havet/id2603523/": {
+   "class": "blocked",
+   "status": 403,
+   "used_by": [
+    "organisation: norwegian ministry of foreign affairs - embassies"
+   ]
+  },
+  "https://www.seaaroundus.org": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.seaaroundus.org",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://www.seaaroundus.org/data/#/eez": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.seaaroundus.org/data/#/eez",
+   "used_by": [
+    "page"
+   ]
+  },
+  "https://www.seychelles-hookandline-fishermen.org/accueil.html": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.seychelles-hookandline-fishermen.org/accueil.html",
+   "used_by": [
+    "organisation: fishermen and boat owners association"
+   ]
+  },
+  "https://www.sida.se/en": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.sida.se/en",
+   "used_by": [
+    "organisation: sweden",
+    "organisation: swedish international development cooperation agency"
+   ]
+  },
+  "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
+   "used_by": [
+    "organisation: sweden",
+    "organisation: swedish international development cooperation agency"
+   ]
+  },
+  "https://www.spc.int/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.spc.int/",
+   "used_by": [
+    "organisation: spc - the pacific community"
+   ]
+  },
+  "https://www.tambuyog.org/home/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.tambuyog.org/home/",
+   "used_by": [
+    "organisation: tambuyog development center"
+   ]
+  },
+  "https://www.thegef.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.thegef.org/",
+   "used_by": [
+    "organisation: gef (fao) - global environment facility (through fao)",
+    "organisation: global environment facility",
+    "organisation: global environment fund truste"
+   ]
+  },
+  "https://www.thegef.org/what-we-do/topics/international-waters/marine": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.thegef.org/what-we-do/topics/international-waters/marine",
+   "used_by": [
+    "organisation: gef (fao) - global environment facility (through fao)",
+    "organisation: global environment facility",
+    "organisation: global environment fund truste"
+   ]
+  },
+  "https://www.thegef.org/what-we-do/topics/least-developed-countries-fund-ldcf": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.thegef.org/what-we-do/topics/least-developed-countries-fund-ldcf",
+   "used_by": [
+    "organisation: ldf - least developed countries fund for climate change (ldcf)"
+   ]
+  },
+  "https://www.uhailakeforum.com/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.uhailakeforum.com/",
+   "used_by": [
+    "organisation: uhai lake forum"
+   ]
+  },
+  "https://www.undp.org/": {
+   "class": "blocked",
+   "status": 403,
+   "used_by": [
+    "organisation: undp",
+    "organisation: united nations development programme"
+   ]
+  },
+  "https://www.undp.org/nature/our-work-areas/ocean-governance": {
+   "class": "blocked",
+   "status": 403,
+   "used_by": [
+    "organisation: undp",
+    "organisation: united nations development programme"
+   ]
+  },
+  "https://www.unido.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.unido.org/",
+   "used_by": [
+    "organisation: united nations industrial development organisation"
+   ]
+  },
+  "https://www.unpm.mr/fnp/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.unpm.mr/fnp/",
+   "used_by": [
+    "organisation: fnp",
+    "organisation: f\u00e9d\u00e9ration nationale de p\u00eache"
+   ]
+  },
+  "https://www.vliruos.be/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.vliruos.be/",
+   "used_by": [
+    "organisation: vlir-uos"
+   ]
+  },
+  "https://www.vr.se/english.html": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.vr.se/english.html",
+   "used_by": [
+    "organisation: the swedish research council"
+   ]
+  },
+  "https://www.wiomsa.org/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.wiomsa.org/",
+   "used_by": [
+    "organisation: western indian ocean marine science association (wiomsa)"
+   ]
+  },
+  "https://www.wiomsa.org/iuu-fishing-in-the-small-scale-fisheries-of-the-wio/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.wiomsa.org/iuu-fishing-in-the-small-scale-fisheries-of-the-wio/",
+   "used_by": [
+    "organisation: western indian ocean marine science association (wiomsa)"
+   ]
+  },
+  "https://www.worldbank.org/en/who-we-are/ibrd": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.worldbank.org/en/who-we-are/ibrd",
+   "used_by": [
+    "organisation: international bank for reconstruction and development"
+   ]
+  },
+  "https://www.worldbank.org/ext/en/home": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.worldbank.org/ext/en/home",
+   "used_by": [
+    "organisation: world bank"
+   ]
+  },
+  "https://www.worldbank.org/ext/en/topic/environment/fisheries-aquaculture-and-ocean-economies": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.worldbank.org/ext/en/topic/environment/fisheries-aquaculture-and-ocean-economies",
+   "used_by": [
+    "organisation: international bank for reconstruction and development",
+    "organisation: international development association",
+    "organisation: world bank"
+   ]
+  },
+  "https://www.worldfishcenter.org/pages/from-local-to-global-how-research-enables-resilient-sustainable-small-scale-fisheries/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.worldfishcenter.org/pages/from-local-to-global-how-research-enables-resilient-sustainable-small-scale-fisheries/",
+   "used_by": [
+    "organisation: international center for living aquatic resources management"
+   ]
+  },
+  "https://www.wwf.no/": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.wwf.no/",
+   "used_by": [
+    "organisation: wwf norge"
+   ]
+  },
+  "https://www.wwf.no/dyr-og-natur/hav-og-fiske/kampen-mot-ulovlig-fiske-og-overfiske": {
+   "class": "ok",
+   "status": 200,
+   "final": "https://www.wwf.no/dyr-og-natur/hav-og-fiske/kampen-mot-ulovlig-fiske-og-overfiske",
+   "used_by": [
+    "organisation: wwf norge"
+   ]
+  }
+ }
+}

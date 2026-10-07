@@ -1,0 +1,39 @@
+{
+  "note": "Countries where conservation groups run coastal fisheries programmes, for the map overlay. Rare's Fish Forever list is the FISH_FOREVER set in scripts/fetch_saup.py and travels on each zone as fish_forever; only Blue Ventures is listed here. A country is on a list because the group's own website says so on the date checked; nothing about the size or state of its work is implied.",
+  "groups": [
+    {
+      "key": "blue_ventures",
+      "name": "Blue Ventures",
+      "color": "#f2e015",
+      "source": "https://blueventures.org/where-we-work/",
+      "checked": "2026-09-26",
+      "iso3": [
+        "BLZ",
+        "CPV",
+        "GMB",
+        "GNB",
+        "IDN",
+        "KEN",
+        "MDG",
+        "PHL",
+        "SEN",
+        "TZA",
+        "TLS"
+      ],
+      "names": [
+        "Belize",
+        "Cabo Verde",
+        "The Gambia",
+        "Guinea-Bissau",
+        "Indonesia",
+        "Kenya",
+        "Madagascar",
+        "Philippines",
+        "Senegal",
+        "Tanzania",
+        "Timor-Leste"
+      ],
+      "not_listed": "The where-we-work page also has a Somalia section about forming partnerships with community organisations; Somalia is not one of its country tiles and is not listed here (checked 2026-10-06)."
+    }
+  ]
+}

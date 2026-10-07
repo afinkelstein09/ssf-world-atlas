@@ -1,0 +1,1402 @@
+{
+ "generated": "2026-10-06",
+ "sources": {
+  "access_law": "DeLand et al. (2025), A global dataset of preferential access areas for small-scale fishing, Duke Research Data Repository, CC0",
+  "ssf_guidelines": "FAO, Voluntary Guidelines for Small-Scale Fisheries \u2014 Where we work",
+  "faolex": "FAOLEX Database, FAO \u2014 linked, not harvested"
+ },
+ "missing": {
+  "sdg_14_b_1": "SDG indicator 14.b.1, the degree of application of a legal framework recognising access rights for small-scale fisheries, is the one comparable global measure of policy adoption. It is not yet in this atlas."
+ },
+ "count": 227,
+ "countries": {
+  "ABW": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Aruba%20small-scale%20fisheries",
+   "country": "Aruba"
+  },
+  "AFG": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Afghanistan%20small-scale%20fisheries",
+   "country": "Afghanistan"
+  },
+  "AGO": {
+   "access_law": {
+    "name": "Executive Decree No. 13/02 regulating total allowable catches, fishing areas and other provisions.",
+    "url": null,
+    "year": 2002,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "4 - 12 nautical miles from the shore",
+    "percent_eez": 4.55,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Angola%20small-scale%20fisheries",
+   "country": "Angola"
+  },
+  "AIA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Anguilla%20small-scale%20fisheries",
+   "country": "Anguilla"
+  },
+  "ALB": {
+   "access_law": {
+    "name": "Regulation No.8 dated 11.11.2009 on the managing measures for the sustainable exploitation of the fishery resources.",
+    "url": null,
+    "year": 2009,
+    "excludes": "Industrial fishing, certain gear",
+    "boundary": "3 miles from shore or the 50 meter isobath, whichever is farther",
+    "percent_eez": 20.36,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Albania%20small-scale%20fisheries",
+   "country": "Albania"
+  },
+  "AND": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Andorra%20small-scale%20fisheries",
+   "country": "Andorra"
+  },
+  "ARE": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=United%20Arab%20Emirates%20small-scale%20fisheries",
+   "country": "United Arab Emirates"
+  },
+  "ARG": {
+   "access_law": {
+    "name": "Resolucion 3/2000 - Reglamenta el ejercicio de la Pesca Artesanal Mari\u00adtima.",
+    "url": null,
+    "year": 2001,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "defined by each province as a distance from baseline or specific body of water",
+    "percent_eez": 0.86,
+    "level": "Subnational",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Argentina%20small-scale%20fisheries",
+   "country": "Argentina"
+  },
+  "ARM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Armenia%20small-scale%20fisheries",
+   "country": "Armenia"
+  },
+  "ASM": {
+   "access_law": {
+    "name": "Establishment of Ofu-Vaoto marine park (Chapter 03 of Title 18). and Chapter 9 of Title 24 - Fishing.",
+    "url": null,
+    "year": 1994,
+    "excludes": "Industrial fishing, certain gear",
+    "boundary": "Island of Ofu Marine Park and Fagatele Bay National Marine Sanctuary",
+    "percent_eez": 0.0,
+    "level": "Subnational",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=American%20Samoa%20small-scale%20fisheries",
+   "country": "American Samoa"
+  },
+  "ATG": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Antigua%20and%20Barbuda%20small-scale%20fisheries",
+   "country": "Antigua and Barbuda"
+  },
+  "AUS": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Australia%20small-scale%20fisheries",
+   "country": "Australia"
+  },
+  "AUT": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Austria%20small-scale%20fisheries",
+   "country": "Austria"
+  },
+  "AZE": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Azerbaijan%20small-scale%20fisheries",
+   "country": "Azerbaijan"
+  },
+  "BDI": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Burundi%20small-scale%20fisheries",
+   "country": "Burundi"
+  },
+  "BEL": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Belgium%20small-scale%20fisheries",
+   "country": "Belgium"
+  },
+  "BEN": {
+   "access_law": {
+    "name": "Loi no 2010-11 du 07 mars 2011 portent code maritime en Republique du Benin",
+    "url": null,
+    "year": 2011,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "5 nautical miles from the baseline",
+    "percent_eez": 3.72,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Benin%20small-scale%20fisheries",
+   "country": "Benin"
+  },
+  "BFA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Burkina%20Faso%20small-scale%20fisheries",
+   "country": "Burkina Faso"
+  },
+  "BGD": {
+   "access_law": {
+    "name": "Marine Fisheries Rule, 1983",
+    "url": null,
+    "year": 1998,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "the 40 meter isobath",
+    "percent_eez": 32.62,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Bangladesh%20small-scale%20fisheries",
+   "country": "Bangladesh"
+  },
+  "BGR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Bulgaria%20small-scale%20fisheries",
+   "country": "Bulgaria"
+  },
+  "BHR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Bahrain%20small-scale%20fisheries",
+   "country": "Bahrain"
+  },
+  "BHS": {
+   "access_law": {
+    "name": "Fisheries Resources (Jurisdiction and Conservation) (Flats Fishing) Regulations, 2017 (S.I. No. 2 of 2017).",
+    "url": null,
+    "year": 2017,
+    "excludes": "Commercial fishing",
+    "boundary": "the 2 meter isobath",
+    "percent_eez": 2.13,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Bahamas%20small-scale%20fisheries",
+   "country": "Bahamas"
+  },
+  "BIH": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Bosnia%20and%20Herzegovina%20small-scale%20fisheries",
+   "country": "Bosnia and Herzegovina"
+  },
+  "BLR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Belarus%20small-scale%20fisheries",
+   "country": "Belarus"
+  },
+  "BLZ": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Belize%20small-scale%20fisheries",
+   "country": "Belize"
+  },
+  "BMU": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Bermuda%20small-scale%20fisheries",
+   "country": "Bermuda"
+  },
+  "BOL": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Bolivia%20small-scale%20fisheries",
+   "country": "Bolivia"
+  },
+  "BRA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Brazil%20small-scale%20fisheries",
+   "country": "Brazil"
+  },
+  "BRB": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Barbados%20small-scale%20fisheries",
+   "country": "Barbados"
+  },
+  "BRN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Brunei%20small-scale%20fisheries",
+   "country": "Brunei"
+  },
+  "BTN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Bhutan%20small-scale%20fisheries",
+   "country": "Bhutan"
+  },
+  "BWA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Botswana%20small-scale%20fisheries",
+   "country": "Botswana"
+  },
+  "CAF": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Central%20African%20Republic%20small-scale%20fisheries",
+   "country": "Central African Republic"
+  },
+  "CAN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Canada%20small-scale%20fisheries",
+   "country": "Canada"
+  },
+  "CHE": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Switzerland%20small-scale%20fisheries",
+   "country": "Switzerland"
+  },
+  "CHI": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Channel%20Islands%20small-scale%20fisheries",
+   "country": "Channel Islands"
+  },
+  "CHL": {
+   "access_law": {
+    "name": "Law No. 18,892 of 1989 ad its modifications - General Law of Fisheries and Aquaculture",
+    "url": "https://faolex.fao.org/docs/pdf/chi1227.pdf",
+    "year": 1989,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "5 nautical miles from baseline",
+    "percent_eez": 6.19,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Chile%20small-scale%20fisheries",
+   "country": "Chile"
+  },
+  "CHN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=China%20small-scale%20fisheries",
+   "country": "China"
+  },
+  "CIV": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=C%C3%B4te%20d%27Ivoire%20small-scale%20fisheries",
+   "country": "C\u00f4te d'Ivoire"
+  },
+  "CMR": {
+   "access_law": {
+    "name": "Decret no 77-363 portant creation de la Mission de developpement de la peche artisanale maritime.",
+    "url": null,
+    "year": 1977,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "3 nautical miles from shore",
+    "percent_eez": 20.71,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Cameroon%20small-scale%20fisheries",
+   "country": "Cameroon"
+  },
+  "COD": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Democratic%20Republic%20of%20the%20Congo%20small-scale%20fisheries",
+   "country": "Democratic Republic of the Congo"
+  },
+  "COG": {
+   "access_law": {
+    "name": "Order no 6 of 23 January 2014 prohibiting fishing vessels and other vessels from the exercise of sea fishing in the navigation zone reserved for artisanal fishing and aquaculture.",
+    "url": null,
+    "year": 2014,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "6 nautical miles from shore",
+    "percent_eez": 5.5,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Congo%20small-scale%20fisheries",
+   "country": "Congo"
+  },
+  "COK": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Cook%20Islands%20small-scale%20fisheries",
+   "country": "Cook Islands"
+  },
+  "COL": {
+   "access_law": {
+    "name": "Resolucion No 545 of 2012, based on Ley no 13 - Estatuto General de Pesca, 1990.",
+    "url": null,
+    "year": 2012,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "2.5 nautical miles from shore",
+    "percent_eez": 0.14,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "ssf_guidelines": {
+    "active": true,
+    "note": "FAO reports active support for implementing the SSF Guidelines here."
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Colombia%20small-scale%20fisheries",
+   "country": "Colombia"
+  },
+  "COM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Comoros%20small-scale%20fisheries",
+   "country": "Comoros"
+  },
+  "CPV": {
+   "access_law": {
+    "name": "Resolution No. 94/2020 approving the Fisheries Resource Management Plan 2020-2024.",
+    "url": null,
+    "year": 2020,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "3 nautical miles from shore",
+    "percent_eez": 0.78,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Cabo%20Verde%20small-scale%20fisheries",
+   "country": "Cabo Verde"
+  },
+  "CRI": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Costa%20Rica%20small-scale%20fisheries",
+   "country": "Costa Rica"
+  },
+  "CUB": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Cuba%20small-scale%20fisheries",
+   "country": "Cuba"
+  },
+  "CUW": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Cura%C3%A7ao%20small-scale%20fisheries",
+   "country": "Cura\u00e7ao"
+  },
+  "CYM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Cayman%20Islands%20small-scale%20fisheries",
+   "country": "Cayman Islands"
+  },
+  "CYP": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Cyprus%20small-scale%20fisheries",
+   "country": "Cyprus"
+  },
+  "CZE": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Czechia%20small-scale%20fisheries",
+   "country": "Czechia"
+  },
+  "DEU": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Germany%20small-scale%20fisheries",
+   "country": "Germany"
+  },
+  "DJI": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Djibouti%20small-scale%20fisheries",
+   "country": "Djibouti"
+  },
+  "DMA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Dominica%20small-scale%20fisheries",
+   "country": "Dominica"
+  },
+  "DNK": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Denmark%20small-scale%20fisheries",
+   "country": "Denmark"
+  },
+  "DOM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Dominican%20Republic%20small-scale%20fisheries",
+   "country": "Dominican Republic"
+  },
+  "DZA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Algeria%20small-scale%20fisheries",
+   "country": "Algeria"
+  },
+  "ECU": {
+   "access_law": {
+    "name": "Acuerdo No 080 del 19 de marzo de 1990",
+    "url": null,
+    "year": 1990,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "8 nautical miles from shore",
+    "percent_eez": 6.91,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Ecuador%20small-scale%20fisheries",
+   "country": "Ecuador"
+  },
+  "EGY": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Egypt%20small-scale%20fisheries",
+   "country": "Egypt"
+  },
+  "ERI": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Eritrea%20small-scale%20fisheries",
+   "country": "Eritrea"
+  },
+  "ESP": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Spain%20small-scale%20fisheries",
+   "country": "Spain"
+  },
+  "EST": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Estonia%20small-scale%20fisheries",
+   "country": "Estonia"
+  },
+  "ETH": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Ethiopia%20small-scale%20fisheries",
+   "country": "Ethiopia"
+  },
+  "FIN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Finland%20small-scale%20fisheries",
+   "country": "Finland"
+  },
+  "FJI": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Fiji%20small-scale%20fisheries",
+   "country": "Fiji"
+  },
+  "FLK": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Falkland%20Islands%20small-scale%20fisheries",
+   "country": "Falkland Islands"
+  },
+  "FRA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=France%20small-scale%20fisheries",
+   "country": "France"
+  },
+  "FRO": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Faroe%20Islands%20small-scale%20fisheries",
+   "country": "Faroe Islands"
+  },
+  "FSM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Micronesia%20small-scale%20fisheries",
+   "country": "Micronesia"
+  },
+  "GAB": {
+   "access_law": {
+    "name": "Fisheries Act, 2002",
+    "url": null,
+    "year": 2002,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "3 nautical miles from shore",
+    "percent_eez": 5.53,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Gabon%20small-scale%20fisheries",
+   "country": "Gabon"
+  },
+  "GBR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=United%20Kingdom%20small-scale%20fisheries",
+   "country": "United Kingdom"
+  },
+  "GEO": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Georgia%20small-scale%20fisheries",
+   "country": "Georgia"
+  },
+  "GHA": {
+   "access_law": {
+    "name": "Fisheries Act, 2002 (Act No.625 of 2002)",
+    "url": null,
+    "year": 2002,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "6 nautical miles from shore or the 30 meter isobath, whichever is farther",
+    "percent_eez": 3.39,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "ssf_guidelines": {
+    "active": true,
+    "note": "FAO reports active support for implementing the SSF Guidelines here."
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Ghana%20small-scale%20fisheries",
+   "country": "Ghana"
+  },
+  "GIB": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Gibraltar%20small-scale%20fisheries",
+   "country": "Gibraltar"
+  },
+  "GIN": {
+   "access_law": {
+    "name": "Decret D-2014-no262-PRG-SGG du 31 decembre 2014 portant definition des zones de peche.",
+    "url": null,
+    "year": 2014,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "coordinates in Annex 3 of the policy document",
+    "percent_eez": 3.1,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Guinea%20small-scale%20fisheries",
+   "country": "Guinea"
+  },
+  "GMB": {
+   "access_law": {
+    "name": "Fisheries Regulation, 2008",
+    "url": null,
+    "year": 2008,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "12 nautical miles from shore",
+    "percent_eez": 10.56,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Gambia%20small-scale%20fisheries",
+   "country": "Gambia"
+  },
+  "GNB": {
+   "access_law": {
+    "name": "Decree No. 24/2011 approving the Regulation on Artisanal Fisheries.",
+    "url": null,
+    "year": 2011,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "12 nautical miles from the baseline",
+    "percent_eez": 18.56,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Guinea-Bissau%20small-scale%20fisheries",
+   "country": "Guinea-Bissau"
+  },
+  "GNQ": {
+   "access_law": {
+    "name": "Ley No 10/2003 - Ley reguladora de la Actividad Pesquera en la Republica de Guinea Ecuatorial.",
+    "url": null,
+    "year": 2003,
+    "excludes": "Industrial fishing, certain gear",
+    "boundary": "4 nautical miles from shore",
+    "percent_eez": 1.32,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Equatorial%20Guinea%20small-scale%20fisheries",
+   "country": "Equatorial Guinea"
+  },
+  "GRC": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Greece%20small-scale%20fisheries",
+   "country": "Greece"
+  },
+  "GRD": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Grenada%20small-scale%20fisheries",
+   "country": "Grenada"
+  },
+  "GRL": {
+   "access_law": {
+    "name": "Government of Greenland Order No. 4 of 2017 on technical conservation measures in fisheries.",
+    "url": null,
+    "year": 2017,
+    "excludes": "Trawling",
+    "boundary": "3 nautical miles limit",
+    "percent_eez": 11.83,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Greenland%20small-scale%20fisheries",
+   "country": "Greenland"
+  },
+  "GTM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Guatemala%20small-scale%20fisheries",
+   "country": "Guatemala"
+  },
+  "GUF": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=French%20Guiana%20small-scale%20fisheries",
+   "country": "French Guiana"
+  },
+  "GUM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Guam%20small-scale%20fisheries",
+   "country": "Guam"
+  },
+  "GUY": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Guyana%20small-scale%20fisheries",
+   "country": "Guyana"
+  },
+  "HKG": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Hong%20Kong%20small-scale%20fisheries",
+   "country": "Hong Kong"
+  },
+  "HND": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Honduras%20small-scale%20fisheries",
+   "country": "Honduras"
+  },
+  "HRV": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Croatia%20small-scale%20fisheries",
+   "country": "Croatia"
+  },
+  "HTI": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Haiti%20small-scale%20fisheries",
+   "country": "Haiti"
+  },
+  "HUN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Hungary%20small-scale%20fisheries",
+   "country": "Hungary"
+  },
+  "IDN": {
+   "ssf_guidelines": {
+    "active": true,
+    "note": "FAO reports active support for implementing the SSF Guidelines here."
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Indonesia%20small-scale%20fisheries",
+   "country": "Indonesia"
+  },
+  "IMN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Isle%20of%20Man%20small-scale%20fisheries",
+   "country": "Isle of Man"
+  },
+  "IND": {
+   "access_law": {
+    "name": "National Policy on Marine Fisheries 2017.",
+    "url": null,
+    "year": 2018,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "defined by each state as either a distance from shore or depth",
+    "percent_eez": 2.65,
+    "level": "Subnational",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=India%20small-scale%20fisheries",
+   "country": "India"
+  },
+  "IRL": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Ireland%20small-scale%20fisheries",
+   "country": "Ireland"
+  },
+  "IRN": {
+   "access_law": {
+    "name": "Regulations relative to artisanal fishing in the Persian Gulf. Regulations relative to fishing in the Oman Sea.",
+    "url": null,
+    "year": 1984,
+    "excludes": "Industrial fishing",
+    "boundary": "12 nautical miles from shore",
+    "percent_eez": 30.32,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Iran%20small-scale%20fisheries",
+   "country": "Iran"
+  },
+  "IRQ": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Iraq%20small-scale%20fisheries",
+   "country": "Iraq"
+  },
+  "ISL": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Iceland%20small-scale%20fisheries",
+   "country": "Iceland"
+  },
+  "ISR": {
+   "access_law": {
+    "name": "Fisheries Rules.",
+    "url": null,
+    "year": 2000,
+    "excludes": "Trawling",
+    "boundary": "the 15 meter isobath",
+    "percent_eez": 1.03,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Israel%20small-scale%20fisheries",
+   "country": "Israel"
+  },
+  "ITA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Italy%20small-scale%20fisheries",
+   "country": "Italy"
+  },
+  "JAM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Jamaica%20small-scale%20fisheries",
+   "country": "Jamaica"
+  },
+  "JOR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Jordan%20small-scale%20fisheries",
+   "country": "Jordan"
+  },
+  "JPN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Japan%20small-scale%20fisheries",
+   "country": "Japan"
+  },
+  "KAZ": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Kazakhstan%20small-scale%20fisheries",
+   "country": "Kazakhstan"
+  },
+  "KEN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Kenya%20small-scale%20fisheries",
+   "country": "Kenya"
+  },
+  "KGZ": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Kyrgyzstan%20small-scale%20fisheries",
+   "country": "Kyrgyzstan"
+  },
+  "KHM": {
+   "access_law": {
+    "name": "Law on Fisheries (2007)",
+    "url": null,
+    "year": 2007,
+    "excludes": "Trawling",
+    "boundary": "the 20 meter isobath",
+    "percent_eez": 11.35,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Cambodia%20small-scale%20fisheries",
+   "country": "Cambodia"
+  },
+  "KIR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Kiribati%20small-scale%20fisheries",
+   "country": "Kiribati"
+  },
+  "KNA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Saint%20Kitts%20and%20Nevis%20small-scale%20fisheries",
+   "country": "Saint Kitts and Nevis"
+  },
+  "KOR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=South%20Korea%20small-scale%20fisheries",
+   "country": "South Korea"
+  },
+  "KWT": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Kuwait%20small-scale%20fisheries",
+   "country": "Kuwait"
+  },
+  "LAO": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Laos%20small-scale%20fisheries",
+   "country": "Laos"
+  },
+  "LBN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Lebanon%20small-scale%20fisheries",
+   "country": "Lebanon"
+  },
+  "LBR": {
+   "access_law": {
+    "name": "Regulations relating to fisheries, fishing and related activities, for the marine fisheries sector in the Republic of Liberia, 2010 (New Fisheries Regulations)",
+    "url": "http://www.fao.org/faolex/results/details/en/c/LEX-FAOC132701",
+    "year": 2010,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "6 nautical miles from shore",
+    "percent_eez": 2.58,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Liberia%20small-scale%20fisheries",
+   "country": "Liberia"
+  },
+  "LBY": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Libya%20small-scale%20fisheries",
+   "country": "Libya"
+  },
+  "LCA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Saint%20Lucia%20small-scale%20fisheries",
+   "country": "Saint Lucia"
+  },
+  "LIE": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Liechtenstein%20small-scale%20fisheries",
+   "country": "Liechtenstein"
+  },
+  "LKA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Sri%20Lanka%20small-scale%20fisheries",
+   "country": "Sri Lanka"
+  },
+  "LSO": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Lesotho%20small-scale%20fisheries",
+   "country": "Lesotho"
+  },
+  "LTU": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Lithuania%20small-scale%20fisheries",
+   "country": "Lithuania"
+  },
+  "LUX": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Luxembourg%20small-scale%20fisheries",
+   "country": "Luxembourg"
+  },
+  "LVA": {
+   "access_law": {
+    "name": "Cabinet Regulation No. 296 of 2007 on Commercial Fishing in Territorial Waters and Economic Zone Waters.",
+    "url": null,
+    "year": 2007,
+    "excludes": "Commercial fishing",
+    "boundary": "the 20 meter isobath",
+    "percent_eez": 13.07,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Latvia%20small-scale%20fisheries",
+   "country": "Latvia"
+  },
+  "MAC": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Macao%20small-scale%20fisheries",
+   "country": "Macao"
+  },
+  "MAF": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Saint%20Martin%20small-scale%20fisheries",
+   "country": "Saint Martin"
+  },
+  "MAR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Morocco%20small-scale%20fisheries",
+   "country": "Morocco"
+  },
+  "MCO": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Monaco%20small-scale%20fisheries",
+   "country": "Monaco"
+  },
+  "MDA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Moldova%20small-scale%20fisheries",
+   "country": "Moldova"
+  },
+  "MDG": {
+   "ssf_guidelines": {
+    "active": true,
+    "note": "FAO reports active support for implementing the SSF Guidelines here."
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Madagascar%20small-scale%20fisheries",
+   "country": "Madagascar"
+  },
+  "MDV": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Maldives%20small-scale%20fisheries",
+   "country": "Maldives"
+  },
+  "MEX": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Mexico%20small-scale%20fisheries",
+   "country": "Mexico"
+  },
+  "MHL": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Marshall%20Islands%20small-scale%20fisheries",
+   "country": "Marshall Islands"
+  },
+  "MKD": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=North%20Macedonia%20small-scale%20fisheries",
+   "country": "North Macedonia"
+  },
+  "MLI": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Mali%20small-scale%20fisheries",
+   "country": "Mali"
+  },
+  "MLT": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Malta%20small-scale%20fisheries",
+   "country": "Malta"
+  },
+  "MMR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Myanmar%20small-scale%20fisheries",
+   "country": "Myanmar"
+  },
+  "MNE": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Montenegro%20small-scale%20fisheries",
+   "country": "Montenegro"
+  },
+  "MNG": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Mongolia%20small-scale%20fisheries",
+   "country": "Mongolia"
+  },
+  "MNP": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Northern%20Mariana%20Islands%20small-scale%20fisheries",
+   "country": "Northern Mariana Islands"
+  },
+  "MOZ": {
+   "access_law": {
+    "name": "Fishing Law No.22/2013",
+    "url": null,
+    "year": 2013,
+    "excludes": "Industrial fishing, certain gear",
+    "boundary": "3 nautical miles from shore",
+    "percent_eez": 3.74,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Mozambique%20small-scale%20fisheries",
+   "country": "Mozambique"
+  },
+  "MRT": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Mauritania%20small-scale%20fisheries",
+   "country": "Mauritania"
+  },
+  "MSR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Montserrat%20small-scale%20fisheries",
+   "country": "Montserrat"
+  },
+  "MUS": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Mauritius%20small-scale%20fisheries",
+   "country": "Mauritius"
+  },
+  "MWI": {
+   "ssf_guidelines": {
+    "active": true,
+    "note": "FAO reports active support for implementing the SSF Guidelines here."
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Malawi%20small-scale%20fisheries",
+   "country": "Malawi"
+  },
+  "MYS": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Malaysia%20small-scale%20fisheries",
+   "country": "Malaysia"
+  },
+  "NAM": {
+   "ssf_guidelines": {
+    "active": true,
+    "note": "FAO reports active support for implementing the SSF Guidelines here."
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Namibia%20small-scale%20fisheries",
+   "country": "Namibia"
+  },
+  "NCL": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=New%20Caledonia%20small-scale%20fisheries",
+   "country": "New Caledonia"
+  },
+  "NER": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Niger%20small-scale%20fisheries",
+   "country": "Niger"
+  },
+  "NGA": {
+   "access_law": {
+    "name": "Sea Fisheries (Fishing) Regulation",
+    "url": null,
+    "year": 2015,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "5 nautical miles from shore",
+    "percent_eez": 5.83,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Nigeria%20small-scale%20fisheries",
+   "country": "Nigeria"
+  },
+  "NIC": {
+   "access_law": {
+    "name": "Ley No 489 - Ley de pesca y acuicultura. Texto refundido.",
+    "url": null,
+    "year": 2014,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "3 nautical miles from shore",
+    "percent_eez": 3.59,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Nicaragua%20small-scale%20fisheries",
+   "country": "Nicaragua"
+  },
+  "NIU": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Niue%20small-scale%20fisheries",
+   "country": "Niue"
+  },
+  "NLD": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Netherlands%20small-scale%20fisheries",
+   "country": "Netherlands"
+  },
+  "NOR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Norway%20small-scale%20fisheries",
+   "country": "Norway"
+  },
+  "NPL": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Nepal%20small-scale%20fisheries",
+   "country": "Nepal"
+  },
+  "NRU": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Nauru%20small-scale%20fisheries",
+   "country": "Nauru"
+  },
+  "NZL": {
+   "access_law": {
+    "name": "Fisheries (Declaration of Te Rae o Kohi Mataitai Reserve) Notice 2018",
+    "url": null,
+    "year": 2018,
+    "excludes": "Commercial fishing",
+    "boundary": "Matatai Reserves in the New Zealand government's GIS database",
+    "percent_eez": 0.0,
+    "level": "Subnational",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=New%20Zealand%20small-scale%20fisheries",
+   "country": "New Zealand"
+  },
+  "OMN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Oman%20small-scale%20fisheries",
+   "country": "Oman"
+  },
+  "PAK": {
+   "access_law": {
+    "name": "Deep Sea Fishing Policy.",
+    "url": null,
+    "year": 1995,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "12-35 miles from shore",
+    "percent_eez": 13.14,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Pakistan%20small-scale%20fisheries",
+   "country": "Pakistan"
+  },
+  "PAN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Panama%20small-scale%20fisheries",
+   "country": "Panama"
+  },
+  "PER": {
+   "access_law": {
+    "name": "Supreme Decree No.012-2001 PE - Regulation of the General Fisheries Law",
+    "url": "https://faolex.fao.org/docs/pdf/per30956.pdf",
+    "year": 2001,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "5 nautical miles from shore",
+    "percent_eez": 2.75,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Peru%20small-scale%20fisheries",
+   "country": "Peru"
+  },
+  "PHL": {
+   "access_law": {
+    "name": "Pilippine Fisheries Code of 1998 (Republic Act No.8550)",
+    "url": "http://www.fao.org/faolex/results/details/en/c/LEX-FAOC016098",
+    "year": 1998,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "15 kilometers from shore",
+    "percent_eez": 15.75,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "ssf_guidelines": {
+    "active": true,
+    "note": "FAO reports active support for implementing the SSF Guidelines here."
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Philippines%20small-scale%20fisheries",
+   "country": "Philippines"
+  },
+  "PLW": {
+   "access_law": {
+    "name": "Palau National Marine Sanctuary Amendment Act (RPPL No. 10-35 of 2019).",
+    "url": null,
+    "year": 2015,
+    "excludes": "Commercial fishing",
+    "boundary": "12 to 24 nautical miles from baseline",
+    "percent_eez": 1.95,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Palau%20small-scale%20fisheries",
+   "country": "Palau"
+  },
+  "PNG": {
+   "access_law": {
+    "name": "1-7: National Tuna Fishery Management and Development Plan. 8: National Shark Longline Management Plan 2002.",
+    "url": null,
+    "year": 2014,
+    "excludes": "Industrial fishing, certain gear",
+    "boundary": "6 to 12 nautical miles from shore",
+    "percent_eez": 6.9,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Papua%20New%20Guinea%20small-scale%20fisheries",
+   "country": "Papua New Guinea"
+  },
+  "POL": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Poland%20small-scale%20fisheries",
+   "country": "Poland"
+  },
+  "PRI": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Puerto%20Rico%20small-scale%20fisheries",
+   "country": "Puerto Rico"
+  },
+  "PRK": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=North%20Korea%20small-scale%20fisheries",
+   "country": "North Korea"
+  },
+  "PRT": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Portugal%20small-scale%20fisheries",
+   "country": "Portugal"
+  },
+  "PRY": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Paraguay%20small-scale%20fisheries",
+   "country": "Paraguay"
+  },
+  "PSE": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Palestine%20small-scale%20fisheries",
+   "country": "Palestine"
+  },
+  "PYF": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=French%20Polynesia%20small-scale%20fisheries",
+   "country": "French Polynesia"
+  },
+  "QAT": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Qatar%20small-scale%20fisheries",
+   "country": "Qatar"
+  },
+  "ROU": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Romania%20small-scale%20fisheries",
+   "country": "Romania"
+  },
+  "RUS": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Russia%20small-scale%20fisheries",
+   "country": "Russia"
+  },
+  "RWA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Rwanda%20small-scale%20fisheries",
+   "country": "Rwanda"
+  },
+  "SAU": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Saudi%20Arabia%20small-scale%20fisheries",
+   "country": "Saudi Arabia"
+  },
+  "SDN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Sudan%20small-scale%20fisheries",
+   "country": "Sudan"
+  },
+  "SEN": {
+   "access_law": {
+    "name": "Loi no 2015-18 du 13 juillet 2015 portant Code de la Peche maritime",
+    "url": null,
+    "year": 2015,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "6 nautical miles from shore",
+    "percent_eez": 4.3,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Senegal%20small-scale%20fisheries",
+   "country": "Senegal"
+  },
+  "SGP": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Singapore%20small-scale%20fisheries",
+   "country": "Singapore"
+  },
+  "SHN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Saint%20Helena%2C%20Ascension%20and%20Tristan%20da%20Cunha%20small-scale%20fisheries",
+   "country": "Saint Helena, Ascension and Tristan da Cunha"
+  },
+  "SLB": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Solomon%20Islands%20small-scale%20fisheries",
+   "country": "Solomon Islands"
+  },
+  "SLE": {
+   "access_law": {
+    "name": "Fisheries and Aquaculture Act, 2018  and Fisheries and Aquaculture Regulations, 2019.",
+    "url": "https://faolex.fao.org/docs/pdf/sie192561.pdf",
+    "year": 2018,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "coordinates provided in the policy document",
+    "percent_eez": 5.5,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "ssf_guidelines": {
+    "active": true,
+    "note": "FAO reports active support for implementing the SSF Guidelines here."
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Sierra%20Leone%20small-scale%20fisheries",
+   "country": "Sierra Leone"
+  },
+  "SLV": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=El%20Salvador%20small-scale%20fisheries",
+   "country": "El Salvador"
+  },
+  "SMR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=San%20Marino%20small-scale%20fisheries",
+   "country": "San Marino"
+  },
+  "SOM": {
+   "access_law": {
+    "name": "Fisheries Law No.23 of November 30, 1985",
+    "url": "https://faolex.fao.org/docs/pdf/som171668.pdf",
+    "year": 1985,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "24 nautical miles from shore",
+    "percent_eez": 16.67,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Somalia%20small-scale%20fisheries",
+   "country": "Somalia"
+  },
+  "SPM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Saint%20Pierre%20and%20Miquelon%20small-scale%20fisheries",
+   "country": "Saint Pierre and Miquelon"
+  },
+  "SRB": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Serbia%20small-scale%20fisheries",
+   "country": "Serbia"
+  },
+  "SSD": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=South%20Sudan%20small-scale%20fisheries",
+   "country": "South Sudan"
+  },
+  "STP": {
+   "access_law": {
+    "name": "Decree No. 28/2012 establishing the General Regulation on Fisheries and Halieutic Resources.",
+    "url": null,
+    "year": 2012,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "12 nautical miles from shore",
+    "percent_eez": 6.38,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=S%C3%A3o%20Tom%C3%A9%20and%20Pr%C3%ADncipe%20small-scale%20fisheries",
+   "country": "S\u00e3o Tom\u00e9 and Pr\u00edncipe"
+  },
+  "SUR": {
+   "access_law": {
+    "name": "Fisheries Management Plan for Suriname 2014-2018",
+    "url": null,
+    "year": 2013,
+    "excludes": "Industrial fishing, certain gear",
+    "boundary": "the 10 fathom isobath",
+    "percent_eez": 7.43,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Suriname%20small-scale%20fisheries",
+   "country": "Suriname"
+  },
+  "SVK": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Slovakia%20small-scale%20fisheries",
+   "country": "Slovakia"
+  },
+  "SVN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Slovenia%20small-scale%20fisheries",
+   "country": "Slovenia"
+  },
+  "SWE": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Sweden%20small-scale%20fisheries",
+   "country": "Sweden"
+  },
+  "SWZ": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Eswatini%20small-scale%20fisheries",
+   "country": "Eswatini"
+  },
+  "SXM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Sint%20Maarten%20small-scale%20fisheries",
+   "country": "Sint Maarten"
+  },
+  "SYC": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Seychelles%20small-scale%20fisheries",
+   "country": "Seychelles"
+  },
+  "SYR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Syria%20small-scale%20fisheries",
+   "country": "Syria"
+  },
+  "TCA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Turks%20and%20Caicos%20Islands%20small-scale%20fisheries",
+   "country": "Turks and Caicos Islands"
+  },
+  "TCD": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Chad%20small-scale%20fisheries",
+   "country": "Chad"
+  },
+  "TGO": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Togo%20small-scale%20fisheries",
+   "country": "Togo"
+  },
+  "THA": {
+   "access_law": {
+    "name": "Royal Ordinance on Fisheries, B.E.2558 (2015)",
+    "url": "https://faolex.fao.org/docs/pdf/tha159730.pdf",
+    "year": 2015,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "3 nautical miles from the baseline",
+    "percent_eez": 25.07,
+    "level": "National",
+    "expert_reviewed": true
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Thailand%20small-scale%20fisheries",
+   "country": "Thailand"
+  },
+  "TJK": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Tajikistan%20small-scale%20fisheries",
+   "country": "Tajikistan"
+  },
+  "TKM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Turkmenistan%20small-scale%20fisheries",
+   "country": "Turkmenistan"
+  },
+  "TLS": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Timor-Leste%20small-scale%20fisheries",
+   "country": "Timor-Leste"
+  },
+  "TON": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Tonga%20small-scale%20fisheries",
+   "country": "Tonga"
+  },
+  "TTO": {
+   "access_law": {
+    "name": "Fisheries Act (Cap. 67:51).",
+    "url": null,
+    "year": 2014,
+    "excludes": "Industrial fishing, certain gear",
+    "boundary": "1 nautical mile from shore or the 6 fathom isobath, whichever is further, for the Gulf of Paria and 12 nautical miles from shore for Tobago",
+    "percent_eez": 6.66,
+    "level": "Subnational",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Trinidad%20and%20Tobago%20small-scale%20fisheries",
+   "country": "Trinidad and Tobago"
+  },
+  "TUN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Tunisia%20small-scale%20fisheries",
+   "country": "Tunisia"
+  },
+  "TUR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Turkey%20small-scale%20fisheries",
+   "country": "Turkey"
+  },
+  "TUV": {
+   "access_law": {
+    "name": "Marine Resources (Amendment) Act 2012.",
+    "url": null,
+    "year": 2012,
+    "excludes": "Non-artisanal fishing, fishing near reefs or seamounts",
+    "boundary": "12 nautical miles from shore or reefs surrounding atolls and islands and 15 nautical miles from seamounts",
+    "percent_eez": 26.36,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Tuvalu%20small-scale%20fisheries",
+   "country": "Tuvalu"
+  },
+  "TWN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Taiwan%20small-scale%20fisheries",
+   "country": "Taiwan"
+  },
+  "TZA": {
+   "ssf_guidelines": {
+    "active": true,
+    "note": "FAO reports active support for implementing the SSF Guidelines here."
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Tanzania%20small-scale%20fisheries",
+   "country": "Tanzania"
+  },
+  "UGA": {
+   "ssf_guidelines": {
+    "active": true,
+    "note": "FAO reports active support for implementing the SSF Guidelines here."
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Uganda%20small-scale%20fisheries",
+   "country": "Uganda"
+  },
+  "UKR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Ukraine%20small-scale%20fisheries",
+   "country": "Ukraine"
+  },
+  "URY": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Uruguay%20small-scale%20fisheries",
+   "country": "Uruguay"
+  },
+  "USA": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=United%20States%20small-scale%20fisheries",
+   "country": "United States"
+  },
+  "UZB": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Uzbekistan%20small-scale%20fisheries",
+   "country": "Uzbekistan"
+  },
+  "VCT": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Saint%20Vincent%20and%20the%20Grenadines%20small-scale%20fisheries",
+   "country": "Saint Vincent and the Grenadines"
+  },
+  "VEN": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Venezuela%20small-scale%20fisheries",
+   "country": "Venezuela"
+  },
+  "VGB": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=British%20Virgin%20Islands%20small-scale%20fisheries",
+   "country": "British Virgin Islands"
+  },
+  "VIR": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=U.S.%20Virgin%20Islands%20small-scale%20fisheries",
+   "country": "U.S. Virgin Islands"
+  },
+  "VNM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Vietnam%20small-scale%20fisheries",
+   "country": "Vietnam"
+  },
+  "VUT": {
+   "access_law": {
+    "name": "Fisheries Regulations Order, 2009. and Vanuatu National Deep-Bottom Fish Fishery Management Plan 2016.",
+    "url": null,
+    "year": 2016,
+    "excludes": "Non-artisanal fishing",
+    "boundary": "6 nautical miles from the baseline",
+    "percent_eez": 14.73,
+    "level": "National",
+    "expert_reviewed": false
+   },
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Vanuatu%20small-scale%20fisheries",
+   "country": "Vanuatu"
+  },
+  "WLF": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Wallis%20and%20Futuna%20small-scale%20fisheries",
+   "country": "Wallis and Futuna"
+  },
+  "WSM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Samoa%20small-scale%20fisheries",
+   "country": "Samoa"
+  },
+  "XKX": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Kosovo%20small-scale%20fisheries",
+   "country": "Kosovo"
+  },
+  "YEM": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Yemen%20small-scale%20fisheries",
+   "country": "Yemen"
+  },
+  "ZAF": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=South%20Africa%20small-scale%20fisheries",
+   "country": "South Africa"
+  },
+  "ZMB": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Zambia%20small-scale%20fisheries",
+   "country": "Zambia"
+  },
+  "ZWE": {
+   "faolex_search": "https://www.fao.org/faolex/results/en/?query=Zimbabwe%20small-scale%20fisheries",
+   "country": "Zimbabwe"
+  }
+ }
+}

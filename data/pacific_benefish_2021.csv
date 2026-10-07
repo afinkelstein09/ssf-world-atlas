@@ -1,0 +1,29 @@
+# Volume (tonnes) and value (US dollars, 2021) of fisheries production in 22 Pacific Island countries and territories.
+# Source: Gillett, R. and Fong, M. (2023). Fisheries in the economies of Pacific Island countries and territories
+#   (Benefish Study 4). Pacific Community (SPC), Noumea. ISBN 978-982-00-1515-9. Tables 29-1 and 29-2, pp. 426-427.
+# Transcribed from the PDF by script on 2026-09-20; column sums match the six totals printed in the tables.
+# "Coastal commercial" plus "coastal subsistence" is the region's small-scale sector. SPC authorises partial
+#   reproduction for scientific, educational or research purposes provided SPC and the source are acknowledged.
+entity,iso3,atlas_zones,coastal_commercial_t,coastal_subsistence_t,offshore_local_t,offshore_foreign_t,freshwater_t,coastal_commercial_usd,coastal_subsistence_usd,offshore_local_usd,offshore_foreign_usd,freshwater_usd
+Cook Islands,COK,Cook Islands,150,280,100,4621,5,1088435,1564626,1700680,10680272,27891
+FSM,FSM,Micronesia (Federated States of),1600,3400,153578,92899,1,7000000,10500000,205600000,121100000,8000
+Fiji,FJI,Fiji,11700,18400,10828,0,4000,27358491,37735849,39905660,0,3301887
+Kiribati,KIR,Kiribati (Gilbert Islands)|Kiribati (Line Islands)|Kiribati (Phoenix Islands),8000,11000,2686,349345,0,22463768,21739130,12723775,435798043,0
+Marshall Islands,MHL,Marshall Isl.,1200,3000,91167,42514,0,3400000,6000000,121000000,60966870,0
+Nauru,NRU,Nauru,140,100,111821,136893,0,1115942,557971,135303409,165640530,0
+Niue,NIU,Niue (New Zealand),9,160,0,0,0,91837,1142857,0,0,0
+Palau,PLW,Palau,1000,1400,41,1315,1,5510000,5399800,395250,10968872,10000
+PNG,PNG,Papua New Guinea,6000,40000,170755,161133,23000,18803419,79772080,204843305,208547009,36752137
+Samoa,WSM,Samoa,5500,5500,1001,0,10,22393822,15444015,3976834,0,28378
+Solomon Islands,SLB,Solomon Isl.,5000,25000,50597,62234,2500,9937888,40372671,79149193,78483106,4223602
+Tonga,TON,Tonga,3500,3500,290,1759,1,14561404,10219298,1491228,9605263,2917
+Tuvalu,TUV,Tuvalu,350,1150,0,71817,2,1141304,2041667,0,90341870,1449
+Vanuatu,VUT,Vanuatu,1300,3100,1000,2320,88,6898382,9595826,2264084,8923676,294508
+American Samoa,ASM,American Samoa,15,100,994,0,1,105000,490000,3000000,0,4900
+French Polynesia,PYF,French Polynesia,3565,2350,6405,0,100,20860776,9625800,42084085,0,415678
+Guam,GUM,Guam (USA),26,30,0,0,3,150959,176400,0,0,12000
+New Caledonia,NCL,New Caledonia (France),680,4760,2625,0,10,4975609,24380488,17519218,0,51220
+Northern Mariana Islands,MNP,Northern Marianas (USA),183,204,0,0,0,1175803,915960,0,0,0
+Pitcairn,PCN,Pitcairn (UK),3,6,0,0,0,18367,14286,0,0,0
+Tokelau,TKL,Tokelau (New Zealand),0,300,0,5548,0,0,714286,0,9514286,0
+Wallis & Futuna,WLF,Wallis & Futuna Isl. (France),42,221,0,0,1,455538,1683591,0,0,1898

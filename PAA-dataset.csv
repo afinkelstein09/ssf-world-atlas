@@ -1,0 +1,59 @@
+country,iso3,percent_eez,year_enacted,area_km2,designation_level,expert_reviewed,boundary_rule,excludes,law
+Bangladesh,BGD,32.62,1998,36666,National,no,the 40 meter isobath,Non-artisanal fishing,"Marine Fisheries Rule, 1983"
+Iran,IRN,30.32,1984,65381,National,no,12 nautical miles from shore,Industrial fishing,"Regulations relative to artisanal fishing in the Persian Gulf.
+ Regulations relative to fishing in the Oman Sea."
+Tuvalu,TUV,26.36,2012,198510,National,no,12 nautical miles from shore or reefs surrounding atolls and islands and 15 nautical miles from seamounts,"Non-artisanal fishing, fishing near reefs or seamounts",Marine Resources (Amendment) Act 2012.
+Thailand,THA,25.07,2015,74864,National,yes,3 nautical miles from the baseline,Non-artisanal fishing,"Royal Ordinance on Fisheries, B.E.2558 (2015)
+ 
+ http://extwprlegs1.fao.org/docs/pdf/tha159730.pdf"
+Cameroon,CMR,20.71,1977,3137,National,no,3 nautical miles from shore,Non-artisanal fishing,Decret no 77-363 portant creation de la Mission de developpement de la peche artisanale maritime. 
+Albania,ALB,20.36,2009,2477,National,no,"3 miles from shore or the 50 meter isobath, whichever is farther","Industrial fishing, certain gear",Regulation No.8 dated 11.11.2009 on the managing measures for the sustainable exploitation of the fishery resources.
+Guinea Bissau,GNB,18.56,2011,19817,National,no,12 nautical miles from the baseline,Non-artisanal fishing,Decree No. 24/2011 approving the Regulation on Artisanal Fisheries.
+Somalia,SOM,16.67,1985,136894,National,no,24 nautical miles from shore,Non-artisanal fishing,"Fisheries Law No.23 of November 30, 1985
+ http://extwprlegs1.fao.org/docs/pdf/som171668.pdf"
+Philippines,PHL,15.75,1998,309385,National,yes,15 kilometers from shore,Non-artisanal fishing,"Pilippine Fisheries Code of 1998 (Republic Act No.8550)
+ 
+ http://www.fao.org/faolex/results/details/en/c/LEX-FAOC016098"
+Vanuatu,VUT,14.73,2016,92218,National,no,6 nautical miles from the baseline,Non-artisanal fishing,"Fisheries Regulations Order, 2009. and Vanuatu National Deep-Bottom Fish Fishery Management Plan 2016."
+Pakistan,PAK,13.14,1995,29480,National,no,12-35 miles from shore,Non-artisanal fishing,Deep Sea Fishing Policy.
+Latvia,LVA,13.07,2007,3703,National,no,the 20 meter isobath,Commercial fishing,Cabinet Regulation No. 296 of 2007 on Commercial Fishing in Territorial Waters and Economic Zone Waters.
+Greenland,GRL,11.83,2017,268616,National,no,3 nautical miles limit,Trawling,Government of Greenland Order No. 4 of 2017 on technical conservation measures in fisheries.
+Cambodia,KHM,11.35,2007,5527,National,yes,the 20 meter isobath,Trawling,Law on Fisheries (2007)
+Gambia,GMB,10.56,2008,2424,National,no,12 nautical miles from shore,Non-artisanal fishing,"Fisheries Regulation, 2008"
+Suriname,SUR,7.43,2013,9927,National,no,the 10 fathom isobath,"Industrial fishing, certain gear",Fisheries Management Plan for Suriname 2014-2018
+Ecuador,ECU,6.91,1990,16331,National,no,8 nautical miles from shore,Non-artisanal fishing,Acuerdo No 080 del 19 de marzo de 1990
+Papua New Guinea,PNG,6.9,2014,165635,National,no,6 to 12 nautical miles from shore,"Industrial fishing, certain gear",1-7: National Tuna Fishery Management and Development Plan. 8: National Shark Longline Management Plan 2002.
+Trinidad and Tobago,TTO,6.66,2014,5100,Subnational,no,"1 nautical mile from shore or the 6 fathom isobath, whichever is further, for the Gulf of Paria and 12 nautical miles from shore for Tobago","Industrial fishing, certain gear",Fisheries Act (Cap. 67:51).
+Sao Tome and Principe,STP,6.38,2012,8352,National,no,12 nautical miles from shore,Non-artisanal fishing,Decree No. 28/2012 establishing the General Regulation on Fisheries and Halieutic Resources.
+Chile,CHL,6.19,1989,182067,National,yes,5 nautical miles from baseline,Non-artisanal fishing,"Law No. 18,892 of 1989 ad its modifications - General Law of Fisheries and Aquaculture
+ http://extwprlegs1.fao.org/docs/pdf/chi1227.pdf"
+Nigeria,NGA,5.83,2015,10440,National,yes,5 nautical miles from shore,Non-artisanal fishing,"Sea Fisheries (Fishing) Regulation
+ http://extwprlegs1.fao.org/docs/pdf/tha159730.pdf"
+Gabon,GAB,5.53,2002,11165,National,yes,3 nautical miles from shore,Non-artisanal fishing,"Fisheries Act, 2002"
+Congo,COG,5.5,2014,1860,National,no,6 nautical miles from shore,Non-artisanal fishing,Order no 6 of 23 January 2014 prohibiting fishing vessels and other vessels from the exercise of sea fishing in the navigation zone reserved for artisanal fishing and aquaculture.
+Sierra Leone,SLE,5.5,2018,8835,National,yes,coordinates provided in the policy document,Non-artisanal fishing,"Fisheries and Aquaculture Act, 2018 
+ http://extwprlegs1.fao.org/docs/pdf/sie192561.pdf and Fisheries and Aquaculture Regulations, 2019. "
+Angola,AGO,4.55,2002,22556,National,no,4 - 12 nautical miles from the shore,Non-artisanal fishing,"Executive Decree No. 13/02 regulating total allowable catches, fishing areas and other provisions.
+ 
+ http://extwprlegs1.fao.org/docs/pdf/ang116916.pdf"
+Senegal,SEN,4.3,2015,6815,National,yes,6 nautical miles from shore,Non-artisanal fishing,Loi no 2015-18 du 13 juillet 2015 portant Code de la Peche maritime
+Mozambique,MOZ,3.74,2013,21165,National,no,3 nautical miles from shore,"Industrial fishing, certain gear",Fishing Law No.22/2013
+Benin,BEN,3.72,2011,1321,National,no,5 nautical miles from the baseline,Non-artisanal fishing,Loi no 2010-11 du 07 mars 2011 portent code maritime en Republique du Benin
+Nicaragua,NIC,3.59,2014,7678,National,no,3 nautical miles from shore,Non-artisanal fishing,Ley No 489 - Ley de pesca y acuicultura. Texto refundido.
+Ghana,GHA,3.39,2002,7713,National,yes,"6 nautical miles from shore or the 30 meter isobath, whichever is farther",Non-artisanal fishing,"Fisheries Act, 2002 (Act No.625 of 2002)"
+Guinea,GIN,3.1,2014,3168,National,no,coordinates in Annex 3 of the policy document,Non-artisanal fishing,Decret D-2014-no262-PRG-SGG du 31 decembre 2014 portant definition des zones de peche.
+Peru,PER,2.75,2001,23473,National,yes,5 nautical miles from shore,Non-artisanal fishing,"Supreme Decree No.012-2001 PE - Regulation of the General Fisheries Law
+ http://extwprlegs1.fao.org/docs/pdf/per30956.pdf"
+India,IND,2.65,2018,61530,Subnational,no,defined by each state as either a distance from shore or depth,Non-artisanal fishing,National Policy on Marine Fisheries 2017.
+Liberia,LBR,2.58,2010,6495,National,yes,6 nautical miles from shore,Non-artisanal fishing,"Regulations relating to fisheries, fishing and related activities, for the marine fisheries sector in the Republic of Liberia, 2010 (New Fisheries Regulations)
+ 
+ http://www.fao.org/faolex/results/details/en/c/LEX-FAOC132701"
+Bahamas,BHS,2.13,2017,13185,National,no,the 2 meter isobath,Commercial fishing,"Fisheries Resources (Jurisdiction and Conservation) (Flats Fishing) Regulations, 2017  (S.I. No. 2 of 2017)."
+Palau,PLW,1.95,2015,12041,National,yes,12 to 24 nautical miles from baseline,Commercial fishing,Palau National Marine Sanctuary Amendment Act (RPPL No. 10-35 of 2019).
+Equatorial Guinea,GNQ,1.32,2003,4001,National,no,4 nautical miles from shore,"Industrial fishing, certain gear",Ley No 10/2003 - Ley reguladora de la Actividad Pesquera en la Republica de Guinea Ecuatorial.
+Israel,ISR,1.03,2000,269,National,no,the 15 meter isobath,Trawling,Fisheries Rules.
+Argentina,ARG,0.86,2001,9288,Subnational,no,defined by each province as a distance from baseline or specific body of water,Non-artisanal fishing,Resolucion 3/2000 - Reglamenta el ejercicio de la Pesca Artesanal Mari­tima.
+Cabo Verde,CPV,0.78,2020,6226,National,no,3 nautical miles from shore,Non-artisanal fishing,Resolution No. 94/2020 approving the Fisheries Resource Management Plan 2020-2024.
+Colombia,COL,0.14,2012,1028,National,no,2.5 nautical miles from shore,Non-artisanal fishing,"Resolucion No 545 of 2012, based on Ley no 13 - Estatuto General de Pesca, 1990. "
+New Zealand,NZL,0.0,2018,126,Subnational,no,Matatai Reserves in the New Zealand government's GIS database,Commercial fishing,Fisheries (Declaration of Te Rae o Kohi Mataitai Reserve) Notice 2018
+American Samoa,ASM,0.0,1994,1,Subnational,no,Island of Ofu Marine Park and Fagatele Bay National Marine Sanctuary,"Industrial fishing, certain gear",Establishment of Ofu-Vaoto marine park (Chapter 03 of Title 18). and Chapter 9 of Title 24 - Fishing.

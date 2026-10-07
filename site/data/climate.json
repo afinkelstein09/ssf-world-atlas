@@ -1,0 +1,2583 @@
+{
+ "generated": "2026-10-06",
+ "sources": {
+  "enso": "NOAA Climate Prediction Center (public domain)",
+  "heat": "NOAA Coral Reef Watch 5km, marine heatwave and degree heating weeks, via PacIOOS ERDDAP"
+ },
+ "mhw_labels": {
+  "0": "No heatwave",
+  "1": "Moderate heatwave",
+  "2": "Strong heatwave",
+  "3": "Severe heatwave",
+  "4": "Extreme heatwave",
+  "5": "Beyond extreme"
+ },
+ "coral_labels": {
+  "0": "No coral heat stress",
+  "1": "Coral watch",
+  "2": "Coral warning",
+  "3": "Bleaching likely",
+  "4": "Mortality likely"
+ },
+ "note": "Marine heatwave category compares sea surface temperature with each location's own climatology, so it is comparable between oceans. Degree heating weeks is calibrated to coral and is reported only within 35 degrees of the equator.",
+ "enso": {
+  "oni": 2.16,
+  "oni_season": "JAS 2026",
+  "oni_recent": [
+   [
+    "FMA",
+    0.11
+   ],
+   [
+    "MAM",
+    0.46
+   ],
+   [
+    "AMJ",
+    0.95
+   ],
+   [
+    "MJJ",
+    1.39
+   ],
+   [
+    "JJA",
+    1.8
+   ],
+   [
+    "JAS",
+    2.16
+   ]
+  ],
+  "state": "Strong El Nino",
+  "note": "Major disruption to eastern Pacific fisheries likely.",
+  "since": "2015\u201316",
+  "week": "30SEP2026",
+  "nino12_anomaly": 5.3,
+  "nino34_anomaly": 3.2
+ },
+ "zones": {
+  "Korea (South)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 96,
+   "date": "2026-10-05",
+   "dhw": 4.69,
+   "dhw_high": 5.35,
+   "coral": 3,
+   "sst_anomaly": 1.72
+  },
+  "Barbados": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 3.84,
+   "dhw_high": 4.41,
+   "coral": 2,
+   "sst_anomaly": 0.98
+  },
+  "Tanzania": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 47,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.57
+  },
+  "Howland & Baker Isl. (USA)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 1,
+   "date": "2026-10-05",
+   "dhw": 1.44,
+   "dhw_high": 2.19,
+   "coral": 2,
+   "sst_anomaly": 0.83
+  },
+  "Christmas Isl. (Australia)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.38
+  },
+  "Cocos (Keeling) Isl. (Australia)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 2,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.85
+  },
+  "Cook Islands": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.1
+  },
+  "Galapagos Isl. (Ecuador)": {
+   "mhw": 3,
+   "mhw_max": 4,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 4.27,
+   "dhw_high": 7.74,
+   "coral": 3,
+   "sst_anomaly": 3.15
+  },
+  "El Salvador": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 11.02,
+   "dhw_high": 15.5,
+   "coral": 4,
+   "sst_anomaly": 1.57
+  },
+  "Falkland Isl. (UK)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": -0.51
+  },
+  "South Georgia & Sandwich Isl. (UK)": {
+   "sst_anomaly": -0.67
+  },
+  "French Polynesia": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.32
+  },
+  "Gabon": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.23
+  },
+  "St Paul and St. Peter Archipelago (Brazil)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 44,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.84
+  },
+  "Sweden (Baltic)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.82
+  },
+  "Canada (East Coast)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.99
+  },
+  "Ecuador (mainland)": {
+   "mhw": 3,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05"
+  },
+  "Colombia (Pacific)": {
+   "mhw": 3,
+   "mhw_max": 4,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 17.77,
+   "dhw_high": 18.61,
+   "coral": 4,
+   "sst_anomaly": 2.58
+  },
+  "China": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.28,
+   "dhw_high": 0.67,
+   "coral": 1,
+   "sst_anomaly": 1.82
+  },
+  "Russia (Black Sea)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.66
+  },
+  "Uruguay": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": -1.66
+  },
+  "Argentina": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": -0.0
+  },
+  "Lord Howe Isl. (Australia)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 36,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.81
+  },
+  "Bangladesh": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 22,
+   "date": "2026-10-05",
+   "dhw": 1.47,
+   "dhw_high": 3.26,
+   "coral": 2,
+   "sst_anomaly": 1.08
+  },
+  "Brazil (mainland)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.15
+  },
+  "Myanmar": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 74,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.92
+  },
+  "Eritrea": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 6.22,
+   "dhw_high": 7.46,
+   "coral": 3,
+   "sst_anomaly": 1.73
+  },
+  "Glorieuse Islands (France)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 26,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.26
+  },
+  "Madagascar": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 39,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.67
+  },
+  "Brunei Darussalam": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.11,
+   "dhw_high": 0.47,
+   "coral": 1,
+   "sst_anomaly": 0.97
+  },
+  "Malaysia (Sarawak)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 94,
+   "date": "2026-10-05",
+   "dhw": 0.03,
+   "dhw_high": 0.16,
+   "coral": 0,
+   "sst_anomaly": 0.9
+  },
+  "Mauritania": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 29,
+   "date": "2026-10-05",
+   "dhw": 10.63,
+   "dhw_high": 12.63,
+   "coral": 4,
+   "sst_anomaly": 2.0
+  },
+  "Mozambique": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.42
+  },
+  "New Caledonia (France)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.36
+  },
+  "Vanuatu": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.21
+  },
+  "New Zealand": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 25,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.43
+  },
+  "Norfolk Isl. (Australia)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.09
+  },
+  "Norway": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 79,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.33
+  },
+  "Marshall Isl.": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 9.26,
+   "dhw_high": 9.86,
+   "coral": 4,
+   "sst_anomaly": 1.17
+  },
+  "Papua New Guinea": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.35
+  },
+  "Russia (Baltic Sea)": {
+   "sst_anomaly": 4.93
+  },
+  "Lithuania": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 98,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.98
+  },
+  "Togo": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.02
+  },
+  "Ukraine": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.61
+  },
+  "Turkey (Black Sea)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.57
+  },
+  "Dominican Republic": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 8.96,
+   "dhw_high": 9.36,
+   "coral": 4,
+   "sst_anomaly": 1.5
+  },
+  "Venezuela": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 5.06,
+   "dhw_high": 6.25,
+   "coral": 3,
+   "sst_anomaly": 1.14
+  },
+  "France (Mediterranean)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.82
+  },
+  "Corsica (France)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.91
+  },
+  "Bonaire (Netherlands)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 12,
+   "date": "2026-10-05",
+   "dhw": 0.8,
+   "dhw_high": 2.05,
+   "coral": 1,
+   "sst_anomaly": 1.05
+  },
+  "Spain (Northwest)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 98,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.07
+  },
+  "France (Atlantic Coast)": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.99
+  },
+  "Spain (mainland, Med and Gulf of Cadiz)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 91,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.73
+  },
+  "Morocco (South)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 60,
+   "date": "2026-10-05",
+   "dhw": 11.29,
+   "dhw_high": 16.5,
+   "coral": 4,
+   "sst_anomaly": 1.52
+  },
+  "Costa Rica (Caribbean)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 1.96,
+   "dhw_high": 2.19,
+   "coral": 2,
+   "sst_anomaly": 1.46
+  },
+  "Panama (Caribbean)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 97,
+   "date": "2026-10-05",
+   "dhw": 1.71,
+   "dhw_high": 2.35,
+   "coral": 2,
+   "sst_anomaly": 1.42
+  },
+  "USA (Alaska, Subarctic)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 2,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.18
+  },
+  "Morocco (Mediterranean)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.06
+  },
+  "Aruba (Netherlands)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 97,
+   "date": "2026-10-05",
+   "dhw": 2.02,
+   "dhw_high": 2.31,
+   "coral": 2,
+   "sst_anomaly": 1.28
+  },
+  "Fernando de Noronha (Brazil)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 97,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.64
+  },
+  "Georgia": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.56
+  },
+  "Tromelin Isl. (France)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 35,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.52
+  },
+  "Turkey (Marmara Sea)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.08
+  },
+  "Cura\u00e7ao (Netherlands)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 29,
+   "date": "2026-10-05",
+   "dhw": 0.96,
+   "dhw_high": 2.25,
+   "coral": 1,
+   "sst_anomaly": 1.08
+  },
+  "United Arab Emirates (Fujairah)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 62,
+   "date": "2026-10-05",
+   "dhw": 0.16,
+   "dhw_high": 0.48,
+   "coral": 1,
+   "sst_anomaly": 1.17
+  },
+  "St Martin (France)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 6.15,
+   "dhw_high": 7.74,
+   "coral": 3,
+   "sst_anomaly": 1.42
+  },
+  "Guadeloupe  (France)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 26,
+   "date": "2026-10-05",
+   "dhw": 6.42,
+   "dhw_high": 7.12,
+   "coral": 3,
+   "sst_anomaly": 1.2
+  },
+  "R\u00e9union (France)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 97,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.93
+  },
+  "Saudi Arabia (Persian Gulf)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 11.51,
+   "dhw_high": 14.49,
+   "coral": 4,
+   "sst_anomaly": 2.86
+  },
+  "United Arab Emirates": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 6.61,
+   "dhw_high": 7.83,
+   "coral": 3,
+   "sst_anomaly": 1.93
+  },
+  "Senegal": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 1.72,
+   "dhw_high": 3.06,
+   "coral": 2,
+   "sst_anomaly": 0.56
+  },
+  "Turkey (Mediterranean Sea)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.96
+  },
+  "Syria": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 21,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.73
+  },
+  "Albania": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.15
+  },
+  "Tonga": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.41
+  },
+  "American Samoa": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.01
+  },
+  "Bahrain": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 9.16,
+   "dhw_high": 10.99,
+   "coral": 4,
+   "sst_anomaly": 2.48
+  },
+  "Bosnia & Herzegovina": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.15
+  },
+  "Belize": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 97,
+   "date": "2026-10-05",
+   "dhw": 6.88,
+   "dhw_high": 8.38,
+   "coral": 3,
+   "sst_anomaly": 1.28
+  },
+  "Djibouti": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 38,
+   "date": "2026-10-05",
+   "dhw": 4.27,
+   "dhw_high": 6.19,
+   "coral": 3,
+   "sst_anomaly": 1.52
+  },
+  "Cameroon": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 64,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.17
+  },
+  "Taiwan": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.01,
+   "dhw_high": 0.01,
+   "coral": 0,
+   "sst_anomaly": 1.9
+  },
+  "Croatia": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 72,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.22
+  },
+  "Cuba": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 11.15,
+   "dhw_high": 12.81,
+   "coral": 4,
+   "sst_anomaly": 1.22
+  },
+  "Cyprus (North)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 41,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.84
+  },
+  "Cyprus (South)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 10.42,
+   "dhw_high": 14.62,
+   "coral": 4,
+   "sst_anomaly": 1.23
+  },
+  "Benin": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.13
+  },
+  "Haiti": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 53,
+   "date": "2026-10-05",
+   "dhw": 3.04,
+   "dhw_high": 4.32,
+   "coral": 2,
+   "sst_anomaly": 1.09
+  },
+  "Gambia": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 5.5,
+   "dhw_high": 7.61,
+   "coral": 3,
+   "sst_anomaly": 0.59
+  },
+  "Germany (North Sea)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.85
+  },
+  "Germany (Baltic Sea)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 91,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.99
+  },
+  "Greece (without Crete)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.83
+  },
+  "Guam (USA)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 1,
+   "date": "2026-10-05",
+   "dhw": 0.63,
+   "dhw_high": 1.38,
+   "coral": 1,
+   "sst_anomaly": 0.42
+  },
+  "Guinea-Bissau": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 1.46,
+   "dhw_high": 2.58,
+   "coral": 2,
+   "sst_anomaly": 0.39
+  },
+  "Guinea": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.05,
+   "dhw_high": 0.16,
+   "coral": 1,
+   "sst_anomaly": 0.42
+  },
+  "Guyana": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 5,
+   "date": "2026-10-05",
+   "dhw": 3.4,
+   "dhw_high": 5.45,
+   "coral": 2,
+   "sst_anomaly": 0.78
+  },
+  "Japan (Daito Islands)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 68,
+   "date": "2026-10-05",
+   "dhw": 1.54,
+   "dhw_high": 2.03,
+   "coral": 2,
+   "sst_anomaly": 1.13
+  },
+  "Japan (Ogasawara Islands)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 2.13,
+   "dhw_high": 2.76,
+   "coral": 2,
+   "sst_anomaly": 0.63
+  },
+  "USA (Alaska, Arctic)": {
+   "sst_anomaly": 0.48
+  },
+  "Russia (Barents Sea)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.41
+  },
+  "Chile (mainland)": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 83,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.98
+  },
+  "Russia (Laptev to Chukchi Sea)": {
+   "sst_anomaly": 1.07
+  },
+  "Cambodia": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 97,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.07
+  },
+  "Viet Nam": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.13,
+   "dhw_high": 0.3,
+   "coral": 1,
+   "sst_anomaly": 2.0
+  },
+  "Thailand (Gulf of Thailand)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.46
+  },
+  "Ghana": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.06
+  },
+  "Heard & McDonald Isl. (Australia)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 96,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.74
+  },
+  "Hong Kong (China)": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 3.13,
+   "dhw_high": 5.96,
+   "coral": 2,
+   "sst_anomaly": 2.17
+  },
+  "Jan Mayen Isl. (Norway)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.17
+  },
+  "Iceland": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.45
+  },
+  "India (mainland)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.92
+  },
+  "Andaman & Nicobar Isl. (India)": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 2.12
+  },
+  "Iraq": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 88,
+   "date": "2026-10-05",
+   "dhw": 11.58,
+   "dhw_high": 14.76,
+   "coral": 4,
+   "sst_anomaly": 2.32
+  },
+  "Nicaragua (Caribbean)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 61,
+   "date": "2026-10-05",
+   "dhw": 2.01,
+   "dhw_high": 4.1,
+   "coral": 2,
+   "sst_anomaly": 1.34
+  },
+  "Lebanon": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 16,
+   "date": "2026-10-05",
+   "dhw": 11.78,
+   "dhw_high": 14.26,
+   "coral": 4,
+   "sst_anomaly": 1.26
+  },
+  "Italy (mainland)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 21,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.13
+  },
+  "Libya": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 3,
+   "date": "2026-10-05",
+   "dhw": 21.43,
+   "dhw_high": 23.04,
+   "coral": 4,
+   "sst_anomaly": 1.27
+  },
+  "Malaysia (Peninsula West)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.12,
+   "dhw_high": 0.32,
+   "coral": 1,
+   "sst_anomaly": 1.74
+  },
+  "Malaysia (Peninsula East)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.3
+  },
+  "Malaysia (Sabah)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.49,
+   "dhw_high": 0.78,
+   "coral": 1,
+   "sst_anomaly": 1.04
+  },
+  "Maldives": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.02,
+   "dhw_high": 0.14,
+   "coral": 0,
+   "sst_anomaly": 1.62
+  },
+  "Indonesia (Central)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.11
+  },
+  "Martinique (France)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 1,
+   "date": "2026-10-05",
+   "dhw": 4.89,
+   "dhw_high": 6.03,
+   "coral": 3,
+   "sst_anomaly": 1.12
+  },
+  "Montserrat (UK)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 79,
+   "date": "2026-10-05",
+   "dhw": 4.87,
+   "dhw_high": 5.32,
+   "coral": 3,
+   "sst_anomaly": 1.22
+  },
+  "Mozambique Channel Isl. (France)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.09
+  },
+  "Netherlands": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.94
+  },
+  "Nigeria": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 43,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.89
+  },
+  "Sweden (West Coast)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.75
+  },
+  "Pakistan": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.25
+  },
+  "Peru": {
+   "mhw": 5,
+   "mhw_max": 5,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 5.31
+  },
+  "Poland": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.12
+  },
+  "Qatar": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 7.99,
+   "dhw_high": 10.38,
+   "coral": 3,
+   "sst_anomaly": 2.19
+  },
+  "Montenegro": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.5
+  },
+  "Saba and Sint Eustatius (Netherlands)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 4.96,
+   "dhw_high": 5.8,
+   "coral": 3,
+   "sst_anomaly": 1.41
+  },
+  "C\u00f4te d'Ivoire": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 36,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.43
+  },
+  "Johnston Atoll (USA)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 97,
+   "date": "2026-10-05",
+   "dhw": 1.78,
+   "dhw_high": 3.25,
+   "coral": 2,
+   "sst_anomaly": 0.94
+  },
+  "Korea (North, Yellow Sea)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 31,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.4
+  },
+  "Kuwait": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 98,
+   "date": "2026-10-05",
+   "dhw": 13.93,
+   "dhw_high": 16.66,
+   "coral": 4,
+   "sst_anomaly": 2.79
+  },
+  "Latvia": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.23
+  },
+  "Liberia": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 85,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.8
+  },
+  "Hawaii Northwest Islands (USA)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.13,
+   "dhw_high": 0.6,
+   "coral": 1,
+   "sst_anomaly": 0.51
+  },
+  "Namibia": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 1,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.09
+  },
+  "Nauru": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.62
+  },
+  "Niue (New Zealand)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.75
+  },
+  "Northern Marianas (USA)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 2,
+   "date": "2026-10-05",
+   "dhw": 4.54,
+   "dhw_high": 5.57,
+   "coral": 3,
+   "sst_anomaly": 0.67
+  },
+  "Micronesia (Federated States of)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.08
+  },
+  "Pitcairn (UK)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.7
+  },
+  "Romania": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.17
+  },
+  "Russia (Far East)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.71
+  },
+  "Saint Kitts & Nevis": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 99,
+   "date": "2026-10-05",
+   "dhw": 4.88,
+   "dhw_high": 5.33,
+   "coral": 3,
+   "sst_anomaly": 1.33
+  },
+  "St Barthelemy (France)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 6.94,
+   "dhw_high": 8.53,
+   "coral": 3,
+   "sst_anomaly": 1.41
+  },
+  "Saint Lucia": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 3.96,
+   "dhw_high": 4.81,
+   "coral": 2,
+   "sst_anomaly": 1.07
+  },
+  "Equatorial Guinea": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 45,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.96
+  },
+  "Sao Tome & Principe": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 24,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.65
+  },
+  "Slovenia": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 90,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.31
+  },
+  "Suriname": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 67,
+   "date": "2026-10-05",
+   "dhw": 3.17,
+   "dhw_high": 6.77,
+   "coral": 2,
+   "sst_anomaly": 1.46
+  },
+  "Trinidad & Tobago": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 4.34,
+   "dhw_high": 7.57,
+   "coral": 3,
+   "sst_anomaly": 1.08
+  },
+  "Saint Vincent & the Grenadines": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 1.91,
+   "dhw_high": 3.21,
+   "coral": 2,
+   "sst_anomaly": 0.96
+  },
+  "Malta": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 62,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.21
+  },
+  "Tunisia": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.35
+  },
+  "Turks & Caicos Isl. (UK)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 11.27,
+   "dhw_high": 13.01,
+   "coral": 4,
+   "sst_anomaly": 1.59
+  },
+  "Tuvalu": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 28,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.63
+  },
+  "Seychelles": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.61
+  },
+  "Anguilla (UK)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 8.86,
+   "dhw_high": 9.54,
+   "coral": 4,
+   "sst_anomaly": 1.56
+  },
+  "US Virgin Isl.": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 4.63,
+   "dhw_high": 5.13,
+   "coral": 3,
+   "sst_anomaly": 1.29
+  },
+  "Dominica": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 78,
+   "date": "2026-10-05",
+   "dhw": 4.56,
+   "dhw_high": 5.05,
+   "coral": 3,
+   "sst_anomaly": 1.24
+  },
+  "Tokelau (New Zealand)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 19,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.39
+  },
+  "Samoa": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.13
+  },
+  "Sint Maarten (Netherlands)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 6.05,
+   "dhw_high": 7.3,
+   "coral": 3,
+   "sst_anomaly": 1.41
+  },
+  "Musandam (Oman)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 58,
+   "date": "2026-10-05",
+   "dhw": 0.52,
+   "dhw_high": 1.39,
+   "coral": 1,
+   "sst_anomaly": 1.08
+  },
+  "Iran (Persian Gulf)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 10.77,
+   "dhw_high": 12.1,
+   "coral": 4,
+   "sst_anomaly": 2.69
+  },
+  "Yemen (Red Sea)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 8.43,
+   "dhw_high": 9.84,
+   "coral": 4,
+   "sst_anomaly": 1.98
+  },
+  "Oman": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 2.67
+  },
+  "Iran (Sea of Oman)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.3,
+   "dhw_high": 0.92,
+   "coral": 1,
+   "sst_anomaly": 0.98
+  },
+  "Gaza Strip": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 80,
+   "date": "2026-10-05",
+   "dhw": 18.71,
+   "dhw_high": 22.92,
+   "coral": 4,
+   "sst_anomaly": 1.61
+  },
+  "Israel (Mediterranean)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 85,
+   "date": "2026-10-05",
+   "dhw": 16.45,
+   "dhw_high": 20.12,
+   "coral": 4,
+   "sst_anomaly": 1.61
+  },
+  "Egypt (Mediterranean)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 50,
+   "date": "2026-10-05",
+   "dhw": 11.36,
+   "dhw_high": 15.91,
+   "coral": 4,
+   "sst_anomaly": 1.4
+  },
+  "Sudan": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 34,
+   "date": "2026-10-05",
+   "dhw": 4.05,
+   "dhw_high": 4.73,
+   "coral": 3,
+   "sst_anomaly": 1.03
+  },
+  "Egypt (Red Sea)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 28,
+   "date": "2026-10-05",
+   "dhw": 6.9,
+   "dhw_high": 14.14,
+   "coral": 3,
+   "sst_anomaly": 0.95
+  },
+  "Honduras (Caribbean)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 70,
+   "date": "2026-10-05",
+   "dhw": 6.09,
+   "dhw_high": 7.23,
+   "coral": 3,
+   "sst_anomaly": 1.18
+  },
+  "Guatemala (Caribbean)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 6.08,
+   "dhw_high": 8.9,
+   "coral": 3,
+   "sst_anomaly": 1.9
+  },
+  "Singapore": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 88,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.0
+  },
+  "Indonesia (Indian Ocean)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.11
+  },
+  "Kiribati (Phoenix Islands)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 8.65,
+   "dhw_high": 12.19,
+   "coral": 4,
+   "sst_anomaly": 1.38
+  },
+  "Mexico (Atlantic)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 13.7,
+   "dhw_high": 15.1,
+   "coral": 4,
+   "sst_anomaly": 2.41
+  },
+  "Morocco (Central)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 17.0,
+   "dhw_high": 18.55,
+   "coral": 4,
+   "sst_anomaly": 1.99
+  },
+  "Algeria": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.12
+  },
+  "Nicaragua (Pacific)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 14.48,
+   "dhw_high": 18.05,
+   "coral": 4,
+   "sst_anomaly": 1.74
+  },
+  "Thailand (Andaman Sea)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.47
+  },
+  "Jordan": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 6.15,
+   "dhw_high": 9.25,
+   "coral": 3,
+   "sst_anomaly": 1.47
+  },
+  "Portugal (mainland)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 95,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.68
+  },
+  "Madeira Isl. (Portugal)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 50,
+   "date": "2026-10-05",
+   "dhw": 10.3,
+   "dhw_high": 11.55,
+   "coral": 4,
+   "sst_anomaly": 1.39
+  },
+  "Azores Isl. (Portugal)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.9
+  },
+  "Israel (Red Sea)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 5.97,
+   "dhw_high": 9.24,
+   "coral": 3,
+   "sst_anomaly": 1.48
+  },
+  "Canada (Pacific)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 40,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.86
+  },
+  "Denmark (North Sea)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 89,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.41
+  },
+  "Denmark (Baltic Sea)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.84
+  },
+  "Fiji": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.33
+  },
+  "Solomon Isl.": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.61
+  },
+  "Finland": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.67
+  },
+  "Belgium": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.46
+  },
+  "USA (West Coast)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 14,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.07
+  },
+  "USA (Gulf of Mexico)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 7.26,
+   "dhw_high": 8.35,
+   "coral": 3,
+   "sst_anomaly": 2.09
+  },
+  "Philippines": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.06,
+   "dhw_high": 0.17,
+   "coral": 1,
+   "sst_anomaly": 1.83
+  },
+  "Estonia": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.56
+  },
+  "Kenya": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 72,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.84
+  },
+  "Somalia": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 2.61
+  },
+  "Wallis & Futuna Isl. (France)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.25
+  },
+  "Korea (North, Sea of Japan)": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.55
+  },
+  "Cape Verde": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 97,
+   "date": "2026-10-05",
+   "dhw": 8.3,
+   "dhw_high": 9.87,
+   "coral": 4,
+   "sst_anomaly": 1.62
+  },
+  "Mayotte (France)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.24
+  },
+  "Bulgaria": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.61
+  },
+  "French Guiana": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 6.17,
+   "dhw_high": 7.82,
+   "coral": 3,
+   "sst_anomaly": 0.54
+  },
+  "British Virgin Isl. (UK)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 8.91,
+   "dhw_high": 9.32,
+   "coral": 4,
+   "sst_anomaly": 1.59
+  },
+  "Puerto Rico (USA)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 4.65,
+   "dhw_high": 5.09,
+   "coral": 3,
+   "sst_anomaly": 1.27
+  },
+  "Kermadec Isl. (New Zealand)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 29,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.06
+  },
+  "Sardinia (Italy)": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 3.33
+  },
+  "Sicily (Italy)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.36
+  },
+  "Angola": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.02
+  },
+  "Antigua & Barbuda": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 9.08,
+   "dhw_high": 9.91,
+   "coral": 4,
+   "sst_anomaly": 1.6
+  },
+  "Macquarie Isl. (Australia)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 1,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.05
+  },
+  "Bermuda (UK)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 11.42,
+   "dhw_high": 13.34,
+   "coral": 4,
+   "sst_anomaly": 2.21
+  },
+  "Svalbard Isl. (Norway)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 38,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.59
+  },
+  "Hawaii Main Islands (USA)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.12
+  },
+  "Palmyra Atoll & Kingman Reef (USA)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 70,
+   "date": "2026-10-05",
+   "dhw": 1.28,
+   "dhw_high": 1.87,
+   "coral": 2,
+   "sst_anomaly": 0.59
+  },
+  "Bouvet Isl. (Norway)": {
+   "sst_anomaly": 0.02
+  },
+  "Mexico (Pacific)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 28.35,
+   "dhw_high": 30.19,
+   "coral": 4,
+   "sst_anomaly": -0.21
+  },
+  "South Africa (Indian Ocean Coast)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 88,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.38
+  },
+  "Channel Isl. (UK)": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.63
+  },
+  "Trindade & Martim Vaz Isl. (Brazil)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.93
+  },
+  "Cayman Isl. (UK)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 63,
+   "date": "2026-10-05",
+   "dhw": 10.26,
+   "dhw_high": 10.72,
+   "coral": 4,
+   "sst_anomaly": 1.08
+  },
+  "Sri Lanka": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.73
+  },
+  "Easter Isl. (Chile)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 47,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.89
+  },
+  "Desventuradas Isl. (Chile)": {
+   "mhw": 3,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 2.03
+  },
+  "Juan Fernandez Islands (Chile)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 43,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.33
+  },
+  "Saint Helena (UK)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 99,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.55
+  },
+  "Grenada": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 2.57,
+   "dhw_high": 4.49,
+   "coral": 2,
+   "sst_anomaly": 0.83
+  },
+  "Saudi Arabia (Red Sea)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 4.73,
+   "dhw_high": 5.84,
+   "coral": 3,
+   "sst_anomaly": 1.64
+  },
+  "Sierra Leone": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 3,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.64
+  },
+  "Canary Isl. (Spain)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 85,
+   "date": "2026-10-05",
+   "dhw": 6.24,
+   "dhw_high": 7.55,
+   "coral": 3,
+   "sst_anomaly": 1.36
+  },
+  "Jarvis Isl. (USA)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 24.84,
+   "dhw_high": 26.19,
+   "coral": 4,
+   "sst_anomaly": 2.59
+  },
+  "Ascension Isl. (UK)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.64
+  },
+  "Tristan da Cunha Isl. (UK)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 64,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.85
+  },
+  "Wake Isl. (USA)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 11.98,
+   "dhw_high": 12.85,
+   "coral": 4,
+   "sst_anomaly": 1.14
+  },
+  "St Paul & Amsterdam Isl. (France)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 13,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.38
+  },
+  "Crozet Isl. (France)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 3,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.03
+  },
+  "Kerguelen Isl. (France)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 58,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.46
+  },
+  "Clipperton Isl. (France)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 2.45,
+   "dhw_high": 3.14,
+   "coral": 2,
+   "sst_anomaly": 1.9
+  },
+  "Crete (Greece)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 9.53,
+   "dhw_high": 13.7,
+   "coral": 4,
+   "sst_anomaly": 0.25
+  },
+  "Balearic Islands (Spain)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.92
+  },
+  "South Orkney Islands (UK)": {
+   "sst_anomaly": -0.26
+  },
+  "Honduras (Pacific)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 6.96,
+   "dhw_high": 9.02,
+   "coral": 3,
+   "sst_anomaly": 1.16
+  },
+  "Costa Rica (Pacific)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 9.91,
+   "dhw_high": 15.46,
+   "coral": 4,
+   "sst_anomaly": 2.88
+  },
+  "Guatemala (Pacific)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 56,
+   "date": "2026-10-05",
+   "dhw": 2.78,
+   "dhw_high": 3.55,
+   "coral": 2,
+   "sst_anomaly": 1.18
+  },
+  "Kiribati (Gilbert Islands)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.68
+  },
+  "Kiribati (Line Islands)": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 20.41,
+   "dhw_high": 21.63,
+   "coral": 4,
+   "sst_anomaly": 2.91
+  },
+  "Panama (Pacific)": {
+   "mhw": 2,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 4.54,
+   "dhw_high": 8.02,
+   "coral": 3,
+   "sst_anomaly": 2.7
+  },
+  "South Africa (Atlantic and Cape)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.27
+  },
+  "Prince Edward Isl. (South Africa)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 39,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.51
+  },
+  "Palau": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.13
+  },
+  "Ireland": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.56
+  },
+  "Saint Pierre & Miquelon (France)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 5,
+   "date": "2026-10-05",
+   "sst_anomaly": 1.93
+  },
+  "USA (East Coast)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.17
+  },
+  "Bahamas": {
+   "mhw": 3,
+   "mhw_max": 3,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 10.86,
+   "dhw_high": 12.79,
+   "coral": 4,
+   "sst_anomaly": 1.86
+  },
+  "Chagos Archipelago (UK)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.32
+  },
+  "Timor Leste": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.11
+  },
+  "Australia": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.77
+  },
+  "Indonesia (Eastern)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": -0.61
+  },
+  "Mauritius": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 34,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.54
+  },
+  "Faeroe Isl. (Denmark)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "sst_anomaly": 0.45
+  },
+  "United Kingdom (UK)": {
+   "mhw": 1,
+   "mhw_max": 1,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "sst_anomaly": 2.14
+  },
+  "Yemen (Socotra)": {
+   "mhw": 2,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 2.27
+  },
+  "Yemen (Arabian Sea)": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 85,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.95
+  },
+  "Colombia (Caribbean)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 13,
+   "date": "2026-10-05",
+   "dhw": 0.54,
+   "dhw_high": 1.41,
+   "coral": 1,
+   "sst_anomaly": 1.07
+  },
+  "Comoros Isl.": {
+   "mhw": 1,
+   "mhw_max": 2,
+   "mhw_area": 100,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 1.27
+  },
+  "Congo (ex-Zaire)": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.6
+  },
+  "Congo, R. of": {
+   "mhw": 0,
+   "mhw_max": 0,
+   "mhw_area": 0,
+   "date": "2026-10-05",
+   "dhw": 0.0,
+   "dhw_high": 0.0,
+   "coral": 0,
+   "sst_anomaly": 0.27
+  },
+  "Jamaica": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 2,
+   "date": "2026-10-05",
+   "dhw": 0.37,
+   "dhw_high": 0.9,
+   "coral": 1,
+   "sst_anomaly": 0.92
+  },
+  "Japan (main islands)": {
+   "mhw": 0,
+   "mhw_max": 1,
+   "mhw_area": 1,
+   "date": "2026-10-05",
+   "dhw": 9.92,
+   "dhw_high": 10.68,
+   "coral": 4,
+   "sst_anomaly": 1.29
+  }
+ }
+}

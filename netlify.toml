@@ -1,0 +1,9 @@
+# Netlify publishes the static site in site/; there is no build step.
+[build]
+  publish = "site"
+
+# A prototype shared by link: ask search engines not to index it.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

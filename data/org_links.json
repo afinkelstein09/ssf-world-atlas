@@ -1,0 +1,1298 @@
+{
+ "generated": "2026-09-20",
+ "note": "Pages found by search and then checked: a page counts only if it answered and named the organisation. Re-tested by scripts/check_links.py.",
+ "by_name": {
+  "food and agriculture organization (fao)": {
+   "canonical": "Food and Agriculture Organization of the United Nations (FAO)",
+   "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
+   "site": "https://www.fao.org/home/en"
+  },
+  "australia": {
+   "canonical": "Australia - Department of Foreign Affairs and Trade (DFAT)",
+   "ssf": "https://www.dfat.gov.au/geo/pacific/development-assistance/fisheries-assistance",
+   "site": "https://www.dfat.gov.au/"
+  },
+  "australia - department of foreign affairs and trade": {
+   "canonical": "Australia - Department of Foreign Affairs and Trade (DFAT)",
+   "ssf": "https://www.dfat.gov.au/geo/pacific/development-assistance/fisheries-assistance",
+   "site": "https://www.dfat.gov.au/"
+  },
+  "new zealand ministry of foreign affairs and trade": {
+   "canonical": "New Zealand Ministry of Foreign Affairs and Trade (MFAT)",
+   "ssf": "https://www.mfat.govt.nz/en/environment/oceans-and-fisheries",
+   "site": "https://www.mfat.govt.nz/en"
+  },
+  "european commission": {
+   "canonical": "European Commission",
+   "ssf": "https://oceans-and-fisheries.ec.europa.eu/fisheries-management/small-scale-fisheries_en",
+   "site": "https://commission.europa.eu/index_en"
+  },
+  "netherlands enterprise agency": {
+   "canonical": "Netherlands Enterprise Agency (RVO)",
+   "site": "https://english.rvo.nl/"
+  },
+  "canada": {
+   "canonical": "Global Affairs Canada (GAC)",
+   "site": "https://international.canada.ca/en/global-affairs"
+  },
+  "sweden": {
+   "canonical": "Swedish International Development Cooperation Agency (Sida)",
+   "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
+   "site": "https://www.sida.se/en"
+  },
+  "international development association": {
+   "canonical": "International Development Association (IDA), World Bank Group",
+   "ssf": "https://www.worldbank.org/ext/en/topic/environment/fisheries-aquaculture-and-ocean-economies",
+   "site": "https://ida.worldbank.org/en/home"
+  },
+  "directorate-general for international partnerships": {
+   "canonical": "European Commission - Directorate-General for International Partnerships (DG INTPA)",
+   "ssf": "https://international-partnerships.ec.europa.eu/policies/climate-environment-and-energy/oceans_en",
+   "site": "https://international-partnerships.ec.europa.eu/index_en"
+  },
+  "bundesministerium für wirtschaftliche zusammenarbeit und entwicklung (bmz)": {
+   "canonical": "German Federal Ministry for Economic Cooperation and Development (BMZ)",
+   "ssf": "https://www.bmz.de/en/issues/biodiversity/biodiversity-and-oceans",
+   "site": "https://www.bmz.de/en"
+  },
+  "international bank for reconstruction and development": {
+   "canonical": "International Bank for Reconstruction and Development (IBRD), World Bank Group",
+   "ssf": "https://www.worldbank.org/ext/en/topic/environment/fisheries-aquaculture-and-ocean-economies",
+   "site": "https://www.worldbank.org/en/who-we-are/ibrd"
+  },
+  "swedish international development cooperation agency": {
+   "canonical": "Swedish International Development Cooperation Agency (Sida)",
+   "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
+   "site": "https://www.sida.se/en"
+  },
+  "foreign affairs, trade and development canada": {
+   "canonical": "Global Affairs Canada (GAC) - formerly Foreign Affairs, Trade and Development Canada (DFATD)",
+   "site": "https://international.canada.ca/en/global-affairs"
+  },
+  "african development fund": {
+   "canonical": "African Development Fund (ADF), African Development Bank Group",
+   "site": "https://www.afdb.org/en/about-us/corporate-information/african-development-fund-adf"
+  },
+  "norwegian government": {
+   "canonical": "Norwegian Agency for Development Cooperation (Norad)",
+   "ssf": "https://www.norad.no/en/for-partners/partner/the-knowledge-bank/programs-of-the-knowledge-bank-in-2024/#Fish_for_development",
+   "site": "https://www.norad.no/en/"
+  },
+  "undp": {
+   "canonical": "United Nations Development Programme (UNDP)",
+   "ssf": "https://www.undp.org/nature/our-work-areas/ocean-governance",
+   "site": "https://www.undp.org/"
+  },
+  "united nations development programme": {
+   "canonical": "United Nations Development Programme (UNDP)",
+   "ssf": "https://www.undp.org/nature/our-work-areas/ocean-governance",
+   "site": "https://www.undp.org/"
+  },
+  "canadian international development agency": {
+   "canonical": "Global Affairs Canada (GAC) - formerly Canadian International Development Agency (CIDA)",
+   "site": "https://international.canada.ca/en/global-affairs"
+  },
+  "international trade centre (itc)": {
+   "canonical": "International Trade Centre (ITC)",
+   "site": "https://www.intracen.org/"
+  },
+  "european commission - directorate-general international partnerships, belgium": {
+   "canonical": "European Commission - Directorate-General for International Partnerships (DG INTPA)",
+   "ssf": "https://international-partnerships.ec.europa.eu/policies/climate-environment-and-energy/oceans_en",
+   "site": "https://international-partnerships.ec.europa.eu/index_en"
+  },
+  "oxfam novib": {
+   "canonical": "Oxfam Novib (Oxfam Netherlands)",
+   "site": "https://www.oxfamnovib.nl/"
+  },
+  "idb - inter-american development bank": {
+   "canonical": "Inter-American Development Bank (IDB)",
+   "ssf": "https://sustainableislands.iadb.org/about/blue-economy",
+   "site": "https://www.iadb.org/en"
+  },
+  "global environment facility": {
+   "canonical": "Global Environment Facility (GEF)",
+   "ssf": "https://www.thegef.org/what-we-do/topics/international-waters/marine",
+   "site": "https://www.thegef.org/"
+  },
+  "norad - norwegian agency for development cooperation": {
+   "canonical": "Norwegian Agency for Development Cooperation (Norad)",
+   "ssf": "https://www.norad.no/en/for-partners/partner/the-knowledge-bank/programs-of-the-knowledge-bank-in-2024/#Fish_for_development",
+   "site": "https://www.norad.no/en/"
+  },
+  "aics - italian agency for cooperation and development": {
+   "canonical": "Italian Agency for Development Cooperation (AICS)",
+   "ssf": "https://www.aics.gov.it/fields-of-action/ambiente-e-uso-del-territorio/mare-e-oceani/?lang=en",
+   "site": "https://www.aics.gov.it/?lang=en"
+  },
+  "telefood": {
+   "canonical": "FAO TeleFood Special Fund (FAO fundraising programme for small grassroots projects, launched 1997)",
+   "site": "https://www.fao.org/home/en"
+  },
+  "gef (fao) - global environment facility (through fao)": {
+   "canonical": "Global Environment Facility (GEF), with FAO as implementing agency",
+   "ssf": "https://www.thegef.org/what-we-do/topics/international-waters/marine",
+   "site": "https://www.thegef.org/"
+  },
+  "dfat / irish aid": {
+   "canonical": "Ireland - Department of Foreign Affairs (formerly ...and Trade) / Irish Aid",
+   "site": "https://www.ireland.ie/en/irish-aid/"
+  },
+  "international development research centre": {
+   "canonical": "International Development Research Centre (IDRC), Canada",
+   "ssf": "https://idrc-crdi.ca/en/initiative/aquadapt",
+   "site": "https://idrc-crdi.ca/en"
+  },
+  "afd": {
+   "canonical": "Agence Française de Développement (AFD)",
+   "ssf": "https://www.afd.fr/en/ressources/afd-and-ocean",
+   "site": "https://www.afd.fr/en"
+  },
+  "france": {
+   "canonical": "Agence Française de Développement (AFD)",
+   "ssf": "https://www.afd.fr/en/ressources/afd-and-ocean",
+   "site": "https://www.afd.fr/en"
+  },
+  "asian peasant coalition (apc)": {
+   "canonical": "Asian Peasant Coalition (APC)",
+   "site": "https://asianpeasantcoalition.wordpress.com/"
+  },
+  "engagement global ggmbh": {
+   "canonical": "Engagement Global gGmbH (Germany; channels BMZ funding to NGOs)",
+   "site": "https://www.engagement-global.de/en/"
+  },
+  "the swedish research council": {
+   "canonical": "Swedish Research Council (Vetenskapsrådet)",
+   "site": "https://www.vr.se/english.html"
+  },
+  "western indian ocean marine science association (wiomsa)": {
+   "canonical": "Western Indian Ocean Marine Science Association (WIOMSA)",
+   "ssf": "https://www.wiomsa.org/iuu-fishing-in-the-small-scale-fisheries-of-the-wio/",
+   "site": "https://www.wiomsa.org/"
+  },
+  "ministry of oceans and fisheries": {
+   "canonical": "Ministry of Oceans and Fisheries, Republic of Korea (MOF)",
+   "ssf": "https://www.mof.go.kr/en/index.do",
+   "site": "https://www.mof.go.kr/en/index.do"
+  },
+  "japan": {
+   "canonical": "Japan International Cooperation Agency (JICA)",
+   "site": "https://www.jica.go.jp/english/"
+  },
+  "ministry for foreign affairs of finland": {
+   "canonical": "Ministry for Foreign Affairs of Finland",
+   "site": "https://um.fi/frontpage"
+  },
+  "ministry of foreign affairs, denmark": {
+   "canonical": "Ministry of Foreign Affairs of Denmark (Danida)",
+   "site": "https://um.dk/en"
+  },
+  "dalhousie university international research and development": {
+   "canonical": "Dalhousie University (former International Research & Development office)",
+   "site": "https://www.dal.ca/"
+  },
+  "caribbean regional fisheries mechan": {
+   "canonical": "Caribbean Regional Fisheries Mechanism (CRFM)",
+   "ssf": "https://www.crfm.int/",
+   "site": "https://www.crfm.int/"
+  },
+  "low impact fishers of europe (life)": {
+   "canonical": "Low Impact Fishers of Europe (LIFE)",
+   "ssf": "https://lifeplatform.eu/what-we-do/",
+   "site": "https://lifeplatform.eu/"
+  },
+  "world bank": {
+   "canonical": "World Bank (World Bank Group)",
+   "ssf": "https://www.worldbank.org/ext/en/topic/environment/fisheries-aquaculture-and-ocean-economies",
+   "site": "https://www.worldbank.org/ext/en/home"
+  },
+  "ciheam - centro internazionale di alti studi agronomici mediterr": {
+   "canonical": "CIHEAM Bari (Mediterranean Agronomic Institute of Bari; Centro Internazionale di Alti Studi Agronomici Mediterranei)",
+   "ssf": "https://www.iamb.ciheam.org/education/sustainable-development-of-coastal-communities/",
+   "site": "https://www.iamb.ciheam.org/"
+  },
+  "havforskningsinstituttet": {
+   "canonical": "Institute of Marine Research (Havforskningsinstituttet), Norway",
+   "ssf": "https://www.hi.no/en/hi/forskning/research-groups-1/marine-research-in-developing-countries",
+   "site": "https://www.hi.no/en"
+  },
+  "global environment fund truste": {
+   "canonical": "Global Environment Facility (GEF) Trust Fund",
+   "ssf": "https://www.thegef.org/what-we-do/topics/international-waters/marine",
+   "site": "https://www.thegef.org/"
+  },
+  "directorate-general for neighbourhood and enlargement negotiations": {
+   "canonical": "European Commission - DG NEAR (Neighbourhood and Enlargement Negotiations); since 2025 succeeded by DG ENEST and DG MENA",
+   "site": "https://enlargement.ec.europa.eu/index_en"
+  },
+  "wwf norge": {
+   "canonical": "WWF-Norway (WWF Verdens naturfond / WWF Norge)",
+   "ssf": "https://www.wwf.no/dyr-og-natur/hav-og-fiske/kampen-mot-ulovlig-fiske-og-overfiske",
+   "site": "https://www.wwf.no/"
+  },
+  "germany": {
+   "canonical": "Germany - Federal Ministry for Economic Cooperation and Development (BMZ)",
+   "ssf": "https://www.bmz.de/en/issues/biodiversity/biodiversity-and-oceans",
+   "site": "https://www.bmz.de/en"
+  },
+  "germany - federal foreign office": {
+   "canonical": "German Federal Foreign Office (Auswärtiges Amt)",
+   "site": "https://www.auswaertiges-amt.de/en"
+  },
+  "red aktea": {
+   "canonical": "AKTEA - European network of women in fisheries and aquaculture",
+   "ssf": "https://akteaplatform.eu/what-we-do/",
+   "site": "https://akteaplatform.eu/"
+  },
+  "ministry of foreign affairs of the netherlands": {
+   "canonical": "Ministry of Foreign Affairs of the Netherlands",
+   "site": "https://www.government.nl/ministries/ministry-of-foreign-affairs"
+  },
+  "gcf - green climate fund (readiness and preparatory support)": {
+   "canonical": "Green Climate Fund (GCF)",
+   "site": "https://www.greenclimate.fund/"
+  },
+  "norwegian ministry of foreign affairs - embassies": {
+   "canonical": "Norwegian Ministry of Foreign Affairs (incl. embassies)",
+   "ssf": "https://www.regjeringen.no/en/topics/havet/id2603523/",
+   "site": "https://www.regjeringen.no/en/dep/ud/id833/"
+  },
+  "invest international b.v.": {
+   "canonical": "Invest International B.V. (Netherlands)",
+   "site": "https://investinternational.nl/"
+  },
+  "asian development bank": {
+   "canonical": "Asian Development Bank (ADB)",
+   "ssf": "https://www.adb.org/what-we-do/topics/environment/healthy-oceans-sustainable-blue-economies",
+   "site": "https://www.adb.org/"
+  },
+  "memorial university of newfoundland - international marine institute": {
+   "canonical": "Fisheries and Marine Institute of Memorial University of Newfoundland - MI International",
+   "ssf": "https://www.mi.mun.ca/departments/miinternational/",
+   "site": "https://www.mi.mun.ca/"
+  },
+  "cgiar system": {
+   "canonical": "CGIAR (CGIAR System Organization)",
+   "ssf": "https://www.cgiar.org/cgiar-research-portfolio-2025-2030/sustainable-animal-and-aquatic-foods",
+   "site": "https://www.cgiar.org/"
+  },
+  "gates foundation": {
+   "canonical": "Gates Foundation (Bill & Melinda Gates Foundation)",
+   "site": "https://www.gatesfoundation.org/"
+  },
+  "through the gaps - fishsense": {
+   "canonical": "Through the Gaps! (Newlyn, Cornwall fishing-news blog run by Laurence Hartwell / FishSense)",
+   "ssf": "https://blog.through-the-gaps.co.uk/",
+   "site": "https://blog.through-the-gaps.co.uk/"
+  },
+  "larive international b.v.": {
+   "canonical": "Larive International B.V. (Netherlands)",
+   "site": "https://www.larive.com/"
+  },
+  "belgian agency for international cooperation (enabel)": {
+   "canonical": "Enabel - Belgian agency for international cooperation",
+   "site": "https://www.enabel.be/"
+  },
+  "african development bank": {
+   "canonical": "African Development Bank (AfDB) Group",
+   "site": "https://www.afdb.org/en"
+  },
+  "spc - the pacific community": {
+   "canonical": "Pacific Community (SPC)",
+   "ssf": "https://fame.spc.int/about/coastal-fisheries-and-aquaculture-programme-0",
+   "site": "https://www.spc.int/"
+  },
+  "global nature fund (gnf)": {
+   "canonical": "Global Nature Fund (GNF)",
+   "site": "https://globalnature.org/en/"
+  },
+  "department for business, energy & industrial strategy": {
+   "canonical": "UK Department for Business, Energy & Industrial Strategy (BEIS) - dissolved 2023",
+   "site": "https://www.gov.uk/government/organisations/department-for-business-energy-and-industrial-strategy"
+  },
+  "uk space agency": {
+   "canonical": "UK Space Agency",
+   "site": "https://www.gov.uk/government/organisations/uk-space-agency"
+  },
+  "middle income countries fund": {
+   "canonical": "African Development Bank - Middle Income Country Technical Assistance Fund (MIC-TAF)",
+   "site": "https://www.afdb.org/en/topics-and-sectors-initiatives-and-partnerships/middle-income-country-technical-assistance-fund"
+  },
+  "direction-générale coopération au développement et aide humanitaire": {
+   "canonical": "Belgium - Directorate-General for Development Cooperation and Humanitarian Aid (DGD), now DG International Cooperation (DG INT), FPS Foreign Affairs",
+   "site": "https://diplomatie.belgium.be/en/about-us/directorate-general-international-cooperation-dg-int"
+  },
+  "vlir-uos": {
+   "canonical": "VLIR-UOS (Flemish Interuniversity Council - University Development Cooperation)",
+   "site": "https://www.vliruos.be/"
+  },
+  "department for environment, food, and rural affairs": {
+   "canonical": "UK Department for Environment, Food & Rural Affairs (Defra)",
+   "ssf": "https://www.gov.uk/government/publications/blue-planet-fund/blue-planet-fund",
+   "site": "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs"
+  },
+  "directorate-general development cooperation and humanitarian aid": {
+   "canonical": "Belgium - Directorate-General for Development Cooperation and Humanitarian Aid (DGD), now DG International Cooperation (DG INT), FPS Foreign Affairs",
+   "site": "https://diplomatie.belgium.be/en/about-us/directorate-general-international-cooperation-dg-int"
+  },
+  "ldf - least developed countries fund for climate change (ldcf)": {
+   "canonical": "Least Developed Countries Fund (LDCF), managed by the Global Environment Facility",
+   "site": "https://www.thegef.org/what-we-do/topics/least-developed-countries-fund-ldcf"
+  },
+  "memorial university of newfoundland": {
+   "canonical": "Memorial University of Newfoundland",
+   "ssf": "https://www.hss.mun.ca/research/showcase/too-big-to-ignore/",
+   "site": "https://www.mun.ca/"
+  },
+  "united kingdom. department of health and social care": {
+   "canonical": "UK Department of Health and Social Care (DHSC)",
+   "site": "https://www.gov.uk/government/organisations/department-of-health-and-social-care"
+  },
+  "oxfam australia": {
+   "canonical": "Oxfam Australia",
+   "site": "https://www.oxfam.org.au/"
+  },
+  "chiang mai university": {
+   "canonical": "Chiang Mai University (CMU), Thailand",
+   "site": "https://www.cmu.ac.th/en/home"
+  },
+  "european union": {
+   "canonical": "European Union",
+   "ssf": "https://oceans-and-fisheries.ec.europa.eu/fisheries-management/small-scale-fisheries_en",
+   "site": "https://european-union.europa.eu/index_en"
+  },
+  "inter american development bank": {
+   "canonical": "Inter-American Development Bank (IDB)",
+   "ssf": "https://sustainableislands.iadb.org/about/blue-economy",
+   "site": "https://www.iadb.org/en"
+  },
+  "ordinary capital": {
+   "canonical": "Inter-American Development Bank - Ordinary Capital (OC) lending window",
+   "ssf": "https://sustainableislands.iadb.org/about/blue-economy",
+   "site": "https://www.iadb.org/en"
+  },
+  "norway": {
+   "canonical": "Norwegian Agency for Development Cooperation (Norad)",
+   "ssf": "https://www.norad.no/en/for-partners/partner/the-knowledge-bank/programs-of-the-knowledge-bank-in-2024/#Fish_for_development",
+   "site": "https://www.norad.no/en/"
+  },
+  "united nations industrial development organisation": {
+   "canonical": "United Nations Industrial Development Organization (UNIDO)",
+   "site": "https://www.unido.org/"
+  },
+  "expertise france": {
+   "canonical": "Expertise France (AFD Group)",
+   "site": "https://www.expertisefrance.fr/en"
+  },
+  "kfw bankengruppe (kfw)": {
+   "canonical": "KfW Development Bank (KfW Entwicklungsbank), KfW Group",
+   "ssf": "https://www.kfw-entwicklungsbank.de/SDG-portal/SDG-14/",
+   "site": "https://www.kfw-entwicklungsbank.de/International-financing/KfW-Entwicklungsbank/"
+  },
+  "international center for living aquatic resources management": {
+   "canonical": "WorldFish (formerly ICLARM - International Center for Living Aquatic Resources Management), a CGIAR centre",
+   "ssf": "https://www.worldfishcenter.org/pages/from-local-to-global-how-research-enables-resilient-sustainable-small-scale-fisheries/",
+   "site": "https://worldfishcenter.org/"
+  },
+  "japan - ministry of finance": {
+   "canonical": "Ministry of Finance, Japan",
+   "site": "https://www.mof.go.jp/english/"
+  },
+  "deutsche gesellschaft fur internationale zusammenarbeit (giz) gmbh": {
+   "canonical": "Deutsche Gesellschaft fuer Internationale Zusammenarbeit (GIZ) GmbH",
+   "ssf": "https://www.giz.de/en/expertise/agriculture-food/aquaculture-fisheries",
+   "site": "https://www.giz.de/en"
+  },
+  "government of japan": {
+   "canonical": "Japan International Cooperation Agency (JICA)",
+   "site": "https://www.jica.go.jp/english/"
+  },
+  "nuffic": {
+   "canonical": "Nuffic (Dutch organisation for internationalisation in education)",
+   "site": "https://www.nuffic.nl/en"
+  },
+  "korea international cooperation agency": {
+   "canonical": "Korea International Cooperation Agency (KOICA)",
+   "site": "https://www.koica.go.kr/sites/koica_en/index.do"
+  },
+  "hesy aquaculture b.v.": {
+   "canonical": "HESY Aquaculture B.V. (Netherlands)",
+   "site": "https://www.hesy.com/"
+  },
+  "centre for environment, fisheries and aquaculture science (cefas)": {
+   "canonical": "Centre for Environment, Fisheries and Aquaculture Science (CEFAS)",
+   "ssf": "https://www.cefas.co.uk/",
+   "site": "https://www.cefas.co.uk/"
+  },
+  "animal and plant health agency (apha)": {
+   "canonical": "Animal and Plant Health Agency (APHA)",
+   "site": "https://www.gov.uk/government/organisations/animal-and-plant-health-agency"
+  },
+  "veterinary medicines directorate (vmd)": {
+   "canonical": "Veterinary Medicines Directorate (VMD)",
+   "site": "https://www.gov.uk/government/organisations/veterinary-medicines-directorate"
+  },
+  "african confederation of artisanal fisheries professional organizations (caopa)": {
+   "canonical": "African Confederation of Artisanal Fisheries Professional Organizations (CAOPA)",
+   "ssf": "https://caopa.org/",
+   "site": "https://caopa.org/"
+  }
+ },
+ "annex": {
+  "world forum of fisher peoples": {
+   "site": "https://wffp-web.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "wffp": {
+   "site": "https://wffp-web.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "world forum of fish harvesters & fish workers": {
+   "site": "http://worldfisher-forum.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "wff": {
+   "site": "http://worldfisher-forum.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "international collective in support of fishworkers": {
+   "site": "https://icsf.net/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "icsf": {
+   "site": "https://icsf.net/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "too big to ignore – global partnership for ssf research": {
+   "site": "https://tbtiglobal.net/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "tbti": {
+   "site": "https://tbtiglobal.net/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "international planning committee for food sovereignty": {
+   "site": "https://www.foodsovereignty.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "ipc": {
+   "site": "https://www.foodsovereignty.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "low impact fishers of europe": {
+   "site": "https://lifeplatform.eu/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "life": {
+   "site": "https://lifeplatform.eu/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "fisheries & aquaculture workers' network – iuf": {
+   "site": "https://www.iuf.org/who-we-are/sectors/fisheries-and-aquaculture/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "iuf": {
+   "site": "https://www.iuf.org/who-we-are/sectors/fisheries-and-aquaculture/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "fédération des pêcheurs artisans de l'océan indien": {
+   "site": "https://www.facebook.com/people/F%C3%A9d%C3%A9ration-des-P%C3%AAcheurs-Artisans-de-lOc%C3%A9an-Indien-FPAOI/100067682212767/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "fpaoi": {
+   "site": "https://www.facebook.com/people/F%C3%A9d%C3%A9ration-des-P%C3%AAcheurs-Artisans-de-lOc%C3%A9an-Indien-FPAOI/100067682212767/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "coopérative nationale pour le développement de la pêche aux comores": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "cndpc": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "comité régional des pêches maritimes et des elevages marins de la réunion": {
+   "site": "https://www.crpmem.re/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "crpmem": {
+   "site": "https://www.crpmem.re/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "association tazara": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "fédération des pêcheurs – nosy be": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "fepemino": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "ranovelona – tuléar ii": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "association – fort dauphin": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "apelifo": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "fédération – majunga ii": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "fmpza": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "mihantra – belobaka, majunga ii": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "fédération – majunga i": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "fmma": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "collectif des organisations maritimes malgaches": {
+   "site": "https://icsf.net/fishworker/collectif-des-organisations-martimes-malgaches/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "comm": {
+   "site": "https://icsf.net/fishworker/collectif-des-organisations-martimes-malgaches/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "mihari network (national lmma network of madagascar)": {
+   "site": "https://mihari-network.org/en/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "mihari": {
+   "site": "https://mihari-network.org/en/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "mauritius fishermen cooperative federation ltd.": {
+   "site": "https://mauritiuscooperativealliance.com/about-us/affiliates/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "syndicat des pêcheurs de maurice": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "fisher apostolat of the sea": {
+   "site": "https://icsf.net/fishworker/fisher-apostolat-of-the-sea/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "praslin fishers association": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "roche caïman fishermen association": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "lasosiasyon peser la digue": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "bel ombre fishermen association": {
+   "site": "https://www.facebook.com/belombre.fishermen",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "association of members of seychelles sea cucumber industry": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "amssi": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "artisanal shark fishing association": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "fishermen and boat owners association": {
+   "site": "https://www.seychelles-hookandline-fishermen.org/accueil.html",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "el molo forum": {
+   "site": "https://icsf.net/fishworker/el-molo-forum/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "budalangi health & development organisation": {
+   "site": "https://icsf.net/fishworker/the-budalangi-health-development-organisation/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "buhede": {
+   "site": "https://icsf.net/fishworker/the-budalangi-health-development-organisation/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "kenya national federation of fisher folk associations": {
+   "site": "https://icsf.net/fishworker/kenya-national-federation-of-fisher-folk-associations-kenafa-2/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "kenafa": {
+   "site": "https://icsf.net/fishworker/kenya-national-federation-of-fisher-folk-associations-kenafa-2/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "kenya fisher people's network": {
+   "site": "https://icsf.net/fishworker/kenya-fisher-peoples-network-kefipen/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "kefipen": {
+   "site": "https://icsf.net/fishworker/kenya-fisher-peoples-network-kefipen/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "uhai lake forum": {
+   "site": "https://www.uhailakeforum.com/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "mwambao coastal community network": {
+   "site": "https://mwambao.or.tz/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "african confederation of small-scale fisheries professional organisations": {
+   "site": "https://caopa.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "caopa": {
+   "site": "https://caopa.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "collectif national des pêcheurs artisanales": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "cnps": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "union nationale des pêcheurs de guinée": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "unpag": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "national association of artisanal fisheries operators": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "naafo": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "technical services for community development": {
+   "site": "https://icsf.net/fishworker/technical-services-for-community-development-tescod/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "tescod": {
+   "site": "https://icsf.net/fishworker/technical-services-for-community-development-tescod/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "sierra leone artisanal fishers union": {
+   "site": "https://icsf.net/fishworker/sierra-leone-artisanal-fishers-union/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "slafu": {
+   "site": "https://icsf.net/fishworker/sierra-leone-artisanal-fishers-union/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "union des professionnels de la pêche artisanale": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "unippa": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "fédération nationale de pêche": {
+   "site": "https://www.unpm.mr/fnp/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "fnp": {
+   "site": "https://www.unpm.mr/fnp/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "community-based network for artisanal fishers": {
+   "site": "https://cancokenya.net/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "canco": {
+   "site": "https://cancokenya.net/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "association des pêcheurs et du mali": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "collectif des associations des pêcheurs du tanganika": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "copetang": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "pakistan fisherfolk forum": {
+   "site": "https://www.facebook.com/FisherfolkForumPakistan.PFF/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "pff": {
+   "site": "https://www.facebook.com/FisherfolkForumPakistan.PFF/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "national fishworkers' forum": {
+   "site": "https://www.facebook.com/NFFIndia",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "nff": {
+   "site": "https://www.facebook.com/NFFIndia",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "coastal association for social transformation trust": {
+   "site": "https://coastbd.net/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "coast": {
+   "site": "https://coastbd.net/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "haor farmers and fishers alliance": {
+   "site": "https://icsf.net/fishworker/haor-farmers-and-fishers-alliance-hffa/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "hffa": {
+   "site": "https://icsf.net/fishworker/haor-farmers-and-fishers-alliance-hffa/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "national fisheries solidarity movement": {
+   "site": "https://nafso-web.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "nafso": {
+   "site": "https://nafso-web.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "sri lanka forum for small-scale fisheries": {
+   "site": "https://icsf.net/fishworker/sri-lanka-forum-for-small-scale-fisheries-slfssf/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "slfssf": {
+   "site": "https://icsf.net/fishworker/sri-lanka-forum-for-small-scale-fisheries-slfssf/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "pamalakaya (pambansang lakas ng kilusang mamamalakaya ng pilipinas)": {
+   "site": "https://pamalakayaweb.wordpress.com/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "bigkas lakas pilipinas inc.": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "cbcrm resource center": {
+   "site": "http://www.cbcrm-rc.freeservers.com/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "cbcrm rc": {
+   "site": "http://www.cbcrm-rc.freeservers.com/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "tambuyog development center": {
+   "site": "https://www.tambuyog.org/home/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "kesatuan nelayan tradisional indonesia (indonesian traditional fisherfolk union)": {
+   "site": "https://knti.or.id/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "knti": {
+   "site": "https://knti.or.id/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "serikat nelayan indonesia (indonesian fisherfolk/fishermen union)": {
+   "site": "https://www.instagram.com/serikatnelayan/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "sni": {
+   "site": "https://www.instagram.com/serikatnelayan/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "persaudaraan perempuan nelayan indonesia (indonesian fisherwoman sisterhood)": {
+   "site": "https://icsf.net/fishworker/persauduraan-perempuan-nelayan-indonesia-ppni-indonesian-fisherwoman-sisterhood/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "ppni": {
+   "site": "https://icsf.net/fishworker/persauduraan-perempuan-nelayan-indonesia-ppni-indonesian-fisherwoman-sisterhood/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "koalisi rakyat untuk keadilan perikanan (people's coalition for fisheries justice)": {
+   "site": "https://www.kiara.or.id/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "kiara": {
+   "site": "https://www.kiara.or.id/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "penang inshore fishermen welfare association": {
+   "site": "https://icsf.net/fishworker/penang-inshore-fisherman-welfare-association-pifwa/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "pifwa": {
+   "site": "https://icsf.net/fishworker/penang-inshore-fisherman-welfare-association-pifwa/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "national fishermen's association of malaysia": {
+   "site": "https://www.nekmat.com.my/nekmatweb/index.html",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "nekmat": {
+   "site": "https://www.nekmat.com.my/nekmatweb/index.html",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "sahabat alam malaysia (friends of the earth malaysia)": {
+   "site": "https://foe-malaysia.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "sam": {
+   "site": "https://foe-malaysia.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "sustainable development foundation": {
+   "site": "https://sdfthai.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "sdf": {
+   "site": "https://sdfthai.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "thailand fisher folk federation": {
+   "site": "https://www.facebook.com/fisherfolk.asso/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "tfff": {
+   "site": "https://www.facebook.com/fisherfolk.asso/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "association of southern fisher women": {
+   "site": "https://icsf.net/fishworker/the-association-of-southern-fisher-women/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "federation of southern fisherfolk": {
+   "site": "https://icsf.net/fishworker/federation-of-southern-fisherfolk-fsf/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "fsf": {
+   "site": "https://icsf.net/fishworker/federation-of-southern-fisherfolk-fsf/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "centre for marinelife conservation and community development": {
+   "site": "https://mcdvietnam.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "mcd": {
+   "site": "https://mcdvietnam.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "provincial fisheries association of thua thien hue": {
+   "site": "https://icsf.net/fishworker/provincial-fisheries-association-of-thua-thien-hue-huefis/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "huefis": {
+   "site": "https://icsf.net/fishworker/provincial-fisheries-association-of-thua-thien-hue-huefis/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "community-based natural resource management learning institute": {
+   "site": "https://icsf.net/fishworker/community-based-natural-resource-management-learning-cbnrm-li/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "cbnrm li": {
+   "site": "https://icsf.net/fishworker/community-based-natural-resource-management-learning-cbnrm-li/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "myanmar fishery federation": {
+   "site": "https://www.facebook.com/MyanmarFisheriesFederation/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "network activities group": {
+   "site": "https://nagmyanmar.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "nag": {
+   "site": "https://nagmyanmar.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "caribbean network of fisherfolk organisations": {
+   "site": "https://cnfo.fish/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "cnfo": {
+   "site": "https://cnfo.fish/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "antigua and barbuda national fisherfolk organisation": {
+   "site": "https://cnfo.fish/cnfo-members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "bahamas national fisherfolk organisation": {
+   "site": "https://www.facebook.com/lucayanseas/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "barbados national fisherfolk organisation": {
+   "site": "https://barnufo.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "belize national fisherfolk organisation": {
+   "site": "https://www.facebook.com/p/Belize-Fishermen-Cooperative-Association-100065185703349/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "dominica national fisherfolk organisation": {
+   "site": "https://cnfo.fish/cnfo-members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "grenada national fisherfolk organisation": {
+   "site": "https://cnfo.fish/cnfo-members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "guyana national fisherfolk organisation": {
+   "site": "https://cnfo.fish/cnfo-members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "jamaica national fisherfolk organisation": {
+   "site": "https://jafishermen.com/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "st. kitts and nevis national fisherfolk organisation": {
+   "site": "https://cnfo.fish/cnfo-members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "st. lucia national fisherfolk organisation": {
+   "site": "https://cnfo.fish/cnfo-members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "st. vincent and the grenadines national fisherfolk organisation": {
+   "site": "https://www.facebook.com/p/National-Fisherfolk-Organization-NFO-in-SVG-100076548552041/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "suriname national fisherfolk organisation": {
+   "site": "https://cnfo.fish/cnfo-members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "sustainable grenadines inc.": {
+   "site": "https://www.facebook.com/SustainableGrenadines/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "susgren": {
+   "site": "https://www.facebook.com/SustainableGrenadines/",
+   "kind": "social",
+   "checked": "verified"
+  },
+  "trinidad and tobago national fisherfolk organisation": {
+   "site": "https://cnfo.fish/cnfo-members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "gender in fisheries team for the caribbean (cermes, uwi)": {
+   "site": "https://www.cavehill.uwi.edu/cermes/research-projects/gift/overview/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "gift": {
+   "site": "https://www.cavehill.uwi.edu/cermes/research-projects/gift/overview/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "women in fisheries network – fiji": {
+   "site": "https://womeninfisheriesfiji.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "wifn-fiji": {
+   "site": "https://womeninfisheriesfiji.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "coordinadora nacional para la defensa del ecosistema manglar": {
+   "site": "https://www.ccondem.org.ec/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "c-condem": {
+   "site": "https://www.ccondem.org.ec/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "cooperacción": {
+   "site": "https://cooperaccion.org.pe/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "redmanglar international": {
+   "site": "http://www.redmanglar.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "comité para la defensa y desarrollo de la flora y fauna del golfo de fonseca": {
+   "site": "https://coddeffagolf.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "coddeffagolf": {
+   "site": "https://coddeffagolf.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "confederación nacional de pescadores artesanales de chile": {
+   "site": "https://conapach.cl/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "conapach": {
+   "site": "https://conapach.cl/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "federación interregional de pescadores artesanales del sur": {
+   "site": "https://fipasur.cl/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "fipasur": {
+   "site": "https://fipasur.cl/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "centro ecoceanos": {
+   "site": "https://www.ecoceanos.cl/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "alaska longline fishermen's association": {
+   "site": "https://www.alfafish.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "alfa": {
+   "site": "https://www.alfafish.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "alaska sustainable fisheries trust": {
+   "site": "https://thealaskatrust.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "asft": {
+   "site": "https://thealaskatrust.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "maritime fishermen's union": {
+   "site": "https://fr.mfu-upm.com/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "mfu": {
+   "site": "https://fr.mfu-upm.com/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "pacific coast federation of fishermen's associations": {
+   "site": "https://www.pcffa.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "pcffa": {
+   "site": "https://www.pcffa.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "african women fish processors and traders network": {
+   "site": "https://awfishnet.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "awfishnet": {
+   "site": "https://awfishnet.org/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "environmental management and economic development organization": {
+   "site": "https://emedo.or.tz/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "emedo": {
+   "site": "https://emedo.or.tz/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "bear river first nation": {
+   "site": "https://bearriverfirstnation.ca/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "brfn": {
+   "site": "https://bearriverfirstnation.ca/",
+   "kind": "website",
+   "checked": "verified"
+  },
+  "movimento de pescadores e pescadoras artesanais": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  },
+  "mpp": {
+   "site": "https://wffp-web.org/about-us/members/",
+   "kind": "network-profile",
+   "checked": "verified"
+  }
+ }
+}

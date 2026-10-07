@@ -1,0 +1,18 @@
+# Cached API responses. Safe to delete - the pipeline re-fetches in about 4 minutes.
+# Kept out of git because it's ~300 files of upstream data we don't own.
+data/raw/
+
+# Before-copies made during builds and audits; the history lives in git now.
+data/backups/
+
+# Private working notes: drafts of messages to Rare and notes for a write-up that
+# needs Rare's permission before anything is published.
+caleb-email-draft.md
+DRAFT-FACTCHECK.md
+DRAFT2-FACTCHECK.md
+REVIEWER-ANSWERS.md
+PAPER-FINDINGS.md
+
+.DS_Store
+__pycache__/
+*.pyc

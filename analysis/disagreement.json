@@ -1,0 +1,1478 @@
+[
+ {
+  "iso3": "GNB",
+  "name": "Guinea-Bissau",
+  "region": "Sub-Saharan Africa ",
+  "income": "Low income",
+  "sau": 1097675.0,
+  "reported": 40070.729,
+  "ratio": 27.393437239437297
+ },
+ {
+  "iso3": "ABW",
+  "name": "Aruba",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 2227.0,
+  "reported": 152.2,
+  "ratio": 14.632063074901447
+ },
+ {
+  "iso3": "TUV",
+  "name": "Tuvalu",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 119041.0,
+  "reported": 8496.5328,
+  "ratio": 14.010538510485123
+ },
+ {
+  "iso3": "CYP",
+  "name": "Cyprus",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 21380.0,
+  "reported": 1557.441,
+  "ratio": 13.727646825786659
+ },
+ {
+  "iso3": "LBR",
+  "name": "Liberia",
+  "region": "Sub-Saharan Africa ",
+  "income": "Low income",
+  "sau": 155516.0,
+  "reported": 13991.545199999999,
+  "ratio": 11.114998220496762
+ },
+ {
+  "iso3": "NRU",
+  "name": "Naoero",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 93588.0,
+  "reported": 8698.0,
+  "ratio": 10.759714876983214
+ },
+ {
+  "iso3": "TON",
+  "name": "Tonga",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 12314.0,
+  "reported": 1451.1064000000001,
+  "ratio": 8.485938729234466
+ },
+ {
+  "iso3": "KWT",
+  "name": "Kuwait",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "High income",
+  "sau": 27906.0,
+  "reported": 3782.2,
+  "ratio": 7.378245465602031
+ },
+ {
+  "iso3": "GUM",
+  "name": "Guam",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 524.0,
+  "reported": 95.75359999999999,
+  "ratio": 5.472379106373024
+ },
+ {
+  "iso3": "GAB",
+  "name": "Gabon",
+  "region": "Sub-Saharan Africa ",
+  "income": "Upper middle income",
+  "sau": 156174.0,
+  "reported": 30201.6414,
+  "ratio": 5.171043451962846
+ },
+ {
+  "iso3": "CRI",
+  "name": "Costa Rica",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 58961.0,
+  "reported": 14243.4098,
+  "ratio": 4.139528443533234
+ },
+ {
+  "iso3": "TCA",
+  "name": "Turks and Caicos Islands",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 8287.0,
+  "reported": 2143.8,
+  "ratio": 3.8655658177068752
+ },
+ {
+  "iso3": "GNQ",
+  "name": "Equatorial Guinea",
+  "region": "Sub-Saharan Africa ",
+  "income": "Upper middle income",
+  "sau": 24446.0,
+  "reported": 6416.176799999999,
+  "ratio": 3.8100571044114626
+ },
+ {
+  "iso3": "DOM",
+  "name": "Dominican Republic",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 54153.0,
+  "reported": 14449.313400000003,
+  "ratio": 3.747790535154424
+ },
+ {
+  "iso3": "PLW",
+  "name": "Palau",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 9551.0,
+  "reported": 2584.0802,
+  "ratio": 3.696092714150281
+ },
+ {
+  "iso3": "VGB",
+  "name": "British Virgin Islands",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 4110.0,
+  "reported": 1193.6116,
+  "ratio": 3.4433311472509147
+ },
+ {
+  "iso3": "MLT",
+  "name": "Malta",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "High income",
+  "sau": 9188.0,
+  "reported": 2702.6092,
+  "ratio": 3.399677615246777
+ },
+ {
+  "iso3": "GIN",
+  "name": "Guinea",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 888035.0,
+  "reported": 263613.4,
+  "ratio": 3.3687020462540977
+ },
+ {
+  "iso3": "KIR",
+  "name": "Kiribati",
+  "region": "East Asia & Pacific",
+  "income": "Lower middle income",
+  "sau": 588267.0,
+  "reported": 183942.43939999997,
+  "ratio": 3.198103721571065
+ },
+ {
+  "iso3": "GMB",
+  "name": "Gambia, The",
+  "region": "Sub-Saharan Africa ",
+  "income": "Low income",
+  "sau": 172828.0,
+  "reported": 56082.9326,
+  "ratio": 3.0816505483523877
+ },
+ {
+  "iso3": "NCL",
+  "name": "New Caledonia",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 11730.0,
+  "reported": 3819.8013999999994,
+  "ratio": 3.0708402798114065
+ },
+ {
+  "iso3": "MAF",
+  "name": "St. Martin (French part)",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 550.0,
+  "reported": 180.0,
+  "ratio": 3.0555555555555554
+ },
+ {
+  "iso3": "SLB",
+  "name": "Solomon Islands",
+  "region": "East Asia & Pacific",
+  "income": "Lower middle income",
+  "sau": 187512.0,
+  "reported": 62909.5334,
+  "ratio": 2.9806611155059053
+ },
+ {
+  "iso3": "GBR",
+  "name": "United Kingdom",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 2044954.0,
+  "reported": 690566.1923999999,
+  "ratio": 2.96127152256462
+ },
+ {
+  "iso3": "ASM",
+  "name": "American Samoa",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 6156.0,
+  "reported": 2112.1081999999997,
+  "ratio": 2.9146234080242674
+ },
+ {
+  "iso3": "MRT",
+  "name": "Mauritania",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 2011360.0,
+  "reported": 699333.2522,
+  "ratio": 2.876110915178931
+ },
+ {
+  "iso3": "YEM",
+  "name": "Yemen, Rep.",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Low income",
+  "sau": 396427.0,
+  "reported": 147739.7416,
+  "ratio": 2.6832793648259634
+ },
+ {
+  "iso3": "DMA",
+  "name": "Dominica",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 2099.0,
+  "reported": 841.0799999999999,
+  "ratio": 2.495600894088553
+ },
+ {
+  "iso3": "STP",
+  "name": "Sao Tome and Principe",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 22418.0,
+  "reported": 8990.3898,
+  "ratio": 2.4935515031839883
+ },
+ {
+  "iso3": "GEO",
+  "name": "Georgia",
+  "region": "Europe & Central Asia",
+  "income": "Upper middle income",
+  "sau": 318757.0,
+  "reported": 131986.2046,
+  "ratio": 2.4150781588578236
+ },
+ {
+  "iso3": "FSM",
+  "name": "Micronesia, Fed. Sts.",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 274026.0,
+  "reported": 116258.92199999999,
+  "ratio": 2.357032004821101
+ },
+ {
+  "iso3": "DZA",
+  "name": "Algeria",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Upper middle income",
+  "sau": 241857.0,
+  "reported": 103058.02859999999,
+  "ratio": 2.3468040606396774
+ },
+ {
+  "iso3": "HND",
+  "name": "Honduras",
+  "region": "Latin America & Caribbean ",
+  "income": "Lower middle income",
+  "sau": 28408.0,
+  "reported": 12327.4,
+  "ratio": 2.3044599834514985
+ },
+ {
+  "iso3": "BMU",
+  "name": "Bermuda",
+  "region": "North America",
+  "income": "High income",
+  "sau": 857.0,
+  "reported": 385.0,
+  "ratio": 2.225974025974026
+ },
+ {
+  "iso3": "CYM",
+  "name": "Cayman Islands",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 278.0,
+  "reported": 125.0,
+  "ratio": 2.224
+ },
+ {
+  "iso3": "LBN",
+  "name": "Lebanon",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Lower middle income",
+  "sau": 7542.0,
+  "reported": 3392.3599999999997,
+  "ratio": 2.2232310250091385
+ },
+ {
+  "iso3": "CIV",
+  "name": "Cote d'Ivoire",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 228170.0,
+  "reported": 102703.16040000001,
+  "ratio": 2.221645362336873
+ },
+ {
+  "iso3": "PYF",
+  "name": "French Polynesia",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 28360.0,
+  "reported": 12813.061000000002,
+  "ratio": 2.2133665015721067
+ },
+ {
+  "iso3": "BHR",
+  "name": "Bahrain",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "High income",
+  "sau": 40480.0,
+  "reported": 18330.2078,
+  "ratio": 2.2083764920548257
+ },
+ {
+  "iso3": "TGO",
+  "name": "Togo",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 55831.0,
+  "reported": 26089.8,
+  "ratio": 2.1399550782298062
+ },
+ {
+  "iso3": "BRB",
+  "name": "Barbados",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 3186.0,
+  "reported": 1516.7024000000001,
+  "ratio": 2.1006098493679444
+ },
+ {
+  "iso3": "SLE",
+  "name": "Sierra Leone",
+  "region": "Sub-Saharan Africa ",
+  "income": "Low income",
+  "sau": 424061.0,
+  "reported": 202100.0,
+  "ratio": 2.0982731321128156
+ },
+ {
+  "iso3": "ISR",
+  "name": "Israel",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "High income",
+  "sau": 2852.0,
+  "reported": 1434.6,
+  "ratio": 1.9880105952878853
+ },
+ {
+  "iso3": "IRL",
+  "name": "Ireland",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 517415.0,
+  "reported": 261848.0682,
+  "ratio": 1.9760122866547083
+ },
+ {
+  "iso3": "GTM",
+  "name": "Guatemala",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 34910.0,
+  "reported": 17741.436999999998,
+  "ratio": 1.9677098309454868
+ },
+ {
+  "iso3": "ERI",
+  "name": "Eritrea",
+  "region": "Sub-Saharan Africa ",
+  "income": "Low income",
+  "sau": 10368.0,
+  "reported": 5312.4108,
+  "ratio": 1.951656298869056
+ },
+ {
+  "iso3": "URY",
+  "name": "Uruguay",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 122317.0,
+  "reported": 62957.3202,
+  "ratio": 1.9428558841359325
+ },
+ {
+  "iso3": "MAR",
+  "name": "Morocco",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Lower middle income",
+  "sau": 2723761.0,
+  "reported": 1422683.6462,
+  "ratio": 1.9145233076061487
+ },
+ {
+  "iso3": "SOM",
+  "name": "Somalia, Fed. Rep.",
+  "region": "Sub-Saharan Africa ",
+  "income": "Low income",
+  "sau": 137861.0,
+  "reported": 73570.26,
+  "ratio": 1.873868598534245
+ },
+ {
+  "iso3": "JAM",
+  "name": "Jamaica",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 30544.0,
+  "reported": 16484.000200000002,
+  "ratio": 1.8529482910343569
+ },
+ {
+  "iso3": "SUR",
+  "name": "Suriname",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 72133.0,
+  "reported": 40359.4,
+  "ratio": 1.7872664112945187
+ },
+ {
+  "iso3": "ARG",
+  "name": "Argentina",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 1457576.0,
+  "reported": 829824.2,
+  "ratio": 1.756487699442846
+ },
+ {
+  "iso3": "BHS",
+  "name": "Bahamas, The",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 19427.0,
+  "reported": 11111.3678,
+  "ratio": 1.7483896087032598
+ },
+ {
+  "iso3": "GRD",
+  "name": "Grenada",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 4272.0,
+  "reported": 2465.1594,
+  "ratio": 1.7329508185150218
+ },
+ {
+  "iso3": "BGR",
+  "name": "Bulgaria",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 15528.0,
+  "reported": 8986.11,
+  "ratio": 1.7280002136630865
+ },
+ {
+  "iso3": "DJI",
+  "name": "Djibouti",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Lower middle income",
+  "sau": 3653.0,
+  "reported": 2125.2262,
+  "ratio": 1.718875854250244
+ },
+ {
+  "iso3": "CPV",
+  "name": "Cabo Verde",
+  "region": "Sub-Saharan Africa ",
+  "income": "Upper middle income",
+  "sau": 45608.0,
+  "reported": 26798.5108,
+  "ratio": 1.7018856137334317
+ },
+ {
+  "iso3": "PAK",
+  "name": "Pakistan",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Lower middle income",
+  "sau": 865919.0,
+  "reported": 511214.8,
+  "ratio": 1.6938457180817144
+ },
+ {
+  "iso3": "JPN",
+  "name": "Japan",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 5589326.0,
+  "reported": 3346020.8404,
+  "ratio": 1.6704396854060908
+ },
+ {
+  "iso3": "PSE",
+  "name": "West Bank and Gaza",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Lower middle income",
+  "sau": 5630.0,
+  "reported": 3377.0,
+  "ratio": 1.6671602013621558
+ },
+ {
+  "iso3": "TUR",
+  "name": "Turkiye",
+  "region": "Europe & Central Asia",
+  "income": "Upper middle income",
+  "sau": 632464.0,
+  "reported": 379761.43899999995,
+  "ratio": 1.6654244877137199
+ },
+ {
+  "iso3": "RUS",
+  "name": "Russian Federation",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 7585153.0,
+  "reported": 4849993.827400001,
+  "ratio": 1.5639510626070778
+ },
+ {
+  "iso3": "ITA",
+  "name": "Italy",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 304412.0,
+  "reported": 197048.073,
+  "ratio": 1.5448615932417669
+ },
+ {
+  "iso3": "AGO",
+  "name": "Angola",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 726745.0,
+  "reported": 471475.2,
+  "ratio": 1.5414278418037681
+ },
+ {
+  "iso3": "HTI",
+  "name": "Haiti",
+  "region": "Latin America & Caribbean ",
+  "income": "Lower middle income",
+  "sau": 25288.0,
+  "reported": 16446.0,
+  "ratio": 1.5376383315091815
+ },
+ {
+  "iso3": "MEX",
+  "name": "Mexico",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 2431130.0,
+  "reported": 1584763.9599999997,
+  "ratio": 1.5340644167602098
+ },
+ {
+  "iso3": "BEN",
+  "name": "Benin",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 83606.0,
+  "reported": 54615.780000000006,
+  "ratio": 1.5308030023557293
+ },
+ {
+  "iso3": "MYS",
+  "name": "Malaysia",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 2286881.0,
+  "reported": 1501179.1002,
+  "ratio": 1.5233898471510308
+ },
+ {
+  "iso3": "LBY",
+  "name": "Libya",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Upper middle income",
+  "sau": 46464.0,
+  "reported": 30698.849199999997,
+  "ratio": 1.5135420776619863
+ },
+ {
+  "iso3": "BRN",
+  "name": "Brunei Darussalam",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 16733.0,
+  "reported": 11156.484,
+  "ratio": 1.4998452917603788
+ },
+ {
+  "iso3": "VNM",
+  "name": "Viet Nam",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 4822795.0,
+  "reported": 3226606.4620000003,
+  "ratio": 1.4946957606384412
+ },
+ {
+  "iso3": "PNG",
+  "name": "Papua New Guinea",
+  "region": "East Asia & Pacific",
+  "income": "Lower middle income",
+  "sau": 484339.0,
+  "reported": 326639.749,
+  "ratio": 1.4827925917858822
+ },
+ {
+  "iso3": "WSM",
+  "name": "Samoa",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 14495.0,
+  "reported": 9854.5298,
+  "ratio": 1.4708971705580514
+ },
+ {
+  "iso3": "TTO",
+  "name": "Trinidad and Tobago",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 18736.0,
+  "reported": 12865.0292,
+  "ratio": 1.4563511445430686
+ },
+ {
+  "iso3": "SWE",
+  "name": "Sweden",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 304470.0,
+  "reported": 210430.6,
+  "ratio": 1.446890328687938
+ },
+ {
+  "iso3": "BRA",
+  "name": "Brazil",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 876019.0,
+  "reported": 607123.3916,
+  "ratio": 1.4429010842282954
+ },
+ {
+  "iso3": "NAM",
+  "name": "Namibia",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 747227.0,
+  "reported": 518518.3476,
+  "ratio": 1.4410811178786531
+ },
+ {
+  "iso3": "GRC",
+  "name": "Greece",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 108953.0,
+  "reported": 76019.3042,
+  "ratio": 1.433228061563868
+ },
+ {
+  "iso3": "KOR",
+  "name": "Korea, Rep.",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 2061061.0,
+  "reported": 1445022.154,
+  "ratio": 1.4263179248115527
+ },
+ {
+  "iso3": "NZL",
+  "name": "New Zealand",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 588650.0,
+  "reported": 422400.64480000007,
+  "ratio": 1.3935821529787586
+ },
+ {
+  "iso3": "SAU",
+  "name": "Saudi Arabia",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "High income",
+  "sau": 92746.0,
+  "reported": 67033.39979999998,
+  "ratio": 1.3835789364214826
+ },
+ {
+  "iso3": "GHA",
+  "name": "Ghana",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 459728.0,
+  "reported": 342703.9638,
+  "ratio": 1.3414726660946779
+ },
+ {
+  "iso3": "TUN",
+  "name": "Tunisia",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Lower middle income",
+  "sau": 142051.0,
+  "reported": 109775.59040000002,
+  "ratio": 1.2940126259617
+ },
+ {
+  "iso3": "MDG",
+  "name": "Madagascar",
+  "region": "Sub-Saharan Africa ",
+  "income": "Low income",
+  "sau": 168800.0,
+  "reported": 132622.7414,
+  "ratio": 1.2727832211738612
+ },
+ {
+  "iso3": "PRI",
+  "name": "Puerto Rico (US)",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 2108.0,
+  "reported": 1677.8337999999999,
+  "ratio": 1.2563818895530654
+ },
+ {
+  "iso3": "CUB",
+  "name": "Cuba",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 28139.0,
+  "reported": 22440.9,
+  "ratio": 1.2539158411650155
+ },
+ {
+  "iso3": "FJI",
+  "name": "Fiji",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 53735.0,
+  "reported": 43542.736,
+  "ratio": 1.2340749556941026
+ },
+ {
+  "iso3": "PER",
+  "name": "Peru",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 6091332.0,
+  "reported": 4983852.5692,
+  "ratio": 1.2222135216527426
+ },
+ {
+  "iso3": "COM",
+  "name": "Comoros",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 19658.0,
+  "reported": 16187.8092,
+  "ratio": 1.2143706265082492
+ },
+ {
+  "iso3": "LVA",
+  "name": "Latvia",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 98247.0,
+  "reported": 81911.72,
+  "ratio": 1.199425430207057
+ },
+ {
+  "iso3": "PRT",
+  "name": "Portugal",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 221168.0,
+  "reported": 184516.056,
+  "ratio": 1.1986382366638055
+ },
+ {
+  "iso3": "GUY",
+  "name": "Guyana",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 60990.0,
+  "reported": 50978.6002,
+  "ratio": 1.19638436051055
+ },
+ {
+  "iso3": "ATG",
+  "name": "Antigua and Barbuda",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 3754.0,
+  "reported": 3165.0,
+  "ratio": 1.1860979462875199
+ },
+ {
+  "iso3": "VEN",
+  "name": "Venezuela, RB",
+  "region": "Latin America & Caribbean ",
+  "income": "Lower middle income",
+  "sau": 293123.0,
+  "reported": 249896.07760000002,
+  "ratio": 1.1729795954188278
+ },
+ {
+  "iso3": "SEN",
+  "name": "Senegal",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 569700.0,
+  "reported": 486492.4932,
+  "ratio": 1.1710355410680362
+ },
+ {
+  "iso3": "MNE",
+  "name": "Montenegro",
+  "region": "Europe & Central Asia",
+  "income": "Upper middle income",
+  "sau": 1571.0,
+  "reported": 1346.06,
+  "ratio": 1.1671099356640864
+ },
+ {
+  "iso3": "HRV",
+  "name": "Croatia",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 82066.0,
+  "reported": 70495.44880000001,
+  "ratio": 1.1641318893199242
+ },
+ {
+  "iso3": "AUS",
+  "name": "Australia",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 245105.0,
+  "reported": 212497.05380000002,
+  "ratio": 1.1534512861090782
+ },
+ {
+  "iso3": "PHL",
+  "name": "Philippines",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 2227332.0,
+  "reported": 1950144.6474,
+  "ratio": 1.142136816861024
+ },
+ {
+  "iso3": "NIC",
+  "name": "Nicaragua",
+  "region": "Latin America & Caribbean ",
+  "income": "Lower middle income",
+  "sau": 55049.0,
+  "reported": 48596.9162,
+  "ratio": 1.132767350369446
+ },
+ {
+  "iso3": "ARE",
+  "name": "United Arab Emirates",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "High income",
+  "sau": 83104.0,
+  "reported": 74072.4,
+  "ratio": 1.1219293556034367
+ },
+ {
+  "iso3": "TLS",
+  "name": "Timor-Leste",
+  "region": "East Asia & Pacific",
+  "income": "Lower middle income",
+  "sau": 6140.0,
+  "reported": 5474.574,
+  "ratio": 1.1215484529024542
+ },
+ {
+  "iso3": "VIR",
+  "name": "Virgin Islands (U.S.)",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 489.0,
+  "reported": 442.928,
+  "ratio": 1.1040169056821876
+ },
+ {
+  "iso3": "QAT",
+  "name": "Qatar",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "High income",
+  "sau": 16842.0,
+  "reported": 15373.880000000001,
+  "ratio": 1.095494436017453
+ },
+ {
+  "iso3": "THA",
+  "name": "Thailand",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 1672123.0,
+  "reported": 1540009.8814,
+  "ratio": 1.0857871888977089
+ },
+ {
+  "iso3": "SYR",
+  "name": "Syrian Arab Republic",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Low income",
+  "sau": 4374.0,
+  "reported": 4044.0,
+  "ratio": 1.0816023738872405
+ },
+ {
+  "iso3": "SGP",
+  "name": "Singapore",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 3360.0,
+  "reported": 3111.4896,
+  "ratio": 1.079868626268267
+ },
+ {
+  "iso3": "FRO",
+  "name": "Faroe Islands",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 683692.0,
+  "reported": 634632.6599999999,
+  "ratio": 1.0773035223242373
+ },
+ {
+  "iso3": "USA",
+  "name": "United States",
+  "region": "North America",
+  "income": "High income",
+  "sau": 5645179.0,
+  "reported": 5402182.2,
+  "ratio": 1.044981229992576
+ },
+ {
+  "iso3": "ZAF",
+  "name": "South Africa",
+  "region": "Sub-Saharan Africa ",
+  "income": "Upper middle income",
+  "sau": 631873.0,
+  "reported": 605378.8644000001,
+  "ratio": 1.0437645533367912
+ },
+ {
+  "iso3": "CAN",
+  "name": "Canada",
+  "region": "North America",
+  "income": "High income",
+  "sau": 958154.0,
+  "reported": 920172.1575999999,
+  "ratio": 1.0412768872501692
+ },
+ {
+  "iso3": "MHL",
+  "name": "Marshall Islands",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 80529.0,
+  "reported": 81033.2532,
+  "ratio": 0.9937772065160034
+ },
+ {
+  "iso3": "EST",
+  "name": "Estonia",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 78972.0,
+  "reported": 81095.4,
+  "ratio": 0.9738160240901458
+ },
+ {
+  "iso3": "IRN",
+  "name": "Iran, Islamic Rep.",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Upper middle income",
+  "sau": 727444.0,
+  "reported": 750881.3236,
+  "ratio": 0.9687869136395177
+ },
+ {
+  "iso3": "CMR",
+  "name": "Cameroon",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 243307.0,
+  "reported": 257121.3656,
+  "ratio": 0.9462729767020186
+ },
+ {
+  "iso3": "IDN",
+  "name": "Indonesia",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 6534112.0,
+  "reported": 6969957.5848,
+  "ratio": 0.9374679717204467
+ },
+ {
+  "iso3": "ALB",
+  "name": "Albania",
+  "region": "Europe & Central Asia",
+  "income": "Upper middle income",
+  "sau": 7533.0,
+  "reported": 8324.637999999999,
+  "ratio": 0.9049042132522761
+ },
+ {
+  "iso3": "ISL",
+  "name": "Iceland",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 1026646.0,
+  "reported": 1198204.8,
+  "ratio": 0.856820136257174
+ },
+ {
+  "iso3": "LCA",
+  "name": "St. Lucia",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 1611.0,
+  "reported": 2020.9314,
+  "ratio": 0.7971571919759375
+ },
+ {
+  "iso3": "IND",
+  "name": "India",
+  "region": "South Asia",
+  "income": "Lower middle income",
+  "sau": 4174369.0,
+  "reported": 5284644.1072,
+  "ratio": 0.7899054156386199
+ },
+ {
+  "iso3": "UKR",
+  "name": "Ukraine",
+  "region": "Europe & Central Asia",
+  "income": "Upper middle income",
+  "sau": 70655.0,
+  "reported": 89612.92360000001,
+  "ratio": 0.788446545002578
+ },
+ {
+  "iso3": "GRL",
+  "name": "Greenland",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 299386.0,
+  "reported": 392572.0,
+  "ratio": 0.7626269830757161
+ },
+ {
+  "iso3": "OMN",
+  "name": "Oman",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "High income",
+  "sau": 304418.0,
+  "reported": 403578.6,
+  "ratio": 0.7542966847102399
+ },
+ {
+  "iso3": "SVN",
+  "name": "Slovenia",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 223.0,
+  "reported": 295.8338,
+  "ratio": 0.7538016278058829
+ },
+ {
+  "iso3": "LKA",
+  "name": "Sri Lanka",
+  "region": "South Asia",
+  "income": "Upper middle income",
+  "sau": 352466.0,
+  "reported": 474361.64460000006,
+  "ratio": 0.743032249787423
+ },
+ {
+  "iso3": "CHL",
+  "name": "Chile",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 1631418.0,
+  "reported": 2209059.1994,
+  "ratio": 0.7385125760518811
+ },
+ {
+  "iso3": "FIN",
+  "name": "Finland",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 133465.0,
+  "reported": 181474.3328,
+  "ratio": 0.7354483575762181
+ },
+ {
+  "iso3": "POL",
+  "name": "Poland",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 151024.0,
+  "reported": 210817.2,
+  "ratio": 0.7163741857874973
+ },
+ {
+  "iso3": "ROU",
+  "name": "Romania",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 8230.0,
+  "reported": 11827.880000000001,
+  "ratio": 0.6958136200231994
+ },
+ {
+  "iso3": "MMR",
+  "name": "Myanmar",
+  "region": "East Asia & Pacific",
+  "income": "Lower middle income",
+  "sau": 1404634.0,
+  "reported": 2038613.9996,
+  "ratio": 0.689014202921988
+ },
+ {
+  "iso3": "COG",
+  "name": "Congo, Rep.",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 57328.0,
+  "reported": 84060.3674,
+  "ratio": 0.6819860746885101
+ },
+ {
+  "iso3": "MOZ",
+  "name": "Mozambique",
+  "region": "Sub-Saharan Africa ",
+  "income": "Low income",
+  "sau": 254997.0,
+  "reported": 377898.58640000003,
+  "ratio": 0.6747762737860297
+ },
+ {
+  "iso3": "CHN",
+  "name": "China",
+  "region": "East Asia & Pacific",
+  "income": "Upper middle income",
+  "sau": 10005427.0,
+  "reported": 15448970.732799998,
+  "ratio": 0.6476435985963318
+ },
+ {
+  "iso3": "MUS",
+  "name": "Mauritius",
+  "region": "Sub-Saharan Africa ",
+  "income": "Upper middle income",
+  "sau": 15853.0,
+  "reported": 24515.7106,
+  "ratio": 0.6466465630410893
+ },
+ {
+  "iso3": "NGA",
+  "name": "Nigeria",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 514072.0,
+  "reported": 812902.8452,
+  "ratio": 0.6323904548193848
+ },
+ {
+  "iso3": "DEU",
+  "name": "Germany",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 161709.0,
+  "reported": 256960.56,
+  "ratio": 0.6293144753420525
+ },
+ {
+  "iso3": "PAN",
+  "name": "Panama",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 125658.0,
+  "reported": 201635.7818,
+  "ratio": 0.6231929614786258
+ },
+ {
+  "iso3": "ECU",
+  "name": "Ecuador",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 394750.0,
+  "reported": 634158.0571999999,
+  "ratio": 0.622478884432914
+ },
+ {
+  "iso3": "BGD",
+  "name": "Bangladesh",
+  "region": "South Asia",
+  "income": "Lower middle income",
+  "sau": 1085641.0,
+  "reported": 1773507.0,
+  "ratio": 0.612143622776792
+ },
+ {
+  "iso3": "JOR",
+  "name": "Jordan",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Upper middle income",
+  "sau": 388.0,
+  "reported": 636.6998,
+  "ratio": 0.609392369842114
+ },
+ {
+  "iso3": "SXM",
+  "name": "Sint Maarten (Dutch part)",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 148.0,
+  "reported": 253.0,
+  "ratio": 0.5849802371541502
+ },
+ {
+  "iso3": "ESP",
+  "name": "Spain",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 520301.0,
+  "reported": 929131.3164000001,
+  "ratio": 0.559986506553187
+ },
+ {
+  "iso3": "VUT",
+  "name": "Vanuatu",
+  "region": "East Asia & Pacific",
+  "income": "Lower middle income",
+  "sau": 22846.0,
+  "reported": 52965.5328,
+  "ratio": 0.43133711287805643
+ },
+ {
+  "iso3": "IRQ",
+  "name": "Iraq",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Upper middle income",
+  "sau": 14177.0,
+  "reported": 34164.2,
+  "ratio": 0.4149665439260981
+ },
+ {
+  "iso3": "MDV",
+  "name": "Maldives",
+  "region": "South Asia",
+  "income": "Upper middle income",
+  "sau": 53817.0,
+  "reported": 137027.1824,
+  "ratio": 0.3927468919480607
+ },
+ {
+  "iso3": "SLV",
+  "name": "El Salvador",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 20740.0,
+  "reported": 56299.07479999999,
+  "ratio": 0.36838971286256383
+ },
+ {
+  "iso3": "LTU",
+  "name": "Lithuania",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 33693.0,
+  "reported": 91819.628,
+  "ratio": 0.366947685738827
+ },
+ {
+  "iso3": "EGY",
+  "name": "Egypt, Arab Rep.",
+  "region": "Middle East, North Africa, Afghanistan & Pakistan",
+  "income": "Lower middle income",
+  "sau": 123914.0,
+  "reported": 364203.269,
+  "ratio": 0.34023308011548903
+ },
+ {
+  "iso3": "TZA",
+  "name": "Tanzania",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 134898.0,
+  "reported": 397453.3062,
+  "ratio": 0.3394059072995076
+ },
+ {
+  "iso3": "NLD",
+  "name": "Netherlands",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 134893.0,
+  "reported": 397507.9672,
+  "ratio": 0.3393466575026675
+ },
+ {
+  "iso3": "DNK",
+  "name": "Denmark",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 253514.0,
+  "reported": 774234.8,
+  "ratio": 0.32743813633796875
+ },
+ {
+  "iso3": "KHM",
+  "name": "Cambodia",
+  "region": "East Asia & Pacific",
+  "income": "Lower middle income",
+  "sau": 202896.0,
+  "reported": 635321.28,
+  "ratio": 0.3193596789328385
+ },
+ {
+  "iso3": "BEL",
+  "name": "Belgium",
+  "region": "Europe & Central Asia",
+  "income": "High income",
+  "sau": 5637.0,
+  "reported": 24139.0,
+  "ratio": 0.23352251543145947
+ },
+ {
+  "iso3": "BIH",
+  "name": "Bosnia and Herzegovina",
+  "region": "Europe & Central Asia",
+  "income": "Upper middle income",
+  "sau": 62.0,
+  "reported": 305.0,
+  "ratio": 0.20327868852459016
+ },
+ {
+  "iso3": "KEN",
+  "name": "Kenya",
+  "region": "Sub-Saharan Africa ",
+  "income": "Lower middle income",
+  "sau": 26008.0,
+  "reported": 151569.9528,
+  "ratio": 0.17159073760693286
+ },
+ {
+  "iso3": "SYC",
+  "name": "Seychelles",
+  "region": "Sub-Saharan Africa ",
+  "income": "High income",
+  "sau": 18336.0,
+  "reported": 135275.2038,
+  "ratio": 0.13554590556824578
+ },
+ {
+  "iso3": "CUW",
+  "name": "Curacao",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 3777.0,
+  "reported": 33083.00920000001,
+  "ratio": 0.1141673654039911
+ },
+ {
+  "iso3": "COL",
+  "name": "Colombia",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 51699.0,
+  "reported": 474469.41040000005,
+  "ratio": 0.10896171358321143
+ },
+ {
+  "iso3": "VCT",
+  "name": "St. Vincent and the Grenadines",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 1878.0,
+  "reported": 17241.031,
+  "ratio": 0.10892620052710306
+ },
+ {
+  "iso3": "HKG",
+  "name": "Hong Kong SAR, China",
+  "region": "East Asia & Pacific",
+  "income": "High income",
+  "sau": 14431.0,
+  "reported": 132550.0,
+  "ratio": 0.10887212372689552
+ },
+ {
+  "iso3": "COD",
+  "name": "Congo, Dem. Rep.",
+  "region": "Sub-Saharan Africa ",
+  "income": "Low income",
+  "sau": 23345.0,
+  "reported": 243676.6,
+  "ratio": 0.09580320802243629
+ },
+ {
+  "iso3": "SDN",
+  "name": "Sudan",
+  "region": "Sub-Saharan Africa ",
+  "income": "Low income",
+  "sau": 1833.0,
+  "reported": 37742.2,
+  "ratio": 0.048566326287285855
+ },
+ {
+  "iso3": "BLZ",
+  "name": "Belize",
+  "region": "Latin America & Caribbean ",
+  "income": "Upper middle income",
+  "sau": 7026.0,
+  "reported": 147568.7856,
+  "ratio": 0.04761169492201879
+ },
+ {
+  "iso3": "KNA",
+  "name": "St. Kitts and Nevis",
+  "region": "Latin America & Caribbean ",
+  "income": "High income",
+  "sau": 1796.0,
+  "reported": 50564.398,
+  "ratio": 0.03551906224612819
+ }
+]

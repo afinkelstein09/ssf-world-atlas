@@ -1,0 +1,2898 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- A prototype shared by link: kept out of search engines. -->
+<meta name="robots" content="noindex, nofollow" />
+<title>Small-Scale Fisheries World Atlas — prototype</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fira+Mono:wght@400;500&display=swap" />
+<style>
+  :root {
+    --ink: #17201f;
+    --ink-dim: #3b4746;
+    --ink-faint: #6b7877;
+    --panel: rgba(255, 255, 255, 0.94);
+    --edge: rgba(23, 32, 31, 0.13);
+    --ff: #e8590c;
+    --rare: #ff8a00;   /* the Rare line on the map: highlighter orange */
+    --bv: #f2e015;     /* the Blue Ventures line: highlighter yellow */
+    --paa: #009d64;
+    --org: #8b5a2b;    /* project sites and community organisations: brown, both */
+    --issf: #8b5a2b;
+    /* Fira Sans: a humanist face with some warmth, the same family Global
+       Forest Watch sets its country pages in. The system stack is the fallback
+       when the font host is unreachable. */
+    --sans: "Fira Sans", ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: "Fira Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --rail-w: clamp(300px, 24vw, 360px);  /* the left rail; the map credit and padding key off it */
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #fafaf8; }
+  body { font-family: var(--sans); color: var(--ink); overflow: hidden; }
+  #map { position: absolute; inset: 0; }
+
+  /* Two rails and a map between them. Rails are opaque and square: the map
+     is the page, and the rails are its margins, not cards floating on it. */
+  .card {
+    background: #fdfdfb;
+    border: 0.5px solid var(--edge);
+  }
+
+  #head {
+    position: absolute; top: 0; left: 0; bottom: 0; z-index: 5;
+    width: var(--rail-w); padding: 26px 24px 24px;
+    overflow-y: auto; display: flex; flex-direction: column;
+    border-width: 0 0.5px 0 0;
+    box-shadow: 10px 0 30px rgba(23,32,31,0.06);
+  }
+  #head h1 { margin: 0; font-size: 16.5px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
+  #head .sub { margin: 5px 0 0; font-size: 12.5px; color: #232e2d; line-height: 1.55; }
+
+  /* The El Niño card reads as a paragraph with its evidence under it: the
+     index, how it got here, what it does to the fishery that made it famous. */
+  #enso {
+    margin-top: 10px; padding: 8px 12px 8px; border-radius: 0 7px 7px 0;
+    background: rgba(23,32,31,0.045); border-left: 2.5px solid var(--ff);   /* grey ground, orange edge (6 Oct) */
+    font-size: 11.5px; line-height: 1.45; color: var(--ink-dim); display: none;
+  }
+  #enso b { color: var(--ink); font-weight: 600; }
+  #enso .val { font-family: var(--mono); font-size: 11.5px; color: var(--ink); }
+  #enso p { margin: 0; }
+  #enso .enso-note { margin-top: 5px; }
+  #enso .enso-link { color: var(--ff); font-weight: 500; text-decoration: none; white-space: nowrap; }
+  #enso .enso-link:hover { text-decoration: underline; }
+  #enso.cool .enso-link { color: var(--paa); }
+  .enso-bars { display: block; margin: 5px 0 0; overflow: visible; }
+  .enso-bars .warm { fill: var(--ff); opacity: 0.85; }
+  .enso-bars .cool { fill: #6aa9b8; }
+  .enso-bars .thr { stroke: rgba(23,32,31,0.22); stroke-width: 0.6; stroke-dasharray: 2 2; }
+  .enso-bars .zero { stroke: rgba(23,32,31,0.4); stroke-width: 0.6; }
+  .enso-bars .lab { font-size: 8px; fill: var(--ink-faint); font-family: var(--mono); }
+  .enso-bars .num { font-size: 8.5px; fill: var(--ink); font-family: var(--mono); font-weight: 500; }
+  /* What the press is saying about the same event. The card above is the atlas's own
+     reading of NOAA's numbers; this is other people's reporting, so it is a separate,
+     plainer block: no tint, no accent bar, a label that says what it is. */
+  #enso-news { margin-top: 10px; padding: 9px 0 2px; border-top: 0.5px solid var(--edge); display: none; }
+  #enso-news + #enso { margin-top: 8px; }
+  #enso-news .lab { display: flex; justify-content: space-between; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ff); font-weight: 600; margin-bottom: 5px; }
+  #enso-news .lab i { color: var(--ink-faint); font-weight: 400; }
+  #enso-news .lab i { font-style: normal; letter-spacing: 0.02em; text-transform: none; }
+  #enso-news a { color: var(--ink); text-decoration: none; display: block; font-size: 11.5px; line-height: 1.35; }
+  #enso-news a:hover { text-decoration: underline; }
+  #enso-news a::after { content: ' \2197'; font-size: 0.8em; color: var(--ink-faint); }
+  #enso-news .en-more summary { font-size: 10.5px; color: var(--ink-faint); cursor: pointer; margin: 0 0 6px; list-style: none; }
+  #enso-news .en-more summary::-webkit-details-marker { display: none; }
+  #enso-news .en-more summary::before { content: '+ '; }
+  #enso-news .en-more[open] summary::before { content: '\2212 '; }
+  #enso-news .en-more[open] summary .o, #enso-news .en-more:not([open]) summary .c { display: none; }
+  /* On a laptop screen the press block is moved below the map's controls (in the
+     DOM, by the script, so reading and tab order follow the eye), and needs a gap. */
+  #enso-news .meta { display: block; font-size: 10px; color: var(--ink-faint); font-family: var(--mono); margin: 1px 0 6px; }
+  /* La Nina and neutral states are not warm events, so they lose the warm accent. */
+  #enso.cool { background: rgba(0,179,160,0.06); border-left-color: var(--paa); }
+  #enso.neutral { background: rgba(23,32,31,0.04); border-left-color: var(--ink-faint); }
+
+  #controls { margin-top: 12px; padding-top: 11px; border-top: 0.5px solid var(--edge); }
+
+  .grp {
+    font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 7px;
+  }
+  .grp-2 { margin-top: 14px; padding-top: 12px; border-top: 0.5px solid var(--edge); }
+
+  /* Scale switch. Zones are how the catch data is published; countries are how
+     most people think, and how the livelihoods and organisation data arrive. */
+  .scale { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 2px; }
+  .scale button {
+    font: inherit; font-size: 11.5px; padding: 6px 4px; cursor: pointer;
+    color: var(--ink-dim); background: rgba(23,32,31,0.04);
+    border: 0.5px solid var(--edge); border-radius: 6px; transition: 0.14s;
+  }
+  .scale button:hover { color: var(--ink); background: rgba(23,32,31,0.08); }
+  .scale button.on { color: #fff; background: var(--ink); border-color: var(--ink); font-weight: 500; }
+
+  /* View picker. One row per layer, each carrying a miniature of its own colour
+     ramp - the control shows you what the map will look like before you click. */
+  /* No frame around the picker: the selected row is dark, which is frame enough.
+     Fewer boxes inside boxes was the point (27 Sep). */
+  .views { display: flex; flex-direction: column; gap: 2px; }
+  .view {
+    display: flex; align-items: center; gap: 9px; width: 100%;
+    font: inherit; font-size: 12px; text-align: left; cursor: pointer;
+    padding: 7px 9px; border: 0; border-radius: 5px; background: transparent;
+    color: var(--ink-dim); transition: background 0.14s, color 0.14s;
+  }
+  /* The views answer four different questions; the captions say which. */
+  .vgrp { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding: 5px 9px 2px; }
+  .vgrp:first-child { padding-top: 3px; }
+  .view:hover { background: rgba(23,32,31,0.06); color: var(--ink); }
+  .view.on { background: var(--ink); color: #fff; font-weight: 500; }
+  .view .sw {
+    width: 26px; height: 9px; border-radius: 3px; flex: none;
+    box-shadow: inset 0 0 0 0.5px rgba(23,32,31,0.16);
+  }
+  .view.on .sw { box-shadow: inset 0 0 0 0.5px rgba(255,255,255,0.35); }
+
+  /* Overlays are additive, so they read as switches rather than a choice. */
+  .overlays { display: flex; flex-direction: column; gap: 5px; }
+  .overlay-toggle {
+    width: 100%; font: inherit; font-size: 12px; text-align: left; cursor: pointer;
+    display: flex; align-items: center; gap: 9px;
+    padding: 8px 10px; border-radius: 7px; transition: 0.15s;
+    color: var(--ink-dim); background: transparent;
+    border: 0.5px solid transparent;   /* the edge appears on hover and when on */
+  }
+  /* Hover darkens the edge only. A filled row means the overlay is on; a fill
+     that lingered after a click read as a switch that would not turn off. */
+  .overlay-toggle:hover { color: var(--ink); border-color: rgba(23,32,31,0.32); }
+  .overlay-toggle:focus:not(:focus-visible) { outline: none; }
+  .overlay-toggle .dot {
+    width: 12px; height: 12px; border-radius: 4px; flex: none;
+    border: 1.5px solid var(--paa); background: transparent; transition: 0.15s;
+  }
+  .overlay-toggle.on { color: var(--ink); border-color: rgba(0,157,100,0.55); background: rgba(0,157,100,0.07); }
+  .overlay-toggle.on .dot { background: var(--paa); box-shadow: 0 0 0 2px rgba(0,157,100,0.16); }
+  .overlay-toggle.ff .dot { border-color: var(--ff); }
+  .overlay-toggle.ff.on { border-color: rgba(232,89,12,0.5); background: rgba(232,89,12,0.07); }
+  .overlay-toggle.ff.on .dot { background: linear-gradient(135deg, var(--rare) 50%, var(--bv) 50%); box-shadow: 0 0 0 2px rgba(232,89,12,0.16); }
+  /* The key under the switch: which colour is which group, and the stripe for both. */
+  .okey { display: flex; flex-wrap: wrap; gap: 3px 12px; padding: 1px 10px 2px; font-size: 10.5px; color: var(--ink-dim); }
+  .okey[hidden] { display: none; }
+  .okey span { display: inline-flex; align-items: center; gap: 6px; }
+  .okey .sw-line { display: inline-block; width: 18px; height: 4px; border-radius: 2px; box-shadow: 0 0 0 0.5px rgba(23,32,31,0.4); }
+  .okey .sw-line.both { background: repeating-linear-gradient(90deg, var(--rare) 0 4px, var(--bv) 4px 8px); }
+  /* "sites", not "org": the .org class belongs to the organisation chips in the
+     panel, and sharing it painted this switch grey whether on or off. */
+  .overlay-toggle.sites .dot { border-color: var(--org); }
+  .overlay-toggle.sites.on { border-color: rgba(139,90,43,0.5); background: rgba(139,90,43,0.07); }
+  .overlay-toggle.sites.on .dot { background: var(--org); box-shadow: 0 0 0 2px rgba(139,90,43,0.16); }
+
+  #legend { margin-top: 12px; }
+  .legend-title { font-size: 10.5px; color: var(--ink-faint); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 7px; }
+  .ramp { display: flex; height: 8px; border-radius: 3px; overflow: hidden; }
+  .ramp i { flex: 1; }
+  .spark { position: relative; cursor: default; touch-action: none; }
+  .spark svg { display: block; }
+  .spark-dot, .spark-read {
+    position: absolute; opacity: 0; transition: opacity 0.12s; pointer-events: none;
+  }
+  .spark-dot {
+    width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%;
+    background: #0f5b6b; box-shadow: 0 0 0 2px rgba(255,255,255,0.95);
+  }
+  .spark-read {
+    top: -2px; font-size: 10.5px; font-weight: 600; color: var(--ink);
+    background: rgba(255,255,255,0.94); border: 0.5px solid var(--edge);
+    border-radius: 4px; padding: 1px 5px; white-space: nowrap; line-height: 1.35;
+  }
+  .spark.scrubbing .spark-dot,
+  .spark.scrubbing .spark-read { opacity: 1; }
+  .ramp-ends { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--ink-faint); margin-top: 5px; }
+  .keys { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+  .key { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: var(--ink-dim); }
+  .key .sw { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+  .key .sw.hatch {
+    background: repeating-linear-gradient(-45deg, rgba(23,32,31,0.30) 0 1px, #eeeeea 1px 4px);
+    box-shadow: inset 0 0 0 0.5px rgba(23,32,31,0.16);
+  }
+
+
+  /* The detail panel is a side rail, not a floating card: flush to the right
+     edge, full height, and a third of the screen on a laptop. A country page
+     is the thing being read; it should not sit in a small box over the map. */
+  #panel {
+    position: absolute; top: 0; right: 0; bottom: 0; z-index: 6;
+    width: clamp(380px, 34vw, 560px);
+    padding: 0; display: flex; flex-direction: column;
+    border-radius: 0; border-width: 0 0 0 0.5px;
+    box-shadow: -10px 0 30px rgba(23,32,31,0.08);
+    container-type: inline-size;
+    transform: translateX(calc(100% + 24px)); transition: transform 0.32s cubic-bezier(.22,.7,.3,1);
+  }
+  #panel.open { transform: none; }
+  .p-scroll { overflow-y: auto; padding: 28px 32px 36px; }
+  #panel h2 { margin: 0 40px 4px 0; font-size: 22px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; }
+  .p-sub { font-size: 12px; color: var(--ink-faint); margin-bottom: 18px; }
+  #close {
+    position: absolute; top: 24px; right: 26px; z-index: 2; width: 27px; height: 27px;
+    border: 0.5px solid var(--edge); background: rgba(23,32,31,0.05); color: var(--ink-dim);
+    border-radius: 6px; cursor: pointer; font-size: 15px; line-height: 1; padding: 0;
+  }
+  #close:hover { color: var(--ink); background: rgba(23,32,31,0.11); }
+
+  .hero { display: flex; align-items: baseline; gap: 8px; margin-bottom: 3px; }
+  .hero b { font-size: 46px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+  /* With the room, the six key figures sit three to a row. */
+  @container (min-width: 470px) {
+    .keyfig { grid-template-columns: repeat(3, 1fr); }
+    .kf { padding: 11px 13px 12px; }
+  }
+  /* The sparkline stretches to the panel width; keep the line weight honest. */
+  .spark svg path, .spark svg polyline { vector-effect: non-scaling-stroke; }
+  .hero span { font-size: 12.5px; color: var(--ink-dim); }
+  .hero-note { font-size: 11.5px; color: var(--ink-faint); margin-bottom: 16px; line-height: 1.5; }
+
+  .sec { margin-top: 16px; padding-top: 14px; border-top: 0.5px solid var(--edge); }
+
+  /* Key figures: the four numbers worth seeing before anything is opened. */
+  .keyfig {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--edge); border: 0.5px solid var(--edge);
+    border-radius: 8px; overflow: hidden; margin: 16px 0 4px;
+  }
+  .kf { background: #fff; padding: 9px 11px 10px; }
+  .kf-l { font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
+  .kf-v { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px; line-height: 1.1; }
+  .kf-s { font-size: 10px; color: var(--ink-faint); margin-top: 2px; line-height: 1.3; }
+
+  /* Collapsible sections. The header carries a preview value so the panel stays
+     informative when everything is shut. */
+  details.acc { border-top: 0.5px solid var(--edge); }
+  details.acc > summary {
+    list-style: none; cursor: pointer; padding: 12px 0 11px;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  }
+  details.acc > summary::-webkit-details-marker { display: none; }
+  details.acc > summary:hover .acc-t { color: var(--ink); }
+  .acc-t {
+    font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--ink-faint); transition: color 0.15s;
+  }
+  .acc-r { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .acc-r .peek {
+    font-size: 11.5px; color: var(--ink-dim); white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; max-width: 165px;
+  }
+  .chev {
+    font-size: 15px; color: var(--ink-faint); line-height: 1;
+    transition: transform 0.18s ease; flex: none;
+  }
+  details.acc[open] > summary .chev { transform: rotate(90deg); }
+  details.acc[open] > summary .peek { opacity: 0.45; }
+  .acc-body { padding: 2px 0 15px; }
+
+  /* Organisation directory: dense but grouped, so a country reads as a list of
+     actors rather than a wall of names. */
+  .reg { margin-bottom: 12px; }
+  .reg-h {
+    font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 4px;
+  }
+  .reg-b { font-size: 12.5px; color: var(--ink); line-height: 1.5; }
+  .reg-y { color: var(--ink-faint); font-family: var(--mono); font-size: 11px; }
+  .reg-n { font-size: 11.5px; color: var(--ink-dim); line-height: 1.5; margin-top: 4px; }
+
+  .pg { margin-bottom: 11px; }
+  .pg.dim { opacity: 0.55; }
+  .pg-h {
+    font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 5px;
+  }
+  .pg-h span {
+    display: inline-block; margin-left: 4px; font-size: 10px;
+    color: var(--ink-faint); opacity: 0.7;
+  }
+  .pg-l { display: flex; flex-wrap: wrap; gap: 4px; }
+  .org {
+    font-size: 11.5px; line-height: 1.35; color: var(--ink-dim);
+    background: rgba(23,32,31,0.05); border-radius: 4px; padding: 3px 7px;
+    max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    cursor: default;
+  }
+  .org:hover { color: var(--ink); background: rgba(23,32,31,0.09); }
+  .org[data-zone], .org[data-org] { cursor: pointer; }
+  .org[data-org]:focus-visible, .org[data-zone]:focus-visible { outline: 2px solid var(--ff); outline-offset: 1px; }
+  .org.on, .org.on:hover { color: #fff; background: var(--ink); }
+  /* What a click on an organisation opens: its own pages, then the fisheries work
+     the aid registry names it on in this country. */
+  .org-d {
+    margin: 7px 0 4px; padding: 10px 12px 9px; border: 0.5px solid var(--edge); border-radius: 7px;
+    background: rgba(255,255,255,0.75); font-size: 11.5px; line-height: 1.55; color: var(--ink-dim);
+  }
+  .org-d-h { font-size: 12.5px; color: var(--ink); font-weight: 600; line-height: 1.35; }
+  .org-d-s { font-size: 10.5px; color: var(--ink-faint); margin: 1px 0 8px; }
+  .org-d .lk { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-bottom: 9px; }
+  .org-d ul { list-style: none; margin: 0; padding: 0; }
+  .org-d li { margin-bottom: 7px; }
+  .org-d .meta { font-size: 10.5px; color: var(--ink-faint); font-family: var(--mono); margin-top: 1px; }
+  .pg.dim:has(.org-d) { opacity: 1; }
+  .pg-l > .org-d { flex: 0 0 100%; }
+
+  .sec-h { font-size: 10.5px; color: var(--ink-faint); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 9px; }
+
+  .bar-row { margin-bottom: 9px; }
+  .bar-lab { display: flex; justify-content: space-between; font-size: 11.5px; margin-bottom: 4px; }
+  .bar-lab span:last-child { color: var(--ink-dim); font-family: var(--mono); font-size: 10.5px; }
+  .bar { height: 5px; background: rgba(23,32,31,0.09); border-radius: 3px; overflow: hidden; }
+  .bar i { display: block; height: 100%; border-radius: 3px; }
+
+  /* Statistics as a hairline table rather than a tray of tinted cards. */
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  .stat { padding: 8px 0 9px; border-top: 0.5px solid var(--edge); }
+  .stat .n { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; }
+  .stat .l { font-size: 10.5px; color: var(--ink-faint); margin-top: 2px; line-height: 1.35; }
+
+  .ff-badge {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ff);
+    background: rgba(232,89,12,0.09); border: 0.5px solid rgba(232,89,12,0.30);
+    padding: 4px 10px; border-radius: 999px; margin: 0 6px 12px 0;
+  }
+  .ff-badge.bv { color: #6e5a00; background: rgba(242,224,21,0.22); border-color: rgba(110,90,0,0.35); }
+  .conf { display: flex; gap: 3px; margin-top: 3px; }
+  .conf i { width: 22px; height: 4px; border-radius: 2px; background: rgba(23,32,31,0.12); }
+  .conf i.on { background: #6b716e; }
+  .gap-note {
+    font-size: 11.5px; color: var(--ink-dim); background: rgba(23,32,31,0.045);
+    border-left: 2px solid var(--ink-faint); padding: 9px 11px; line-height: 1.55; margin-top: 8px;
+  }
+  .alert-chip {
+    display: inline-block; font-size: 11px; padding: 4px 10px; border-radius: 999px;
+    font-weight: 500; margin-bottom: 8px;
+  }
+  /* Tonnes or dollars: a switch that belongs to one view, so it lives in that
+     view's legend rather than in the main controls. */
+  .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin: 0 0 10px; }
+  .seg button {
+    font: inherit; font-size: 11px; padding: 4px; cursor: pointer; color: var(--ink-dim);
+    background: transparent; border: 0.5px solid var(--edge); border-radius: 5px; transition: 0.14s;
+  }
+  .seg button:hover { color: var(--ink); border-color: rgba(23,32,31,0.32); }
+  .seg button.on { color: var(--ink); background: rgba(23,32,31,0.08); border-color: rgba(23,32,31,0.32); font-weight: 500; }
+  .legend-sub { font-size: 10.5px; color: var(--ink-faint); margin: -3px 0 7px; line-height: 1.4; }
+
+  /* Stock status: one bar, five states, cool to hot. */
+  .stack { display: flex; height: 9px; border-radius: 3px; overflow: hidden; background: rgba(23,32,31,0.09); }
+  .stack i { display: block; height: 100%; }
+  .stack-key { display: flex; flex-wrap: wrap; gap: 3px 11px; margin-top: 7px; font-size: 11px; color: var(--ink-dim); }
+  .stack-key span { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .stack-key i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+
+  /* Threatened species, by name. The dot carries the Red List category. */
+  .sp-l { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 9px; }
+  .sp {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; line-height: 1.35;
+    padding: 3px 8px; border-radius: 4px; text-decoration: none; color: var(--ink-dim);
+    background: rgba(23,32,31,0.05);
+  }
+  a.sp:hover { color: var(--ink); background: rgba(23,32,31,0.09); }
+  .sp i, .sp-key i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; flex: none; }
+  .sp-key { display: flex; flex-wrap: wrap; gap: 3px 11px; margin-top: 7px; font-size: 10.5px; color: var(--ink-faint); }
+  .sp-key span { display: inline-flex; align-items: center; gap: 5px; }
+  .sp-c { font-family: var(--mono); font-size: 10px; color: var(--ink-dim); letter-spacing: 0.04em; }
+  /* Threatened species by animal group, one thin bar each, split by category. */
+  .gb-row { margin-bottom: 6px; }
+  .gb-lab { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-dim); margin-bottom: 3px; }
+  .gb-lab span:last-child { font-family: var(--mono); font-size: 10.5px; }
+  .gb { display: flex; height: 6px; gap: 1px; }
+  .gb i { display: block; height: 100%; border-radius: 2px; }
+
+  .zrow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 10px; margin-bottom: 5px; }
+  .zrow .zval { font-size: 11px; color: var(--ink-dim); font-family: var(--mono); }
+
+  /* Where a figure comes from, one click away. */
+  .src-l { font-size: 11px; color: var(--ink-faint); margin-top: 10px; line-height: 1.6; }
+  .src-l a, .srcs a, .org-d a, .reg-n a { color: var(--ink-dim); text-decoration: underline; text-decoration-color: rgba(23,32,31,0.25); text-underline-offset: 2px; }
+  .src-l a:hover, .srcs a:hover, .org-d a:hover, .reg-n a:hover { color: var(--ink); text-decoration-color: currentColor; }
+  .src-l a::after, .srcs a::after, .org-d a::after, .reg-n a::after { content: ' \2197'; font-size: 0.85em; }
+
+  .news li { margin-bottom: 10px; line-height: 1.45; }
+  .news a { color: var(--ink); text-decoration: none; font-size: 12.5px; }
+  .news a::after { content: ' \2197'; font-size: 0.8em; color: var(--ink-faint); }
+  .news a:hover { text-decoration: underline; }
+  .news .meta { font-size: 10.5px; color: var(--ink-faint); font-family: var(--mono); margin-top: 2px; }
+  /* "translated from Spanish · show original": a switch, so it looks like one. */
+  .tr { cursor: pointer; text-decoration: underline dotted; text-underline-offset: 2px; }
+  .tr:hover, .tr:focus-visible { color: var(--ink); }
+  .news ul { list-style: none; padding: 0; margin: 0; }
+
+  .hint { position: absolute; bottom: 18px; left: calc(50% + var(--rail-w) / 2); transform: translateX(-50%); z-index: 4;
+    font-size: 11.5px; color: var(--ink-faint); padding: 7px 15px; pointer-events: none;
+    transition: opacity 0.4s; }
+  /* Basemap credit: required wording, quiet presentation. */
+  #credit { position: absolute; bottom: 8px; left: calc(var(--rail-w) + 14px); z-index: 4; font-size: 10px;
+    color: var(--ink-faint); letter-spacing: 0.01em; opacity: 0.85; }
+  #credit a { color: inherit; text-decoration: none; }
+  #credit a:hover { text-decoration: underline; }
+  .maplibregl-popup-content {
+    background: var(--panel); color: var(--ink); border: 0.5px solid var(--edge);
+    border-radius: 7px; padding: 7px 11px; font-family: var(--sans); font-size: 12px;
+    backdrop-filter: blur(10px); box-shadow: none;
+  }
+  .maplibregl-popup-tip { display: none; }
+  /* The card a site dot opens. */
+  .site { font-size: 11.5px; line-height: 1.45; color: var(--ink-dim); padding-right: 10px; }
+  .site-h { font-size: 12.5px; font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+  .site-m { margin-top: 2px; }
+  .site a { color: var(--org); }
+  .site a::after { content: ' \2197'; font-size: 0.8em; }
+  .maplibregl-popup-close-button { font-size: 16px; color: var(--ink-faint); padding: 2px 6px; }
+  .maplibregl-ctrl-attrib { font-size: 10px !important; }
+  #loading {
+    position: absolute; inset: 0; z-index: 20; display: flex; align-items: center; justify-content: center;
+    background: #fafaf8; color: var(--ink-faint); font-size: 13px; transition: opacity 0.5s;
+  }
+  @media (max-width: 820px) {
+    /* On a phone the left rail is a header: full width, not full height. */
+    #head {
+      width: 100%; bottom: auto; max-height: 52%; padding: 18px 20px 16px;
+      border-width: 0 0 0.5px 0; box-shadow: 0 10px 30px rgba(23,32,31,0.06);
+    }
+    #credit { left: 12px; }
+    /* On a phone the rail becomes a bottom sheet. */
+    #panel {
+      width: 100%; top: auto; height: 58%;
+      border-radius: 12px 12px 0 0; border-width: 0.5px 0 0;
+      box-shadow: 0 -10px 30px rgba(23,32,31,0.08);
+    }
+    .p-scroll { padding: 18px 20px 24px; }
+    #panel h2 { font-size: 18px; }
+    .hero b { font-size: 38px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+<div id="loading">Loading 282 exclusive economic zones…</div>
+
+<div id="head" class="card">
+  <h1>Small-Scale Fisheries World Atlas</h1>
+  <p class="sub">A working prototype from public data: catch, value, people, fleets, ocean heat, ecosystems, access rights and news for 282 ocean zones in 178 countries and territories. Gaps are shown, not hidden.</p>
+  <div id="enso"></div>
+  <div id="enso-news"></div>
+  <div id="controls">
+    <div class="grp">Scale</div>
+    <div class="scale">
+      <button id="s-zone" class="on">By ocean zone</button>
+      <button id="s-country">By country</button>
+    </div>
+    <div class="grp grp-2">View</div>
+    <div class="views">
+      <div class="vgrp">Catch and economy</div>
+      <button id="b-share" class="view on"><span class="sw" data-ramp="share"></span>Share of catch</button>
+      <button id="b-foreign" class="view"><span class="sw" data-ramp="foreign"></span>Whose fleets fish here</button>
+      <div class="vgrp">People</div>
+      <button id="b-people" class="view"><span class="sw" data-ramp="people"></span>People</button>
+      <div class="vgrp">Environment</div>
+      <button id="b-heat" class="view"><span class="sw" data-ramp="heat"></span>Marine heatwave</button>
+      <button id="b-overfish" class="view"><span class="sw" data-ramp="overfish"></span>Overfishing</button>
+      <div class="vgrp">About the data</div>
+      <button id="b-conf" class="view"><span class="sw" data-ramp="conf"></span>Data confidence</button>
+    </div>
+    <div id="legend"></div>
+    <div class="grp grp-2">Overlay</div>
+    <div class="overlays">
+      <button id="b-paa" class="overlay-toggle"><span class="dot"></span>Preferential access areas</button>
+      <button id="b-org" class="overlay-toggle sites"><span class="dot"></span>Project &amp; community sites</button>
+      <button id="b-ff" class="overlay-toggle ff"><span class="dot"></span>Conservation groups</button>
+      <div id="cg-key" class="okey" hidden>
+        <span><i class="sw-line" style="background:var(--rare)"></i>Rare · Fish Forever</span>
+        <span><i class="sw-line" style="background:var(--bv)"></i>Blue Ventures</span>
+        <span><i class="sw-line both"></i>both</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="panel" class="card">
+  <button id="close" aria-label="Close">×</button>
+  <div class="p-scroll" id="panel-body"></div>
+</div>
+
+<div class="hint" id="hint">Click any zone for detail</div>
+<div id="credit">Basemap © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.js"></script>
+<script>
+// Ramps run light to dark: on a white map, darker has to mean more. The dark-mode
+// versions of these ran the other way and inverted on a light basemap.
+const SHARE_STOPS = [[0,'#e0eff6'],[20,'#9ecbe3'],[40,'#57a5cf'],[60,'#0077b6'],[80,'#00476d']];   // share hue from Andrew's palette, 26 Sep 2026
+const PEOPLE_STOPS = [[0,'#f8e9ef'],[5,'#e9b8cd'],[15,'#d884a9'],[35,'#c4457c'],[60,'#76294a']];   // people hue from Andrew's palette, 26 Sep 2026
+// Foreign fishing runs pale to deep indigo. Brown read as "earth" for something
+// that happens at sea, and it sat only 8 dE from the project-sites overlay - the
+// exact layer someone would cross-reference against it. Indigo clears every
+// overlay by 55 dE and reads as distance and industry rather than soil.
+const FOREIGN_STOPS = [[0,'#ebe9f4'],[25,'#c1bbdc'],[50,'#9388c2'],[75,'#5b4ba3'],[95,'#372d62']];   // foreign hue from Andrew's palette, 26 Sep 2026
+// Confidence is metadata, not a phenomenon, so it is deliberately achromatic -
+// it should not compete for attention with layers that describe the actual ocean,
+// and its old purple was indistinguishable from the People ramp in the picker.
+const CONF_COLORS  = { 1:'#e8eaec', 2:'#bbc0c4', 3:'#8e969e', 4:'#68737d' };   // slate, Andrew's palette
+// Overfishing runs sand to deep rust: the colour of something worn down. It is never on
+// screen with the heatwave scale, and green, violet and orange overlays all clear it.
+const OVERFISH_STOPS = [[0,'#faf2e0'],[25,'#f1d59e'],[50,'#e6b657'],[70,'#d99000'],[90,'#825600']];   // overfish hue from Andrew's palette, 26 Sep 2026
+// Marine heatwave categories, after Hobday et al. Six steps, not five.
+//
+// Category 0 is a definite cool blue rather than a pale grey. Forty percent of the
+// ocean is in no heatwave on any given day, and rendering that as near-white made
+// the layer look broken - "no heatwave" has to read as a measured state, not as
+// missing data. The scale then runs cool to hot, which is what a reader expects.
+const ALERT_COLORS = { 0:'#9dc3d4', 1:'#e2c53c', 2:'#c99a38', 3:'#c8703a', 4:'#b9503a', 5:'#a63a31' };   // Andrew's scale, 26 Sep 2026: no heatwave stays cool, then yellow to dark red; NOAA's own scale was used before
+// Not measured: a pale ground under a fine diagonal hatch. Flat grey alone sat
+// 1.3 dE from the palest confidence step, so "we don't know" read as "poor";
+// the hatch is the map convention for a gap and cannot be mistaken for a value.
+const NO_DATA = '#eeeeea';
+
+const map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+  center: [10, 8], zoom: 1.55, minZoom: 1.1, maxZoom: 7,
+  attributionControl: false,
+  preserveDrawingBuffer: true
+});
+// No zoom buttons: scroll, pinch and the keyboard all zoom, and the buttons were
+// furniture. The basemap credit is a plain line in the corner (#credit) rather
+// than MapLibre's pill - the licence asks for the words, not the widget.
+
+let COUNTRIES = {}, PEOPLE = {}, CLIMATE = {}, NEWS = {}, PAA = {}, ORGS = null, ISSF = null, FLEETS = {}, PROFILE = null, REG = null;
+let VALUE = {}, VALUE_NAT = {}, VALUE_WORLD = null, ECO = {}, ECO_NAT = {}, OVERFISH_YEAR = null;
+let NEWS_META = null, ACT_BY_ID = null;
+let layer = 'share', selected = null, paaOn = false, orgOn = false, ffOn = false;
+// The share-of-catch view can be read in tonnes or in dollars. Peru's small boats
+// land a fifth of the tonnes and over two fifths of the value.
+let shareBy = 'tonnes';
+let scale = 'zone';
+let COUNTRY_AGG = {};
+let HEAT_DATE = '';  // the day the heat grids were read, shown wherever "today" would mislead
+
+const fmt = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
+// Names, titles and headlines arrive from other people's databases and feeds, and
+// they are written into the page as HTML. Escape them, and only ever link to http(s).
+const esc = t => String(t == null ? '' : t).replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[ch]));
+const safeUrl = u => (/^https?:\/\//i.test(u || '') ? esc(u) : '');
+const ext = (href, label) => safeUrl(href) ? `<a href="${safeUrl(href)}" target="_blank" rel="noopener">${label}</a>` : '';
+const shortDate = d => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || '');
+  return m ? `${+m[3]} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m[2] - 1]}` : '';
+};
+
+function rampExpr(prop, stops) {
+  const interp = ['interpolate', ['linear'], ['get', prop]];
+  stops.forEach(([v, c]) => interp.push(v, c));
+  return ['case', ['==', ['get', prop], null], NO_DATA, interp];
+}
+function matchExpr(prop, table) {
+  const e = ['match', ['get', prop]];
+  Object.entries(table).forEach(([k, v]) => e.push(Number(k), v));
+  e.push(NO_DATA);
+  return e;
+}
+// Roll zone-level values up to the country. Catch and foreign share are weighted
+// by tonnage rather than averaged - a country's three zones are not equal, and an
+// unweighted mean lets a tiny zone outvote a large one. Territories resolving to a
+// parent ISO3 merge into it, which is what "by country" has to mean.
+function buildCountryAgg(features) {
+  const acc = {};
+  features.forEach(f => {
+    const p = f.properties;
+    if (!p.iso3) return;
+    const a = acc[p.iso3] || (acc[p.iso3] = {
+      t: 0, ssf_t: 0, fl_t: 0, foreign_t: 0, domestic_t: 0, unknown_t: 0, zones: [], conf: [], mhw: [],
+      v: 0, ssf_v: 0, fl_v: 0, foreign_v: 0, unknown_v: 0, suspect: [],
+      of_w: 0, of_sum: 0, of_zones: 0, threatened_max: null,
+      p_ssf_usd: 0, p_ssf_t: 0, p_ind_usd: 0, p_ind_t: 0
+    });
+    const t = p.total_t || 0;
+    a.zones.push(p.name);
+    // Small-scale tonnes from the sector figures, not total x a share rounded to 0.1%:
+    // the product drifted 0.1 point on about 40 country pages (India 23.0 vs 22.9).
+    const sec = (COUNTRIES[p.name] || {}).sectors;
+    if (p.ssf_share != null && t) {
+      a.t += t;
+      a.ssf_t += sec ? (sec.Artisanal || 0) + (sec.Subsistence || 0) : t * p.ssf_share / 100;
+    }
+    // Domestic and unattributed catch are carried too: "own fleet" is not
+    // 100 minus foreign when a third of a zone's catch has no fleet at all.
+    // Weighted by the fleets' own total, not the catch total: the two differ where a
+    // year is missing (Ascension 556 t against 687 t), which skewed St Helena's shares.
+    const fl = FLEETS[p.name];
+    const ft = fl ? (fl.total_t != null ? fl.total_t : t) : 0;
+    if (fl && ft) {
+      a.fl_t += ft;
+      a.foreign_t += ft * fl.foreign_pct / 100;
+      a.domestic_t += ft * (fl.domestic_pct || 0) / 100;
+      a.unknown_t += ft * (fl.unknown_pct || 0) / 100;
+    }
+    // Value adds up across zones in dollars, so the country's share of value and
+    // its prices are ratios of sums, never averages of percentages.
+    const vz = VALUE[p.name];
+    // A zone whose prices are not believable stays out of the country's value
+    // figures and is named on the country page instead.
+    if (vz && vz.suspect_price) a.suspect.push(p.name);
+    if (vz && vz.value_usd && !vz.suspect_price) {
+      a.v += vz.value_usd;
+      a.ssf_v += vz.sectors_usd ? (vz.sectors_usd.Artisanal || 0) + (vz.sectors_usd.Subsistence || 0) : vz.value_usd * vz.ssf_value_share / 100;
+      if (vz.sums) {
+        a.p_ssf_usd += vz.sums.ssf_usd; a.p_ssf_t += vz.sums.ssf_t;
+        a.p_ind_usd += vz.sums.industrial_usd; a.p_ind_t += vz.sums.industrial_t;
+      }
+      if (vz.fleets) {
+        a.fl_v += vz.fleets.total_usd;
+        a.foreign_v += vz.fleets.foreign_usd;
+        a.unknown_v += vz.fleets.total_usd * vz.fleets.unknown_value_pct / 100;
+      }
+    }
+    // Fish populations overlap between neighbouring zones, so a country has no true
+    // total. What it gets is the average of its zones, weighted by catch, and the
+    // page calls it an average wherever it appears.
+    if (p.overfished != null && t) {
+      a.of_w += t; a.of_sum += t * p.overfished; a.of_zones++;
+      const yr = ((ECO[p.name] || {}).stocks || {}).year;
+      if (yr) a.of_year = Math.max(a.of_year || 0, yr);
+    }
+    const th = ((ECO[p.name] || {}).threatened || {}).total;
+    if (th != null) a.threatened_max = Math.max(a.threatened_max == null ? 0 : a.threatened_max, th);
+    if (p.confidence) a.conf.push([p.confidence, t]);
+    if (p.mhw != null) a.mhw.push([p.mhw, t]);
+  });
+  // The weakest record and the worst heatwave in a country's waters are worth
+  // surfacing - but only from zones that are a real part of the country's
+  // catch. Taken over every zone, Bouvet Island's 122 tonnes painted Norway
+  // "poor" and a 21-tonne rock gave Chile a strong heatwave while the
+  // mainland zone had no reading. Zones under 1% of the country's catch do
+  // not get a vote here; they still count in every total.
+  const voting = (pairs, total) => {
+    const w = pairs.filter(([, t]) => t >= total * 0.01);
+    return (w.length ? w : pairs).map(([v]) => v);
+  };
+  const out = {};
+  Object.entries(acc).forEach(([iso, a]) => {
+    out[iso] = {
+      total_t: Math.round(a.t),
+      ssf_share: a.t ? Math.round(1000 * a.ssf_t / a.t) / 10 : null,
+      foreign_pct: a.fl_t ? Math.round(1000 * a.foreign_t / a.fl_t) / 10 : null,
+      domestic_pct: a.fl_t ? Math.round(1000 * a.domestic_t / a.fl_t) / 10 : null,
+      unknown_pct: a.fl_t ? Math.round(1000 * a.unknown_t / a.fl_t) / 10 : null,
+      confidence: a.conf.length ? Math.min(...voting(a.conf, a.t)) : 0,
+      mhw: a.mhw.length ? Math.max(...voting(a.mhw, a.t)) : null,
+      mhw_n: a.mhw.length ? voting(a.mhw, a.t).length : 0,
+      value_usd: a.v ? Math.round(a.v) : null,
+      ssf_value_share: a.v ? Math.round(1000 * a.ssf_v / a.v) / 10 : null,
+      usd_per_t: {
+        ssf: a.p_ssf_t >= 1 ? Math.round(a.p_ssf_usd / a.p_ssf_t) : null,
+        industrial: a.p_ind_t >= 1 ? Math.round(a.p_ind_usd / a.p_ind_t) : null
+      },
+      foreign_value_pct: a.fl_v ? Math.round(1000 * a.foreign_v / a.fl_v) / 10 : null,
+      unknown_value_pct: a.fl_v ? Math.round(1000 * a.unknown_v / a.fl_v) / 10 : null,
+      suspect_value: a.suspect,
+      overfished: a.of_w ? Math.round(10 * a.of_sum / a.of_w) / 10 : null,
+      overfished_zones: a.of_zones,
+      of_year: a.of_year || null,
+      threatened_max: a.threatened_max,
+      zones: a.zones
+    };
+  });
+  return out;
+}
+
+// Which property the paint expressions read. In country mode every zone belonging
+// to one country carries the same rolled-up value, so the map reads as a country
+// map without the geometry having to be dissolved.
+const prop = base => (scale === 'country' ? 'c_' + base : base);
+
+// The hatch itself: 16 device pixels, drawn at 2x so the lines stay crisp.
+function hatchImage() {
+  const s = 16, c = document.createElement('canvas');
+  c.width = c.height = s;
+  const ctx = c.getContext('2d');
+  ctx.strokeStyle = 'rgba(23,32,31,0.30)';
+  ctx.lineWidth = 1.6;
+  ctx.lineCap = 'square';
+  [-s, 0, s].forEach(o => { ctx.beginPath(); ctx.moveTo(o, s); ctx.lineTo(o + s, 0); ctx.stroke(); });
+  return ctx.getImageData(0, 0, s, s);
+}
+
+// Which features the current view cannot measure. Confidence is the one scale
+// where 0 means "no record" rather than a reading.
+const shareKey = () => (shareBy === 'value' ? 'ssf_value_share' : 'ssf_share');
+
+function noDataFilter() {
+  const base = { share: shareKey(), heat: 'mhw', foreign: 'foreign_pct', conf: 'confidence', overfish: 'overfished' }[layer];
+  const p = layer === 'people' ? 'employed_per_1k' : prop(base);
+  if (layer === 'conf') return ['<', ['coalesce', ['get', p], 0], 1];
+  return ['==', ['typeof', ['get', p]], 'null'];
+}
+function syncNoData() {
+  if (map.getLayer('eez-nodata')) map.setFilter('eez-nodata', noDataFilter());
+  if (map.getLayer('country-nodata')) map.setFilter('country-nodata', ['all', ['==', ['get', 'coastal'], true], noDataFilter()]);
+}
+
+function fillExpr() {
+  if (layer === 'share')  return rampExpr(prop(shareKey()), SHARE_STOPS);
+  if (layer === 'people') return rampExpr('employed_per_1k', PEOPLE_STOPS);  // already national
+  if (layer === 'heat')   return matchExpr(prop('mhw'), ALERT_COLORS);
+  if (layer === 'foreign') return rampExpr(prop('foreign_pct'), FOREIGN_STOPS);
+  if (layer === 'overfish') return rampExpr(prop('overfished'), OVERFISH_STOPS);
+  return matchExpr(prop('confidence'), CONF_COLORS);
+}
+
+// Paint each view row's miniature ramp from the same colours the map uses, so the
+// control is a preview rather than a decoration.
+function paintSwatches() {
+  const ramps = {
+    share:   SHARE_STOPS.map(s => s[1]),
+    people:  PEOPLE_STOPS.map(s => s[1]),
+    foreign: FOREIGN_STOPS.map(s => s[1]),
+    overfish: OVERFISH_STOPS.map(s => s[1]),
+    heat:    [0,1,2,3,4,5].map(n => ALERT_COLORS[n]),
+    conf:    [1,2,3,4].map(n => CONF_COLORS[n])
+  };
+  document.querySelectorAll('.view .sw').forEach(el => {
+    const cols = ramps[el.dataset.ramp];
+    if (!cols) return;
+    // Hard stops for the categorical scales, a smooth blend for the continuous ones.
+    const stepped = el.dataset.ramp === 'heat' || el.dataset.ramp === 'conf';
+    if (stepped) {
+      const n = cols.length;
+      const parts = cols.map((c, i) => `${c} ${(100*i/n).toFixed(1)}%, ${c} ${(100*(i+1)/n).toFixed(1)}%`);
+      el.style.background = `linear-gradient(90deg, ${parts.join(', ')})`;
+    } else {
+      el.style.background = `linear-gradient(90deg, ${cols.join(', ')})`;
+    }
+  });
+}
+
+function drawLegend() {
+  const el = document.getElementById('legend');
+  // Every legend ends with the same key: a gap looks the same on every view.
+  const gap = `<div class="key"><span class="sw hatch"></span>Not measured</div>`;
+  if (layer === 'share') {
+    const byValue = shareBy === 'value';
+    const seg = Object.keys(VALUE).length
+      ? `<div class="seg" role="group" aria-label="Measure the catch by">
+           <button data-by="tonnes" class="${byValue ? '' : 'on'}" aria-pressed="${!byValue}">By tonnes</button>
+           <button data-by="value" class="${byValue ? 'on' : ''}" aria-pressed="${byValue}">By value</button></div>`
+      : '';
+    el.innerHTML = seg + `<div class="legend-title">Small-scale share of catch${byValue ? ' value' : ''}</div>` +
+      (byValue ? '<div class="legend-sub">Landed value, Sea Around Us estimate in 2010 US dollars</div>' : '') +
+      '<div class="ramp">' + SHARE_STOPS.map(s => `<i style="background:${s[1]}"></i>`).join('') + '</div>' +
+      '<div class="ramp-ends"><span>0%</span><span>80%+</span></div>' +
+      // in the value view the hatch also covers the six zones whose prices are not believable
+      `<div class="keys">${byValue ? `<div class="key"><span class="sw hatch"></span>Not measured, or prices not believable</div>` : gap}</div>`;
+  } else if (layer === 'people') {
+    el.innerHTML = '<div class="legend-title">Employed in small-scale fisheries</div>' +
+      '<div class="legend-sub">National figures, inland and marine, fishing and processing and trade. The same number is painted on every zone of a country</div>' +
+      '<div class="ramp">' + PEOPLE_STOPS.map(s => `<i style="background:${s[1]}"></i>`).join('') + '</div>' +
+      '<div class="ramp-ends"><span>0</span><span>60+ per 1,000 people</span></div>' +
+      `<div class="keys">${gap}</div>`;
+  } else if (layer === 'heat') {
+    el.innerHTML = `<div class="legend-title">Marine heatwave${HEAT_DATE ? ' · ' + shortDate(HEAT_DATE) : ''}</div>` +
+      `<div class="legend-sub">Read in one sample area about 130 km across per zone</div><div class="keys">` +
+      [[0,'None'],[1,'Moderate'],[2,'Strong'],[3,'Severe'],[4,'Extreme'],[5,'Beyond extreme']]
+        .map(([n,t]) => `<div class="key"><span class="sw" style="background:${ALERT_COLORS[n]}"></span>${t}</div>`).join('') +
+      gap + '</div>';
+  } else if (layer === 'overfish') {
+    // The method and year are on the tiles, the hover text and the section itself
+    // (Andrew took them off the legend, 6 Oct).
+    el.innerHTML = `<div class="legend-title">Fish populations overfished or collapsed</div>` +
+      (scale === 'country' ? `<div class="legend-sub">Countries show the average of their zones, weighted by catch</div>` : '') +
+      '<div class="ramp">' + OVERFISH_STOPS.map(s => `<i style="background:${s[1]}"></i>`).join('') + '</div>' +
+      '<div class="ramp-ends"><span>0%</span><span>90%+</span></div>' +
+      `<div class="keys">${gap}</div>`;
+  } else if (layer === 'foreign') {
+    el.innerHTML = '<div class="legend-title">Catch taken by foreign fleets</div>' +
+      '<div class="ramp">' + FOREIGN_STOPS.map(s => `<i style="background:${s[1]}"></i>`).join('') + '</div>' +
+      '<div class="ramp-ends"><span>none foreign</span><span>95%+ foreign</span></div>' +
+      `<div class="keys">${gap}</div>`;
+  } else {
+    el.innerHTML = '<div class="legend-title">How complete is the catch record?</div><div class="keys">' +
+      [[4,'Good — full series'],[3,'Fair'],[2,'Thin'],[1,'Poor']]
+        .map(([n,t]) => `<div class="key"><span class="sw" style="background:${CONF_COLORS[n]}"></span>${t}</div>`).join('') +
+      gap + '</div>';
+  }
+}
+
+// Sparkline geometry, shared between the drawing code and the scrubber so the
+// dot always lands exactly on the line.
+const SPARK = { w: 300, h: 52, pad: 3 };
+// Time is proportional along the axis: a missing year is a break in the line,
+// not a point quietly pulled up beside its neighbour. 71 zones have gaps, and
+// 16 stop before 2019; with index spacing every one of them drew as a smooth,
+// complete curve.
+const sparkXYear = (year, x0, x1) => SPARK.pad + (x1 > x0 ? (year - x0) / (x1 - x0) : 0) * (SPARK.w - SPARK.pad * 2);
+const sparkY = v => SPARK.h - SPARK.pad - (v / 100) * (SPARK.h - SPARK.pad * 2);
+
+function sparkline(history, span) {
+  if (!history || history.length < 4) return '';
+  const { w, h, pad } = SPARK;
+  const x0 = span && span[0] != null ? span[0] : history[0][0];
+  const x1 = span && span[1] != null ? span[1] : history[history.length - 1][0];
+  const X = y => sparkXYear(y, x0, x1).toFixed(1);
+
+  // Consecutive years join; anything else starts a new run.
+  const runs = [];
+  history.forEach((p, i) => {
+    if (i && p[0] === history[i - 1][0] + 1) runs[runs.length - 1].push(p);
+    else runs.push([p]);
+  });
+  let areas = '', lines = '', dots = '';
+  runs.forEach(run => {
+    if (run.length === 1) {
+      dots += `<circle cx="${X(run[0][0])}" cy="${sparkY(run[0][1]).toFixed(1)}" r="1.8" fill="#0f5b6b"/>`;
+      return;
+    }
+    const d = run.map((p, i) => (i ? 'L' : 'M') + X(p[0]) + ' ' + sparkY(p[1]).toFixed(1)).join(' ');
+    areas += `<path d="${d} L${X(run[run.length - 1][0])} ${h - pad} L${X(run[0][0])} ${h - pad} Z" fill="rgba(15,91,107,0.14)"/>`;
+    lines += `<path d="${d}" fill="none" stroke="#0f5b6b" stroke-width="1.6" stroke-linejoin="round"/>`;
+  });
+
+  // History rides along on the element so the scrubber can read it without any
+  // shared state - the panel is rebuilt on every click, and stale closures were
+  // the obvious way to get this wrong.
+  return `<div class="spark" style="height:${h}px" data-history='${JSON.stringify(history)}' data-x0="${x0}" data-x1="${x1}">
+    <svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" preserveAspectRatio="none">${areas}${lines}${dots}</svg>
+    <span class="spark-dot"></span>
+    <span class="spark-read"></span>
+  </div>
+  <div class="ramp-ends"><span>${x0}</span><span>${x1}</span></div>`;
+}
+
+// Scrub the sparkline. Delegated from the panel because its contents are rebuilt
+// every time a zone is clicked.
+function initZoneLinks() {
+  document.getElementById('panel-body').addEventListener('click', e => {
+    const tr = e.target.closest('.tr');
+    if (tr) return toggleOriginal(tr);
+    const chip = e.target.closest('.org[data-zone]');
+    if (chip) return showPanel(chip.dataset.zone);
+    const org = e.target.closest('.org[data-org]');
+    if (org) toggleOrg(org);
+  });
+  document.getElementById('panel-body').addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const tr = e.target.closest('.tr');
+    if (tr) { e.preventDefault(); return toggleOriginal(tr); }
+    const zone = e.target.closest('.org[data-zone]');
+    if (zone) { e.preventDefault(); return showPanel(zone.dataset.zone); }
+    const org = e.target.closest('.org[data-org]');
+    if (org) { e.preventDefault(); toggleOrg(org); }
+  });
+  // Opening the News section is a click, which is what a browser needs before it
+  // will download a language pack. "toggle" does not bubble, hence the capture.
+  document.getElementById('panel-body').addEventListener('toggle', e => {
+    const d = e.target;
+    if (d.open && d.querySelector && d.querySelector('.news')) translateHeadlines(d, true);
+  }, true);
+}
+
+function initScrubber() {
+  const body = document.getElementById('panel-body');
+
+  function update(spark, clientX) {
+    let hist;
+    try { hist = JSON.parse(spark.dataset.history); } catch (e) { return; }
+    const n = hist.length;
+    const rect = spark.getBoundingClientRect();
+
+    // Undo the padding the path is drawn with, so the dot tracks the line rather
+    // than the box.
+    const frac = (clientX - rect.left) / rect.width;
+    const inner = (frac * SPARK.w - SPARK.pad) / (SPARK.w - SPARK.pad * 2);
+    // Nearest year that has a value - across a gap the dot jumps to the edge of it.
+    const x0 = +spark.dataset.x0, x1 = +spark.dataset.x1;
+    const target = x0 + inner * (x1 - x0);
+    let i = 0, gap = Infinity;
+    hist.forEach((p, k) => { const d = Math.abs(p[0] - target); if (d < gap) { gap = d; i = k; } });
+    const [year, value] = hist[i];
+
+    const xPct = 100 * sparkXYear(year, x0, x1) / SPARK.w;
+    const yPx = sparkY(value);
+
+    const dot = spark.querySelector('.spark-dot');
+    dot.style.left = xPct + '%';
+    dot.style.top = yPx + 'px';
+
+    const read = spark.querySelector('.spark-read');
+    read.textContent = `${year} · ${value}%`;
+    // Flip the readout to the other side near the edges so it never clips.
+    read.style.left = xPct + '%';
+    read.style.transform = xPct > 62 ? 'translateX(calc(-100% - 9px))' : 'translateX(9px)';
+    spark.classList.add('scrubbing');
+  }
+
+  function clear(spark) { spark.classList.remove('scrubbing'); }
+
+  body.addEventListener('pointerdown', e => {
+    const spark = e.target.closest('.spark');
+    if (!spark) return;
+    spark.setPointerCapture(e.pointerId);
+    update(spark, e.clientX);
+  });
+  body.addEventListener('pointermove', e => {
+    const spark = e.target.closest('.spark');
+    if (!spark) return;
+    // Follow the finger or button while held, and track a plain hover too.
+    if (e.buttons || e.pointerType === 'mouse') update(spark, e.clientX);
+  });
+  body.addEventListener('pointerleave', e => {
+    const spark = e.target.closest('.spark');
+    if (spark) clear(spark);
+  }, true);
+  body.addEventListener('pointerup', e => {
+    const spark = e.target.closest('.spark');
+    if (spark && e.pointerType !== 'mouse') clear(spark);
+  });
+}
+
+const SECTOR_COLOR = { Artisanal:'#2f7d91', Subsistence:'#6aa9b8', Industrial:'#98a3a8', Recreational:'#c2ae74' };
+
+// ---------------------------------------------------------------------------
+// Panel sections.
+//
+// Each returns { peek, body } or null. `peek` is the one value worth seeing
+// without opening the section - the panel shows it on the collapsed header, so
+// a reader gets the whole picture at a glance and the detail only when asked.
+// ---------------------------------------------------------------------------
+
+function peopleSection(c) {
+  const p = PEOPLE[c.iso3];
+  if (!p) {
+    return {
+      peek: 'no data',
+      body: `<div class="gap-note">No livelihoods data. Illuminating Hidden Harvests covers 187 countries, but not this one — a real gap, not a rendering problem.</div>`
+    };
+  }
+  let h = '';
+  if (c.iso_kind === 'territory') {
+    h += `<div class="gap-note" style="margin-top:0;margin-bottom:10px">These are national figures for ${COUNTRY_NAME[c.iso3] || p.country}. This zone is an island or outlying part of the country, so the numbers describe the country as a whole, not this coastline.</div>`;
+  }
+  // IHH surveyed 78 countries and extrapolated the other 109 from regional
+  // patterns. The workbook says which; so does the page.
+  if (p.estimate === 'extrapolated') {
+    h += `<div class="gap-note" style="margin-top:0;margin-bottom:10px">Illuminating Hidden Harvests had no survey for this country; these figures are its extrapolation from regional patterns.</div>`;
+  }
+  h += `<div class="stats">
+    <div class="stat"><div class="n">${fmt(p.ssf_workers)}</div><div class="l">employed in small-scale fisheries</div></div>
+    <div class="stat"><div class="n">${p.employed_per_1k != null ? p.employed_per_1k : '—'}</div><div class="l">per 1,000 people, inland and marine, incl. processing and trade</div></div>`;
+  if (p.women_share != null)
+    h += `<div class="stat"><div class="n">${p.women_share}%</div><div class="l">of that workforce are women</div></div>`;
+  if (p.subsistence_workers)
+    h += `<div class="stat"><div class="n">${fmt(p.subsistence_workers)}</div><div class="l">subsistence fishers (counted separately)</div></div>`;
+  h += `</div>`;
+  if (p.ssf_workforce_share != null) {
+    h += `<div class="bar-row" style="margin-top:11px">
+      <div class="bar-lab"><span>Small-scale share of fishing jobs</span><span>${p.ssf_workforce_share}%</span></div>
+      <div class="bar"><i style="width:${p.ssf_workforce_share}%;background:#98479a"></i></div></div>`;
+  }
+  return {
+    peek: p.employed_per_1k != null ? `${p.employed_per_1k} per 1,000` : fmt(p.ssf_workers) + ' workers',
+    body: h
+  };
+}
+
+function climateSection(c) {
+  const z = CLIMATE.zones && CLIMATE.zones[c.name];
+  if (!z || z.mhw == null) {
+    return {
+      peek: 'no reading',
+      body: `<div class="gap-note">No heatwave category for this zone: NOAA's heatwave product has no reading in the sampled area on this date. In polar waters that usually means sea ice; elsewhere it is a gap in the satellite record. A gap in the measurement, not a measured calm.</div>`
+    };
+  }
+  const label = (CLIMATE.mhw_labels || {})[z.mhw] || '';
+  const col = ALERT_COLORS[z.mhw] || '#dfe7ea';
+  const ink = z.mhw >= 3 ? '#fff' : '#17201f';
+
+  let h = `<span class="alert-chip" style="background:${col};color:${z.mhw === 0 ? 'var(--ink-dim)' : ink}">${label}</span>`;
+
+  if (z.mhw_area != null) {
+    h += `<div class="bar-row" style="margin-top:4px">
+      <div class="bar-lab"><span>Share of the sampled area in a heatwave</span><span>${z.mhw_area}%</span></div>
+      <div class="bar"><i style="width:${z.mhw_area}%;background:${z.mhw ? col : '#98a3a8'}"></i></div></div>`;
+  }
+  if (z.sst_anomaly != null) {
+    const sign = z.sst_anomaly > 0 ? '+' : '';
+    h += `<div style="font-size:11.5px;color:var(--ink-dim);line-height:1.55;margin-top:8px">
+      Sea surface temperature is <span style="font-family:var(--mono)">${sign}${z.sst_anomaly} °C</span>
+      against the local average${z.date ? ', measured ' + shortDate(z.date) + ' ' + z.date.slice(0, 4) : ''}.</div>`;
+  }
+
+  // Coral stress is a different question with a different answer, so it is shown
+  // as its own line rather than being blended into the headline.
+  // Only where the zone has coral reefs: "Coral reefs: watch" on Peru, which has
+  // none, read as a claim about reefs that are not there.
+  const reefs = ((ECO[c.name] || {}).zone || {}).reef_pct_world;
+  if (z.coral != null && reefs > 0) {
+    const clabel = (CLIMATE.coral_labels || {})[z.coral] || '';
+    h += `<div style="margin-top:12px;padding-top:11px;border-top:0.5px solid var(--edge)">
+      <div style="font-size:11.5px;color:var(--ink-dim);line-height:1.55">
+        <b style="font-weight:600">Coral reefs:</b> ${clabel.toLowerCase()}
+        — ${z.dhw} degree heating weeks (${z.dhw_high} in the warmest tenth).
+        Above 4 bleaching becomes likely; above 8, severe bleaching and coral deaths are likely.</div></div>`;
+  }
+
+  h += `<div class="gap-note">Read in one sample area about 130 km across inside the zone, not averaged over the whole zone. The heatwave category compares the sea surface temperature on the day measured with this location's own climatology, so it means the same thing in cold water as in warm. Degree heating weeks is calibrated to coral and is only reported within 35° of the equator.</div>`;
+
+  return { peek: label, peekColor: z.mhw >= 2 ? col : null, body: h };
+}
+
+function paaSection(c) {
+  const p = PAA[c.iso3];
+  if (!p) {
+    return {
+      peek: 'none recorded',
+      body: `<div class="gap-note">No preferential access area recorded. 44 countries and territories have one; this is not among them — though the authors note their count is a lower bound, since an area created outside fisheries law may not appear in the database they searched, and locally bounded community rights are excluded by definition.</div>`
+    };
+  }
+  const reviewed = p.expert_reviewed
+    ? 'Boundary confirmed by a local expert.'
+    : 'Boundary reconstructed from the text of the law, not yet confirmed by a local expert.';
+  // A recorded area that rounds to 0% of the EEZ is still an area.
+  const pct = p.percent_eez == null ? null : (p.percent_eez === 0 ? '<0.01' : p.percent_eez);
+  let h = '';
+  if (c.iso_kind === 'territory') {
+    h += `<div class="gap-note" style="margin-top:0;margin-bottom:10px">Recorded for ${COUNTRY_NAME[c.iso3] || 'the parent country'}. This zone is an island or outlying part of the country, so the designation may not cover these waters.</div>`;
+  }
+  h += `<div class="stats">
+      <div class="stat"><div class="n">${pct != null ? pct + '%' : '—'}</div><div class="l">of the EEZ reserved</div></div>
+      <div class="stat"><div class="n">${p.year || '—'}</div><div class="l">enacted</div></div>
+    </div>`;
+  if (p.area_km2) h += `<div style="font-size:11.5px;color:var(--ink-dim);margin-top:9px">${fmt(p.area_km2)} km², designated at ${String(p.level || '').toLowerCase()} level.</div>`;
+  if (p.excludes) h += `<div style="font-size:12px;color:var(--ink);margin-top:10px;line-height:1.5">${esc(p.excludes)}</div>`;
+  if (p.definition) h += `<div style="font-size:11.5px;color:var(--ink-faint);margin-top:7px;line-height:1.5">Boundary: ${esc(p.definition)}.</div>`;
+  if (p.law) {
+    const m = String(p.law).match(/(https?:\/\/\S+)/);
+    // a single space where the address was: Sierra Leone's two instruments ran together ("2018and")
+    const name = String(p.law).replace(/\s*https?:\/\/\S+\s*/, ' ').replace(/\s+/g, ' ').trim();
+    h += `<div style="font-size:11.5px;margin-top:9px;line-height:1.5">`;
+    if (m) {
+      h += `<a href="${safeUrl(m[1])}" target="_blank" rel="noopener" style="color:var(--paa)">${esc(name) || 'View the law'}</a>`;
+    } else {
+      h += `<span style="color:var(--ink-dim)">${esc(name)}</span>
+            <a href="https://www.fao.org/faolex/search/en/?q=${encodeURIComponent(name.slice(0, 60))}"
+               target="_blank" rel="noopener" style="color:var(--paa);margin-left:5px">find in FAOLEX</a>`;
+    }
+    h += `</div>`;
+  }
+  h += `<div class="gap-note">${reviewed}</div>`;
+  return { peek: pct != null ? pct + '% of EEZ' : 'recorded', body: h };
+}
+
+const PROFILE_LABELS = {
+  government: 'Government',
+  fisher_org: 'Fisher organisations',
+  international_ngo: 'International NGOs and UN agencies',
+  national_ngo: 'Other implementing organisations',
+  donor: 'Donors and funders',
+  research: 'Research',
+  private_sector: 'Private sector',
+  unclassified: 'Not yet classified'
+};
+// Order matters: this is a directory someone reads top to bottom, and the fishers'
+// own organisations belong near the top rather than buried under aid agencies.
+const PROFILE_ORDER = ['government', 'fisher_org', 'international_ngo', 'national_ngo',
+                       'donor', 'research', 'private_sector', 'unclassified'];
+
+function regulatorySection(c) {
+  if (!REG || !REG.countries) return null;
+  const r = REG.countries[c.iso3];
+  if (!r) return null;
+
+  const law = r.access_law;
+  let h = '', peek = [];
+
+  if (c.iso_kind === 'territory') {
+    h += `<div class="gap-note" style="margin-top:0;margin-bottom:10px">This is ${COUNTRY_NAME[c.iso3] || 'the parent country'}'s national framework. This zone is an island or outlying part of the country, so it may be governed separately.</div>`;
+  }
+
+  if (law && law.name) {
+    peek.push(law.year || 'law');
+    h += `<div class="reg">
+      <div class="reg-h">Access law</div>
+      <div class="reg-b">`;
+    h += law.url
+      ? `<a href="${safeUrl(law.url)}" target="_blank" rel="noopener" style="color:var(--paa)">${esc(law.name)}</a>`
+      : `<span>${esc(law.name)}</span>`;
+    if (law.year) h += ` <span class="reg-y">${law.year}</span>`;
+    h += `</div>`;
+    if (law.excludes) h += `<div class="reg-n">Excludes ${String(law.excludes).toLowerCase()}.</div>`;
+    if (law.boundary) {
+      // Only the first letter is lowered: "the 40 meter isobath", not "ofu marine park".
+      const b = String(law.boundary);
+      h += `<div class="reg-n">Boundary: ${esc(b.replace(/\s+/g, ' '))}${law.percent_eez ? `, covering ${law.percent_eez}% of the EEZ` : ''}.</div>`;
+    }
+    if (law.expert_reviewed === false)
+      h += `<div class="reg-n">Boundary reconstructed from the text of the law, not confirmed locally.</div>`;
+    h += `</div>`;
+  } else {
+    h += `<div class="gap-note">No nearshore access law recorded for this country in the Duke dataset — which excludes locally bounded community rights by definition, so a country can govern small-scale access without appearing here.</div>`;
+  }
+
+  if (r.ssf_guidelines) {
+    peek.push('FAO active');
+    h += `<div class="reg">
+      <div class="reg-h">SSF Guidelines</div>
+      <div class="reg-b">FAO reports active support for implementation here.</div></div>`;
+  }
+
+  h += `<div class="reg">
+    <div class="reg-h">Search the law</div>
+    <div class="reg-b"><a href="${safeUrl(r.faolex_search)}" target="_blank" rel="noopener" style="color:var(--paa)">Fisheries legislation for ${esc(r.country)} in FAOLEX</a></div>
+    <div class="reg-n">FAO's database of national fisheries law. Linked rather than harvested — it does not permit automated access.</div>
+  </div>`;
+
+  if (REG.missing && REG.missing.sdg_14_b_1) {
+    h += `<div class="gap-note">Missing: ${REG.missing.sdg_14_b_1}</div>`;
+  }
+
+  return { peek: peek.join(' · ') || 'link only', body: h };
+}
+
+function profileSection(c) {
+  if (!PROFILE || !PROFILE.countries) return null;
+  const p = PROFILE.countries[c.iso3];
+  if (!p) return null;
+
+  const total = Object.values(p).reduce((n, v) => n + v.length, 0);
+  let h = '';
+  PROFILE_ORDER.forEach(cat => {
+    const list = p[cat];
+    if (!list || !list.length) return;
+    const dim = cat === 'unclassified';
+    h += `<div class="pg${dim ? ' dim' : ''}">
+      <div class="pg-h">${PROFILE_LABELS[cat]} <span>${list.length}</span></div>
+      <div class="pg-l">` +
+      list.map((o, i) => `<span class="org" role="button" tabindex="0" aria-expanded="false" data-org="${cat}|${i}" data-iso="${c.iso3}" title="${esc(o.source)}">${esc(o.name)}</span>`).join('') +
+      `</div></div>`;
+  });
+
+  h += `<div class="gap-note">Assembled from the fisher-organisation annex supplied by Rare
+    (compiled from WFFP, ICSF and project files), IATI aid reporting and ISSF. Categories are
+    assigned by rule from names and reported roles: UN agencies are filed with international
+    NGOs, and an implementing body the rules do not recognise is filed under other
+    implementing organisations: mostly national NGOs, but also some agencies and foreign NGOs. Names the rules cannot place
+    at all are left unclassified. Click an entry for its own pages and the fisheries work it
+    is named on here.</div>`;
+
+  const named = (p.government || []).length + (p.fisher_org || []).length;
+  return { peek: `${total} listed`, body: h, count: total, named };
+}
+
+
+// What a click on an organisation opens. Every link here is either a record the
+// atlas already holds an id for (an aid activity, an ISSF record) or a page from
+// the hand-checked table in data/org_links.json. Nothing is guessed: where there
+// is no page on record the box says so and offers a search, labelled as a search.
+function actYears(a) {
+  const y0 = (a.start || '').slice(0, 4), y1 = (a.end || '').slice(0, 4);
+  if (y0 && y1) return y0 === y1 ? y0 : `${y0}–${y1}`;
+  if (y0) return `since ${y0}`;
+  if (y1) return `to ${y1}`;
+  return 'dates not reported';
+}
+function orgDetail(iso, cat, idx) {
+  const o = (((PROFILE || {}).countries || {})[iso] || {})[cat];
+  const org = o && o[idx];
+  if (!org) return '';
+  if (!ACT_BY_ID) {
+    ACT_BY_ID = {};
+    ((ORGS && ORGS.activities) || []).forEach(a => { ACT_BY_ID[a.id] = a; });
+  }
+  const country = COUNTRY_NAME[iso] || iso;
+  const links = [];
+  if (org.ssf) links.push(ext(org.ssf, 'Its fisheries and ocean work'));
+  if (org.site) links.push(ext(org.site, org.site_kind === 'social' ? 'Its social page' : org.site_kind === 'network-profile' ? 'Its profile in a fisher network' : 'Website'));
+  (org.issf || []).forEach(id => links.push(ext(`https://issfcloud.toobigtoignore.net/details/organization/${encodeURIComponent(id)}`, 'Its record in ISSF')));
+  let h = `<div class="org-d-h">${esc(org.name)}</div><div class="org-d-s">Listed from ${esc(org.source)}</div>`;
+  if (links.filter(Boolean).length) h += `<div class="lk">${links.filter(Boolean).join('')}</div>`;
+  const acts = (org.acts || []).map(id => ACT_BY_ID[id]).filter(Boolean)
+    .sort((a, b) => String(b.end || b.start || '').localeCompare(String(a.end || a.start || '')));
+  if (acts.length) {
+    h += `<div class="sec-h" style="margin-bottom:6px">Fisheries work it is named on in ${esc(country)} · ${acts.length}</div><ul>` +
+      acts.slice(0, 6).map(a => {
+        const t = a.title && a.title.length > 110 ? a.title.slice(0, 108) + '…' : (a.title || '(untitled activity)');
+        return `<li>${ext('https://d-portal.org/ctrack.html#view=act&aid=' + encodeURIComponent(a.id), esc(t))}
+          <div class="meta">${actYears(a)} · reported by ${esc(a.reporter || 'not stated')}</div></li>`;
+      }).join('') + `</ul>`;
+    if (acts.length > 6) h += `<div class="meta">and ${acts.length - 6} more in the aid registry</div>`;
+  }
+  if (!links.filter(Boolean).length && !acts.length) {
+    h += `No public page is on record for this organisation. ${ext('https://duckduckgo.com/?q=' + encodeURIComponent(org.name + ' ' + country), 'Search the web for it')}`;
+  }
+  return h;
+}
+function toggleOrg(chip) {
+  const body = document.getElementById('panel-body');
+  const wasOpen = chip.classList.contains('on');
+  body.querySelectorAll('.org-d').forEach(el => el.remove());
+  body.querySelectorAll('.org.on').forEach(el => { el.classList.remove('on'); el.setAttribute('aria-expanded', 'false'); });
+  if (wasOpen) return;
+  const [cat, idx] = chip.dataset.org.split('|');
+  const html = orgDetail(chip.dataset.iso, cat, +idx);
+  if (!html) return;
+  const box = document.createElement('div');
+  box.className = 'org-d';
+  box.innerHTML = html;
+  chip.classList.add('on');
+  chip.setAttribute('aria-expanded', 'true');
+  // On its own row right under the chip that opened it, not at the end of a
+  // forty-entry list where nobody would see it.
+  chip.after(box);
+}
+
+// ---------------------------------------------------------------------------
+// News. Headlines are national, machine-collected and unread; the section says all three.
+const LANG_WORD = { en: 'English', es: 'Spanish', pt: 'Portuguese', fr: 'French', id: 'Indonesian' };
+// A name for any language code the feed might carry, never the bare code.
+const langWord = c => LANG_WORD[c] || (() => { try { return new Intl.DisplayNames(['en'], { type: 'language' }).of(c); } catch (e) { return c; } })();
+// ---------------------------------------------------------------------------
+// Headlines in the reader's language.
+//
+// Two layers. The build translates every non-English headline into English once
+// (title_en), so an English reader gets English in any browser. A reader whose
+// browser speaks another language gets the headline in that language from the
+// browser's own built-in translator, where it has one; where it does not, they
+// see the English version, or the original.
+//
+// A translation is never passed off as the headline: it is always marked, and the
+// original is one click away.
+// The language part of the browser's first choice: "es-ES" -> "es", "fil-PH" -> "fil".
+// (Taking the first two letters would have read Filipino as Finnish.)
+const READER = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase().split('-')[0] || 'en';
+const READER_WORD = (() => { try { return new Intl.DisplayNames(['en'], { type: 'language' }).of(READER); } catch (e) { return READER; } })();
+const BROWSER_TR = {};     // "es>en|original headline" -> translation made in this browser
+
+function newsItem(scope, i) {
+  return scope === 'enso' ? ((NEWS_META && NEWS_META.enso) || [])[i] : (NEWS[scope] || [])[i];
+}
+// What to show for a headline right now: the text, and whether it is a translation.
+function shownTitle(n) {
+  const src = n.lang || 'en';
+  if (src === READER) return { text: n.title, from: null };
+  const mine = BROWSER_TR[`${src}>${READER}|${n.title}`];
+  if (mine) return { text: mine, from: src, by: 'browser' };
+  if (READER === 'en' && n.title_en) return { text: n.title_en, from: src, by: 'build' };
+  if (src !== 'en' && n.title_en && READER !== src) return { text: n.title_en, from: src, by: 'build' };
+  return { text: n.title, from: null };
+}
+function headlineHtml(n, scope, i) {
+  const t = shownTitle(n);
+  const original = t.from ? ` title="Original headline: ${esc(n.title)}"` : '';
+  return `<span class="hl" data-scope="${esc(scope)}" data-i="${i}"${original} lang="${t.from ? (t.by === 'browser' ? READER : 'en') : esc(n.lang || 'en')}">${esc(t.text)}</span>`;
+}
+// The note that goes in the line under a headline: what language it was written in,
+// whether what you are reading is a translation, and the switch back to the original.
+// It always sits in a .tr-slot holder, so that a translation the browser makes
+// later has somewhere to put its mark. Without the holder a browser-made
+// translation replaced the headline while the line under it still said
+// "in Spanish", with no way back to the original.
+function translationNote(n, scope, i) {
+  const t = shownTitle(n);
+  const word = langWord(n.lang || 'en');
+  if (!t.from) return (n.lang || 'en') !== READER ? ' · in ' + word : '';
+  const who = t.by === 'browser' ? ' by your browser' : '';
+  return ` · <span class="tr" role="button" tabindex="0" data-scope="${esc(scope)}" data-i="${i}" data-state="translated">translated from ${word || t.from}${who} · show original</span>`;
+}
+const noteSlot = (n, scope, i) => `<span class="tr-slot" data-scope="${esc(scope)}" data-i="${i}">${translationNote(n, scope, i)}</span>`;
+function toggleOriginal(el) {
+  const n = newsItem(el.dataset.scope, +el.dataset.i);
+  if (!n) return;
+  const hl = el.closest('li, .en-item') && [...el.closest('li, .en-item').querySelectorAll('.hl')]
+    .find(h => h.dataset.scope === el.dataset.scope && h.dataset.i === el.dataset.i);
+  if (!hl) return;
+  const showing = el.dataset.state === 'translated';
+  const t = shownTitle(n);
+  hl.textContent = showing ? n.title : t.text;
+  hl.lang = showing ? (n.lang || 'en') : (t.by === 'browser' ? READER : 'en');
+  el.dataset.state = showing ? 'original' : 'translated';
+  const word = langWord(n.lang || 'en');
+  el.textContent = showing ? `the original, in ${word} · show translation`
+    : `translated from ${word}${t.by === 'browser' ? ' by your browser' : ''} · show original`;
+}
+
+// The browser's own translator (Chrome's built-in Translator API), for a reader
+// whose language the build did not translate into. Everything here can fail or
+// never answer - the API is missing in most browsers, a language pack may need
+// downloading, the embedded browser this was tested in never resolved the
+// availability check - so every step races a timer and failure changes nothing.
+const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error('timeout')), ms))]);
+const TRANSLATORS = {};
+async function browserTranslator(src, userGesture) {
+  if (!('Translator' in self)) return null;
+  const key = `${src}>${READER}`;
+  if (key in TRANSLATORS) return TRANSLATORS[key];
+  try {
+    const state = await withTimeout(Translator.availability({ sourceLanguage: src, targetLanguage: READER }), 4000);
+    if (state === 'unavailable') return (TRANSLATORS[key] = null);
+    // A language pack that still has to be downloaded may only be fetched on a click.
+    if (state !== 'available' && !userGesture) return null;
+    return (TRANSLATORS[key] = await withTimeout(Translator.create({ sourceLanguage: src, targetLanguage: READER }), 60000));
+  } catch (e) { return userGesture ? (TRANSLATORS[key] = null) : null; }
+}
+async function translateHeadlines(root, userGesture) {
+  if (!root || !('Translator' in self)) return;
+  for (const hl of root.querySelectorAll('.hl')) {
+    const n = newsItem(hl.dataset.scope, +hl.dataset.i);
+    if (!n) continue;
+    const src = n.lang || 'en';
+    if (src === READER) continue;
+    if (READER === 'en' && n.title_en) continue;          // the build already did this one
+    const key = `${src}>${READER}|${n.title}`;
+    if (!BROWSER_TR[key]) {
+      const tr = await browserTranslator(src, userGesture);
+      if (!tr) continue;
+      try { BROWSER_TR[key] = await withTimeout(tr.translate(n.title), 15000); } catch (e) { continue; }
+    }
+    if (!BROWSER_TR[key] || !hl.isConnected) continue;
+    hl.textContent = BROWSER_TR[key];
+    hl.lang = READER;
+    hl.title = 'Original headline: ' + n.title;
+    const holder = hl.closest('li, .en-item');
+    const slot = holder && [...holder.querySelectorAll('.tr-slot')].find(x => x.dataset.scope === hl.dataset.scope && x.dataset.i === hl.dataset.i);
+    if (slot) slot.innerHTML = translationNote(n, hl.dataset.scope, +hl.dataset.i);
+  }
+}
+function newsSection(c) {
+  if (!NEWS_META) return null;
+  const items = NEWS[c.iso3] || [];
+  const country = COUNTRY_NAME[c.iso3] || c.name;
+  const days = NEWS_META.window_days || 60;
+  // When each country's search last answered comes from the build; a country the
+  // search missed keeps its earlier headlines and says so on its own page.
+  const searchedOn = (NEWS_META.searched || {})[c.iso3];
+  const stale = !!(searchedOn && NEWS_META.generated && searchedOn !== NEWS_META.generated);
+  const notReached = ((NEWS_META.carried_over || {}).not_reached || []).includes(c.iso3);
+  if (!items.length) {
+    const why = notReached
+      ? `The news search did not answer for ${esc(country)} on ${shortDate(NEWS_META.generated)}, no earlier headlines were on file, and the sector feeds named it in nothing.`
+      : `No fisheries headline naming ${esc(country)} turned up in the last ${days} days, in the news search or the sector feeds. Small places go quiet for months at a time.`;
+    return { peek: `none in ${days} days`, body: `<div class="gap-note" style="margin-top:0">${why}</div>` };
+  }
+  let h = `<div class="news"><ul>` + items.map((n, i) => {
+    const bits = [esc(n.publisher || ''), shortDate(n.date)];
+    return `<li>${ext(n.url, headlineHtml(n, c.iso3, i)) || headlineHtml(n, c.iso3, i)}<div class="meta">${bits.filter(Boolean).join(' · ')}${noteSlot(n, c.iso3, i)}</div></li>`;
+  }).join('') + `</ul></div>`;
+  const when = stale
+    ? `The news search last answered for ${esc(country)} on ${shortDate(searchedOn)} and did not answer on ${shortDate(NEWS_META.generated)}, so its search headlines are from ${shortDate(searchedOn)}; any feed items are from ${shortDate(NEWS_META.generated)}. All were filtered by keyword.`
+    : `Headlines for ${esc(country)}, collected automatically (last run ${shortDate(NEWS_META.generated)}) from a news search and fisheries news feeds, then filtered by keyword.`;
+  h += `<div class="gap-note">${when} Nobody has read them: a headline here is a pointer, not an endorsement. Headlines written in another language are shown in machine translation where one has been made, and marked; click the mark to read the original.</div>`;
+  return { peek: `${items.length} · latest ${shortDate(items[0].date)}`, body: h };
+}
+
+function orgSection(c) {
+  const have = ORGS && ORGS.by_country && ORGS.by_country[c.iso3];
+  const issf = ISSF && ISSF.by_country && ISSF.by_country[c.iso3];
+  if (!have && !issf) return null;
+
+  let h = '', peekBits = [];
+
+  if (have) {
+    const byId = {};
+    ORGS.activities.forEach(a => { byId[a.id] = a; });
+    const acts = have.map(i => byId[i]).filter(Boolean);
+    // One count per activity an organisation is named on, whatever its roles -
+    // funding and implementing the same project is one project, not two.
+    const tally = {};
+    acts.forEach(a => {
+      const seen = new Set();
+      ['implementing', 'funding'].forEach(role => {
+        ((a.orgs && a.orgs[role]) || []).forEach(o => {
+          const k = o.trim();
+          // Publishers' placeholders are not organisations.
+          if (!k || seen.has(k) || /^(name withheld|not reported)$/i.test(k)) return;
+          seen.add(k);
+          tally[k] = (tally[k] || 0) + 1;
+        });
+      });
+    });
+    const top = Object.entries(tally).sort((a, b) => b[1] - a[1]).slice(0, 7);
+    // No end date means the record does not say it has finished.
+    const active = acts.filter(a => !a.end || a.end >= '2020-01-01').length;
+    const located = acts.filter(a => a.locations && a.locations.length).length;
+    peekBits.push(`${acts.length} activit${acts.length === 1 ? 'y' : 'ies'}`);
+
+    h += `<div class="stats">
+        <div class="stat"><div class="n">${acts.length}</div><div class="l">reported fisheries activities</div></div>
+        <div class="stat"><div class="n">${active}</div><div class="l">running in 2020 or later, or with no end date</div></div>
+      </div>`;
+    h += `<div style="margin-top:11px"><div class="sec-h" style="margin-bottom:6px">Most-named organisations · activities</div>` + top.map(([name, n]) =>
+      `<div class="bar-lab" style="margin-bottom:5px"><span>${esc(name.length > 36 ? name.slice(0, 35) + '…' : name)}</span><span>${n}</span></div>`
+    ).join('') + `</div>`;
+    h += `<div class="gap-note">${located} of ${acts.length} carry map coordinates. IATI records aid-funded work, so organisations financed by private philanthropy — including most conservation NGOs — are largely absent.</div>`;
+  }
+
+  if (issf) {
+    const bits = [];
+    if (issf.profile) bits.push(`${issf.profile} fishery profile${issf.profile > 1 ? 's' : ''}`);
+    if (issf.organization) bits.push(`${issf.organization} organisation${issf.organization > 1 ? 's' : ''}`);
+    if (issf.blue_justice) bits.push(`${issf.blue_justice} blue justice case${issf.blue_justice > 1 ? 's' : ''}`);
+    if (issf.case_study) bits.push(`${issf.case_study} case stud${issf.case_study > 1 ? 'ies' : 'y'}`);
+    if (bits.length) {
+      const nIssf = (issf.profile || 0) + (issf.organization || 0) + (issf.blue_justice || 0) + (issf.case_study || 0);
+      peekBits.push(`${nIssf} ISSF record${nIssf === 1 ? '' : 's'}`);
+      h += `<div style="margin-top:${have ? '13px' : '0'};padding-top:${have ? '11px' : '0'};${have ? 'border-top:0.5px solid var(--edge)' : ''}">
+        <div style="font-size:11.5px;color:var(--ink-dim);line-height:1.55">
+          <span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--issf);margin-right:5px"></span>
+          In ISSF: ${bits.join(', ')}.
+        </div>
+        <div style="font-size:11px;color:var(--ink-faint);margin-top:5px;line-height:1.5">
+          Crowdsourced by researchers, so it catches NGOs that aid reporting misses — but largely
+          dormant: nearly half of its records date from 2014–2016. On the map, faint points
+          (from either source) have no site of their own: the country is right, the location is not.
+        </div></div>`;
+    }
+  }
+
+  return { peek: peekBits.join(' · '), body: h };
+}
+
+function fleetSection(c) {
+  const f = FLEETS[c.name];
+  if (!f) return null;
+
+  let h = `<div class="stats">
+      <div class="stat"><div class="n">${f.foreign_pct}%</div><div class="l">taken by foreign fleets</div></div>
+      <div class="stat"><div class="n">${f.domestic_pct}%</div><div class="l">by this country's own fleet</div></div>
+    </div>`;
+  // In a territory the parent country's fleet has its own code and counts as foreign:
+  // China's fleet is all of Hong Kong's "foreign" share. Say so where it happens.
+  const paren = (c.name.match(/\(([^)]+)\)\s*$/) || [])[1];
+  const parentFleet = paren && (f.top_fleets || []).find(fl => fl.iso3 && fl.iso3 !== c.iso3 &&
+    (fl.fleet === paren || COUNTRY_NAME[fl.iso3] === paren || fl.iso3 === paren));
+  if (parentFleet) h += `<div class="reg-n" style="margin-top:8px">${esc(parentFleet.fleet)}'s own fleet counts as foreign here: ${parentFleet.pct}% of the catch.</div>`;
+
+  if (f.top_fleets && f.top_fleets.length) {
+    h += `<div style="margin-top:12px"><div class="sec-h" style="margin-bottom:8px">Largest foreign fleets</div>`;
+    f.top_fleets.forEach(fl => {
+      h += `<div class="bar-row">
+        <div class="bar-lab"><span>${fl.fleet}</span><span>${fl.pct}% · ${fmt(fl.t)} t</span></div>
+        <div class="bar"><i style="width:${Math.min(100, fl.pct)}%;background:#565a96"></i></div></div>`;
+    });
+    h += `</div>`;
+  }
+
+  if (f.unknown_pct > 0.5) {
+    h += `<div style="font-size:11.5px;color:var(--ink-dim);margin-top:9px;line-height:1.55">
+      A further <b style="font-weight:600">${f.unknown_pct}%</b> (${fmt(f.unknown_t)} t) is attributed to no
+      identified fleet. It is counted as neither domestic nor foreign here.</div>`;
+  }
+
+  h += `<div class="gap-note">Catch taken inside this zone by fleets of other nationalities, averaged over the last five years of record. A reconstruction, not a landings record — and it does not distinguish licensed access from unlicensed fishing.</div>`;
+
+  return { peek: `${f.foreign_pct}% foreign`, body: h };
+}
+
+function catchSection(c) {
+  const sectors = c.sectors || {};
+  const total = Object.values(sectors).reduce((a, b) => a + b, 0);
+  if (!total) return null;
+  let h = '';
+  Object.entries(sectors).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => {
+    if (v <= 0) return;
+    const pct = 100 * v / total;
+    h += `<div class="bar-row">
+      <div class="bar-lab"><span>${k}</span><span>${pct.toFixed(1)}% · ${fmt(v)} t</span></div>
+      <div class="bar"><i style="width:${pct.toFixed(1)}%;background:${SECTOR_COLOR[k] || '#98a3a8'}"></i></div></div>`;
+  });
+  if (c.history && c.history.length > 3) {
+    h += `<div style="margin-top:13px"><div class="sec-h" style="margin-bottom:7px">Small-scale share over time</div>${sparkline(c.history, c.years)}</div>`;
+  }
+  // A share of exactly 0 or 100 is usually true - nobody lives on Bouvet Island,
+  // and no trawler works the Canadian Arctic - but a flat line for seventy
+  // years looks invented, so the page says what the record actually holds:
+  // which sectors are present, which round away, and which series went quiet
+  // and when.
+  const unknown = c.unknown_sectors || [];
+  const since = c.unknown_since || {};
+  const has = k => (sectors[k] || 0) > 0;
+  const listOf = arr => {
+    const a = arr.map(s => s.toLowerCase());
+    return a.length > 1 ? a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1] : (a[0] || '');
+  };
+  const present = listOf(Object.keys(sectors).filter(has));
+  // unknown_since is the last year the series had a value, so "after".
+  const quiet = unknown.length
+    ? unknown.map(s => `the ${s.toLowerCase()} series has no values after ${since[s] || 'the start of the record'}`).join(' and ')
+    : '';
+  const tonnes = v => v < 1 ? 'under a tonne' : fmt(v) + ' t';
+  const ss = (sectors.Artisanal || 0) + (sectors.Subsistence || 0);
+  const ind = sectors.Industrial || 0;
+  // Key the notes on the figure the hero actually shows: Oman is 99.6% and
+  // prints "100%", so it gets the "rounds to zero" explanation too.
+  const shown = +c.ssf_share.toFixed(0);
+  let note = '';
+  if (shown === 100) {
+    if (ind > 0) note = `Industrial catch here rounds to zero: ${tonnes(ind)} against ${fmt(ss)} t of artisanal and subsistence catch.${quiet ? ` Also, ${quiet}.` : ''}`;
+    else if (unknown.includes('Industrial')) note = `Only ${present} catch is recorded for recent years: ${quiet}, so this is a share of the known catch, not proof that no industrial fleet fishes here.`;
+    else note = `Everything caught here is recorded as ${present} catch: Sea Around Us records no industrial catch inside this zone, to the nearest tonne.${quiet ? ` Also, ${quiet}.` : ''}`;
+  } else if (shown === 0) {
+    if (ss > 0) note = `Small-scale catch here rounds to zero: ${tonnes(ss)} of artisanal and subsistence catch against ${fmt(ind)} t industrial.${quiet ? ` Also, ${quiet}.` : ''}`;
+    else if (unknown.some(s => s === 'Artisanal' || s === 'Subsistence')) note = `Only ${present} catch is recorded for recent years: ${quiet}, so this is a share of the known catch, not proof that nobody fishes small-scale here.`;
+    else note = `Sea Around Us records no small-scale sector in this zone, only ${present} fleets — waters with no resident fishery.${quiet ? ` Also, ${quiet}.` : ''}`;
+  } else if (unknown.length) {
+    note = `${quiet.charAt(0).toUpperCase() + quiet.slice(1)}, so the share is of the known catch.`;
+  }
+  if (note) h += `<div class="gap-note">${note}</div>`;
+  // "Largest", not "-led": the Philippines is 51% small-scale and its largest
+  // single sector is still industrial, because small-scale is two sectors.
+  const top = Object.entries(sectors).sort((a, b) => b[1] - a[1])[0];
+  return { peek: top ? `largest: ${top[0].toLowerCase()}` : '', body: h };
+}
+
+
+// ---------------------------------------------------------------------------
+// What the catch is worth. Sea Around Us prices every tonne it reconstructs, so
+// the small-scale share can be read in dollars as well as tonnes. One renderer
+// serves a zone and a country: the country's figures are sums across its zones.
+const usdShort = n => {
+  if (n == null) return '—';
+  const a = Math.abs(n);
+  if (a >= 1e9) return '$' + (n / 1e9).toFixed(a >= 1e10 ? 0 : 1) + 'B';
+  if (a >= 1e6) return '$' + (n / 1e6).toFixed(a >= 1e7 ? 0 : 1) + 'M';
+  if (a >= 1e3) return '$' + Math.round(n / 1e3) + 'K';
+  return '$' + Math.round(n);
+};
+
+// Diet and GDP describe a country, not a coastline. A territory does not inherit
+// its parent's; one zone of several says the figure is national.
+function nationalValueStats(c) {
+  if (c.iso_kind === 'territory') return '';
+  const n = VALUE_NAT[c.iso3];
+  if (!n) return '';
+  const tag = '';
+  let cells = '';
+  if (n.fish_kg != null) {
+    const w = VALUE_WORLD && VALUE_WORLD.fish_kg != null ? ` World: ${VALUE_WORLD.fish_kg} kg${VALUE_WORLD.fish_year ? ' in ' + VALUE_WORLD.fish_year : ''}.` : '';
+    cells += `<div class="stat"><div class="n">${n.fish_kg} kg</div><div class="l">of fish and seafood per person a year, ${n.fish_year} food supply.${w}${tag}</div></div>`;
+  }
+  if (n.gdp) {
+    const g = n.gdp;
+    const was = g.first_year !== g.year ? ` It was ${g.first_pct}% in ${g.first_year}.` : '';
+    cells += `<div class="stat"><div class="n">${g.pct}%</div><div class="l">of GDP from sustainable fisheries, ${g.year}.${was}${tag}</div></div>`;
+  }
+  return nationalBlock(c, cells);
+}
+
+// A second opinion for the Pacific islands, from the Pacific Community's own
+// valuation study. Different method, different year, nominal dollars: shown beside
+// the Sea Around Us figures, never blended into them.
+function pacificBlock(p) {
+  const national = p.zones_covered > 1 ? ` These are figures for all of ${esc(p.entity)}, not this zone alone.` : '';
+  let h = `<div style="margin-top:14px;padding-top:12px;border-top:0.5px solid var(--edge)">
+    <div class="sec-h" style="margin-bottom:8px">A second estimate · Pacific Community, ${p.year}</div>
+    <div class="stats">
+      <div class="stat"><div class="n">${fmt(p.coastal_t)} t</div><div class="l">coastal catch, the small-scale sector here. ${fmt(p.subsistence_t)} t of it for the household pot</div></div>
+      <div class="stat"><div class="n">${usdShort(p.coastal_usd)}</div><div class="l">its value${p.coastal_usd_per_t ? `, about $${fmt(p.coastal_usd_per_t)} a tonne` : ''}</div></div>
+    </div>`;
+  // Each offshore fleet on its own terms: Fiji has no foreign-based offshore
+  // fleet but a real locally based one, and the first version dropped it.
+  const offshore = [];
+  if (p.offshore_foreign_t > 0) offshore.push(`foreign-based offshore fleets took ${fmt(p.offshore_foreign_t)} t worth ${usdShort(p.offshore_foreign_usd)}`);
+  if (p.offshore_local_t > 0) offshore.push(`locally based offshore boats ${fmt(p.offshore_local_t)} t worth ${usdShort(p.offshore_local_usd)}`);
+  if (offshore.length) {
+    const line = offshore.join('; ');
+    h += `<div style="font-size:11.5px;color:var(--ink-dim);margin-top:9px;line-height:1.55">${line[0].toUpperCase() + line.slice(1)}.</div>`;
+  }
+  h += `<div class="reg-n" style="margin-top:7px">From fisheries agency reports and household surveys, in ${p.year} US dollars, so not directly comparable with the 2010-dollar figures above. The authors call the factual basis weak for several countries.${national} ${ext('https://www.spc.int/DigitalLibrary/Doc/FAME/Manuals/Gillett_23_Benefish4.html', 'Gillett and Fong 2023, Pacific Community')}</div></div>`;
+  return h;
+}
+
+function valueBody(d, c) {
+  // Doubt about the numbers comes before the numbers.
+  let h = d.suspect ? `<div class="gap-note" style="margin:0 0 10px">${d.suspect}</div>` : '';
+  h += `<div class="stats">
+      <div class="stat"><div class="n">${usdShort(d.value_usd)}</div><div class="l">landed value a year, in 2010 US dollars</div></div>
+      <div class="stat"><div class="n">${d.shareV.toFixed(0)}%</div><div class="l">of that value is small-scale</div></div>
+    </div>`;
+  if (d.shareT != null) {
+    h += `<div style="margin-top:12px">
+      <div class="bar-row"><div class="bar-lab"><span>Small-scale share of tonnes</span><span>${d.shareT.toFixed(1)}%</span></div>
+        <div class="bar"><i style="width:${Math.min(100, d.shareT)}%;background:#98a3a8"></i></div></div>
+      <div class="bar-row"><div class="bar-lab"><span>Small-scale share of value</span><span>${d.shareV.toFixed(1)}%</span></div>
+        <div class="bar"><i style="width:${Math.min(100, d.shareV)}%;background:#2f7d91"></i></div></div></div>`;
+  }
+  const p = d.price || {};
+  if (p.ssf != null || p.industrial != null) {
+    h += `<div class="stats" style="margin-top:3px">
+      <div class="stat"><div class="n">${p.ssf != null ? '$' + fmt(p.ssf) : '—'}</div><div class="l">per tonne, small-scale catch</div></div>
+      <div class="stat"><div class="n">${p.industrial != null ? '$' + fmt(p.industrial) : '—'}</div><div class="l">per tonne, industrial catch</div></div>
+    </div>`;
+  }
+  if (d.foreignV != null) {
+    h += `<div style="font-size:11.5px;color:var(--ink-dim);margin-top:10px;line-height:1.55">
+      Foreign fleets take <b style="font-weight:600">${d.foreignV}%</b> of the value${d.foreignT != null ? ` and ${d.foreignT}% of the tonnes` : ''}.${
+      d.unknownV > 0.5 ? ` A further ${d.unknownV}% of the value has no identified fleet.` : ''}</div>`;
+  }
+  if (d.pacific) h += pacificBlock(d.pacific);
+  h += nationalValueStats(c);
+  if (d.unknown && d.unknown.length) {
+    h += `<div class="gap-note">The ${d.unknown.map(x => x.toLowerCase()).join(' and ')} series has no values in these years${c.iso_kind === 'country' && (((COUNTRY_AGG[c.iso3] || {}).zones || []).length > 1) ? ' in at least one of the zones behind this' : ''}, so this is a share of the known value.</div>`;
+  }
+  h += `<div class="gap-note">${d.scope} Landed value is Sea Around Us's estimate: reconstructed catch priced from a global database of prices at the dock. An estimate, not sales records.</div>`;
+  h += `<div class="src-l">Sources: ${d.links.join(' · ')}</div>`;
+  return h;
+}
+
+const SDG_PROFILE = iso => `<a href="https://unstats.un.org/sdgs/dataportal/countryprofiles/${iso}" target="_blank" rel="noopener">UN SDG 14.7.1</a>`;
+const OWID_FISH = `<a href="https://ourworldindata.org/grapher/fish-and-seafood-consumption-per-capita" target="_blank" rel="noopener">FAO food balance sheets via Our World in Data</a>`;
+
+function valueSection(c) {
+  const v = VALUE[c.name];
+  if (!v) return null;
+  const fl = FLEETS[c.name];
+  const links = [`<a href="https://www.seaaroundus.org/data/#/eez/${c.region_id}" target="_blank" rel="noopener">Sea Around Us, this zone</a>`];
+  if (c.iso_kind !== 'territory' && VALUE_NAT[c.iso3]) {
+    if (VALUE_NAT[c.iso3].fish_kg != null) links.push(OWID_FISH);
+    if (VALUE_NAT[c.iso3].gdp) links.push(SDG_PROFILE(c.iso3));
+  }
+  return {
+    peek: v.suspect_price ? 'prices doubtful' : `${v.ssf_value_share.toFixed(0)}% of value`,
+    body: valueBody({
+      value_usd: v.value_usd, shareV: v.ssf_value_share, shareT: c.ssf_share,
+      price: v.usd_per_t,
+      foreignV: v.fleets ? v.fleets.foreign_value_pct : null,
+      unknownV: v.fleets ? v.fleets.unknown_value_pct : 0,
+      foreignT: fl ? fl.foreign_pct : null,
+      unknown: v.unknown_sectors,
+      pacific: v.pacific || null,
+      suspect: v.suspect_price ? `Sea Around Us prices the ${v.suspect_price.join(' and ')} catch here at under $200 a tonne. Half of all zones price small-scale catch between about $1,200 and $3,400 a tonne, so this is more likely a gap in the price data than a real price. Read the value figures here with caution; the map leaves this zone uncoloured by value.` : '',
+      scope: `Averaged over ${v.years[0]}–${v.years[1]}.`,
+      links
+    }, c)
+  };
+}
+
+function countryValueSection(iso, a, c) {
+  const doubt = (a.suspect_value || []).length
+    ? `Left out of these figures because Sea Around Us's prices there are not believable: ${a.suspect_value.join(', ')}.` : '';
+  if (a.value_usd == null) {
+    if (!doubt) return null;
+    const own = a.zones.map(z => (VALUE[z] || {}).pacific).filter(Boolean);
+    const second = own.length && own.every(p => p.entity === own[0].entity) ? pacificBlock(Object.assign({}, own[0], { zones_covered: 1 })) : '';
+    return { peek: 'not reliable', body: `<div class="gap-note" style="margin-top:0">${doubt} Open a zone to see the numbers with that caution.</div>${second}` };
+  }
+  const links = [`<a href="https://www.seaaroundus.org/data/#/eez" target="_blank" rel="noopener">Sea Around Us</a>`];
+  if (VALUE_NAT[iso]) {
+    if (VALUE_NAT[iso].fish_kg != null) links.push(OWID_FISH);
+    if (VALUE_NAT[iso].gdp) links.push(SDG_PROFILE(iso));
+  }
+  return {
+    peek: `${a.ssf_value_share.toFixed(0)}% of value`,
+    body: valueBody({
+      value_usd: a.value_usd, shareV: a.ssf_value_share, shareT: a.ssf_share,
+      price: a.usd_per_t,
+      foreignV: a.foreign_value_pct, unknownV: a.unknown_value_pct || 0, foreignT: a.foreign_pct,
+      // a sector with no values in any of the zones behind the number
+      unknown: [...new Set(a.zones.flatMap(z => (VALUE[z] || {}).unknown_sectors || []))],
+      pacific: (() => {
+        // only when every one of the country's own zones carries the same national estimate
+        const own = a.zones.filter(z => (COUNTRIES[z] || {}).iso_kind !== 'territory').map(z => (VALUE[z] || {}).pacific);
+        return own.length && own.every(p => p && p.entity === own[0].entity) ? Object.assign({}, own[0], { zones_covered: 1 }) : null;
+      })(),
+      suspect: doubt,
+      scope: `Summed in dollars across this country's ${a.zones.length} ocean zone${a.zones.length > 1 ? 's' : ''}, last five years of record.`,
+      links
+    }, c)
+  };
+}
+
+// ---------------------------------------------------------------------------
+// The state of the sea the fishery depends on. Stock status and the species
+// list are per ocean zone; mangroves and protected waters are national.
+const STATUS_ORDER = ['Rebuilding', 'Developing', 'Exploited', 'Over-exploited', 'Collapsed'];
+const STATUS_COLOR = { 'Rebuilding':'#3f8f7a', 'Developing':'#a9d3c8', 'Exploited':'#e5c46b', 'Over-exploited':'#dc8a4a', 'Collapsed':'#9e1f28' };
+const CAT_WORD = { CR: 'Critically endangered', EN: 'Endangered', VU: 'Vulnerable' };
+const CAT_COLOR = { CR: '#b3261e', EN: '#e07b39', VU: '#d9b43a' };
+
+// From the unrounded shares where the build has them: adding the two one-decimal
+// shares put Cambodia at 69% when it is 68.5%.
+const depleted = s => s.depleted_pct != null ? s.depleted_pct : (s.by_count['Over-exploited'] || 0) + (s.by_count['Collapsed'] || 0);
+
+// The shares are of the populations classified in that year. The number on record
+// since 1950 is larger and is shown separately: Sudan's 2019 bar is eighths, eight
+// populations, while eleven are on record. See count_classified in
+// scripts/fetch_ecosystem.py for how the year's count is recovered from the shares.
+function stockBlock(s) {
+  const parts = STATUS_ORDER.filter(k => (s.by_count[k] || 0) > 0);
+  const counted = s.n_year != null ? `${s.n_year} fish populations` : 'fish populations';
+  // When the year's count cannot be recovered the warning says exactly that: a
+  // year wholly in one category fits every count, so "very few" would be a guess.
+  let warn = '';
+  if (s.n_year != null) {
+    if (s.n_year < 10) warn = `Only ${s.n_year} fish populations were classified here in ${s.year}, so read the bar loosely.`;
+  } else if (s.n_year_min === 1 && s.n_year_max === s.n) {
+    warn = `Every classified population fell in one category in ${s.year}, so the shares do not say how many were classified; read the bar loosely.`;
+  } else if (s.n_year_min != null && s.n_year_min < 10) {
+    warn = `The ${s.year} shares fit as few as ${s.n_year_min} of the ${s.n} fish populations on record, so read the bar loosely.`;
+  } else if (s.n_year_min == null && s.n < 10) {
+    warn = `Only ${s.n} fish populations are on record here, so read the bar loosely.`;
+  }
+  return `<div class="bar-lab" style="margin-bottom:5px"><span>State of ${counted} in ${s.year}, judged from catch</span><span>${fmt(s.n)} on record since 1950</span></div>
+    <div class="stack">${parts.map(k => `<i style="width:${s.by_count[k]}%;background:${STATUS_COLOR[k]}" title="${k} ${s.by_count[k]}%"></i>`).join('')}</div>
+    <div class="stack-key">${parts.map(k => `<span><i style="background:${STATUS_COLOR[k]}"></i>${k} ${s.by_count[k].toFixed(0)}%</span>`).join('')}</div>` +
+    (warn ? `<div class="reg-n">${warn}</div>` : '');
+}
+
+function speciesBlock(t, zone) {
+  const reef = zone && zone.reef_pct_world;
+  // Aruba's 0.01% used to print as "0.0%", which reads as no reef at all.
+  const reefTxt = reef >= 10 ? reef.toFixed(0) : reef >= 0.1 ? reef.toFixed(1) : reef >= 0.01 ? reef.toFixed(2) : '';
+  const second = reef >= 0.01
+    ? `<div class="stat"><div class="n">${reefTxt}%</div><div class="l">of the world's tropical coral reefs are in this zone</div></div>`
+    : (zone && zone.shelf_km2 ? `<div class="stat"><div class="n">${fmt(zone.shelf_km2)}</div><div class="l">km² of continental shelf</div></div>` : '');
+  if (!t.total) {
+    return `<div class="stats" style="margin-top:12px"><div class="stat"><div class="n">0</div><div class="l">threatened species recorded here</div></div>${second}</div>
+      <div class="reg-n">No threatened species are on record for these waters in OBIS. In remote waters that usually means nobody has looked, not that nothing is there.</div>`;
+  }
+  let h = `<div class="stats" style="margin-top:12px">
+      <div class="stat"><div class="n">${fmt(t.total)}</div><div class="l">threatened species recorded in these waters${t.cr ? ` · ${t.cr} critically endangered` : ''}</div></div>${second}</div>`;
+  if (t.species && t.species.length) {
+    // the category is written on each chip as well as coloured, so it survives a
+    // phone (no hover) and red-green colour blindness
+    h += `<div class="sp-l">` + t.species.map(sp =>
+      `<a class="sp" href="https://obis.org/taxon/${encodeURIComponent(sp.id)}" target="_blank" rel="noopener" title="${esc(sp.sci)} · ${CAT_WORD[sp.cat]} · ${fmt(sp.records)} records here"><i style="background:${CAT_COLOR[sp.cat]}"></i>${sp.common ? esc(sp.common) : `<em>${esc(sp.sci)}</em>`}<span class="sp-c">${sp.cat}</span></a>`
+    ).join('') + `</div>`;
+  }
+  h += groupBars(t);
+  return h;
+}
+
+// The list by animal group: one thin bar each, split by Red List category, all
+// drawn to the same scale so the bars compare. The sentence under them names where
+// the critically endangered species sit when one group holds most of them.
+function groupBars(t) {
+  const rows = (t.by_group || []).filter(g => g[0] !== 'other').slice(0, 5);
+  const catKey = `<div class="sp-key">${['CR', 'EN', 'VU'].filter(k => t[k.toLowerCase()]).map(k => `<span><i style="background:${CAT_COLOR[k]}"></i>${k} ${CAT_WORD[k]}</span>`).join('')}</div>`;
+  if (!rows.length) return t.species && t.species.length ? catKey : '';
+  const max = Math.max(...rows.map(g => g[1].CR + g[1].EN + g[1].VU));
+  let h = `<div style="margin-top:11px">` + rows.map(([name, c]) => {
+    const n = c.CR + c.EN + c.VU;
+    const segs = ['CR', 'EN', 'VU'].filter(k => c[k]).map(k =>
+      `<i style="width:${(c[k] / max * 100).toFixed(1)}%;background:${CAT_COLOR[k]}" title="${c[k]} ${CAT_WORD[k].toLowerCase()}"></i>`).join('');
+    const split = ['CR', 'EN', 'VU'].filter(k => c[k]).map(k => `${c[k]} ${k}`).join(' · ');
+    return `<div class="gb-row"><div class="gb-lab"><span>${esc(name.charAt(0).toUpperCase() + name.slice(1))}</span><span>${n} · ${split}</span></div><div class="gb" aria-hidden="true">${segs}</div></div>`;
+  }).join('') + `</div>` + catKey;
+  if (t.cr >= 3) {
+    const top = (t.by_group || []).filter(g => g[0] !== 'other').slice().sort((a, b) => b[1].CR - a[1].CR)[0];
+    if (top && top[1].CR / t.cr >= 0.6) h += `<div class="reg-n">${top[1].CR === t.cr ? 'All' : 'Most'} of the critically endangered species here are ${esc(top[0])}: ${top[1].CR} of ${t.cr}.</div>`;
+  }
+  return h;
+}
+
+// A country-wide total printed inside one zone's section reads as that zone's
+// figure: the United States' 2,333 km² of mangrove (Florida and the Gulf) sat on the
+// West Coast page with only a small "national" tag. On a zone that is one of several,
+// national figures now sit in their own block, headed with the country's name.
+// "One of several" is read from the roll-up, not from the zone's name: Aruba's
+// only zone is called "Aruba (Netherlands)", and its figures are its own.
+function nationalBlock(c, cells) {
+  if (!cells) return '';
+  const several = c.iso_kind !== 'country' && (((COUNTRY_AGG[c.iso3] || {}).zones || []).length > 1);
+  if (!several) return `<div class="stats" style="margin-top:9px">${cells}</div>`;
+  const country = COUNTRY_NAME[c.iso3] || c.iso3;
+  return `<div style="margin-top:14px;padding-top:12px;border-top:0.5px solid var(--edge)">
+    <div class="sec-h" style="margin-bottom:8px">${esc(country)} as a whole</div>
+    <div class="stats">${cells}</div>
+    <div class="reg-n" style="margin-top:7px">Country-wide totals. They cover every coast of ${esc(country)} and say nothing about this zone on its own.</div></div>`;
+}
+
+function nationalEcoStats(c) {
+  if (c.iso_kind === 'territory') return '';
+  const n = ECO_NAT[c.iso3];
+  if (!n) return '';
+  const tag = '';
+  let cells = '';
+  if (n.mangrove) {
+    const m = n.mangrove;
+    const ch = m.change_pct != null && Math.abs(m.change_pct) >= 0.5
+      ? `, ${m.change_pct < 0 ? 'down' : 'up'} ${Math.abs(m.change_pct)}% since ${m.base_year}` : (m.change_pct != null ? `, unchanged since ${m.base_year}` : '');
+    cells += `<div class="stat"><div class="n">${fmt(m.km2)} km²</div><div class="l">of mangrove in ${m.year}${ch}${tag}</div></div>`;
+  }
+  if (n.mpa) cells += `<div class="stat"><div class="n">${n.mpa.pct}%</div><div class="l">of territorial waters protected, ${n.mpa.year}${tag}</div></div>`;
+  return nationalBlock(c, cells);
+}
+
+const ECO_NOTE = `A fish population (scientists say "stock") is one kind of fish in one zone. Its state here is Sea Around Us's reading of its catch history against its peak, not a scientific survey of the fish: a catch that fell for some other reason reads the same. The species list is what has been recorded and assessed by the IUCN Red List inside the zone's outline, coast and islands included; the freshwater and land species, and the records placed far outside a species' range, noticed so far have been taken out by hand; others may remain. Waters that are surveyed more have longer lists.`;
+
+function ecoLinks(c, e) {
+  const links = [`<a href="https://www.seaaroundus.org/data/#/eez/${c.region_id}" target="_blank" rel="noopener">Sea Around Us, this zone</a>`,
+    `<a href="https://obis.org" target="_blank" rel="noopener">OBIS</a>`];
+  if (e && e.ohi_link && ext(e.ohi_link, 'x')) links.push(ext(e.ohi_link, 'Ocean Health Index'));
+  if (c.iso_kind !== 'territory' && ECO_NAT[c.iso3] && ECO_NAT[c.iso3].mpa)
+    links.push(`<a href="https://data.worldbank.org/indicator/ER.MRN.PTMR.ZS" target="_blank" rel="noopener">World Bank</a>`);
+  return `<div class="src-l">Sources: ${links.join(' · ')}</div>`;
+}
+
+function ecoSection(c) {
+  const e = ECO[c.name];
+  const national = nationalEcoStats(c);
+  if (!e && !national) return null;
+  let h = '', peek = '';
+  if (e && e.stocks) {
+    h += stockBlock(e.stocks);
+    peek = `${depleted(e.stocks).toFixed(0)}% overfished or collapsed`;
+  }
+  if (e && e.threatened) {
+    h += speciesBlock(e.threatened, e.zone);
+    if (!peek) peek = `${e.threatened.total} threatened species`;
+  }
+  if (e && (e.unreported_pct != null || e.discards_pct != null)) {
+    h += `<div class="stats" style="margin-top:12px">
+      <div class="stat"><div class="n">${e.unreported_pct != null ? e.unreported_pct + '%' : '—'}</div><div class="l">of the catch goes unreported, by Sea Around Us's estimate</div></div>
+      <div class="stat"><div class="n">${e.discards_pct != null ? e.discards_pct + '%' : '—'}</div><div class="l">of the catch is discarded at sea</div></div>
+    </div>`;
+  }
+  if (e && e.top_taxa && e.top_taxa.length) {
+    h += `<div style="margin-top:13px"><div class="sec-h" style="margin-bottom:8px">Largest catches</div>` +
+      e.top_taxa.map(t => `<div class="bar-row"><div class="bar-lab"><span>${t.name}</span><span>${t.pct}%</span></div>
+        <div class="bar"><i style="width:${Math.min(100, t.pct)}%;background:#6aa9b8"></i></div></div>`).join('') + `</div>`;
+  }
+  // Everything about the zone first; the country-wide block comes last, set apart.
+  const z = e && e.zone;
+  if (z && (z.shelf_km2 || z.ifa_km2)) {
+    const bits = [];
+    if (z.shelf_km2) bits.push(`shelf ${fmt(z.shelf_km2)} km²`);
+    if (z.ifa_km2) bits.push(`inshore fishing area ${fmt(z.ifa_km2)} km²`);
+    if (z.primary_production) bits.push(`primary production ${fmt(z.primary_production)} mgC/m²/day`);
+    h += `<div class="reg-n" style="margin-top:9px">This zone: ${bits.join(' · ')}.</div>`;
+  }
+  h += national;
+  h += `<div class="gap-note">${ECO_NOTE}</div>` + ecoLinks(c, e);
+  return { peek, body: h };
+}
+
+// A country with one zone reads exactly like that zone. With several, stock status
+// and species lists do not add up - the same stock and the same turtle turn up in
+// neighbouring zones - so the country page lists its zones instead of inventing a total.
+function countryEcoSection(iso, a, c, zones) {
+  if (zones.length === 1 && COUNTRIES[zones[0]]) {
+    return ecoSection(Object.assign({}, COUNTRIES[zones[0]], { iso_kind: 'country' }));
+  }
+  const national = nationalEcoStats(c);
+  const rows = zones.map(z => {
+    const e = ECO[z];
+    if (!e) return '';
+    const bits = [];
+    if (e.stocks) bits.push(`${depleted(e.stocks).toFixed(0)}% overfished or collapsed, ${e.stocks.year}`);
+    if (e.threatened) bits.push(`${fmt(e.threatened.total)} threatened spp.`);
+    return bits.length ? `<div class="zrow"><span class="org" role="button" tabindex="0" data-zone="${esc(z)}">${esc(z)}</span><span class="zval">${bits.join(' · ')}</span></div>` : '';
+  }).join('');
+  if (!national && !rows) return null;
+  let h = national ? national.replace('margin-top:9px', 'margin-top:0') : '';
+  if (rows) h += `<div style="margin-top:${national ? 13 : 0}px"><div class="sec-h" style="margin-bottom:8px">By ocean zone</div>${rows}</div>`;
+  h += `<div class="gap-note">The state of fish populations and the species lists are published per ocean zone and do not add up across zones, so they are listed rather than totalled. Click a zone for its full picture. ${ECO_NOTE}</div>`;
+  const links = [`<a href="https://obis.org" target="_blank" rel="noopener">OBIS</a>`, `<a href="https://www.seaaroundus.org/data/#/eez" target="_blank" rel="noopener">Sea Around Us</a>`];
+  if (ECO_NAT[iso] && ECO_NAT[iso].mpa) links.push(`<a href="https://data.worldbank.org/indicator/ER.MRN.PTMR.ZS" target="_blank" rel="noopener">World Bank</a>`);
+  if (ECO_NAT[iso] && ECO_NAT[iso].mangrove) links.push(`<a href="https://oceanhealthindex.org" target="_blank" rel="noopener">Ocean Health Index</a>`);
+  h += `<div class="src-l">Sources: ${links.join(' · ')}</div>`;
+  return { peek: `${zones.length} zones`, body: h };
+}
+
+function confSection(c) {
+  const words = { 4: 'good', 3: 'fair', 2: 'thin', 1: 'poor', 0: 'none' };
+  return {
+    peek: words[c.confidence] || '',
+    body: `<div class="conf">${[1,2,3,4].map(i => `<i class="${i <= c.confidence ? 'on' : ''}"></i>`).join('')}</div>
+      <div class="gap-note">${confNote(c.confidence)}</div>`
+  };
+}
+
+function sourcesSection() {
+  return {
+    peek: '',
+    body: `<div class="srcs" style="font-size:11.5px;color:var(--ink-dim);line-height:1.65">
+      <b style="font-weight:600">Catch and value</b> — <a href="https://www.seaaroundus.org" target="_blank" rel="noopener">Sea Around Us</a>, UBC. Reconstructions blending reported landings with estimates of unreported catch, not official statistics. Value is priced from a global price database, in 2010 US dollars.<br />
+      <b style="font-weight:600">Livelihoods</b> — <a href="https://doi.org/10.4060/cc4576en" target="_blank" rel="noopener">Illuminating Hidden Harvests</a> (FAO/Duke/WorldFish 2023), a one-off 2013–2017 baseline.<br />
+      <b style="font-weight:600">Access rights</b> — <a href="https://doi.org/10.7924/r40s01h5j" target="_blank" rel="noopener">DeLand et al. (2025)</a>, Duke Research Data Repository, CC0.<br />
+      <b style="font-weight:600">Ocean heat</b> — <a href="https://coralreefwatch.noaa.gov/product/marine_heatwave/" target="_blank" rel="noopener">NOAA Coral Reef Watch</a>.<br />
+      <b style="font-weight:600">Ecosystem</b> — state of fish populations from Sea Around Us (judged from catch, 2019), threatened species from <a href="https://obis.org" target="_blank" rel="noopener">OBIS</a> using IUCN Red List categories, mangroves from the <a href="https://oceanhealthindex.org" target="_blank" rel="noopener">Ocean Health Index</a>, protected waters from the <a href="https://data.worldbank.org/indicator/ER.MRN.PTMR.ZS" target="_blank" rel="noopener">World Bank</a>.<br />
+      <b style="font-weight:600">Diet and GDP</b> — FAO food balance sheets via <a href="https://ourworldindata.org/grapher/fish-and-seafood-consumption-per-capita" target="_blank" rel="noopener">Our World in Data</a>; <a href="https://unstats.un.org/sdgs/dataportal" target="_blank" rel="noopener">UN SDG indicator 14.7.1</a>.<br />
+      <b style="font-weight:600">Organisations and reported activity</b> — IATI aid data via <a href="https://d-portal.org" target="_blank" rel="noopener">d-portal</a>, and <a href="https://issfcloud.toobigtoignore.net" target="_blank" rel="noopener">ISSF</a> (Too Big To Ignore).<br />
+      <b style="font-weight:600">El Niño</b> — <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php" target="_blank" rel="noopener">NOAA Climate Prediction Center</a>, Oceanic Niño Index and weekly Niño 1+2 readings.<br />
+      <b style="font-weight:600">News</b> — Google News search and fisheries news feeds (Mongabay, the Guardian, CFFA, the Pacific Islands Forum Fisheries Agency, Blue Ventures, Oceana, Global Fishing Watch, RNZ Pacific, AllAfrica), filtered by keyword; English translations by MyMemory.<br />
+      <b style="font-weight:600">Conservation groups</b> — Rare's <a href="https://rare.org/program/fish-forever/" target="_blank" rel="noopener">Fish Forever</a> countries; Blue Ventures' countries from its <a href="https://blueventures.org/where-we-work/" target="_blank" rel="noopener">where-we-work page</a>${GROUPS_META && GROUPS_META.groups && GROUPS_META.groups[0] && GROUPS_META.groups[0].checked ? ', checked ' + shortDate(GROUPS_META.groups[0].checked) : ''}. Being listed says where a group works, nothing about how much.
+    </div>`
+  };
+}
+
+// ---------------------------------------------------------------------------
+
+// Which section a page should open with, from the view on the map.
+function openFor() {
+  if (layer === 'share') return shareBy === 'value' ? 'worth' : 'catch';
+  return { people: 'people', foreign: 'fleets', heat: 'heat', overfish: 'eco' }[layer] || 'catch';
+}
+
+function accordion(title, sec, open) {
+  if (!sec) return '';
+  const peek = sec.peek
+    ? `<span class="peek"${sec.peekColor ? ` style="color:${sec.peekColor}"` : ''}>${sec.peek}</span>`
+    : '';
+  return `<details class="acc"${open ? ' open' : ''}>
+    <summary><span class="acc-t">${title}</span><span class="acc-r">${peek}<span class="chev">›</span></span></summary>
+    <div class="acc-body">${sec.body}</div>
+  </details>`;
+}
+
+function keyFigures(c) {
+  const p = PEOPLE[c.iso3];
+  const paa = PAA[c.iso3];
+  const acts = (ORGS && ORGS.by_country && ORGS.by_country[c.iso3] || []).length;
+
+  // Heat and fleet figures are published per ocean zone. On a country page they
+  // come from the rollup instead, or the tiles read as missing data when the
+  // country simply has more than one zone.
+  const agg = c.iso_kind === 'country' ? COUNTRY_AGG[c.iso3] : null;
+  const z = agg ? { mhw: agg.mhw, date: HEAT_DATE } : (CLIMATE.zones && CLIMATE.zones[c.name]);
+  const f = agg ? { foreign_pct: agg.foreign_pct } : FLEETS[c.name];
+  const when = z && (z.date || HEAT_DATE) ? ', ' + shortDate(z.date || HEAT_DATE) : '';
+  const heatSub = agg
+    // Zones under 1% of the country's catch do not vote (see buildCountryAgg), so the
+    // caption counts the zones that did: the USA has 12 zones and 4 of them vote.
+    ? (agg.mhw != null ? (agg.mhw_n > 1 ? `worst of its ${agg.mhw_n} main zones${when}` : `in its main zone${when}`) : 'no satellite reading')
+    : (z && z.mhw != null ? `marine heatwave${when}` : 'no satellite reading');
+  const reserved = paa && paa.percent_eez != null ? (paa.percent_eez === 0 ? '<0.01' : paa.percent_eez) + '%' : '—';
+  // A territory's tiles carry the parent country's national figures; say so
+  // on the tile, not only inside the section.
+  const national = c.iso_kind === 'territory' ? ' · national' : '';
+  // The living side of the environment, visible before anything is opened. A country
+  // with several zones gets the catch-weighted average for overfishing, and for species
+  // the longest list in any one zone, because the lists overlap and cannot be summed.
+  const eco = agg ? null : ECO[c.name];
+  const st = eco && eco.stocks;
+  let fishVal = '—', fishSub = 'fish populations not assessed', fishTip = '';
+  if (agg && agg.overfished != null) {
+    fishVal = agg.overfished.toFixed(0) + '%';
+    const yr = agg.of_year ? `, ${agg.of_year}` : '';
+    // a tile holds one caveat; the full sentence is in the tooltip, the bar label,
+    // the legend and the hover text
+    fishSub = agg.zones.length > 1 ? `of fish populations · ${agg.overfished_zones} of ${agg.zones.length} zones${yr}` : `of fish populations · from catch${yr}`;
+    fishTip = `Share of fish populations rated overfished or collapsed, judged from catch trends by Sea Around Us${yr}${agg.zones.length > 1 ? `; catch-weighted average of the ${agg.overfished_zones} of ${agg.zones.length} zones with a reading` : ''}.`;
+  } else if (st) {
+    fishVal = depleted(st).toFixed(0) + '%';
+    fishSub = `of fish populations · from catch, ${st.year}`;
+    fishTip = `Share of fish populations rated overfished or collapsed, judged from catch trends by Sea Around Us, ${st.year}.`;
+  }
+  let spVal = '—', spSub = 'no species list';
+  if (agg && agg.threatened_max != null) {
+    spVal = fmt(agg.threatened_max);
+    spSub = agg.zones.length > 1 ? 'threatened species, most in any one zone' : 'threatened species recorded';
+  } else if (eco && eco.threatened) {
+    spVal = fmt(eco.threatened.total);
+    spSub = 'threatened species recorded' + (eco.threatened.cr ? `, ${eco.threatened.cr} critical` : '');
+  }
+  const cells = [
+    // IHH counts employment across the value chain, not fishers at sea.
+    ['Workers', p && p.employed_per_1k != null ? p.employed_per_1k : '—', 'per 1,000 people, national, inland and marine' + (c.iso_kind === 'territory' ? ' · parent country' : '')],
+    ['Reserved', reserved, 'of EEZ for small-scale' + national],
+    ['Foreign', f ? f.foreign_pct + '%' : '—', 'of catch by other fleets'],
+    ['Heatwave', z && z.mhw != null ? (['None','Moderate','Strong','Severe','Extreme','Beyond extreme'][z.mhw] || '—') : '—', heatSub],
+    ['Overfished', fishVal, fishSub, fishTip],
+    ['Threatened', spVal, spSub]
+  ];
+  return `<div class="keyfig">` + cells.map(([lab, val, sub, tip]) =>
+    `<div class="kf"><div class="kf-l">${lab}</div><div class="kf-v">${val}</div><div class="kf-s"${tip ? ` title="${esc(tip)}"` : ''}>${sub}</div></div>`
+  ).join('') + `</div>`;
+}
+
+// ---------------------------------------------------------------------------
+// El Niño card. The pipeline stores the index, its six-season trajectory, the
+// Niño 1+2 anomaly off Peru and how far back you have to go for a reading this
+// strong; the card writes that as a paragraph and draws the trajectory under it.
+
+const SEASON_WORDS = {
+  DJF: 'December–February', JFM: 'January–March', FMA: 'February–April', MAM: 'March–May',
+  AMJ: 'April–June', MJJ: 'May–July', JJA: 'June–August', JAS: 'July–September',
+  ASO: 'August–October', SON: 'September–November', OND: 'October–December', NDJ: 'November–January'
+};
+// The textbook case, from this atlas's own catch record (Sea Around Us
+// reconstruction, all sectors): Peru's total catch across the 1997–98 event.
+// The 1982–83 event reads the same way, a 43% fall.
+const ENSO_CASE = { zone: 'Peru', iso: 'PER', from: 1997, to: 1998, drop: 45 };
+
+function weekLabel(w) {  // "02SEP2026" -> "2 Sep"
+  const m = /^(\d{2})([A-Z]{3})(\d{4})$/.exec(w || '');
+  return m ? `${+m[1]} ${m[2][0] + m[2].slice(1).toLowerCase()}` : (w || '');
+}
+
+function ensoBars(rows) {
+  if (!rows || rows.length < 2) return '';
+  const w = 240, h = 40, top = 9, bottom = 10;
+  const max = Math.max(2, ...rows.map(r => Math.abs(r[1])));
+  const y0 = top + (h - top - bottom) / 2, sc = (h - top - bottom) / 2 / max;
+  const bw = w / rows.length;
+  let s = `<svg class="enso-bars" viewBox="0 0 ${w} ${h}" width="100%" height="${h}" preserveAspectRatio="xMidYMid meet">`;
+  [0.5, -0.5].forEach(t => {
+    const y = (y0 - t * sc).toFixed(1);
+    s += `<line class="thr" x1="0" x2="${w}" y1="${y}" y2="${y}"/>`;
+  });
+  s += `<line class="zero" x1="0" x2="${w}" y1="${y0.toFixed(1)}" y2="${y0.toFixed(1)}"/>`;
+  rows.forEach((r, i) => {
+    const v = r[1], bh = Math.abs(v) * sc, x = i * bw + bw * 0.22;
+    const y = v >= 0 ? y0 - bh : y0;
+    s += `<rect class="${v >= 0 ? 'warm' : 'cool'}" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(bw * 0.56).toFixed(1)}" height="${Math.max(0.8, bh).toFixed(1)}"/>`;
+    s += `<text class="lab" x="${(i * bw + bw / 2).toFixed(1)}" y="${h - 1}" text-anchor="middle">${r[0]}</text>`;
+    if (i === 0 || i === rows.length - 1) {
+      const ty = v >= 0 ? y - 2.5 : y + bh + 8;
+      s += `<text class="num" x="${(i * bw + bw / 2).toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle">${v > 0 ? '+' : ''}${v.toFixed(1)}</text>`;
+    }
+  });
+  return s + '</svg>';
+}
+
+function ensoCard(e) {
+  const state = String(e.state || '').replace('Nino', 'Niño').replace('Nina', 'Niña');
+  const warm = /niño/i.test(state), cool = /niña/i.test(state);
+  const oni = e.oni == null ? '' : `<span class="val">${e.oni > 0 ? '+' : ''}${Number(e.oni).toFixed(1)}</span>`;
+  const code = String(e.oni_season || '').split(' ')[0];
+  const when = SEASON_WORDS[code] || e.oni_season || '';
+  // "The highest since" only while this reading is the event's own peak; after the
+  // turn the card says how far it has come down (event_peak, from fetch_climate.py).
+  const pk = e.event_peak;
+  const since = pk
+    ? `, down from ${pk.oni > 0 ? '+' : ''}${Number(pk.oni).toFixed(1)} in ${SEASON_WORDS[String(pk.season).split(' ')[0]] || pk.season}`
+    : (e.since ? `, the ${cool ? 'lowest' : 'highest'} since ${e.since}` : '');
+  const conditions = warm || cool ? ' conditions' : '';
+  let h = `<p><b>${state}${conditions}.</b> Niño index ${oni} in ${when}${since}.`;
+  if (e.nino12_anomaly != null) {
+    const a = Number(e.nino12_anomaly);
+    h += ` Sea off Peru and Ecuador <span class="val">${a > 0 ? '+' : ''}${a.toFixed(1)} °C</span> ${a >= 0 ? 'above' : 'below'} average${e.week ? ', week of ' + weekLabel(e.week) : ''}.`;
+  }
+  h += '</p>';
+  h += ensoBars(e.oni_recent);
+  const link = `<a href="#" class="enso-link" data-zone="${ENSO_CASE.zone}" data-iso="${ENSO_CASE.iso}">Open ${ENSO_CASE.zone} ›</a>`;
+  if (warm) {
+    h += `<p class="enso-note">Warm water starves the anchoveta: in this atlas's record ${ENSO_CASE.zone}'s catch fell <b>${ENSO_CASE.drop}%</b> from ${ENSO_CASE.from} to ${ENSO_CASE.to}. ${link}</p>`;
+  } else if (cool) {
+    h += `<p class="enso-note">Cool water strengthens the upwelling off South America; anchoveta years tend to be good ones. ${link}</p>`;
+  } else {
+    h += `<p class="enso-note">No strong signal either way. ${ENSO_CASE.zone} is the place to watch when it turns. ${link}</p>`;
+  }
+  return h;
+}
+// The newest fisheries headlines that name the event, machine-collected like the
+// country news. Two at most, in their own block under the card.
+function ensoNews(e) {
+  const press = ((NEWS_META && NEWS_META.enso) || []).slice(0, 2);
+  if (!press.length) return '';
+  const what = /nina/i.test(String(e.state || '')) ? 'La Niña' : 'El Niño';
+  const item = (n, i) => {
+    const bits = [esc(n.publisher || ''), shortDate(n.date)];
+    return `<div class="en-item">${ext(n.url, headlineHtml(n, 'enso', i))}<span class="meta">${bits.filter(Boolean).join(' · ')}${noteSlot(n, 'enso', i)}</span></div>`;
+  };
+  // One headline showing, the next one a click away: the rail has the map's controls
+  // to fit under this, and they should not need a scroll to reach.
+  const rest = press.slice(1).map((n, i) => item(n, i + 1)).join('');
+  return `<span class="lab">${what} in the news <i>from the press, not from this atlas</i></span>` + item(press[0], 0) +
+    (rest ? `<details class="en-more"><summary><span class="o">one more headline</span><span class="c">fewer headlines</span></summary>${rest}</details>` : '');
+}
+
+const COUNTRY_NAME = {};
+const FF_ISO = new Set();
+// Blue Ventures' countries, from site/data/groups.json (its website, on the date
+// noted there). Rare's list is on each zone already, as fish_forever.
+const BV_ISO = new Set();
+let GROUPS_META = null;
+
+function showCountryPanel(iso) {
+  const a = COUNTRY_AGG[iso];
+  if (!a) return;
+  const name = COUNTRY_NAME[iso] || iso;
+
+  // Reuse the zone sections by handing them a synthetic country-shaped record.
+  // Everything national - people, organisations, access rights - is already keyed
+  // by ISO3, so only the catch figures need rolling up.
+  const c = {
+    name, iso3: iso, iso_kind: 'country',
+    ssf_share: a.ssf_share, total_t: a.total_t, confidence: a.confidence,
+    years: null, sectors: null, history: null, fish_forever: FF_ISO.has(iso)
+  };
+
+  // The country's own waters first, then its territories, each in file order.
+  // Otherwise the UK led with South Georgia and Pitcairn. Among its own zones,
+  // one named for the country ("United Kingdom (UK)", "France (Atlantic Coast)")
+  // beats a split that isn't ("Channel Isl. (UK)").
+  const rank = z => {
+    const k = (COUNTRIES[z] || {}).iso_kind;
+    if (k === 'territory') return 3;
+    if (k === 'self') return 0;
+    return z.replace(/\s*\([^)]*\)\s*$/, '').trim() === name ? 1 : 2;
+  };
+  const zones = a.zones.map((z, i) => [rank(z), i, z])
+    .sort((p, q) => p[0] - q[0] || p[1] - q[1]).map(t => t[2]);
+
+  let html = `<h2>${name}</h2>`;
+  html += `<div class="p-sub">${zones.length} ocean zone${zones.length > 1 ? 's' : ''} combined · ${zones.slice(0, 3).join(', ')}${zones.length > 3 ? '…' : ''}</div>`;
+  html += groupBadges(c);
+
+  if (a.ssf_share != null) {
+    html += `<div class="hero"><b>${a.ssf_share.toFixed(0)}<span style="font-size:21px">%</span></b><span>of catch is small-scale</span></div>`;
+    html += `<div class="hero-note">across all of this country's waters — ${fmt(a.total_t)} tonnes caught a year, summed across its zones.</div>`;
+  }
+
+  html += keyFigures(c);
+  const focus = openFor();
+  html += accordion('What it\'s worth', countryValueSection(iso, a, c), focus === 'worth');
+  html += accordion('Whose fleets fish here', countryFleetSection(iso, a), focus === 'fleets');
+  html += accordion('Environment · ecosystem', countryEcoSection(iso, a, c, zones), focus === 'eco' || focus === 'heat');
+  html += accordion('People', peopleSection(c), focus === 'people');
+  html += accordion('Preferential access', paaSection(c), false);
+  html += accordion('Regulatory framework', regulatorySection(c), false);
+  html += accordion('Organisations', profileSection(c), false);
+  html += accordion('Reported activity', orgSection(c), false);
+  html += accordion('News', newsSection(c), false);
+  html += accordion('Ocean zones', {
+    peek: `${zones.length}`,
+    body: `<div class="pg-l">` + zones.map(z =>
+      `<span class="org" role="button" tabindex="0" data-zone="${esc(z)}">${esc(z)}</span>`).join('') +
+      `</div><div class="gap-note">Catch is published by ocean zone, not by country. These are the zones combined above — click one to see it on its own.</div>`
+  }, false);
+  html += accordion('Sources', sourcesSection(), false);
+
+  document.getElementById('panel-body').innerHTML = html;
+  ['#panel .p-scroll', '#panel-body'].forEach(s => { const el = document.querySelector(s); if (el) el.scrollTop = 0; });
+  openPanel();
+}
+
+function countryFleetSection(iso, a) {
+  if (a.foreign_pct == null) return null;
+  let h = `<div class="stats">
+        <div class="stat"><div class="n">${a.foreign_pct}%</div><div class="l">taken by foreign fleets</div></div>
+        <div class="stat"><div class="n">${a.domestic_pct != null ? a.domestic_pct : '—'}%</div><div class="l">by this country's own fleet</div></div>
+      </div>`;
+  if (a.unknown_pct > 0.5) {
+    h += `<div style="font-size:11.5px;color:var(--ink-dim);margin-top:9px;line-height:1.55">
+      A further <b style="font-weight:600">${a.unknown_pct}%</b> is attributed to no identified fleet.
+      It is counted as neither domestic nor foreign here.</div>`;
+  }
+  h += `<div class="gap-note">Weighted by tonnage across this country's ${a.zones.length} ocean zone${a.zones.length > 1 ? 's' : ''}. Open a single zone for the fleets by name.</div>`;
+  return { peek: `${a.foreign_pct}% foreign`, body: h };
+}
+
+function showPanel(name) {
+  const c = COUNTRIES[name];
+  if (!c) return;
+  const share = c.ssf_share;
+
+  let html = `<h2>${c.name}</h2>`;
+  html += `<div class="p-sub">Exclusive economic zone · ${c.years ? c.years[0] + '–' + c.years[1] : 'no series'}</div>`;
+  html += groupBadges(c);
+
+  if (share == null) {
+    html += `<div class="gap-note">No sector-split catch data for this zone. Shown rather than hidden.</div>`;
+  } else {
+    // Where a sector's series is null for recent years the headline is a share
+    // of what the record holds, and it says so in the headline, not in a
+    // footnote three sections down.
+    const unknown = c.unknown_sectors || [];
+    const since = c.unknown_since || {};
+    html += `<div class="hero"><b>${share.toFixed(0)}<span style="font-size:21px">%</span></b><span>of ${unknown.length ? 'known ' : ''}catch is small-scale</span></div>`;
+    html += `<div class="hero-note">of roughly ${fmt(c.total_t)} tonnes caught a year (landings and discards), averaged over the last five years of record${
+      unknown.length ? `. The ${unknown.map(s => s.toLowerCase() + ' series has no values after ' + (since[s] || 'the start of the record')).join(' and the ')}, so the total is what the record holds` : ''}.</div>`;
+  }
+
+  html += keyFigures(c);
+
+  // Catch opens by default: it is the core data, and the sparkline gives the panel
+  // something to look at without the reader having to hunt for it.
+  // The section that answers the view you are looking at opens with the page;
+  // otherwise catch does, as the core of the atlas.
+  const focus = openFor();
+  html += accordion('Catch by sector', catchSection(c), focus === 'catch');
+  html += accordion('What it\'s worth', valueSection(c), focus === 'worth');
+  html += accordion('Whose fleets fish here', fleetSection(c), focus === 'fleets');
+  html += accordion('Environment · ocean heat', climateSection(c), focus === 'heat');
+  html += accordion('Environment · ecosystem', ecoSection(c), focus === 'eco');
+  html += accordion('People', peopleSection(c), focus === 'people');
+  html += accordion('Preferential access', paaSection(c), false);
+  html += accordion('Regulatory framework', regulatorySection(c), false);
+  html += accordion('Organisations', profileSection(c), false);
+  html += accordion('Reported activity', orgSection(c), false);
+  html += accordion('News', newsSection(c), false);
+  html += accordion('Data confidence', confSection(c), false);
+  html += accordion('Sources', sourcesSection(), false);
+
+  document.getElementById('panel-body').innerHTML = html;
+  ['#panel .p-scroll', '#panel-body'].forEach(s => { const el = document.querySelector(s); if (el) el.scrollTop = 0; });
+  openPanel();
+}
+function confNote(s) {
+  return {
+    4: 'Complete series with no missing values. Still a reconstruction, not a census.',
+    3: 'Fair: one of missing years, a series shorter than 60 years, or a catch under 5,000 tonnes a year. Still a reconstruction, not a census.',
+    2: 'Thin: two of missing years, a series shorter than 60 years, a catch under 5,000 tonnes a year.',
+    1: 'Poor: missing years, a short series and a catch under 5,000 tonnes a year. Treat the share as a rough indication only.',
+    0: 'No usable series.'
+  }[s] || '';
+}
+
+// The rails are margins as far as the map is concerned: the world is centred
+// between them, and when the detail rail opens the map eases over so the place
+// just clicked is not hidden under it.
+function railPadding(open) {
+  const wide = window.innerWidth > 820;
+  const head = document.getElementById('head');
+  const panel = document.getElementById('panel');
+  return {
+    left: wide ? head.getBoundingClientRect().width : 0,
+    right: wide && open ? panel.getBoundingClientRect().width : 0,
+    top: 0,
+    bottom: !wide && open ? Math.round(window.innerHeight * 0.58) : 0
+  };
+}
+function applyRailPadding(open, animate) {
+  const p = railPadding(open);
+  // Animation frames do not run in a hidden tab, so an eased move would never
+  // land; jump instead and the map is right whenever the tab comes back.
+  if (animate && !document.hidden) map.easeTo({ padding: p, duration: 320 });
+  else map.jumpTo({ padding: p });
+}
+function openPanel() {
+  const panel = document.getElementById('panel');
+  const wasOpen = panel.classList.contains('open');
+  panel.classList.add('open');
+  if (!wasOpen) applyRailPadding(true, true);
+}
+function closePanel() {
+  const panel = document.getElementById('panel');
+  if (panel.classList.contains('open')) applyRailPadding(false, true);
+  panel.classList.remove('open');
+  if (selected !== null) {
+    map.setFeatureState({ source: selectedSrc, id: selected }, { selected: false });
+    selected = null;
+  }
+}
+document.getElementById('close').onclick = closePanel;
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+
+const VIEWS = ['share', 'people', 'heat', 'conf', 'foreign', 'overfish'];
+function setLayer(next) {
+  layer = next;
+  VIEWS.forEach(k =>
+    document.getElementById('b-' + k).classList.toggle('on', k === next));
+  const active = scale === 'country' ? 'country-fill' : 'eez-fill';
+  if (map.getLayer(active)) map.setPaintProperty(active, 'fill-color', fillExpr());
+  syncNoData();
+  drawLegend();
+}
+VIEWS.forEach(k => {
+  document.getElementById('b-' + k).onclick = () => setLayer(k);
+});
+
+function setShareBy(next) {
+  shareBy = next === 'value' ? 'value' : 'tonnes';
+  setLayer('share');   // repaints, re-filters the hatch and redraws the legend
+  // The legend was rebuilt, which threw away the button that had the focus.
+  const b = document.querySelector('#legend [data-by="' + shareBy + '"]');
+  if (b) b.focus();
+}
+// The legend is redrawn on every view change, so the click is caught on its
+// container rather than on buttons that come and go.
+document.getElementById('legend').addEventListener('click', ev => {
+  const b = ev.target.closest('[data-by]');
+  if (b) setShareBy(b.dataset.by);
+});
+
+function setScale(next) {
+  scale = next;
+  document.getElementById('s-zone').classList.toggle('on', next === 'zone');
+  document.getElementById('s-country').classList.toggle('on', next === 'country');
+
+  // Swap which geometry is painted. Colouring the ocean zones by a country value
+  // answers the question in the wrong shape - asked for Indonesia, you should get
+  // Indonesia, not the water around it.
+  const onCountry = next === 'country';
+  [['eez-fill', !onCountry], ['eez-nodata', !onCountry], ['eez-line', !onCountry],
+   ['country-fill', onCountry], ['country-nodata', onCountry], ['country-line', onCountry]].forEach(([id, show]) => {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', show ? 'visible' : 'none');
+  });
+  const target = onCountry ? 'country-fill' : 'eez-fill';
+  if (map.getLayer(target)) map.setPaintProperty(target, 'fill-color', fillExpr());
+  syncNoData();
+  syncFf();
+  drawLegend();
+  const hint = document.getElementById('hint');
+  if (hint) hint.textContent = onCountry ? 'Click any country for detail' : 'Click any zone for detail';
+  closePanel();
+}
+document.getElementById('s-zone').onclick = () => setScale('zone');
+document.getElementById('s-country').onclick = () => setScale('country');
+
+function setPaa(on) {
+  paaOn = on;
+  document.getElementById('b-paa').classList.toggle('on', on);
+  ['paa-fill', 'paa-line'].forEach(id => {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
+  });
+}
+document.getElementById('b-paa').onclick = () => setPaa(!paaOn);
+
+function setOrg(on) {
+  orgOn = on;
+  document.getElementById('b-org').classList.toggle('on', on);
+  ['org-point', 'org-halo', 'issf-point', 'issf-halo'].forEach(id => {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
+  });
+}
+document.getElementById('b-org').onclick = () => setOrg(!orgOn);
+
+// The Fish Forever outline follows the scale: around the ocean zones in zone
+// mode, around the land in country mode. Otherwise the ring floated on the
+// water beside a painted landmass.
+// One badge per group that lists the country. Rare's flag is on the zone record;
+// Blue Ventures' list is by country, so an outlying territory does not inherit it.
+function groupBadges(c) {
+  let h = '';
+  if (c.fish_forever) h += `<div class="ff-badge">Rare Fish Forever country</div>`;
+  if (c.iso3 && BV_ISO.has(c.iso3) && c.iso_kind !== 'territory') h += `<div class="ff-badge bv">Blue Ventures country</div>`;
+  return h;
+}
+// The four layers of the overlay for one source: a white casing under any listed
+// country, Rare in orange, Blue Ventures alone in teal, and both as teal dashes
+// over the orange.
+const GROUP_IDS = ['ff-casing', 'bv-casing', 'ff-line', 'bv-line', 'both-line'];
+function groupLayers(source, mid) {
+  const rare = ['==', ['get', 'fish_forever'], true];
+  const bv = ['==', ['get', 'blue_ventures'], true];
+  const line = (id, filter, paint) => ({
+    id: id.replace('ff-', 'ff-' + mid).replace(/^(bv|both)-/, '$1-' + mid), type: 'line', source,
+    filter, layout: { visibility: 'none', 'line-join': 'round' }, paint
+  });
+  // Highlighter colours: the orange sits on a white casing as before; the yellow
+  // would vanish on a pale sea, so it sits on a dark one.
+  return [
+    line('ff-casing', rare, { 'line-color': 'rgba(255,255,255,0.92)', 'line-width': 3.6 }),
+    line('bv-casing', ['all', bv, ['!', rare]], { 'line-color': 'rgba(23,32,31,0.55)', 'line-width': 3.2 }),
+    line('ff-line', rare, { 'line-color': '#ff8a00', 'line-width': 1.8 }),
+    line('bv-line', ['all', bv, ['!', rare]], { 'line-color': '#f2e015', 'line-width': 1.8 }),
+    line('both-line', ['all', bv, rare], { 'line-color': '#f2e015', 'line-width': 1.8, 'line-dasharray': [2.5, 2.5] }),
+  ];
+}
+function syncFf() {
+  const onCountry = scale === 'country';
+  GROUP_IDS.forEach(id => {
+    const zoneId = id, countryId = id.replace('ff-', 'ff-country-').replace(/^(bv|both)-/, '$1-country-');
+    if (map.getLayer(zoneId)) map.setLayoutProperty(zoneId, 'visibility', ffOn && !onCountry ? 'visible' : 'none');
+    if (map.getLayer(countryId)) map.setLayoutProperty(countryId, 'visibility', ffOn && onCountry ? 'visible' : 'none');
+  });
+}
+function setFf(on) {
+  ffOn = on;
+  document.getElementById('b-ff').classList.toggle('on', on);
+  document.getElementById('cg-key').hidden = !on;
+  syncFf();
+}
+document.getElementById('b-ff').onclick = () => setFf(!ffOn);
+
+const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 8 });
+let hovered = null, hoveredSrc = 'eez', selectedSrc = 'eez';
+
+function styleReady() {
+  return new Promise(resolve => {
+    if (map.isStyleLoaded()) return resolve();
+    let done = false;
+    const finish = () => { if (!done) { done = true; resolve(); } };
+    map.once('load', finish);
+    map.on('styledata', () => { if (map.isStyleLoaded()) finish(); });
+    const poll = setInterval(() => { if (map.isStyleLoaded()) { clearInterval(poll); finish(); } }, 120);
+    setTimeout(() => { clearInterval(poll); finish(); }, 10000);
+  });
+}
+
+// Optional layers load independently - a missing news or climate file should
+// degrade one panel section, never block the map.
+// Always revalidate. These files change shape as the pipelines evolve, and a
+// browser holding yesterday's climate.json against today's index.html renders a
+// blank map with no error - the layer silently falls through to "no data".
+// 'no-cache' still permits a 304, so unchanged files cost nothing.
+const NOCACHE = { cache: 'no-cache' };
+
+function optional(path) {
+  return fetch(path, NOCACHE).then(r => r.ok ? r.json() : null).catch(() => null);
+}
+
+async function init() {
+  const [[geo, meta], people, climate, news, paaMeta, paaGeo, orgData, issfData, fleetData, profileData, regData, countryGeo, valueData, ecoData, groupsData] = await Promise.all([
+    Promise.all([
+      fetch('data/eez.geojson', NOCACHE).then(r => r.json()),
+      fetch('data/countries.json', NOCACHE).then(r => r.json())
+    ]),
+    optional('data/people.json'),
+    optional('data/climate.json'),
+    optional('data/news.json'),
+    optional('data/paa.json'),
+    optional('data/paa.geojson'),
+    optional('data/orgs.json'),
+    optional('data/issf.json'),
+    optional('data/fleets.json'),
+    optional('data/profile.json'),
+    optional('data/regulatory.json'),
+    optional('data/country.geojson'),
+    optional('data/value.json'),
+    optional('data/ecosystem.json'),
+    optional('data/groups.json'),
+    styleReady()
+  ]);
+
+  meta.countries.forEach(c => {
+    COUNTRIES[c.name] = c;
+    if (c.iso3 && c.fish_forever) FF_ISO.add(c.iso3);
+  });
+  GROUPS_META = groupsData || null;
+  ((groupsData && groupsData.groups) || []).forEach(g => {
+    if (g.key === 'blue_ventures') (g.iso3 || []).forEach(iso => BV_ISO.add(iso));
+  });
+
+  // Country names come from the country geometry, which carries real names. Deriving
+  // them from zone labels picked whichever was shortest, so the United Kingdom was
+  // displayed as "Pitcairn" and the Netherlands as "Bonaire" - the territory beat the
+  // country on string length.
+  if (countryGeo && countryGeo.features) {
+    countryGeo.features.forEach(f => {
+      if (f.properties.iso3 && f.properties.name) COUNTRY_NAME[f.properties.iso3] = f.properties.name;
+    });
+  }
+  // Fall back to a zone label only where no polygon exists, preferring a zone whose
+  // name has no parenthetical - that is the country, not one of its territories.
+  meta.countries.forEach(c => {
+    if (!c.iso3 || COUNTRY_NAME[c.iso3]) return;
+    if (!/\(/.test(c.name)) COUNTRY_NAME[c.iso3] = c.name.trim();
+  });
+  meta.countries.forEach(c => {
+    if (!c.iso3 || COUNTRY_NAME[c.iso3]) return;
+    COUNTRY_NAME[c.iso3] = c.name.replace(/\s*\([^)]*\)\s*$/, '').trim();
+  });
+  PEOPLE  = (people  && people.countries)  || {};
+  CLIMATE = climate || {};
+  HEAT_DATE = ((Object.values(CLIMATE.zones || {}).find(z => z && z.date) || {}).date) || CLIMATE.generated || '';
+  NEWS    = (news    && news.countries)    || {};
+  NEWS_META = news || null;
+  PAA     = (paaMeta && paaMeta.countries) || {};
+  ORGS    = orgData || null;
+  ISSF    = issfData || null;
+  FLEETS  = (fleetData && fleetData.zones) || {};
+  PROFILE = profileData || null;
+  REG     = regData || null;
+  VALUE       = (valueData && valueData.zones) || {};
+  VALUE_NAT   = (valueData && valueData.countries) || {};
+  VALUE_WORLD = (valueData && valueData.world) || null;
+  ECO     = (ecoData && ecoData.zones) || {};
+  OVERFISH_YEAR = Object.values(ECO).reduce((y, e) => (e && e.stocks && e.stocks.year > (y || 0)) ? e.stocks.year : y, null);
+  ECO_NAT = (ecoData && ecoData.countries) || {};
+
+  // Fold the extra layers into feature properties so MapLibre can colour by them
+  // directly - the paint expressions only see the geojson, not our JS objects.
+  geo.features.forEach((f, i) => {
+    f.id = i;
+    const p = f.properties;
+    const person = PEOPLE[p.iso3];
+    p.employed_per_1k = person && person.employed_per_1k != null ? person.employed_per_1k : null;
+    const z = CLIMATE.zones && CLIMATE.zones[p.name];
+    p.mhw = z && z.mhw != null ? z.mhw : null;
+    const fl = FLEETS[p.name];
+    p.foreign_pct = fl ? fl.foreign_pct : null;
+    const vz = VALUE[p.name];
+    p.ssf_value_share = vz && !vz.suspect_price ? vz.ssf_value_share : null;
+    const st = (ECO[p.name] || {}).stocks;
+    p.overfished = st ? Math.round(10 * depleted(st)) / 10 : null;
+    p.blue_ventures = BV_ISO.has(p.iso3) && (COUNTRIES[p.name] || {}).iso_kind !== 'territory';
+  });
+
+  // Second pass: every zone also carries its country's rolled-up figures, so the
+  // paint expressions can switch scale without rebuilding the source.
+  COUNTRY_AGG = buildCountryAgg(geo.features);
+  geo.features.forEach(f => {
+    const p = f.properties;
+    const a = COUNTRY_AGG[p.iso3];
+    p.c_ssf_share  = a ? a.ssf_share : null;
+    p.c_ssf_value_share = a ? a.ssf_value_share : null;
+    p.c_overfished = a ? a.overfished : null;
+    p.c_foreign_pct = a ? a.foreign_pct : null;
+    p.c_confidence = a ? a.confidence : 0;
+    p.c_mhw = a && a.mhw != null ? a.mhw : null;
+  });
+
+  const e = CLIMATE.enso;
+  if (e && e.state) {
+    const box = document.getElementById('enso');
+    box.style.display = 'block';
+    const st = String(e.state).toLowerCase();
+    box.className = st.includes('nina') ? 'cool' : (st.includes('nino') ? '' : 'neutral');
+    box.innerHTML = ensoCard(e);
+    const press = document.getElementById('enso-news');
+    press.innerHTML = ensoNews(e);
+    if (press.innerHTML) {
+      press.style.display = 'block';
+      // The press block sits above the El Niño card (Andrew's call, 6 Oct): the
+      // headline first, the atlas's own reading under it.
+      box.before(press);
+      translateHeadlines(press, false);      // only if the browser already has the language
+      press.addEventListener('click', ev => { const tr = ev.target.closest('.tr'); if (tr) toggleOriginal(tr); });
+      press.addEventListener('keydown', ev => {
+        const tr = (ev.key === 'Enter' || ev.key === ' ') && ev.target.closest('.tr');
+        if (tr) { ev.preventDefault(); toggleOriginal(tr); }
+      });
+      // a first click anywhere is the gesture a browser wants before fetching a language pack
+      document.addEventListener('pointerdown', () => translateHeadlines(press, true), { once: true });
+    }
+    box.addEventListener('click', ev => {
+      const a = ev.target.closest('.enso-link');
+      if (!a) return;
+      ev.preventDefault();
+      if (scale === 'country') showCountryPanel(a.dataset.iso); else showPanel(a.dataset.zone);
+    });
+  }
+
+  map.addSource('eez', { type: 'geojson', data: geo });
+
+  // Country landmasses, for the 'by country' scale. Same ISO3 codes as the zones,
+  // so both scales paint the same numbers on different shapes.
+  if (countryGeo && countryGeo.features) {
+    countryGeo.features.forEach((f, i) => { f.id = i; });
+    map.addSource('country', { type: 'geojson', data: countryGeo });
+  }
+
+  const styleLayers = map.getStyle().layers;
+  const waterIdx = styleLayers.findIndex(l => l.id === 'water');
+  const label = styleLayers.find((l, i) => l.type === 'symbol' && i > waterIdx);
+  const under = label ? label.id : undefined;
+
+  map.addLayer({
+    id: 'eez-fill', type: 'fill', source: 'eez',
+    paint: {
+      'fill-color': fillExpr(),
+      'fill-opacity': ['case',
+        ['boolean', ['feature-state','selected'], false], 0.95,
+        ['boolean', ['feature-state','hover'], false], 0.88, 0.72]
+    }
+  }, under);
+
+  // Gaps are hatched on top of the pale fill, per scale, filtered to whatever
+  // the current view cannot measure.
+  if (!map.hasImage('hatch')) map.addImage('hatch', hatchImage(), { pixelRatio: 2 });
+  map.addLayer({
+    id: 'eez-nodata', type: 'fill', source: 'eez',
+    filter: noDataFilter(),
+    paint: { 'fill-pattern': 'hatch', 'fill-opacity': 0.9 }
+  }, under);
+
+  map.addLayer({
+    id: 'eez-line', type: 'line', source: 'eez',
+    paint: {
+      'line-color': 'rgba(23,32,31,0.22)',
+      'line-width': ['case', ['boolean', ['feature-state','selected'], false], 2, 0.4]
+    }
+  }, under);
+
+  // Conservation groups get their own layers rather than a branch inside the
+  // zone outline, so they can be switched off like any other overlay.
+  // Rare's orange cannot be separated from the marine heatwave ramp by hue - both
+  // are warm by necessity - so the lines get a light casing underneath instead.
+  // That is the standard cartographic answer and it keeps the brand colour intact.
+  // Blue Ventures is highlighter yellow on a dark casing. A country on both lists gets
+  // the yellow dashed over the orange, which reads as a two-colour stripe and matches the key.
+  groupLayers('eez', '').forEach(l => map.addLayer(l, under));
+
+  // Preferential access areas sit on top of the choropleth rather than replacing
+  // it: they answer a different question (who has the right to fish here) and are
+  // most useful read against the catch and people layers, not instead of them.
+  if (paaGeo && paaGeo.features) {
+    // Default simplification on purpose. With it off, a coastal band with
+    // thousands of island holes (Greenland) defeats the triangulator and the
+    // whole island fills green. The hole count is kept down in fetch_paa.py.
+    map.addSource('paa', { type: 'geojson', data: paaGeo });
+    map.addLayer({
+      id: 'paa-fill', type: 'fill', source: 'paa',
+      layout: { visibility: 'none' },
+      // No anti-aliasing on the fill: where a hole's edge meets a tile edge the
+      // two coincide, and anti-aliasing drew that seam as a hairline straight
+      // across Greenland. The line layer below draws the real edges.
+      paint: { 'fill-color': '#12b886', 'fill-opacity': 0.34, 'fill-antialias': false }
+    }, under);
+    map.addLayer({
+      id: 'paa-line', type: 'line', source: 'paa',
+      layout: { visibility: 'none' },
+      // Thinner when the whole world is on screen, so a fjord coast does not
+      // read as a green scribble.
+      paint: { 'line-color': '#007f4e', 'line-width': ['interpolate', ['linear'], ['zoom'], 1, 0.5, 4, 0.9, 7, 1.4], 'line-opacity': 1 }
+    }, under);
+  } else {
+    document.getElementById('b-paa').style.display = 'none';
+  }
+
+  // Aid-funded project sites. Only 28% of activities carry coordinates, so this
+  // layer is a sample of the sample - it shows where reported work is, not where
+  // work is. The panel says so on every country.
+  if (ORGS && ORGS.activities) {
+    const feats = [];
+    const seenPt = new Set();  // the same activity reported twice at one spot is one dot
+    ORGS.activities.forEach(a => {
+      (a.locations || []).forEach(loc => {
+        const key = `${a.title || ''}|${loc.lon}|${loc.lat}`;
+        if (seenPt.has(key)) return;
+        seenPt.add(key);
+        feats.push({
+          type: 'Feature',
+          properties: {
+            id: a.id || '',
+            title: a.title || '(untitled)',
+            place: loc.name || '',
+            approx: loc.approx ? 1 : 0,
+            start: a.start || '', end: a.end || '',
+            reporter: a.reporter || '',
+            implementing: (a.orgs && a.orgs.implementing || []).join(', '),
+            funding: (a.orgs && a.orgs.funding || []).join(', ')
+          },
+          geometry: { type: 'Point', coordinates: [loc.lon, loc.lat] }
+        });
+      });
+    });
+    map.addSource('orgs', { type: 'geojson', data: { type: 'FeatureCollection', features: feats } });
+    map.addLayer({
+      id: 'org-halo', type: 'circle', source: 'orgs',
+      layout: { visibility: 'none' },
+      paint: {
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 4, 6, 9],
+        'circle-color': '#8b5a2b', 'circle-opacity': 0.16
+      }
+    });
+    map.addLayer({
+      id: 'org-point', type: 'circle', source: 'orgs',
+      layout: { visibility: 'none' },
+      paint: {
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 1.8, 6, 4],
+        'circle-color': '#7a4a1e',
+        // a region, capital or country standing in for a site is drawn faint, as
+        // the research-network records at a country centre are
+        'circle-opacity': ['case', ['==', ['get', 'approx'], 1], 0.25, 1],
+        'circle-stroke-width': 0.6,
+        'circle-stroke-color': 'rgba(255,255,255,0.9)'
+      }
+    });
+  } else {
+    document.getElementById('b-org').style.display = 'none';
+  }
+
+  // ISSF records: community profiles and organisations, contributed by researchers
+  // rather than derived from aid reporting. Drawn alongside the IATI points because
+  // the two sources see different halves of the same field - and where one has
+  // records and the other doesn't is itself the finding.
+  if (ISSF && ISSF.records) {
+    const feats = [];
+    ISSF.records.forEach(r => {
+      (r.points || []).forEach(pt => {
+        feats.push({
+          type: 'Feature',
+          properties: {
+            id: r.id || '',
+            label: r.label || '(unnamed record)',
+            kind: r.kind,
+            scope: r.scope || '',
+            date: r.date || '',
+            approx: r.approx ? 1 : 0
+          },
+          geometry: { type: 'Point', coordinates: pt }
+        });
+      });
+    });
+    map.addSource('issf', { type: 'geojson', data: { type: 'FeatureCollection', features: feats } });
+    map.addLayer({
+      id: 'issf-halo', type: 'circle', source: 'issf',
+      layout: { visibility: 'none' },
+      paint: {
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 4, 6, 9],
+        'circle-color': '#8b5a2b', 'circle-opacity': 0.15
+      }
+    });
+    map.addLayer({
+      id: 'issf-point', type: 'circle', source: 'issf',
+      layout: { visibility: 'none' },
+      paint: {
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 1.8, 6, 4],
+        'circle-color': '#7a4a1e',
+        // Centroid-placed records get a hollow ring: the country is right, the
+        // location is not, and the map should not pretend otherwise.
+        'circle-opacity': ['case', ['==', ['get', 'approx'], 1], 0.25, 1],
+        'circle-stroke-width': 0.6,
+        'circle-stroke-color': 'rgba(255,255,255,0.9)'
+      }
+    });
+  }
+
+  // CARTO's light basemap sets place labels in a pale grey that all but vanishes
+  // once coloured polygons sit underneath them. Darken every text layer and give
+  // it a white halo so country and ocean names stay legible over the data.
+  map.getStyle().layers.forEach(l => {
+    if (l.type !== 'symbol') return;
+    try {
+      map.setPaintProperty(l.id, 'text-color', '#1d2726');
+      map.setPaintProperty(l.id, 'text-halo-color', 'rgba(255,255,255,0.9)');
+      map.setPaintProperty(l.id, 'text-halo-width', 1.4);
+    } catch (e) { /* layer has no text; nothing to darken */ }
+  });
+
+  // Attach the rollup to the country polygons and add their layers. This happens
+  // after buildCountryAgg so both scales are painting the same numbers.
+  if (map.getSource('country')) {
+    const cg = map.getSource('country')._data;
+    cg.features.forEach((f, i) => {
+      f.id = i;
+      const a = COUNTRY_AGG[f.properties.iso3];
+      const p = f.properties;
+      p.c_ssf_share = a ? a.ssf_share : null;
+      p.c_ssf_value_share = a ? a.ssf_value_share : null;
+      p.c_overfished = a ? a.overfished : null;
+      p.c_foreign_pct = a ? a.foreign_pct : null;
+      p.c_confidence = a ? a.confidence : 0;
+      p.c_mhw = a && a.mhw != null ? a.mhw : null;
+      const person = PEOPLE[p.iso3];
+      p.employed_per_1k = person && person.employed_per_1k != null ? person.employed_per_1k : null;
+      p.fish_forever = FF_ISO.has(p.iso3);
+      p.blue_ventures = BV_ISO.has(p.iso3);
+      // A country with no ocean zone (Chad, Uganda...) is not part of this atlas:
+      // painting it with its inland fishing jobs, or hatching it "not measured",
+      // both said something untrue. It is left as plain land.
+      p.coastal = !!COUNTRY_AGG[p.iso3];
+    });
+    map.getSource('country').setData(cg);
+
+    map.addLayer({
+      id: 'country-fill', type: 'fill', source: 'country',
+      filter: ['==', ['get', 'coastal'], true],
+      layout: { visibility: 'none' },
+      paint: {
+        'fill-color': fillExpr(),
+        'fill-opacity': ['case',
+          ['boolean', ['feature-state', 'hover'], false], 0.92, 0.78]
+      }
+    }, under);
+    map.addLayer({
+      id: 'country-nodata', type: 'fill', source: 'country',
+      filter: ['all', ['==', ['get', 'coastal'], true], noDataFilter()],
+      layout: { visibility: 'none' },
+      paint: { 'fill-pattern': 'hatch', 'fill-opacity': 0.9 }
+    }, under);
+    map.addLayer({
+      id: 'country-line', type: 'line', source: 'country',
+      layout: { visibility: 'none' },
+      paint: { 'line-color': 'rgba(23,32,31,0.3)', 'line-width': 0.5 }
+    }, under);
+    groupLayers('country', 'country-').forEach(l => map.addLayer(l, under));
+  }
+
+  drawLegend();
+  paintSwatches();
+  initScrubber();
+  initZoneLinks();
+  map.resize();
+  const isOpen = () => document.getElementById('panel').classList.contains('open');
+  applyRailPadding(false, false);
+  map.once('idle', () => applyRailPadding(isOpen(), false));  // after the first full layout
+  if (window.ResizeObserver) new ResizeObserver(() => map.resize()).observe(document.getElementById('map'));
+  window.addEventListener('resize', () => { map.resize(); applyRailPadding(isOpen(), false); });
+
+  await new Promise(resolve => {
+    if (map.isSourceLoaded('eez')) return resolve();
+    const check = () => {
+      if (map.isSourceLoaded('eez')) { map.off('sourcedata', check); map.off('idle', check); resolve(); }
+    };
+    map.on('sourcedata', check); map.on('idle', check);
+    setTimeout(resolve, 15000);
+  });
+
+  const l = document.getElementById('loading');
+  l.style.opacity = 0;
+  setTimeout(() => l.remove(), 500);
+
+  ['eez-fill', 'country-fill'].forEach(lyr => map.getLayer(lyr) && map.on('mousemove', lyr, ev => {
+    const f = ev.features[0];
+    const src = lyr === 'country-fill' ? 'country' : 'eez';
+    // No pointer where a click would open nothing: inland countries have a
+    // landmass but no ocean zone.
+    map.getCanvas().style.cursor = (src === 'country' && !COUNTRY_AGG[f.properties.iso3]) ? 'default' : 'pointer';
+    if (hovered !== null && hovered !== f.id) map.setFeatureState({ source: hoveredSrc, id: hovered }, { hover:false });
+    hovered = f.id; hoveredSrc = src;
+    map.setFeatureState({ source: src, id: hovered }, { hover:true });
+    const p = f.properties;
+    let val;
+    const g = k => p[scale === 'country' ? 'c_' + k : k];
+    if (layer === 'share' && shareBy === 'value') {
+      const doubtful = scale === 'country'
+        ? ((COUNTRY_AGG[p.iso3] || {}).suspect_value || []).length
+        : (VALUE[p.name] || {}).suspect_price;
+      val = g('ssf_value_share') == null ? (doubtful ? 'value not reliable here' : 'no value data')
+        : g('ssf_value_share').toFixed(0) + '% of catch value small-scale';
+    }
+    else if (layer === 'share')  val = g('ssf_share') == null ? 'no catch data' : g('ssf_share').toFixed(0) + '% small-scale';
+    else if (layer === 'people') val = p.employed_per_1k == null ? 'no livelihoods data' : p.employed_per_1k + ' per 1,000 people, national, inland and marine' +
+      (scale !== 'country' && (COUNTRIES[p.name] || {}).iso_kind === 'territory' ? ` (${COUNTRY_NAME[p.iso3] || p.iso3}'s figure)` : '');
+    else if (layer === 'heat')   val = g('mhw') == null ? 'no heatwave reading' : (CLIMATE.mhw_labels || {})[g('mhw')] + (scale === 'country' ? ' (worst of its main zones)' : ' (sample area)');
+    else if (layer === 'foreign') val = g('foreign_pct') == null ? 'no fleet data' : g('foreign_pct') + '% foreign fleets';
+    else if (layer === 'overfish') val = g('overfished') == null ? 'fish populations not assessed here'
+      : g('overfished').toFixed(0) + '% of fish populations overfished or collapsed, judged from catch' + (OVERFISH_YEAR ? ', ' + OVERFISH_YEAR : '') + (scale === 'country' ? ' (catch-weighted zone average)' : '');
+    else val = g('confidence') ? 'confidence ' + g('confidence') + '/4' : 'no catch data';
+    const label = scale === 'country' ? (COUNTRY_NAME[p.iso3] || p.name) : p.name;
+    popup.setLngLat(ev.lngLat).setHTML(`<strong>${label}</strong><br /><span style="color:#5c6a6d">${val}</span>`).addTo(map);
+  }));
+
+  ['eez-fill', 'country-fill'].forEach(lyr => map.getLayer(lyr) && map.on('mouseleave', lyr, () => {
+    map.getCanvas().style.cursor = '';
+    if (hovered !== null) map.setFeatureState({ source: hoveredSrc, id: hovered }, { hover:false });
+    hovered = null; popup.remove();
+  }));
+
+  // A site dot opens a small card of its own; the zone under it does not open too.
+  const siteLayers = ['org-point', 'org-halo', 'issf-point', 'issf-halo'].filter(l => map.getLayer(l));
+  // Closed by hand below rather than with closeOnClick: the library's own close
+  // listener ran after the click that reopened the same card and shut it again.
+  const sitePopup = new maplibregl.Popup({ closeButton: true, closeOnClick: false, offset: 8, maxWidth: '280px' });
+  const ISSF_KIND = { organization: ['organization', 'Organisation'], profile: ['profile', 'Fishery profile'], blue_justice: ['bluejustice', 'Blue justice case'], case_study: ['casestudy', 'Case study'] };
+  function siteCard(f) {
+    const p = f.properties;
+    if (f.source === 'orgs') {
+      const who = [p.implementing, p.funding].filter(Boolean).join(' · ');
+      const y0 = (p.start || '').slice(0, 4), y1 = (p.end || '').slice(0, 4);
+      const when = y0 && y1 ? (y0 === y1 ? y0 : `${y0}–${y1}`) : y0 ? `from ${y0}` : y1 ? `to ${y1}` : '';
+      return `<div class="site-h">${esc(p.title)}</div>
+        <div class="site-m">Aid-funded project${p.place ? (p.approx ? ' in ' : ' at ') + esc(p.place) : ''}${when ? ' · ' + esc(when) : ''}</div>
+        ${p.approx ? `<div class="site-m">Approximate location: the record gives a region, a capital or the country, not a site.</div>` : ''}
+        ${who ? `<div class="site-m">${esc(who)}</div>` : ''}
+        <div class="site-m">Reported to IATI by ${esc(p.reporter || 'not stated')}${p.id ? ' · ' + ext('https://d-portal.org/ctrack.html#view=act&aid=' + encodeURIComponent(p.id), 'Open the record') : ''}</div>`;
+    }
+    const kind = ISSF_KIND[p.kind] || [String(p.kind || ''), 'Record'];
+    return `<div class="site-h">${esc(p.label)}</div>
+      <div class="site-m">${esc(kind[1])} in the Too Big To Ignore network${p.scope ? ' · ' + esc(p.scope) : ''}${p.date ? ' · added ' + esc(String(p.date).slice(0, 4)) : ''}</div>
+      ${p.approx ? `<div class="site-m">Approximate location: no usable coordinates on record, so it is placed at the country's centre.</div>` : ''}
+      ${p.id ? `<div class="site-m">${ext('https://issfcloud.toobigtoignore.net/details/' + kind[0] + '/' + encodeURIComponent(p.id), 'Open the record in ISSF')}</div>` : ''}`;
+  }
+  // A click anywhere that is not a dot closes the card, open sea included.
+  map.on('click', ev => {
+    if (!(siteLayers.length && map.queryRenderedFeatures(ev.point, { layers: siteLayers }).length)) sitePopup.remove();
+  });
+  siteLayers.forEach(lyr => {
+    map.on('mouseenter', lyr, () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', lyr, () => { map.getCanvas().style.cursor = ''; });
+    map.on('click', lyr, ev => {
+      const f = ev.features && ev.features[0];
+      if (!f) return;
+      popup.remove();
+      sitePopup.setLngLat(f.geometry.coordinates).setHTML(`<div class="site">${siteCard(f)}</div>`).addTo(map);
+    });
+  });
+  ['eez-fill', 'country-fill'].forEach(lyr => map.getLayer(lyr) && map.on('click', lyr, ev => {
+    if (siteLayers.length && map.queryRenderedFeatures(ev.point, { layers: siteLayers }).length) return;
+    sitePopup.remove();
+    const f = ev.features[0];
+    const src = lyr === 'country-fill' ? 'country' : 'eez';
+    if (selected !== null) map.setFeatureState({ source: selectedSrc, id: selected }, { selected:false });
+    selected = f.id; selectedSrc = src;
+    map.setFeatureState({ source: src, id: selected }, { selected:true });
+    if (scale === 'country' && f.properties.iso3) showCountryPanel(f.properties.iso3);
+    else showPanel(f.properties.name);
+    const h = document.getElementById('hint');
+    if (h) h.style.opacity = 0;
+  }));
+}
+
+init().catch(err => {
+  const l = document.getElementById('loading');
+  if (l) l.textContent = 'Could not load atlas data: ' + err.message;
+  console.error(err);
+});
+</script>
+</body>
+</html>
