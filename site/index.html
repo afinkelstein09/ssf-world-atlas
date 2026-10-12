@@ -279,6 +279,8 @@
   @container (min-width: 470px) {
     .keyfig { grid-template-columns: repeat(3, 1fr); }
     .kf { padding: 11px 13px 12px; }
+    .kf:nth-child(2n) { box-shadow: none; }
+    .kf:nth-child(3n+2), .kf:nth-child(3n) { box-shadow: inset 0.5px 0 0 var(--edge); }
   }
   /* The sparkline stretches to the panel width; keep the line weight honest. */
   .spark svg path, .spark svg polyline { vector-effect: non-scaling-stroke; }
@@ -288,12 +290,36 @@
   .sec { margin-top: 16px; padding-top: 14px; border-top: 0.5px solid var(--edge); }
 
   /* Key figures: the four numbers worth seeing before anything is opened. */
-  .keyfig {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-    background: var(--edge); border: 0.5px solid var(--edge);
-    border-radius: 8px; overflow: hidden; margin: 16px 0 4px;
-  }
-  .kf { background: #fff; padding: 9px 11px 10px; }
+  /* Hairlines, not a box: a rule above, thin lines between. */
+  /* Lines drawn on the tiles themselves, not by gaps over a grey ground: a page with
+     four or five tiles then leaves white space, not a grey block. */
+  .keyfig { display: grid; grid-template-columns: 1fr 1fr; border-top: 0.5px solid rgba(23,32,31,0.3); margin: 16px 0 4px; }
+  .kf { padding: 10px 12px 11px; border-bottom: 0.5px solid var(--edge); cursor: pointer; transition: background 0.14s; }
+  .kf:nth-child(2n) { box-shadow: inset 0.5px 0 0 var(--edge); }
+  .kf:hover { background: #f6f6f2; }
+  .kf:focus-visible { outline: 2px solid var(--ff); outline-offset: -2px; }
+  .kf-fc { display: flex; gap: 2px; align-items: flex-end; height: 13px; margin-top: 6px; }
+  .kf-fc i { flex: 1; border-radius: 1px 1px 0 0; }
+  .kf-gap { font-size: 10.5px; color: var(--ink-faint); line-height: 1.5; margin: 6px 0 2px; }
+  /* The country's news, under the tiles: one story, the rest a click away. */
+  .pnews { margin-top: 16px; padding-top: 10px; border-top: 0.5px solid rgba(23,32,31,0.3); }
+  .pn-lab { display: flex; justify-content: space-between; gap: 10px; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ff); font-weight: 600; margin-bottom: 5px; }
+  .pn-lab i { font-style: normal; font-weight: 400; letter-spacing: 0.02em; text-transform: none; color: var(--ink-faint); text-align: right; }
+  .pnews a { color: var(--ink); text-decoration: none; font-size: 13px; line-height: 1.4; }
+  .pnews a:hover { text-decoration: underline; }
+  .pnews a::after { content: ' \2197'; font-size: 0.8em; color: var(--ink-faint); }
+  .pnews .meta { font-size: 10.5px; color: var(--ink-faint); font-family: var(--mono); margin-top: 2px; }
+  .pnews ul { list-style: none; margin: 0; padding: 0; }
+  .pnews li { padding: 8px 0 0; margin-top: 8px; border-top: 0.5px solid var(--edge); }
+  .pn-more summary { font-size: 11px; color: var(--ink-dim); cursor: pointer; margin-top: 8px; list-style: none; }
+  .pn-more summary::-webkit-details-marker { display: none; }
+  .pn-more summary::before { content: '+ '; }
+  .pn-more[open] summary::before { content: '\2212 '; }
+  .pn-more[open] summary .o, .pn-more:not([open]) summary .c { display: none; }
+  .pn-note, .pn-none { font-size: 10.5px; color: var(--ink-faint); line-height: 1.5; margin-top: 8px; }
+  .pn-none { font-size: 11.5px; color: var(--ink-dim); margin-top: 2px; }
+  /* Group headings over the sections: the same groups as the map's views. */
+  .acc-g { font-size: 11px; font-weight: 600; letter-spacing: 0.02em; color: var(--ink); margin: 22px 0 3px; }
   .kf-l { font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); }
   .kf-v { font-size: 19px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px; line-height: 1.1; }
   .kf-s { font-size: 10px; color: var(--ink-faint); margin-top: 2px; line-height: 1.3; }
@@ -314,7 +340,7 @@
   .acc-r { display: flex; align-items: center; gap: 8px; min-width: 0; }
   .acc-r .peek {
     font-size: 11.5px; color: var(--ink-dim); white-space: nowrap;
-    overflow: hidden; text-overflow: ellipsis; max-width: 165px;
+    overflow: hidden; text-overflow: ellipsis; max-width: 235px;
   }
   .chev {
     font-size: 15px; color: var(--ink-faint); line-height: 1;
@@ -1037,6 +1063,8 @@ function initZoneLinks() {
   document.getElementById('panel-body').addEventListener('click', e => {
     const tool = e.target.closest('[data-tool]');
     if (tool) return panelTool(tool);
+    const kf = e.target.closest('.kf[data-open]');
+    if (kf && !e.target.closest('a')) return openSection(kf.dataset.open);
     const row = e.target.closest('tr[data-kind]');
     if (row) return openPlace(row.dataset.kind, row.dataset.key, { fly: true, fromTable: true });
     const tr = e.target.closest('.tr');
@@ -1050,6 +1078,8 @@ function initZoneLinks() {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     const row = e.target.closest('tr[data-kind]');
     if (row && e.target === row) { e.preventDefault(); return openPlace(row.dataset.kind, row.dataset.key, { fly: true, fromTable: true }); }
+    const kf = e.target.closest('.kf[data-open]');
+    if (kf && e.target === kf) { e.preventDefault(); return openSection(kf.dataset.open); }
     const tr = e.target.closest('.tr');
     if (tr) { e.preventDefault(); return toggleOriginal(tr); }
     const zone = e.target.closest('.org[data-zone]');
@@ -1061,7 +1091,7 @@ function initZoneLinks() {
   // will download a language pack. "toggle" does not bubble, hence the capture.
   document.getElementById('panel-body').addEventListener('toggle', e => {
     const d = e.target;
-    if (d.open && d.querySelector && d.querySelector('.news')) translateHeadlines(d, true);
+    if (d.open && d.querySelector && (d.querySelector('.news') || d.closest('.news'))) translateHeadlines(d, true);
   }, true);
 }
 
@@ -1165,7 +1195,8 @@ function peopleSection(c) {
       <div class="bar"><i style="width:${p.ssf_workforce_share}%;background:#98479a"></i></div></div>`;
   }
   return {
-    peek: p.employed_per_1k != null ? `${p.employed_per_1k} per 1,000` : fmt(p.ssf_workers) + ' workers',
+    // rounded as on the tile above it
+    peek: p.employed_per_1k != null ? `${p.employed_per_1k < 0.1 ? p.employed_per_1k.toFixed(2) : p.employed_per_1k.toFixed(1)} per 1,000` : fmt(p.ssf_workers) + ' workers',
     body: h
   };
 }
@@ -1392,7 +1423,8 @@ function futureSection(kind, key) {
   h += `<div class="reg-n">${txt}</div>`;
   h += `<div class="gap-note">Computer models of ocean life (FishMIP: ${runs} runs of six ecosystem models driven by two climate models), run without fishing to show climate change alone. They count all the sea animals each model represents, mostly fish. A projection of what these waters could support, not a forecast of catch.</div>`;
   h += `<div class="src-l">${ext('https://doi.org/10.1038/s41558-021-01173-9', 'Tittensor et al. 2021')} · ${ext('https://data.isimip.org', 'ISIMIP3b data')} · CC0</div>`;
-  return { peek: `${signed(hiE.median)} by 2100, high emissions`, body: h };
+  const n = Math.round(Math.abs(hiE.median));
+  return { peek: n < 1 ? 'about the same by 2100' : `${n}% ${hiE.median < 0 ? 'less' : 'more'} by 2100, high emissions`, body: h };
 }
 
 // ---------------------------------------------------------------------------
@@ -1482,10 +1514,11 @@ function governanceSection(c) {
   h += `</div>`;
   h += `<div class="gap-note">From the country case studies of Illuminating Hidden Harvests (FAO, Duke University and WorldFish), shares of the small-scale marine catch each arrangement covers. Formal arrangements only: customary and informal rights are not counted, so "no rights" can understate what fishers hold.</div>`;
   h += `<div class="src-l">${ext(g.url, 'IHH governance data')} · CC BY 4.0</div>`;
-  return { peek: pct(dev) != null ? `rights over ${share(dev)} of catch` : 'recorded', body: h };
+  const sd = share(dev);
+  return { peek: pct(dev) != null ? (sd === 'all' ? "fishers' rights over all catch" : `fishers' rights over ${sd} of catch`) : 'recorded', body: h };
 }
 
-function regulatorySection(c) {
+function regulatorySection(c, merged) {
   const r = (REG && REG.countries && REG.countries[c.iso3]) || null;
   const sdg = sdgBlock(c);
   if (!r && !sdg) return null;
@@ -1493,12 +1526,13 @@ function regulatorySection(c) {
   const law = r && r.access_law;
   let h = '', peek = [];
 
-  if (c.iso_kind === 'territory') {
+  if (c.iso_kind === 'territory' && !merged) {
     h += `<div class="gap-note" style="margin-top:0;margin-bottom:10px">This is ${COUNTRY_NAME[c.iso3] || 'the parent country'}'s national framework. This zone is an island or outlying part of the country, so it may be governed separately.</div>`;
   }
 
-  if (!r) {
-    // the law file arrives in the second wave; the UN score does not wait for it
+  if (!r || merged) {
+    // the law file arrives in the second wave; the UN score does not wait for it. In
+    // the merged section the reserved-area part above already shows the same law.
   } else if (law && law.name) {
     peek.push(law.year || 'law');
     h += `<div class="reg">
@@ -1744,33 +1778,6 @@ async function translateHeadlines(root, userGesture) {
     if (slot) slot.innerHTML = translationNote(n, hl.dataset.scope, +hl.dataset.i);
   }
 }
-function newsSection(c) {
-  if (!NEWS_META) return null;
-  const items = NEWS[c.iso3] || [];
-  const country = COUNTRY_NAME[c.iso3] || c.name;
-  const days = NEWS_META.window_days || 60;
-  // When each country's search last answered comes from the build; a country the
-  // search missed keeps its earlier headlines and says so on its own page.
-  const searchedOn = (NEWS_META.searched || {})[c.iso3];
-  const stale = !!(searchedOn && NEWS_META.generated && searchedOn !== NEWS_META.generated);
-  const notReached = ((NEWS_META.carried_over || {}).not_reached || []).includes(c.iso3);
-  if (!items.length) {
-    const why = notReached
-      ? `The news search did not answer for ${esc(country)} on ${shortDate(NEWS_META.generated)}, no earlier headlines were on file, and the sector feeds named it in nothing.`
-      : `No fisheries headline naming ${esc(country)} turned up in the last ${days} days, in the news search or the sector feeds. Small places go quiet for months at a time.`;
-    return { peek: `none in ${days} days`, body: `<div class="gap-note" style="margin-top:0">${why}</div>` };
-  }
-  let h = `<div class="news"><ul>` + items.map((n, i) => {
-    const bits = [esc(n.publisher || ''), shortDate(n.date)];
-    return `<li>${ext(n.url, headlineHtml(n, c.iso3, i)) || headlineHtml(n, c.iso3, i)}<div class="meta">${bits.filter(Boolean).join(' · ')}${noteSlot(n, c.iso3, i)}</div></li>`;
-  }).join('') + `</ul></div>`;
-  const when = stale
-    ? `The news search last answered for ${esc(country)} on ${shortDate(searchedOn)} and did not answer on ${shortDate(NEWS_META.generated)}, so its search headlines are from ${shortDate(searchedOn)}; any feed items are from ${shortDate(NEWS_META.generated)}. All were filtered by keyword.`
-    : `Headlines for ${esc(country)}, collected automatically (last run ${shortDate(NEWS_META.generated)}) from a news search and fisheries news feeds, then filtered by keyword.`;
-  h += `<div class="gap-note">${when} Nobody has read them: a headline here is a pointer, not an endorsement. Headlines written in another language are shown in machine translation where one has been made, and marked; click the mark to read the original.</div>`;
-  return { peek: `${items.length} · latest ${shortDate(items[0].date)}`, body: h };
-}
-
 function orgSection(c) {
   const have = ORGS && ORGS.by_country && ORGS.by_country[c.iso3];
   const issf = ISSF && ISSF.by_country && ISSF.by_country[c.iso3];
@@ -2372,65 +2379,174 @@ function accordion(title, sec, open) {
   </details>`;
 }
 
-function keyFigures(c) {
-  const p = PEOPLE[c.iso3];
-  const paa = PAA[c.iso3];
-  const acts = (ORGS && ORGS.by_country && ORGS.by_country[c.iso3] || []).length;
+// "2.9 million", "462,000": a headline total does not need its last six digits.
+const tonnesWords = n => n == null ? '—' : n >= 1e6 ? `${(n / 1e6).toFixed(1)} million` : n >= 1e4 ? `${Math.round(n / 1000).toLocaleString('en-US')},000` : fmt(n);
 
-  // Heat and fleet figures are published per ocean zone. On a country page they
-  // come from the rollup instead, or the tiles read as missing data when the
-  // country simply has more than one zone.
+// The heatwave forecast in one phrase and ten small bars: the likeliest month of the
+// next four, and the months from now on.
+function fcPhrase(vals, noun) {
+  const f = OUTLOOK && OUTLOOK.mhw_forecast;
+  if (!f || !vals) return null;
+  const first = fcFirst();
+  let best = -1;
+  for (let i = first; i < Math.min(first + 4, vals.length); i++) if (vals[i] != null && (best < 0 || vals[i] > vals[best])) best = i;
+  if (best < 0) return null;
+  const col = x => { let c = FC_STOPS[0][1]; FC_STOPS.forEach(([t, k]) => { if (x >= t - 1e-9) c = k; }); return c; };
+  const bars = vals.slice(first, first + 10).map(x => `<i style="height:${x == null ? 0 : Math.max(8, Math.round(x * 100))}%;background:${x == null ? 'transparent' : col(x)}"></i>`).join('');
+  // the month alone: the forecast never reaches a year away, so "January" is unambiguous
+  return { text: `${Math.round(vals[best] * 100)}% chance of ${noun} in ${monthWord(f.months[best]).replace(/ \d{4}$/, '')}`, bars: `<div class="kf-fc" aria-hidden="true">${bars}</div>` };
+}
+
+// Six tiles, one per topic, and never a blank one. A topic with nothing on record
+// for this place hands its tile to a stand-in, and what is missing is named in one
+// line under the tiles instead of as a dash. Each tile opens the section it sums up.
+// The count of threatened species is left out on purpose: it follows how much a
+// place has been surveyed, which is why the map never paints it either.
+function keyFigures(c) {
   const agg = c.iso_kind === 'country' ? COUNTRY_AGG[c.iso3] : null;
-  const z = agg ? { mhw: agg.mhw, date: HEAT_DATE } : (CLIMATE.zones && CLIMATE.zones[c.name]);
-  const f = agg ? { foreign_pct: agg.foreign_pct } : FLEETS[c.name];
-  const when = z && (z.date || HEAT_DATE) ? ', ' + shortDate(z.date || HEAT_DATE) : '';
-  const heatSub = agg
-    // Zones under 1% of the country's catch do not vote (see buildCountryAgg), so the
-    // caption counts the zones that did: the USA has 12 zones and 4 of them vote.
-    ? (agg.mhw != null ? (agg.mhw_n > 1 ? `worst of its ${agg.mhw_n} main zones${when}` : `in its main zone${when}`) : 'no satellite reading')
-    : (z && z.mhw != null ? `marine heatwave${when}` : 'no satellite reading');
-  const reserved = paa && paa.percent_eez != null ? (paa.percent_eez === 0 ? '<0.01' : paa.percent_eez) + '%' : '—';
-  // A territory's tiles carry the parent country's national figures; say so
-  // on the tile, not only inside the section.
-  const national = c.iso_kind === 'territory' ? ' · national' : '';
-  // The living side of the environment, visible before anything is opened. A country
-  // with several zones gets the catch-weighted average for overfishing, and for species
-  // the longest list in any one zone, because the lists overlap and cannot be summed.
-  const eco = agg ? null : ECO[c.name];
-  const st = eco && eco.stocks;
-  let fishVal = '—', fishSub = 'fish populations not assessed', fishTip = '';
+  const iso = c.iso3, terr = c.iso_kind === 'territory';
+  // A territory carries its parent's national figures, and one zone of several carries
+  // the country's; the tile says so.
+  const several = !agg && (((COUNTRY_AGG[iso] || {}).zones || []).length > 1);
+  const whole = terr ? `, ${esc(COUNTRY_NAME[iso] || iso)} as a whole` : several ? ', national' : '';
+  const T = (label, value, sub, open, extra) => ({ label, value, sub, open, extra: extra || '' });
+  const gaps = [];
+
+  const per = (PEOPLE[iso] || {}).employed_per_1k;
+  const people = per != null
+    ? T('People', per < 0.1 ? per.toFixed(2) : per.toFixed(1), `per 1,000 people work in small-scale fisheries, inland and marine${whole}`, 'People') : null;
+  if (!people) gaps.push('livelihoods figures');
+
+  const fp = agg ? agg.foreign_pct : (FLEETS[c.name] || {}).foreign_pct;
+  const foreign = fp != null ? T('Foreign fleets', fp + '%', "of the catch, taken by other countries' fleets", 'Whose fleets fish here') : null;
+  if (!foreign) gaps.push('fleet records');
+
+  const mhw = agg ? agg.mhw : ((CLIMATE.zones || {})[c.name] || {}).mhw;
+  const fz = OUTLOOK && OUTLOOK.mhw_forecast && OUTLOOK.mhw_forecast.zones && OUTLOOK.mhw_forecast.zones[c.name];
+  const fc = fcPhrase(agg ? agg.fc : fz && fz.p, mhw > 0 ? 'one' : 'a heatwave');
+  let heat = null;
+  if (mhw != null || fc) {
+    const on = HEAT_DATE ? ' on ' + shortDate(HEAT_DATE) : '';
+    const where = agg && agg.mhw_n > 1 ? ', worst of its main zones' : '';
+    const value = mhw == null ? 'No reading' : mhw === 0 ? 'None' : ['None', 'Moderate', 'Strong', 'Severe', 'Extreme', 'Beyond extreme'][mhw];
+    const now = mhw == null ? `no satellite reading${on}` : mhw === 0 ? `no heatwave${on}${where}` : `heatwave${on}${where}`;
+    heat = T('Ocean heat', value, now + (fc ? '; ' + fc.text : ''), 'Ocean heat', fc ? fc.bars : '');
+  } else gaps.push('a heatwave reading');
+
+  let of = null;
   if (agg && agg.overfished != null) {
-    fishVal = agg.overfished.toFixed(0) + '%';
-    const yr = agg.of_year ? `, ${agg.of_year}` : '';
-    // a tile holds one caveat; the full sentence is in the tooltip, the bar label,
-    // the legend and the hover text
-    fishSub = agg.zones.length > 1 ? `of fish populations · ${agg.overfished_zones} of ${agg.zones.length} zones${yr}` : `of fish populations · from catch${yr}`;
-    fishTip = `Share of fish populations rated overfished or collapsed, judged from catch trends by Sea Around Us${yr}${agg.zones.length > 1 ? `; catch-weighted average of the ${agg.overfished_zones} of ${agg.zones.length} zones with a reading` : ''}.`;
-  } else if (st) {
-    fishVal = depleted(st).toFixed(0) + '%';
-    fishSub = `of fish populations · from catch, ${st.year}`;
-    fishTip = `Share of fish populations rated overfished or collapsed, judged from catch trends by Sea Around Us, ${st.year}.`;
+    of = T('Overfished', agg.overfished.toFixed(0) + '%', `of fish populations, judged from catch${agg.of_year ? ', ' + agg.of_year : ''}${agg.zones.length > 1 ? `; average of ${agg.overfished_zones} zones` : ''}`, 'Fish and wildlife');
+  } else if (!agg && ECO[c.name] && ECO[c.name].stocks) {
+    const st = ECO[c.name].stocks;
+    of = T('Overfished', depleted(st).toFixed(0) + '%', `of fish populations, judged from catch, ${st.year}`, 'Fish and wildlife');
   }
-  let spVal = '—', spSub = 'no species list';
-  if (agg && agg.threatened_max != null) {
-    spVal = fmt(agg.threatened_max);
-    spSub = agg.zones.length > 1 ? 'threatened species, most in any one zone' : 'threatened species recorded';
-  } else if (eco && eco.threatened) {
-    spVal = fmt(eco.threatened.total);
-    spSub = 'threatened species recorded' + (eco.threatened.cr ? `, ${eco.threatened.cr} critical` : '');
+  if (!of) gaps.push('an assessment of fish populations');
+
+  const hiE = futureCell(agg ? 'country' : 'zone', agg ? iso : c.name, 'ssp585', 'end');
+  const loE = futureCell(agg ? 'country' : 'zone', agg ? iso : c.name, 'ssp126', 'end');
+  let fut = null;
+  if (hiE && hiE.median != null) {
+    const n = Math.round(Math.abs(hiE.median));
+    fut = T('Fish by 2100', n < 1 ? 'No change' : `${n}% ${hiE.median < 0 ? 'less' : 'more'}`,
+      `by 2081–2100 if emissions stay very high${loE && loE.median != null ? `; ${lessMore(loE.median)} if they are cut` : ''}`, 'Fish in the future');
+  } else gaps.push('a projection of future fish');
+
+  // Access: a reserved area if the country has one, else how much catch fishers hold
+  // rights over, else the country's own UN score.
+  const paa = PAA[iso];
+  const gov = ACCESS && ACCESS.ihh_governance && (ACCESS.ihh_governance.countries[iso] || {}).marine;
+  const dev = gov && gov.devolved_any && gov.devolved_any.pct != null ? gov.devolved_any.pct : null;
+  const sdg = sdgRecord(iso);
+  const un = sdg && sdg.latest != null ? `UN score ${sdg.latest} of 5 (${sdg.latest_year})` : '';
+  let access = null;
+  if (paa && paa.percent_eez != null) {
+    access = T('Access rights', (paa.percent_eez === 0 ? '<0.01' : paa.percent_eez) + '%', `of its waters reserved for small-scale fishing${whole}${un ? ' · ' + un : ''}`, 'Access rights and law');
+  } else if (dev != null) {
+    access = T('Access rights', dev >= 99.95 ? 'All' : dev < 0.05 ? 'None' : (dev < 10 ? dev.toFixed(1) : dev.toFixed(0)) + '%', `of small-scale catch under rights fishers hold${whole}${un ? ' · ' + un : ''}`, 'How access is governed');
+  } else if (un) {
+    access = T('Access rights', `${sdg.latest} of 5`, `the country's own UN access-rights score, ${sdg.latest_year}${whole}`, 'Access rights and law');
   }
-  const cells = [
-    // IHH counts employment across the value chain, not fishers at sea.
-    ['Workers', p && p.employed_per_1k != null ? p.employed_per_1k : '—', 'per 1,000 people, national, inland and marine' + (c.iso_kind === 'territory' ? ' · parent country' : '')],
-    ['Reserved', reserved, 'of EEZ for small-scale' + national],
-    ['Foreign', f ? f.foreign_pct + '%' : '—', 'of catch by other fleets'],
-    ['Heatwave', z && z.mhw != null ? (['None','Moderate','Strong','Severe','Extreme','Beyond extreme'][z.mhw] || '—') : '—', heatSub],
-    ['Overfished', fishVal, fishSub, fishTip],
-    ['Threatened', spVal, spSub]
-  ];
-  return `<div class="keyfig">` + cells.map(([lab, val, sub, tip]) =>
-    `<div class="kf"><div class="kf-l">${lab}</div><div class="kf-v">${val}</div><div class="kf-s"${tip ? ` title="${esc(tip)}"` : ''}>${sub}</div></div>`
-  ).join('') + `</div>`;
+  if (!paa) gaps.push(access ? 'a reserved small-scale fishing area' : 'a reserved small-scale fishing area or access-rights scores');
+
+  // Stand-ins, in order, for any topic with nothing on record
+  const spare = [];
+  const vs = agg ? agg.ssf_value_share : (VALUE[c.name] && !VALUE[c.name].suspect_price ? VALUE[c.name].ssf_value_share : null);
+  if (vs != null) spare.push(T('Value', vs.toFixed(0) + '%', "of the catch's value is small-scale", "What it's worth"));
+  const un2 = !agg && ECO[c.name] ? ECO[c.name].unreported_pct : null;
+  if (un2 != null) spare.push(T('Unreported', un2 + '%', 'of the catch goes unreported, by Sea Around Us\'s estimate', 'Fish and wildlife'));
+  const kg = !terr && VALUE_NAT[iso] ? VALUE_NAT[iso].fish_kg : null;
+  if (kg != null) spare.push(T('Fish eaten', kg + ' kg', `of fish and seafood per person a year, ${VALUE_NAT[iso].fish_year}`, "What it's worth"));
+
+  const tiles = [people, foreign, heat, of, fut, access].map(t => t || spare.shift() || null).filter(Boolean);
+  const list = a => a.length > 1 ? a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1] : a[0];
+  return `<div class="keyfig">` + tiles.map(t =>
+    `<div class="kf" role="button" tabindex="0" data-open="${esc(t.open)}"><div class="kf-l">${t.label}</div><div class="kf-v">${t.value}</div><div class="kf-s">${t.sub}</div>${t.extra}</div>`
+  ).join('') + `</div>` + (gaps.length ? `<div class="kf-gap">Not on record here: ${list(gaps)}.</div>` : '');
+}
+
+// A tile opens its section and brings it into view.
+function openSection(title) {
+  const d = [...document.querySelectorAll('#panel-body details.acc')].find(x => (x.querySelector('.acc-t') || {}).textContent === title);
+  if (!d) return;
+  d.open = true;
+  d.scrollIntoView({ behavior: document.hidden ? 'auto' : 'smooth', block: 'start' });
+}
+
+// The country's news at the top of its page: the newest headline from the country's
+// own search, or one that names it, then the rest one click away. Other people's
+// reporting, so it sits under the atlas's own figures with a label saying so.
+const NEWS_NAMES = { USA: ['United States', 'US', 'U.S.'], GBR: ['UK', 'Britain', 'British'] };
+function newsTop(c) {
+  if (!NEWS_META) return '';
+  const iso = c.iso3, items = NEWS[iso] || [];
+  const country = COUNTRY_NAME[iso] || c.name;
+  const days = NEWS_META.window_days || 60;
+  const label = `<div class="pn-lab"><span>${esc(country)} in the news</span><i>collected automatically, not read by anyone</i></div>`;
+  if (!items.length) {
+    const notReached = ((NEWS_META.carried_over || {}).not_reached || []).includes(iso);
+    return `<div class="pnews">${label}<div class="pn-none">${notReached
+      ? `The news search did not answer for ${esc(country)} on ${shortDate(NEWS_META.generated)}, and no earlier headlines were on file.`
+      : `No fisheries headline naming ${esc(country)} in the last ${days} days.`}</div></div>`;
+  }
+  // "America" is left out of the names: South America would count.
+  const names = [country, ...(NEWS_NAMES[iso] || (ALIASES[iso] || []).filter(w => w !== 'America'))];
+  const named = n => names.some(w => {
+    const re = new RegExp(`(^|[^A-Za-z])${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}($|[^A-Za-z])`, w.length <= 3 ? '' : 'i');
+    return re.test(n.title) || (n.title_en && re.test(n.title_en));
+  });
+  let top = items.findIndex(n => n.via === 'search' || named(n));
+  if (top < 0) top = 0;
+  const line = (n, i, tag) => `<${tag} class="en-item">${ext(n.url, headlineHtml(n, iso, i)) || headlineHtml(n, iso, i)}<div class="meta">${[esc(n.publisher || ''), shortDate(n.date)].filter(Boolean).join(' · ')}${noteSlot(n, iso, i)}</div></${tag}>`;
+  const rest = items.map((n, i) => [n, i]).filter(([, i]) => i !== top);
+  const searchedOn = (NEWS_META.searched || {})[iso];
+  const stale = !!(searchedOn && NEWS_META.generated && searchedOn !== NEWS_META.generated);
+  const note = (stale
+    ? `The news search last answered for ${esc(country)} on ${shortDate(searchedOn)}, so its headlines are from then; feed items are from ${shortDate(NEWS_META.generated)}.`
+    : `Collected ${shortDate(NEWS_META.generated)} from a news search and fisheries news feeds, filtered by keyword.`) +
+    ` A headline is a pointer, not an endorsement${items.some(n => (n.lang || 'en') !== 'en') ? '; translations are machine-made and marked, and a click shows the original' : ''}.`;
+  return `<div class="pnews news">${label}${line(items[top], top, 'div')}` +
+    (rest.length
+      ? `<details class="pn-more"><summary><span class="o">${rest.length} more headline${rest.length > 1 ? 's' : ''}</span><span class="c">fewer headlines</span></summary><ul>${rest.map(([n, i]) => line(n, i, 'li')).join('')}</ul><div class="pn-note">${note}</div></details>`
+      : `<div class="pn-note">${note}</div>`) + `</div>`;
+}
+
+// Sections sit under the same headings as the map's views, so a page reads in the
+// order the left rail does. A heading with nothing under it is left out.
+const group = (title, parts) => {
+  const body = parts.join('');
+  return body ? `<div class="acc-g">${title}</div>${body}` : '';
+};
+
+// The reserved area, the law that made it, the UN score, FAO's guidelines work and
+// the law database, in one place. The reserved area and the access law come from the
+// same Duke dataset and cover the same 44 countries, so the law is shown once.
+function accessLawSection(c) {
+  const paa = paaSection(c);
+  const reg = regulatorySection(c, true);
+  const has = !!PAA[c.iso3];
+  const sdg = sdgRecord(c.iso3);
+  const peek = [has ? paa.peek.replace(' of EEZ', ' reserved') : '', sdg && sdg.latest != null ? `UN score ${sdg.latest}/5` : ''].filter(Boolean).join(' · ') || 'none recorded';
+  return { peek, body: paa.body + (reg ? `<div style="margin-top:14px">${reg.body}</div>` : '') };
 }
 
 // ---------------------------------------------------------------------------
@@ -2993,34 +3109,39 @@ function showCountryPanel(iso) {
 
   if (a.ssf_share != null) {
     html += `<div class="hero"><b>${a.ssf_share.toFixed(0)}<span style="font-size:21px">%</span></b><span>of catch is small-scale</span></div>`;
-    html += `<div class="hero-note">across all of this country's waters — ${fmt(a.total_t)} tonnes caught a year, summed across its zones.</div>`;
+    html += `<div class="hero-note">across all of this country's waters: about ${tonnesWords(a.total_t)} tonnes caught a year, summed across its zones.</div>`;
   }
 
   html += keyFigures(c);
+  html += newsTop(c);
   const focus = openFor();
-  html += accordion('What it\'s worth', countryValueSection(iso, a, c), focus === 'worth');
-  html += accordion('Whose fleets fish here', countryFleetSection(iso, a), focus === 'fleets');
-  html += accordion('Environment · ecosystem', countryEcoSection(iso, a, c, zones), focus === 'eco');
-  html += accordion('Environment · ocean heat', countryHeatSection(iso, a), focus === 'heat');
-  html += accordion('Fish in the future', futureSection('country', iso), focus === 'future');
-  html += accordion('People', peopleSection(c), focus === 'people');
-  html += accordion('Preferential access', paaSection(c), false);
-  html += accordion('Regulatory framework', regulatorySection(c), focus === 'rights');
-  html += accordion('How access is governed', governanceSection(c), focus === 'rights');
-  html += accordion('Organisations', profileSection(c), false);
-  html += accordion('Reported activity', orgSection(c), false);
-  html += accordion('News', newsSection(c), false);
-  html += accordion('Ocean zones', {
-    peek: `${zones.length}`,
-    body: `<div class="pg-l">` + zones.map(z =>
-      `<span class="org" role="button" tabindex="0" data-zone="${esc(z)}">${esc(z)}</span>`).join('') +
-      `</div><div class="gap-note">Catch is published by ocean zone, not by country. These are the zones combined above — click one to see it on its own.</div>`
-  }, false);
-  html += accordion('Sources', sourcesSection(), false);
+  html += group('Catch and economy', [
+    accordion('What it\'s worth', countryValueSection(iso, a, c), focus === 'worth'),
+    accordion('Whose fleets fish here', countryFleetSection(iso, a), focus === 'fleets')]);
+  html += group('Environment', [
+    accordion('Ocean heat', countryHeatSection(iso, a), focus === 'heat'),
+    accordion('Fish and wildlife', countryEcoSection(iso, a, c, zones), focus === 'eco'),
+    accordion('Fish in the future', futureSection('country', iso), focus === 'future')]);
+  html += group('People and rights', [
+    accordion('People', peopleSection(c), focus === 'people'),
+    accordion('Access rights and law', accessLawSection(c), focus === 'rights'),
+    accordion('How access is governed', governanceSection(c), focus === 'rights')]);
+  html += group('Who works here', [
+    accordion('Organisations', profileSection(c), false),
+    accordion('Projects and research', orgSection(c), false)]);
+  html += group('About the data', [
+    accordion('Ocean zones', {
+      peek: `${zones.length}`,
+      body: `<div class="pg-l">` + zones.map(z =>
+        `<span class="org" role="button" tabindex="0" data-zone="${esc(z)}">${esc(z)}</span>`).join('') +
+        `</div><div class="gap-note">Catch is published by ocean zone, not by country. These are the zones combined above — click one to see it on its own.</div>`
+    }, false),
+    accordion('Sources', sourcesSection(), false)]);
 
   document.getElementById('panel-body').innerHTML = html;
   ['#panel .p-scroll', '#panel-body'].forEach(s => { const el = document.querySelector(s); if (el) el.scrollTop = 0; });
   openPanel();
+  translateHeadlines(document.querySelector('#panel-body .pnews'), false);
   syncHash();
 }
 
@@ -3072,7 +3193,7 @@ function showPanel(name) {
     const unknown = c.unknown_sectors || [];
     const since = c.unknown_since || {};
     html += `<div class="hero"><b>${share.toFixed(0)}<span style="font-size:21px">%</span></b><span>of ${unknown.length ? 'known ' : ''}catch is small-scale</span></div>`;
-    html += `<div class="hero-note">of roughly ${fmt(c.total_t)} tonnes caught a year (landings and discards), averaged over the last five years of record${
+    html += `<div class="hero-note">of about ${tonnesWords(c.total_t)} tonnes caught a year (landings and discards), averaged over the last five years of record${
       unknown.length ? `. The ${unknown.map(s => s.toLowerCase() + ' series has no values after ' + (since[s] || 'the start of the record')).join(' and the ')}, so the total is what the record holds` : ''}.</div>`;
   }
 
@@ -3082,26 +3203,31 @@ function showPanel(name) {
   // something to look at without the reader having to hunt for it.
   // The section that answers the view you are looking at opens with the page;
   // otherwise catch does, as the core of the atlas.
+  html += newsTop(c);
   const focus = openFor();
-  html += accordion('Catch by sector', catchSection(c), focus === 'catch');
-  html += accordion('What it\'s worth', valueSection(c), focus === 'worth');
-  html += accordion('Whose fleets fish here', fleetSection(c), focus === 'fleets');
-  html += accordion('Environment · ocean heat', climateSection(c), focus === 'heat');
-  html += accordion('Environment · ecosystem', ecoSection(c), focus === 'eco');
-  html += accordion('Fish in the future', futureSection('zone', name), focus === 'future');
-  html += accordion('People', peopleSection(c), focus === 'people');
-  html += accordion('Preferential access', paaSection(c), false);
-  html += accordion('Regulatory framework', regulatorySection(c), focus === 'rights');
-  html += accordion('How access is governed', governanceSection(c), focus === 'rights');
-  html += accordion('Organisations', profileSection(c), false);
-  html += accordion('Reported activity', orgSection(c), false);
-  html += accordion('News', newsSection(c), false);
-  html += accordion('Data confidence', confSection(c), false);
-  html += accordion('Sources', sourcesSection(), false);
+  html += group('Catch and economy', [
+    accordion('Catch by sector', catchSection(c), focus === 'catch'),
+    accordion('What it\'s worth', valueSection(c), focus === 'worth'),
+    accordion('Whose fleets fish here', fleetSection(c), focus === 'fleets')]);
+  html += group('Environment', [
+    accordion('Ocean heat', climateSection(c), focus === 'heat'),
+    accordion('Fish and wildlife', ecoSection(c), focus === 'eco'),
+    accordion('Fish in the future', futureSection('zone', name), focus === 'future')]);
+  html += group('People and rights', [
+    accordion('People', peopleSection(c), focus === 'people'),
+    accordion('Access rights and law', accessLawSection(c), focus === 'rights'),
+    accordion('How access is governed', governanceSection(c), focus === 'rights')]);
+  html += group('Who works here', [
+    accordion('Organisations', profileSection(c), false),
+    accordion('Projects and research', orgSection(c), false)]);
+  html += group('About the data', [
+    accordion('Data confidence', confSection(c), false),
+    accordion('Sources', sourcesSection(), false)]);
 
   document.getElementById('panel-body').innerHTML = html;
   ['#panel .p-scroll', '#panel-body'].forEach(s => { const el = document.querySelector(s); if (el) el.scrollTop = 0; });
   openPanel();
+  translateHeadlines(document.querySelector('#panel-body .pnews'), false);
   syncHash();
 }
 function confNote(s) {

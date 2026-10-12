@@ -48,6 +48,20 @@ dark red), drawn light to dark; the previous ramps are in
 green access-area overlay it will be read against, and fish in the future runs from rust
 (a fall) through a pale middle to teal (a rise).
 
+**A page, top to bottom.** The headline share, then six tiles that are never blank: people,
+foreign fleets, ocean heat (today and the forecast), overfished, fish by 2100 and access
+rights. A topic with nothing on record hands its tile to a stand-in (the share of catch
+value, the unreported catch, or fish eaten per person) and is named in one line under
+the tiles instead ("Not on record here: …"); a tile opens the section it sums up. The
+count of threatened species is not a tile, because it follows how much a place has been
+surveyed; it stays in Fish and wildlife. Then the country's news, the top story first
+(the newest from the country's own search or naming it in the headline) and the rest a
+click away, labelled as collected automatically and unread. Then the sections, under the
+same headings as the map's views: Catch and economy, Environment, People and rights, Who
+works here, About the data. The reserved fishing area and the access law come from the
+same dataset and cover the same 44 countries, so they share one section, Access rights
+and law, with the UN score.
+
 **Finding, sharing and citing.** A search box finds any country or zone by name, ISO code
 or common other name ("Ivory Coast", "UK"); it is also the way into a page without a
 mouse. The address bar carries the view, the scale, the overlays and the open page, so a
