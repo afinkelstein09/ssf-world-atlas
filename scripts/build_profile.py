@@ -184,6 +184,14 @@ def clean_name(name):
     return s.strip(" ,")
 
 
+# Bodies a source files under the wrong country, checked by hand. Spanish aid's record of
+# a Cape Verde project names Ethiopia's education ministry (October 2026 refresh): it is
+# not Cape Verde's government and not a donor, so it is left unclassified.
+MISFILED = {
+    ("CPV", "ministerio de ciencia y educación de etiopía"),
+}
+
+
 def classify(name, hint=None, home_iso=None, country_names=None):
     """
     Decide an organisation's category.
@@ -199,6 +207,8 @@ def classify(name, hint=None, home_iso=None, country_names=None):
     """
     n = norm(name)
     if not n or n in ("name withheld", "not reported"):
+        return "unclassified"
+    if (home_iso, n) in MISFILED:
         return "unclassified"
 
     if hint == "fisher_org":
@@ -477,9 +487,22 @@ def main():
         profile[iso] = {c: sorted(v, key=lambda x: x["name"]) for c, v in buckets.items() if v}
 
     total = sum(len(v) for b in profile.values() for v in b.values())
+
+    # When each input was fetched or checked, so the directory's date can be traced.
+    def stamp(path, *keys):
+        if not os.path.exists(path):
+            return None
+        d = json.load(open(path))
+        return next((d[k] for k in keys if d.get(k)), None)
+    inputs = {
+        "iati_fetched": stamp(os.path.join(OUT, "orgs.json"), "fetched", "generated"),
+        "issf_fetched": stamp(os.path.join(OUT, "issf.json"), "fetched", "generated"),
+        "links_checked": stamp(os.path.join(HERE, "data", "link_check.json"), "checked"),
+    }
     with open(os.path.join(OUT, "profile.json"), "w") as f:
         json.dump({
             "generated": time.strftime("%Y-%m-%d"),
+            "inputs": inputs,
             "categories": CATEGORIES,
             "sources": {
                 "fisher_org": "Annex A: SSF Organisations by Region (WFFP, ICSF and project files, supplied by Rare)",

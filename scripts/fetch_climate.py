@@ -22,7 +22,8 @@ heating weeks is kept alongside it, labelled as the coral-specific measure it is
 Outputs site/data/climate.json.
 
 Sources:
-  https://www.cpc.ncep.noaa.gov/data/indices/     NOAA CPC, public domain
+  https://www.cpc.ncep.noaa.gov/data/indices/     NOAA CPC, public domain (RONI, ONI,
+                                                  weekly Nino regions)
   https://pae-paha.pacioos.hawaii.edu/erddap/     NOAA Coral Reef Watch via PacIOOS
 """
 
@@ -35,6 +36,12 @@ from concurrent.futures import ThreadPoolExecutor
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(HERE, "site", "data")
 
+# NOAA's official El Nino index since 1 February 2026 is the Relative Oceanic Nino
+# Index: the Nino 3.4 anomaly with the tropics-wide warming taken out, so a
+# warmer ocean overall does not read as a stronger El Nino. The old ONI is still
+# published and is kept beside it for the Sources note, because it is the number
+# most news stories quote. Its keys below stay "oni" so the page reads either.
+RONI = "https://www.cpc.ncep.noaa.gov/data/indices/RONI.ascii.txt"
 ONI = "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt"
 WEEKLY_NINO = "https://www.cpc.ncep.noaa.gov/data/indices/wksst9120.for"
 ERDDAP = "https://pae-paha.pacioos.hawaii.edu/erddap/griddap"
@@ -76,18 +83,30 @@ def get_text(url, tries=3, timeout=60):
 def enso():
     """Current El Nino / La Nina state and recent trajectory."""
     out = {}
-    raw = get_text(ONI)
-    if raw:
+
+    def seasons(raw):
+        # RONI has three columns (season, year, anomaly); the ONI file has a fourth,
+        # the total, before the anomaly. The anomaly is the last column in both.
         rows = []
-        for line in raw.strip().splitlines()[1:]:
+        for line in (raw or "").strip().splitlines()[1:]:
             parts = line.split()
-            if len(parts) >= 4:
+            if len(parts) >= 3:
                 try:
                     rows.append({"season": parts[0], "year": int(parts[1]),
-                                 "anomaly": float(parts[3])})
+                                 "anomaly": float(parts[-1])})
                 except ValueError:
                     continue
+        return rows
+
+    classic = seasons(get_text(ONI))
+    if classic:
+        out["oni_classic"] = {"value": classic[-1]["anomaly"],
+                              "season": f"{classic[-1]['season']} {classic[-1]['year']}"}
+    raw = get_text(RONI)
+    if raw:
+        rows = seasons(raw)
         if rows:
+            out["index"] = "RONI"
             latest = rows[-1]
             out["oni"] = latest["anomaly"]
             out["oni_season"] = f"{latest['season']} {latest['year']}"
@@ -390,7 +409,8 @@ def main():
         print("  ! the El Nino index did not answer. climate.json is left as it was; run again later.")
         return 1
     if state.get("state"):
-        print(f"  {state['state']}  ONI {state['oni']:+.2f} ({state['oni_season']})")
+        print(f"  {state['state']}  RONI {state['oni']:+.2f} ({state['oni_season']})"
+              + (f", older ONI {state['oni_classic']['value']:+.2f}" if state.get("oni_classic") else ""))
         if "nino12_anomaly" in state:
             print(f"  Nino 1+2 anomaly {state['nino12_anomaly']:+.1f} C  week of {state['week']}")
 
@@ -450,7 +470,7 @@ def main():
         json.dump({
             "generated": time.strftime("%Y-%m-%d"),
             "sources": {
-                "enso": "NOAA Climate Prediction Center (public domain)",
+                "enso": "NOAA Climate Prediction Center, Relative Oceanic Nino Index (official since 1 Feb 2026) and weekly Nino 1+2 (public domain)",
                 "heat": "NOAA Coral Reef Watch 5km, marine heatwave and degree heating weeks, via PacIOOS ERDDAP",
             },
             "mhw_labels": MHW_LABELS,

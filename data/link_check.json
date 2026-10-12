@@ -1,8 +1,9 @@
 {
- "checked": "2026-10-06",
+ "checked": "2026-10-11",
  "tally": {
-  "ok": 183,
-  "blocked": 25
+  "ok": 182,
+  "blocked": 25,
+  "dead": 1
  },
  "links": {
   "http://worldfisher-forum.org/": {
@@ -72,9 +73,8 @@
    ]
   },
   "https://awfishnet.org/": {
-   "class": "ok",
-   "status": 200,
-   "final": "https://awfishnet.org/",
+   "class": "dead",
+   "status": 500,
    "used_by": [
     "organisation: african women fish processors and traders network",
     "organisation: awfishnet"
@@ -976,10 +976,10 @@
     "organisation: chiang mai university"
    ]
   },
-  "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php": {
+  "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/": {
    "class": "ok",
    "status": 200,
-   "final": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php",
+   "final": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
    "used_by": [
     "page"
    ]

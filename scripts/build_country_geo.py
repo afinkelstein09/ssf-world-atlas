@@ -9,7 +9,7 @@ around it.
 Sea Around Us publishes country land geometry alongside its EEZs, keyed by the
 same ISO3 codes, so the two scales line up without another source.
 
-Outputs site/data/country.geojson.
+Outputs site/data/country.geojson, and site/data/names.json (ISO3 -> name).
 """
 
 import json
@@ -117,6 +117,12 @@ def main():
     path = os.path.join(OUT, "country.geojson")
     with open(path, "w") as f:
         json.dump({"type": "FeatureCollection", "features": feats}, f)
+
+    # The names on their own, a few kilobytes: the page shows the map and its search
+    # box before the 2 MB of land outlines arrive, and both need the real names.
+    with open(os.path.join(OUT, "names.json"), "w") as f:
+        json.dump({ft["properties"]["iso3"]: ft["properties"]["name"] for ft in feats}, f,
+                  ensure_ascii=False, separators=(",", ":"), sort_keys=True)
 
     size = os.path.getsize(path) / 1e6
     print(f"  {len(feats)} countries with land geometry")

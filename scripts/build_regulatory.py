@@ -12,10 +12,9 @@ etc.)". Three things are assemblable today and one is not:
   FAOLEX                    A deep link per country. FAOLEX returns 403 to scripts,
                             so this links out rather than pretending to have read it.
 
-  SDG indicator 14.b.1      Blocked. unstats.un.org is unreachable from here - the
-                            whole domain times out, not just the API - so the one
-                            comparable global measure of SSF policy adoption is
-                            missing. Left as a documented gap rather than dropped.
+  SDG indicator 14.b.1      Not here: scripts/fetch_access.py fetches it into
+                            site/data/access.json, now that unstats.un.org answers
+                            (it timed out from here in August 2026).
 
 Outputs site/data/regulatory.json.
 """
@@ -122,12 +121,6 @@ def main():
                                "areas for small-scale fishing, Duke Research Data Repository, CC0"),
                 "ssf_guidelines": "FAO, Voluntary Guidelines for Small-Scale Fisheries — Where we work",
                 "faolex": "FAOLEX Database, FAO — linked, not harvested",
-            },
-            "missing": {
-                "sdg_14_b_1": ("SDG indicator 14.b.1, the degree of application of a legal framework "
-                               "recognising access rights for small-scale fisheries, is the one "
-                               "comparable global measure of policy adoption. It is not yet in this "
-                               "atlas."),
             },
             "count": len(out),
             "countries": out,

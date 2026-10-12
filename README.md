@@ -4,15 +4,15 @@ A first working prototype of a global atlas of small-scale fisheries, built for 
 
 Ninety percent of the world's fishers are small-scale, and they land roughly half the
 world's catch — but the space has nothing like the data infrastructure that forests have
-in Global Forest Watch. This maps where small-scale catch actually is, and how well we
+in Global Forest Watch (renamed Global Nature Watch in September 2026). This maps where small-scale catch actually is, and how well we
 know it.
 
 **Status: prototype.** Everything here comes from public data. Nothing is official.
 
 ## What it shows
 
-Every one of the world's **282 exclusive economic zones**, coloured six ways, grouped in
-the left rail as catch and economy, people, environment, and about the data:
+Every one of the world's **282 exclusive economic zones**, coloured eight ways, grouped in
+the left rail as catch and economy, people and rights, environment, and about the data:
 
 - **Small-scale share of catch** — what fraction of each EEZ's landings come from
   artisanal and subsistence fishing, averaged over the last five years of record.
@@ -31,12 +31,37 @@ the left rail as catch and economy, people, environment, and about the data:
   over-exploited or collapsed in 2019, judged from each population's catch history rather
   than from scientific surveys, and the legend says so. 188 of 282 zones have a reading;
   the rest are hatched.
+- **Access rights** — how far each country's legal framework recognises and protects
+  access rights for small-scale fishers, scored 1 to 5 by the country itself for UN SDG
+  indicator 14.b.1 (2026 round; a country that did not report in 2026 is hatched, and its
+  earlier rounds are on its page). Most countries score themselves 4 or 5, and the legend
+  says so.
+- **Fish in the future** — FishMIP's projected change in fish biomass by 2041–2060 or
+  2081–2100, under low or very high emissions, against 1995–2014 and with no fishing: the
+  median of ten model runs, with the spread and the runs' agreement on each page.
 - **Data confidence** — how complete the catch record is. Gaps are shown, not hidden.
 
-The six views use one hue each (Andrew's palette of 26 September 2026: blue, violet,
+The first six views use one hue each (Andrew's palette of 26 September 2026: blue, violet,
 raspberry, amber, slate, and for heatwaves the cool blue-grey for "none" then yellow to
 dark red), drawn light to dark; the previous ramps are in
-`data/backups/2026-09-26-pre-colours/index.html`.
+`data/backups/2026-09-26-pre-colours/index.html`. Access rights is olive, clear of the
+green access-area overlay it will be read against, and fish in the future runs from rust
+(a fall) through a pale middle to teal (a rise).
+
+**Finding, sharing and citing.** A search box finds any country or zone by name, ISO code
+or common other name ("Ivory Coast", "UK"); it is also the way into a page without a
+mouse. The address bar carries the view, the scale, the overlays and the open page, so a
+copied link opens the atlas exactly as it was (`#view=heat&scale=country&country=PER`).
+Every page has three buttons under its title: copy a link, a ready-made citation with
+the date, and a CSV of every figure on the page with its unit, period and source
+(species are given as counts only, because the IUCN Red List does not allow its lists
+to be passed on). "See every place ranked in a table" lists all zones or countries by
+the view on the map, with gaps listed last rather than dropped, and downloads as a CSV.
+
+**Loading.** The first picture needs only the zone outlines and the figures the views
+paint, about 1 MB compressed. The land outlines, the overlays and the files only the
+panel reads (another 1.4 MB) load once the map is on screen, and a page opened before
+they arrive is redrawn when they do.
 
 A live ENSO reading sits in the header, because El Niño is the single most
 consequential recurring signal for small-scale fisheries.
@@ -46,7 +71,7 @@ works (highlighter orange on a white casing) and where Blue Ventures works (high
 yellow on a dark casing, so it survives a pale sea); a country on both lists gets yellow
 dashes over the orange, and a key under the switch says which is which. Project and
 community sites are brown dots: aid-funded projects that reported a map location to
-IATI (895 points from 400 projects; a point that is really a region, a capital or the
+IATI (893 points from 400 projects, refreshed 11 October 2026; a point that is really a region, a capital or the
 country itself is drawn faint) and records from the Too Big To Ignore research network
 (519 records; those with no site of their own sit faint at the country's centre). Clicking a dot
 opens a card with the project or record, its dates and reporter, and a link to the
@@ -75,12 +100,37 @@ python3 scripts/build_regulatory.py  # laws and legal links   (instant, local)
 python3 scripts/build_country_geo.py # country polygons       (instant, local)
 python3 scripts/fetch_paa.py      # preferential access areas (needs the gpkg)
 python3 scripts/fetch_news.py     # headlines per country     (~12 min, slow on purpose)
+python3 scripts/fetch_access.py   # UN SDG 14.b.1 + IHH governance (~20 s first run)
+python3 scripts/fetch_outlook.py  # NOAA heatwave forecast + El Niño odds
+python3 scripts/fetch_future.py   # FishMIP projections (needs numpy + netCDF4; 3.7 GB first run)
+python3 scripts/check_data.py     # checks every data file the page reads
 python3 -m http.server 8891       # then open http://localhost:8891/site/
 ```
 
 Every script caches to `data/raw/`, so re-runs are close to instant. The only
-dependency beyond the standard library is `openpyxl`, for reading FAO's workbooks.
-No API keys anywhere.
+dependency beyond the standard library is `openpyxl`, for reading FAO's workbooks, except
+`fetch_future.py`, which reads the models' netCDF files with `numpy` and `netCDF4`
+(`python3 -m venv .venv && .venv/bin/pip install numpy netCDF4`). It is run once: the
+projections do not change. No API keys anywhere.
+
+## Weekly refresh
+
+`.github/workflows/refresh.yml` runs every Monday at 09:17 UTC on GitHub's servers (free
+for a public repository), and can be started by hand from the repository's Actions tab.
+It runs `fetch_climate.py`, `fetch_outlook.py` and `fetch_news.py`, checks the files with
+`check_data.py`, and commits whatever changed. With Netlify linked to the repository,
+that commit is the deploy.
+
+Weekly, not daily, because of Netlify's free plan: every production deploy costs 15 of
+its 300 monthly credits, and when they run out every site on the account shows "Site not
+available" until the next month. Weekly is about 65 credits; daily would be about 450.
+`netlify.toml` tells Netlify to skip a deploy when a commit changes nothing under `site/`.
+
+A source that does not answer keeps its last good file (the scripts refuse to write a
+worse one), whatever did refresh is still committed, and the run is marked failed so
+GitHub emails whoever owns the schedule. Two things to know: GitHub switches a schedule
+off in a public repository after 60 days with no activity, and the failure emails go to
+the last person who edited the workflow, so both need an owner at Rare after handover.
 
 **About the news script:** it makes one search per country, a little over a second apart,
 and caches each day's results, so a cold run takes about twelve minutes and a re-run the
@@ -118,7 +168,7 @@ quietly presenting the wrong number.
 
 The site is static: HTML, JavaScript, and JSON files. There is no server and no database.
 "Living" comes from re-running the pipeline on a schedule and republishing — the same
-two-speed model Global Forest Watch uses, where a slow authoritative layer sits under
+two-speed model Global Forest Watch (now Global Nature Watch) uses, where a slow authoritative layer sits under
 faster-moving signals.
 
 `site/` is self-contained on purpose. It is the only directory that gets deployed, so
@@ -166,11 +216,56 @@ it would not appear; and only 12 of the 44 boundaries have been confirmed by a l
 expert, the rest being reconstructed from the text of the law. Both facts are surfaced in
 the interface.
 
+**Access rights as countries report them** — UN SDG indicator 14.b.1, series
+`ER_REG_SSFRAR`, from the UN SDG Global Database API (`fetch_access.py`). Each country's
+fisheries administration answers three questions in FAO's Code of Conduct questionnaire
+(laws or policies aimed at small-scale fisheries, work under way on the SSF Guidelines,
+and a body where fishers are consulted), and the weighted answer is published as a band
+from 1 (very low) to 5 (very high), every two years from 2018. 121 countries reported in
+2026. Three things the page says: it is self-assessed, and the UN's own metadata warns
+of self-report bias (100 of the 121 scored 4 or 5); it measures frameworks on paper, not
+who holds rights on the water; and the 27 EU members carry the EU's single answer, not
+their own. The same EU footnote appears on Benin, Gabon, The Gambia and Georgia, which are
+not members; their scores are kept as published and the page calls the footnote a likely
+error in the database. Peru fell from 5 to 3 in 2026, the clearest change in the series.
+
+**How access is governed** — the governance workbook of Illuminating Hidden Harvests
+(CC BY 4.0), from its 51 country case studies (45 with marine fisheries): for the
+small-scale catch of 2013–2017 under the rules recorded in 2019–2020, the share of catch
+under each way of granting access (licence, historical use, residence, vessel
+registration, open access), each of seven harvest rules, and each combination of rights
+devolved to fishers (management, exclusion, transfer). The breakdown adds up to the
+catch, so "some right held by fishers", "no rights" and "no information" make one bar.
+Formal arrangements only: customary rights are not counted, so "no rights" can
+understate what fishers hold. Peru: fishers hold some right over 2.5% of the small-scale
+marine catch, none over 35%, and there is no information for 62%. The Philippines: all
+of it, under management and exclusion rights.
+
+**Fish in the future** — FishMIP projections from the ISIMIP3b round (CC0),
+`fetch_future.py`: total consumer biomass (the weight of the animals each model
+represents) from ten runs of six marine ecosystem models (APECOSM, BOATS, DBPM,
+EcoOcean, FEISTY, ZooMSS) driven by two climate models, with no fishing, as in Tittensor
+et al. (2021). Each run's change is computed per zone over the one-degree cells inside
+it, weighted by area, for 2041–2060 and 2081–2100 against 1995–2014, under SSP1-2.6 (low
+emissions) and SSP5-8.5 (very high); the page shows the median, the 10th to 90th
+percentile and how many runs agree on the direction. For the whole ocean the median is
+−5% (low) and −13% (very high) by 2081–2100; FishMIP's papers report the mean and more
+runs, about −7% and −19%. A country's figure pools its home waters only, so Kerguelen
+does not outweigh mainland France. 14 zones are smaller than the grid and use the nearest
+ocean cells, and 24 have fewer than ten runs (semi-enclosed seas the models' land masks
+leave out); both are said on the page. It is what the sea could support, not a catch
+forecast.
+
 **Aid-funded activity** — IATI Registry via the Code for IATI Datastore
-(datastore.codeforiati.org), open data, no key. 1,460 fisheries activities across 122
+(datastore.codeforiati.org), open data, no key. 1,491 fisheries activities across 122
 coastal countries, filtered to those devoting at least 25% of their sector allocation to
 fisheries purpose codes (activities that state no percentages are kept, so small
 publishers are not filtered out).
+
+The October 2026 refresh lost some government bodies: the World Bank republished its
+projects listing only the first implementing agency, so 16 projects lost the rest
+(Morocco's Department of Maritime Fisheries among them). That is what the source now
+says; the earlier download is in `data/backups/2026-10-11-pre-orgs-refresh/`.
 
 Two things this layer is not. It reports **aid-funded** work, so organisations financed by
 private philanthropy are largely absent — Rare, Blue Ventures, EDF, Oceana and The Nature
@@ -178,7 +273,7 @@ Conservancy return zero matches, while FAO alone accounts for 351 implementing r
 only **27% of activities carry coordinates**, so the map shows where reported work is
 geocoded, not where work is. Both facts are stated in the interface.
 
-**Organisation directory** — 2,102 entries across 147 countries, merged from three
+**Organisation directory** — 2,105 entries across 147 countries, merged from three
 sources and sorted into the categories Rare asked for: government, fisher organisations,
 international NGOs and UN agencies, other implementing organisations (mostly national
 NGOs), donors and funders, research, private sector. Each body gets one category per
@@ -197,7 +292,7 @@ government would answer the wrong question. And named aid agencies are checked b
 government pattern, because most of them are ministries at home — BMZ and Irish Aid are
 departments of foreign affairs.
 
-**359 of the 2,102 are left unclassified**, and deliberately so: a guessed category
+**362 of the 2,105 are left unclassified**, and deliberately so: a guessed category
 would be worse than an honest blank. An implementing body the rules do not recognise is
 filed with the other implementing organisations, so that group includes some agencies and
 foreign NGOs; the page says so.
@@ -243,9 +338,17 @@ but **only 89 appear in both.** 29 are in ISSF alone and 33 in IATI alone. Neith
 is close to sufficient on its own, which is the clearest available evidence that this
 layer has to be assembled rather than downloaded.
 
-**NOAA** — the Oceanic Niño Index and weekly Niño region anomalies from the Climate
-Prediction Center, and two heat products from Coral Reef Watch via the PacIOOS ERDDAP
-server. Public domain.
+**NOAA** — the Relative Oceanic Niño Index and weekly Niño region anomalies from the
+Climate Prediction Center, and two heat products from Coral Reef Watch via the PacIOOS
+ERDDAP server. Public domain.
+
+The El Niño card reads the **Relative** Oceanic Niño Index (RONI), NOAA's official measure
+since 1 February 2026: the Niño 3.4 anomaly with the tropics-wide warming taken out, so a
+warmer ocean overall does not read as a stronger El Niño. The older ONI is still published
+and runs higher (July to September 2026: ONI +2.16, RONI +1.69); the Sources note gives
+both, because the older number is the one most news stories quote. NOAA treats the newest
+RONI values as estimates for two months. The card's "highest since 2015–16" holds on
+either index.
 
 The headline heat metric is the **marine heatwave category**, which classifies sea surface
 temperature against each location's own climatology on a six-step scale. It replaced degree
@@ -260,6 +363,18 @@ zones without a reading are polar sea ice.
 Degree heating weeks is still reported, as its own line, within 35° of the equator and
 labelled as the coral-specific measure it is. The heatwave archive begins July 2024, so it
 is a current-conditions layer, not a historical one.
+
+**What comes next** (`fetch_outlook.py`, weekly). The heatwave view has a second setting,
+"Coming months": NOAA's experimental marine heatwave forecast from the Physical Sciences
+Laboratory (Jacox et al. 2022), the chance that a month's sea surface temperature is in
+the top tenth for the place and season, from seven North American climate models, for
+the twelve months from the forecast's start. Only the newest forecast is read, through
+PSL's subsetting server, and averaged over the one-degree cells inside each zone; a
+country shows the highest of its main zones. It keeps the long-term warming trend, so it
+asks the same question as today's layer. In October 2026 Peru reads 99% or more until
+December. The El Niño card adds NOAA's official odds from CPC's monthly table: El Niño
+98% or more likely through February–April 2027, and very strong (+2.0 or more) more
+likely than not through the winter.
 
 **Landed value** — Sea Around Us prices every tonne it reconstructs, through the same API
 and for the same 282 zones as the catch (`/eez/value/sector/` and `/eez/value/country/`),
@@ -333,6 +448,17 @@ record), so it lives in the panel next to that caveat. Up to five species are na
 critically endangered first. English names come from a table checked by hand, because the
 first attempt took names from WoRMS automatically and labelled the whale shark "Basking
 shark"; a species not in the table is shown by its scientific name.
+
+*Protected on paper and in practice* (not published yet): `fetch_mpatlas.py` reads
+MPAtlas's country figures (Marine Conservation Institute) into `site/data/mpatlas.json`,
+and the panel shows them beside the World Bank's protected share: how much is listed,
+designated in law, actually in force, and fully or highly protected. Peru lists 7.9% of
+its waters and has none in force; the Philippines lists 1.6% and has 0.24% in force,
+almost all fully or highly protected. MPAtlas's data policy page is unfinished and the
+figures come from an endpoint its site uses internally, so the file is git-ignored and
+left off the live site until Marine Conservation Institute agrees; the panel says so
+wherever it appears. MPAtlas draws some countries differently (its "France" is the
+mainland and Clipperton only), and the page prints its warning where it does.
 
 *Pressure*: the unreported share of the catch (median 29%), the discarded share, and the
 five largest catches by taxon, all Sea Around Us. *The zone itself*: shelf area, inshore
@@ -411,14 +537,15 @@ The **data confidence** score is our own heuristic, not a Sea Around Us product.
 how complete each record is — missing values, series length, and catch volume. It is
 labelled as an estimate everywhere it appears.
 
-The **heat stress severity** is also ours. NOAA's own Bleaching Alert Area combines degree
-heating weeks with an instantaneous hotspot test; we derive severity from mean DHW over a
-zone using NOAA's published 4 and 8 thresholds instead. Taking NOAA's maximum alert across
+The **coral heat stress level** (the "Coral reefs" line in a reef zone's heat section) is
+also ours. NOAA's own Bleaching Alert Area combines degree heating weeks with an
+instantaneous hotspot test; we derive the level from mean DHW over the sample area using
+NOAA's published 4 and 8 thresholds instead. Taking NOAA's maximum alert across
 a sampled box let one hot coastal pixel speak for an entire EEZ — Portugal briefly showed
 degree heating weeks of 47 that way, against a real value near 9. Hence mean plus a 90th
 percentile, and hence "heat stress" rather than "bleaching alert" in the interface.
 
-Basemap: CARTO dark matter, © OpenStreetMap contributors.
+Basemap: CARTO Positron (light), © OpenStreetMap contributors.
 
 ## Known gaps
 
@@ -447,5 +574,6 @@ Things a funded version would need that this prototype does not have:
 - **The organisation layer is half a map.** IATI covers aid-funded work well and privately
   funded conservation NGOs barely at all. The half it misses is the half Rare belongs to,
   which is the argument for asking organisations to contribute directly.
-- **Nutrition and governance are untouched.** IHH also publishes micronutrient contribution
-  and tenure/access-rights workbooks. Both are wired for, neither is wired in.
+- **Nutrition is untouched.** IHH's governance workbook is now in (How access is
+  governed); its nutrition and catch workbooks, which together give the protein and
+  micronutrients small-scale catch supplies, are not yet.

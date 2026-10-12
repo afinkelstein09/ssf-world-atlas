@@ -81,7 +81,7 @@ def fetch_sector(code):
             return json.load(f)
 
     os.makedirs(RAW, exist_ok=True)
-    out, offset = [], 0
+    out, offset, total = [], 0, None
     while True:
         params = urllib.parse.urlencode({"sector": code, "limit": PAGE, "offset": offset})
         data = get(f"{API}?{params}")
@@ -95,6 +95,12 @@ def fetch_sector(code):
         if offset >= total or not batch:
             break
         time.sleep(0.6)
+
+    # A page that never answered used to end the loop quietly, and the partial
+    # list was cached as if it were the whole sector. Better no file than that.
+    if total is None or len(out) < total:
+        raise SystemExit(f"IATI sector {code}: got {len(out)} of {total} activities; "
+                         "nothing cached, orgs.json left as it was.")
 
     with open(cache, "w") as f:
         json.dump(out, f)
@@ -353,9 +359,16 @@ def main():
           f"{sum(len(a['locations']) for a in kept)} points total")
     print(f"  {len(by_country)} coastal countries covered")
 
+    # The day the raw IATI pages were downloaded, which is not the day this file
+    # was written when the cache is reused: the cache dated from 21 August while
+    # orgs.json said 6 October.
+    fetched = time.strftime("%Y-%m-%d", time.localtime(min(
+        os.path.getmtime(os.path.join(RAW, f"{code}.json")) for code in SECTORS)))
+
     with open(os.path.join(OUT, "orgs.json"), "w") as f:
         json.dump({
             "generated": time.strftime("%Y-%m-%d"),
+            "fetched": fetched,
             "source": "IATI Registry via the Code for IATI Datastore (datastore.codeforiati.org)",
             "sectors": SECTORS,
             "min_fisheries_share": MIN_SHARE,

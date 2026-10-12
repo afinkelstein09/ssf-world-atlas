@@ -133,6 +133,9 @@ def main():
 
     print("ISSF reference data")
     countries = get("/issf-base/get-all-countries", "countries.json") or []
+    if not countries:
+        # Without the country list no record can be filed under a country.
+        raise SystemExit("ISSF country list unavailable; issf.json left as it was.")
     name_to_iso = {}
     iso_point = {}
     # Country outlines, to catch points with latitude and longitude swapped.
@@ -272,9 +275,16 @@ def main():
         print(f"  {len(unmatched)} country names unmatched, e.g. {sorted(unmatched)[:4]}")
 
     recent = sum(v for y, v in years.items() if y >= "2020")
+    # The day the raw contributions were downloaded (the cache is reused), and the
+    # newest contribution in it - the data's own date.
+    fetched = time.strftime("%Y-%m-%d", time.localtime(
+        os.path.getmtime(os.path.join(RAW, "contributions.json"))))
+    newest = max((r["date"] for r in out if r.get("date")), default=None)
     with open(os.path.join(OUT, "issf.json"), "w") as f:
         json.dump({
             "generated": time.strftime("%Y-%m-%d"),
+            "fetched": fetched,
+            "newest_record": newest,
             "source": ("Information System on Small-scale Fisheries (ISSF), "
                        "Too Big To Ignore: Global Partnership for Small-Scale "
                        "Fisheries Research, issfcloud.toobigtoignore.net"),

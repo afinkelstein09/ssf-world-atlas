@@ -1,6 +1,10 @@
 # Netlify publishes the static site in site/; there is no build step.
 [build]
   publish = "site"
+  # Skip the deploy when a commit changes nothing the site serves (a script, the
+  # README, a workflow). Each deploy costs 15 of the free plan's 300 monthly
+  # credits. Exit code 0 means "nothing to build".
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- site/ netlify.toml"
 
 # A prototype shared by link: ask search engines not to index it.
 [[headers]]

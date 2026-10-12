@@ -1,5 +1,10 @@
 {
- "generated": "2026-10-06",
+ "generated": "2026-10-11",
+ "inputs": {
+  "iati_fetched": "2026-10-11",
+  "issf_fetched": "2026-10-11",
+  "links_checked": "2026-10-11"
+ },
  "categories": [
   "government",
   "international_ngo",
@@ -16,7 +21,7 @@
   "issf": "Information System on Small-scale Fisheries (Too Big To Ignore)"
  },
  "note": "Categories are assigned by rule from organisation names and the roles sources report. Anything ambiguous is left unclassified rather than guessed.",
- "count": 2102,
+ "count": 2105,
  "countries": {
   "NLD": {
    "international_ngo": [
@@ -167,13 +172,6 @@
      "site": "https://globalnature.org/en/"
     },
     {
-     "name": "National Fisheries Development Board",
-     "source": "IATI",
-     "acts": [
-      "44000-P174798"
-     ]
-    },
-    {
      "name": "R\u00c9PUBLIQUE DE L'INDE",
      "source": "IATI",
      "acts": [
@@ -319,7 +317,8 @@
      "name": "Sweden",
      "source": "IATI",
      "acts": [
-      "SE-0-SE-29-2016-05655_2"
+      "SE-0-SE-29-2016-05655_2",
+      "SE-0-SE-29-2017-05425_1"
      ],
      "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
      "site": "https://www.sida.se/en"
@@ -378,7 +377,8 @@
      "name": "The Swedish Research Council",
      "source": "IATI",
      "acts": [
-      "SE-0-SE-29-2016-05655_2"
+      "SE-0-SE-29-2016-05655_2",
+      "SE-0-SE-29-2017-05425_1"
      ],
      "site": "https://www.vr.se/english.html"
     },
@@ -834,8 +834,7 @@
      "source": "IATI",
      "acts": [
       "XI-IATI-EC_INTPA-2019-ACT-D-41602-00",
-      "XI-IATI-EC_INTPA-2023-PC-25548",
-      "XI-IATI-EC_INTPA-2021-PCC-418947"
+      "XI-IATI-EC_INTPA-2023-PC-25548"
      ],
      "ssf": "https://international-partnerships.ec.europa.eu/policies/climate-environment-and-energy/oceans_en",
      "site": "https://international-partnerships.ec.europa.eu/index_en"
@@ -845,8 +844,7 @@
      "source": "IATI",
      "acts": [
       "XI-IATI-EC_INTPA-2019-ACT-D-41602-00",
-      "XI-IATI-EC_INTPA-2023-PC-25548",
-      "XI-IATI-EC_INTPA-2021-PCC-418947"
+      "XI-IATI-EC_INTPA-2023-PC-25548"
      ],
      "ssf": "https://oceans-and-fisheries.ec.europa.eu/fisheries-management/small-scale-fisheries_en",
      "site": "https://commission.europa.eu/index_en"
@@ -939,6 +937,24 @@
      "site": "https://www.norad.no/en/"
     },
     {
+     "name": "Sweden",
+     "source": "IATI",
+     "acts": [
+      "SE-0-SE-6-61050145"
+     ],
+     "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
+     "site": "https://www.sida.se/en"
+    },
+    {
+     "name": "Swedish International Development Cooperation Agency",
+     "source": "IATI",
+     "acts": [
+      "SE-0-SE-6-61050145"
+     ],
+     "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
+     "site": "https://www.sida.se/en"
+    },
+    {
      "name": "World Bank",
      "source": "IATI",
      "acts": [
@@ -965,13 +981,6 @@
     }
    ],
    "unclassified": [
-    {
-     "name": "Central Government",
-     "source": "IATI",
-     "acts": [
-      "XI-IATI-EC_INTPA-2021-PCC-418947"
-     ]
-    },
     {
      "name": "Developing country-based NGO",
      "source": "IATI",
@@ -1779,6 +1788,8 @@
      "source": "IATI",
      "acts": [
       "SE-0-SE-6-15915",
+      "SE-0-SE-29-2015-03443",
+      "SE-0-SE-29-2016-05649_3",
       "SE-0-SE-29-2017-05425_2",
       "SE-0-SE-29-2022-04797_2"
      ],
@@ -1935,6 +1946,8 @@
      "name": "The Swedish Research Council",
      "source": "IATI",
      "acts": [
+      "SE-0-SE-29-2015-03443",
+      "SE-0-SE-29-2016-05649_3",
       "SE-0-SE-29-2017-05425_2",
       "SE-0-SE-29-2022-04797_2"
      ],
@@ -1955,13 +1968,6 @@
    "government": [
     {
      "name": "Ministry of Blue Economy and Fisheries (Zanzibar)",
-     "source": "IATI",
-     "acts": [
-      "44000-P179969"
-     ]
-    },
-    {
-     "name": "Ministry of Livestock and Fisheries (Mainland Tanzania)",
      "source": "IATI",
      "acts": [
       "44000-P179969"
@@ -2019,13 +2025,6 @@
      "source": "IATI",
      "acts": [
       "DAC-1601-INV-038128"
-     ]
-    },
-    {
-     "name": "Deep Sea Fishing Authority",
-     "source": "IATI",
-     "acts": [
-      "44000-P179969"
      ]
     }
    ],
@@ -2093,7 +2092,8 @@
      "source": "IATI",
      "acts": [
       "XI-IATI-EC_INTPA-2024-PC-37066",
-      "XI-IATI-EC_INTPA-2025-PC-37166"
+      "XI-IATI-EC_INTPA-2025-PC-37166",
+      "XI-IATI-EC_INTPA-2026-PC-37296"
      ],
      "ssf": "https://international-partnerships.ec.europa.eu/policies/climate-environment-and-energy/oceans_en",
      "site": "https://international-partnerships.ec.europa.eu/index_en"
@@ -2111,7 +2111,8 @@
      "source": "IATI",
      "acts": [
       "XI-IATI-EC_INTPA-2024-PC-37066",
-      "XI-IATI-EC_INTPA-2025-PC-37166"
+      "XI-IATI-EC_INTPA-2025-PC-37166",
+      "XI-IATI-EC_INTPA-2026-PC-37296"
      ],
      "ssf": "https://oceans-and-fisheries.ec.europa.eu/fisheries-management/small-scale-fisheries_en",
      "site": "https://commission.europa.eu/index_en"
@@ -2252,6 +2253,7 @@
      "name": "Sweden",
      "source": "IATI",
      "acts": [
+      "SE-0-SE-6-61050145",
       "SE-0-SE-6-15915",
       "SE-0-SE-6-75000269-1",
       "SE-0-SE-6-75007053-1",
@@ -2268,6 +2270,7 @@
      "name": "Swedish International Development Cooperation Agency",
      "source": "IATI",
      "acts": [
+      "SE-0-SE-6-61050145",
       "SE-0-SE-6-15915",
       "SE-0-SE-6-75000269-1",
       "SE-0-SE-6-75007053-1",
@@ -2433,13 +2436,6 @@
      ]
     },
     {
-     "name": "Ministry of Fisheries and Maritime Economy",
-     "source": "IATI",
-     "acts": [
-      "44000-P175915"
-     ]
-    },
-    {
      "name": "Minist\u00e8re des p\u00eaches",
      "source": "IATI",
      "acts": [
@@ -2516,6 +2512,13 @@
     }
    ],
    "donor": [
+    {
+     "name": "AECID Agencia Espa\u00f1ola de Cooperaci\u00f3n Internacional para el Desarrollo",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z01-25-I1-00200"
+     ]
+    },
     {
      "name": "AICS - Italian Agency for Cooperation and Development",
      "source": "IATI",
@@ -2636,6 +2639,15 @@
       "XM-DAC-41301-636804"
      ],
      "site": "https://www.fao.org/home/en"
+    }
+   ],
+   "research": [
+    {
+     "name": "Universidad de Vigo",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z01-25-I1-00200"
+     ]
     }
    ],
    "private_sector": [
@@ -2838,6 +2850,7 @@
       "XM-DAC-41301-640336",
       "XM-DAC-41301-640341",
       "XM-DAC-41301-744287",
+      "XM-DAC-41301-764928",
       "XM-DAC-41301-652825",
       "XM-DAC-41301-718082",
       "XM-DAC-41301-761308"
@@ -3702,7 +3715,7 @@
      ]
     },
     {
-     "name": "MINIST\u00c8RE DE L'ECONOMIE ET DES FINANCES",
+     "name": "MINIST\u00c8RE DES AFFAIRES \u00c9CONOMIQUES ET DU D\u00c9V. (MAED)",
      "source": "IATI",
      "acts": [
       "DE-1-200265587",
@@ -3794,17 +3807,17 @@
      ]
     },
     {
-     "name": "NESC - Project Coordination Unit",
+     "name": "Nouadhibou Free Zone Authority",
      "source": "IATI",
      "acts": [
       "44000-P151058"
      ]
     },
     {
-     "name": "Nouadhibou Free Zone Authority",
+     "name": "SNDP - Sociedad Nacional de Distribuci\u00f3n de Pescado",
      "source": "IATI",
      "acts": [
-      "44000-P151058"
+      "XM-DAC-50-21-Z03-24-01-16700"
      ]
     },
     {
@@ -3837,6 +3850,13 @@
     }
    ],
    "donor": [
+    {
+     "name": "AECID Agencia Espa\u00f1ola de Cooperaci\u00f3n Internacional para el Desarrollo",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z03-24-01-16700"
+     ]
+    },
     {
      "name": "AFD",
      "source": "IATI",
@@ -4485,13 +4505,6 @@
      ]
     },
     {
-     "name": "Social Development Foundation",
-     "source": "IATI",
-     "acts": [
-      "44000-P161568"
-     ]
-    },
-    {
      "name": "Voluntary Organisation for Social Development (VOSD)",
      "source": "IATI",
      "acts": [
@@ -4651,6 +4664,15 @@
      ]
     },
     {
+     "name": "Sweden",
+     "source": "IATI",
+     "acts": [
+      "SE-0-SE-29-2013-6740"
+     ],
+     "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
+     "site": "https://www.sida.se/en"
+    },
+    {
      "name": "UK - Department for Environment, Food and Rural Affairs",
      "source": "IATI",
      "acts": [
@@ -4673,13 +4695,6 @@
      "source": "IATI",
      "acts": [
       "GB-GOR-EA53-OCPP-002"
-     ]
-    },
-    {
-     "name": "Bangladesh Fisheries Research Institute",
-     "source": "IATI",
-     "acts": [
-      "44000-P161568"
      ]
     },
     {
@@ -4738,6 +4753,14 @@
       "XM-DAC-5-7-6614089"
      ],
      "site": "https://www.auswaertiges-amt.de/en"
+    },
+    {
+     "name": "The Swedish Research Council",
+     "source": "IATI",
+     "acts": [
+      "SE-0-SE-29-2013-6740"
+     ],
+     "site": "https://www.vr.se/english.html"
     }
    ]
   },
@@ -4869,6 +4892,7 @@
      "acts": [
       "SE-0-SE-6-45000043-1",
       "SE-0-SE-6-75007006-1",
+      "SE-0-SE-29-2016-05655_1",
       "SE-0-SE-6-75007320"
      ],
      "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
@@ -4909,6 +4933,14 @@
      "issf": [
       3486
      ]
+    },
+    {
+     "name": "The Swedish Research Council",
+     "source": "IATI",
+     "acts": [
+      "SE-0-SE-29-2016-05655_1"
+     ],
+     "site": "https://www.vr.se/english.html"
     }
    ]
   },
@@ -4947,7 +4979,7 @@
    ],
    "international_ngo": [
     {
-     "name": "ASBL OXFAM SOLIDARITE",
+     "name": "OXFAM SOLIDARITE - OXFAM SOLIDARITE IT",
      "source": "IATI",
      "acts": [
       "XI-IATI-EC_INTPA-2023-PC-26826"
@@ -5034,14 +5066,6 @@
      "source": "IATI",
      "acts": [
       "XM-DAC-5-7-6612895"
-     ]
-    },
-    {
-     "name": "PHL-Biodiversity Mgmt Bureau",
-     "source": "IATI",
-     "acts": [
-      "XM-DAC-41114-OUTPUT-00122553",
-      "XM-DAC-41114-PROJECT-00128606"
      ]
     },
     {
@@ -5245,16 +5269,6 @@
      "site": "https://www.bmz.de/en"
     },
     {
-     "name": "Global Environment Fund Truste",
-     "source": "IATI",
-     "acts": [
-      "XM-DAC-41114-OUTPUT-00122553",
-      "XM-DAC-41114-PROJECT-00128606"
-     ],
-     "ssf": "https://www.thegef.org/what-we-do/topics/international-waters/marine",
-     "site": "https://www.thegef.org/"
-    },
-    {
      "name": "International Bank for Reconstruction and Development",
      "source": "IATI",
      "acts": [
@@ -5331,9 +5345,7 @@
      "name": "UNITED NATIONS DEVELOPMENT PROGRAMME",
      "source": "IATI",
      "acts": [
-      "XM-DAC-41114-OUTPUT-00122553",
       "XM-DAC-41114-OUTPUT-01003750",
-      "XM-DAC-41114-PROJECT-00128606",
       "XM-DAC-41114-PROJECT-01003750"
      ],
      "ssf": "https://www.undp.org/nature/our-work-areas/ocean-governance",
@@ -5567,13 +5579,6 @@
      ]
     },
     {
-     "name": "Indonesian Ministry of National Development Planning (BAPPENAS)",
-     "source": "IATI",
-     "acts": [
-      "44000-P127813"
-     ]
-    },
-    {
      "name": "Ministry of Marine Affairs & Fisheries",
      "source": "IATI",
      "acts": [
@@ -5586,13 +5591,6 @@
      "acts": [
       "44000-P173391",
       "44000-P127813"
-     ]
-    },
-    {
-     "name": "Ministry of National Development Planning (Bappenas)",
-     "source": "IATI",
-     "acts": [
-      "44000-P173391"
      ]
     },
     {
@@ -5731,13 +5729,6 @@
      "source": "IATI",
      "acts": [
       "NL-KVK-30157019-NL-KVK-30157019-Final_report_2021"
-     ]
-    },
-    {
-     "name": "National Reseach and Innovation Agency (BRIN)",
-     "source": "IATI",
-     "acts": [
-      "44000-P127813"
      ]
     },
     {
@@ -6628,7 +6619,8 @@
      "name": "Food and Agriculture Organization (FAO)",
      "source": "IATI",
      "acts": [
-      "XM-DAC-41301-749032"
+      "XM-DAC-41301-749032",
+      "XM-DAC-41301-764487"
      ],
      "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
      "site": "https://www.fao.org/home/en"
@@ -6979,6 +6971,13 @@
      ]
     },
     {
+     "name": "KPEC",
+     "source": "IATI",
+     "acts": [
+      "KR-GOV-010-KR-GOV-051-2024070100424"
+     ]
+    },
+    {
      "name": "MEKONG DELTA RESEARCH AND CONSERVAN",
      "source": "IATI",
      "acts": [
@@ -7277,6 +7276,13 @@
       "FI-3-2017-2016160207"
      ],
      "site": "https://um.fi/frontpage"
+    },
+    {
+     "name": "Ministry of Foreign Affairs",
+     "source": "IATI",
+     "acts": [
+      "KR-GOV-010-KR-GOV-051-2024070100424"
+     ]
     },
     {
      "name": "Ministry of Foreign Affairs, Denmark",
@@ -7763,6 +7769,14 @@
      "site": "https://international.canada.ca/en/global-affairs"
     },
     {
+     "name": "Korea International Cooperation Agency",
+     "source": "IATI",
+     "acts": [
+      "KR-GOV-010-KR-GOV-051-2024070100424"
+     ],
+     "site": "https://www.koica.go.kr/sites/koica_en/index.do"
+    },
+    {
      "name": "Other, institutions",
      "source": "IATI",
      "acts": [
@@ -8003,13 +8017,6 @@
       "NL-KVK-27108436-A-05760-11:KH",
       "NL-KVK-27108436-A-06493-04:KH",
       "NL-KVK-27108436-A-06792-04:KH"
-     ]
-    },
-    {
-     "name": "Fisheries Administration of Cambodia (FIA)",
-     "source": "IATI",
-     "acts": [
-      "44000-P148647"
      ]
     },
     {
@@ -8275,15 +8282,6 @@
      "site": "https://www.mfat.govt.nz/en"
     },
     {
-     "name": "Sweden",
-     "source": "IATI",
-     "acts": [
-      "SE-0-SE-29-2018-05932_3"
-     ],
-     "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
-     "site": "https://www.sida.se/en"
-    },
-    {
      "name": "Swiss government",
      "source": "IATI",
      "acts": [
@@ -8421,14 +8419,6 @@
      ]
     },
     {
-     "name": "The Swedish Research Council",
-     "source": "IATI",
-     "acts": [
-      "SE-0-SE-29-2018-05932_3"
-     ],
-     "site": "https://www.vr.se/english.html"
-    },
-    {
      "name": "Third Country Government (Delegated co-operation)",
      "source": "IATI",
      "acts": [
@@ -8523,13 +8513,6 @@
      "site": "https://www.iamb.ciheam.org/"
     },
     {
-     "name": "MERCY CORPS NETHERLANDS",
-     "source": "IATI",
-     "acts": [
-      "XI-IATI-EC_INTPA-2021-PCC-428998"
-     ]
-    },
-    {
      "name": "Team Wageningen Universiteit",
      "source": "IATI",
      "acts": [
@@ -8603,24 +8586,11 @@
      ]
     },
     {
-     "name": "Directorate-General for International Partnerships",
+     "name": "Europ\u00e4ische Union (EU)",
      "source": "IATI",
      "acts": [
-      "XI-IATI-EC_INTPA-2015-ACT-D-38078-00",
-      "XI-IATI-EC_INTPA-2021-PCC-428998"
-     ],
-     "ssf": "https://international-partnerships.ec.europa.eu/policies/climate-environment-and-energy/oceans_en",
-     "site": "https://international-partnerships.ec.europa.eu/index_en"
-    },
-    {
-     "name": "European Commission",
-     "source": "IATI",
-     "acts": [
-      "XI-IATI-EC_INTPA-2015-ACT-D-38078-00",
-      "XI-IATI-EC_INTPA-2021-PCC-428998"
-     ],
-     "ssf": "https://oceans-and-fisheries.ec.europa.eu/fisheries-management/small-scale-fisheries_en",
-     "site": "https://commission.europa.eu/index_en"
+      "DE-1-201521939"
+     ]
     },
     {
      "name": "Food and Agriculture Organization (FAO)",
@@ -8734,13 +8704,6 @@
       "SE-0-SE-29-2018-05932_1"
      ],
      "site": "https://www.vr.se/english.html"
-    },
-    {
-     "name": "Third Country Government (Delegated co-operation)",
-     "source": "IATI",
-     "acts": [
-      "XI-IATI-EC_INTPA-2015-ACT-D-38078-00"
-     ]
     }
    ]
   },
@@ -8927,6 +8890,27 @@
      ]
     }
    ],
+   "international_ngo": [
+    {
+     "name": "UNDP",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-41114-OUTPUT-01006550",
+      "XM-DAC-41114-PROJECT-01006550"
+     ],
+     "ssf": "https://www.undp.org/nature/our-work-areas/ocean-governance",
+     "site": "https://www.undp.org/"
+    },
+    {
+     "name": "UNITED NATIONS DEVELOPMENT PROGRAMME",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-41114-PROJECT-01006550"
+     ],
+     "ssf": "https://www.undp.org/nature/our-work-areas/ocean-governance",
+     "site": "https://www.undp.org/"
+    }
+   ],
    "fisher_org": [
     {
      "name": "Barbados National Fisherfolk Organisation",
@@ -8947,6 +8931,15 @@
       "CA-3-D004675001"
      ],
      "site": "https://international.canada.ca/en/global-affairs"
+    },
+    {
+     "name": "GOVERNMENT OF JAPAN",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-41114-OUTPUT-01006550",
+      "XM-DAC-41114-PROJECT-01006550"
+     ],
+     "site": "https://www.jica.go.jp/english/"
     },
     {
      "name": "IDB - Inter-American Development Bank",
@@ -9023,17 +9016,6 @@
      ]
     }
    ],
-   "international_ngo": [
-    {
-     "name": "Food and Agriculture Organization (FAO)",
-     "source": "IATI",
-     "acts": [
-      "XM-DAC-41301-669482"
-     ],
-     "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
-     "site": "https://www.fao.org/home/en"
-    }
-   ],
    "national_ngo": [
     {
      "name": "Caribbean Regional Fisheries Mechan",
@@ -9076,6 +9058,16 @@
       "XM-DAC-21-1-2024000589B2ICMPS-MICRO001"
      ],
      "site": "https://www.ireland.ie/en/irish-aid/"
+    },
+    {
+     "name": "Food and Agriculture Organization (FAO)",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-41301-669482",
+      "XM-DAC-41301-762850"
+     ],
+     "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
+     "site": "https://www.fao.org/home/en"
     },
     {
      "name": "GCF - Green Climate Fund (Readiness and Preparatory Support)",
@@ -9795,10 +9787,18 @@
      "site": "https://international.canada.ca/en/global-affairs"
     },
     {
+     "name": "ECS - Organisation of Eastern Caribbean States",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-41301-748710"
+     ]
+    },
+    {
      "name": "Food and Agriculture Organization (FAO)",
      "source": "IATI",
      "acts": [
-      "XM-DAC-41301-646200"
+      "XM-DAC-41301-646200",
+      "XM-DAC-41301-748710"
      ],
      "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
      "site": "https://www.fao.org/home/en"
@@ -10591,6 +10591,13 @@
    ],
    "national_ngo": [
     {
+     "name": "Fundaci\u00f3n Ayuda en Acci\u00f3n",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z01-24-I1-00100"
+     ]
+    },
+    {
      "name": "OroVerde - Die Tropenwaldstiftung",
      "source": "IATI",
      "acts": [
@@ -10614,6 +10621,13 @@
     }
    ],
    "donor": [
+    {
+     "name": "AECID Agencia Espa\u00f1ola de Cooperaci\u00f3n Internacional para el Desarrollo",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z01-24-I1-00100"
+     ]
+    },
     {
      "name": "AUSTRALIA",
      "source": "IATI",
@@ -10885,6 +10899,15 @@
   "CRI": {
    "international_ngo": [
     {
+     "name": "Food and Agriculture Organization (FAO)",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-41301-755214"
+     ],
+     "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
+     "site": "https://www.fao.org/home/en"
+    },
+    {
      "name": "UNITED NATIONS DEVELOPMENT PROGRAMME",
      "source": "IATI",
      "acts": [
@@ -10943,6 +10966,13 @@
      ],
      "ssf": "https://www.dfat.gov.au/geo/pacific/development-assistance/fisheries-assistance",
      "site": "https://www.dfat.gov.au/"
+    },
+    {
+     "name": "Costa Rica",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-41301-755214"
+     ]
     },
     {
      "name": "Global Environment Fund Truste",
@@ -11298,32 +11328,10 @@
   "MAR": {
    "government": [
     {
-     "name": "Department of Maritime Fisheries (DPM)",
-     "source": "IATI",
-     "acts": [
-      "44000-P172926"
-     ]
-    },
-    {
-     "name": "Department of Water and Forests",
-     "source": "IATI",
-     "acts": [
-      "44000-P172926"
-     ]
-    },
-    {
      "name": "Ministry of Economy and Finance",
      "source": "IATI",
      "acts": [
-      "44000-P127956",
       "44000-P172926"
-     ]
-    },
-    {
-     "name": "Ministry of Energy Mines and Sustainable Development",
-     "source": "IATI",
-     "acts": [
-      "44000-P127956"
      ]
     },
     {
@@ -11338,20 +11346,6 @@
      "source": "IATI",
      "acts": [
       "44000-P127956"
-     ]
-    },
-    {
-     "name": "National Agency for the Development of the Aquaculture",
-     "source": "IATI",
-     "acts": [
-      "44000-P172926"
-     ]
-    },
-    {
-     "name": "National Institute for Fisheries Research (INRH)",
-     "source": "IATI",
-     "acts": [
-      "44000-P172926"
      ]
     }
    ],
@@ -11372,27 +11366,6 @@
     }
    ],
    "national_ngo": [
-    {
-     "name": "Direction of Ports and Public Maritime Domain",
-     "source": "IATI",
-     "acts": [
-      "44000-P172926"
-     ]
-    },
-    {
-     "name": "Moroccan National Tourist Office (ONMT)",
-     "source": "IATI",
-     "acts": [
-      "44000-P172926"
-     ]
-    },
-    {
-     "name": "Moroccan Society of Touristic Engineering",
-     "source": "IATI",
-     "acts": [
-      "44000-P172926"
-     ]
-    },
     {
      "name": "Nederlands Genootschap voor Aquacultuur",
      "source": "IATI",
@@ -11797,27 +11770,6 @@
      "acts": [
       "44000-P178237"
      ]
-    },
-    {
-     "name": "Department of Health and Social Affairs",
-     "source": "IATI",
-     "acts": [
-      "44000-P178237"
-     ]
-    },
-    {
-     "name": "Department of Resource & Development",
-     "source": "IATI",
-     "acts": [
-      "44000-P178237"
-     ]
-    },
-    {
-     "name": "Department of Resources and Development",
-     "source": "IATI",
-     "acts": [
-      "44000-P151754"
-     ]
     }
    ],
    "national_ngo": [
@@ -11840,8 +11792,7 @@
      "name": "National Oceanic Resource Management Authority",
      "source": "IATI",
      "acts": [
-      "44000-P151754",
-      "44000-P178237"
+      "44000-P151754"
      ]
     }
    ],
@@ -12000,15 +11951,6 @@
      ],
      "ssf": "https://www.undp.org/nature/our-work-areas/ocean-governance",
      "site": "https://www.undp.org/"
-    }
-   ],
-   "national_ngo": [
-    {
-     "name": "Indian Ocean Commission (IOC) Secretariat",
-     "source": "IATI",
-     "acts": [
-      "44000-P179242"
-     ]
     }
    ],
    "donor": [
@@ -12265,13 +12207,6 @@
      "acts": [
       "44000-P165873"
      ]
-    },
-    {
-     "name": "Ministry of Finance",
-     "source": "IATI",
-     "acts": [
-      "44000-P165873"
-     ]
     }
    ],
    "international_ngo": [
@@ -12522,7 +12457,8 @@
       "XM-DAC-41301-631305",
       "XM-DAC-41301-678202",
       "XM-DAC-41301-697502",
-      "XM-DAC-41301-708142"
+      "XM-DAC-41301-708142",
+      "XM-DAC-41301-763924"
      ],
      "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
      "site": "https://www.fao.org/home/en"
@@ -12565,7 +12501,8 @@
      "name": "Sweden",
      "source": "IATI",
      "acts": [
-      "SE-0-SE-6-11761"
+      "SE-0-SE-6-11761",
+      "SE-0-SE-6-13068"
      ],
      "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
      "site": "https://www.sida.se/en"
@@ -12574,7 +12511,8 @@
      "name": "Swedish International Development Cooperation Agency",
      "source": "IATI",
      "acts": [
-      "SE-0-SE-6-11761"
+      "SE-0-SE-6-11761",
+      "SE-0-SE-6-13068"
      ],
      "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
      "site": "https://www.sida.se/en"
@@ -13068,7 +13006,8 @@
       "XM-DAC-41301-752731",
       "XM-DAC-41301-755324",
       "XM-DAC-41301-757773",
-      "XM-DAC-41301-759460"
+      "XM-DAC-41301-759460",
+      "XM-DAC-41301-764603"
      ],
      "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
      "site": "https://www.fao.org/home/en"
@@ -13164,6 +13103,24 @@
       "XI-IATI-WBTF-P120157",
       "XI-IATI-WBTF-P152024"
      ]
+    },
+    {
+     "name": "Sweden",
+     "source": "IATI",
+     "acts": [
+      "SE-0-SE-6-61050145"
+     ],
+     "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
+     "site": "https://www.sida.se/en"
+    },
+    {
+     "name": "Swedish International Development Cooperation Agency",
+     "source": "IATI",
+     "acts": [
+      "SE-0-SE-6-61050145"
+     ],
+     "ssf": "https://www.sida.se/en/sidas-international-work/thematic-areas/sustainable-sea-and-water-resources",
+     "site": "https://www.sida.se/en"
     },
     {
      "name": "Swedish International Development Cooperation Agency (SIDA)",
@@ -13269,13 +13226,6 @@
      "acts": [
       "GB-SC-SC030289-91744"
      ]
-    },
-    {
-     "name": "Regional Organization for the Conservation of the Environment of the Red Sea and Gulf of Aden",
-     "source": "IATI",
-     "acts": [
-      "44000-P178143"
-     ]
     }
    ],
    "donor": [
@@ -13359,6 +13309,13 @@
     }
    ],
    "unclassified": [
+    {
+     "name": "Regional Organization for the Conservation of the Environment of the Red Sea and Gulf of Aden",
+     "source": "IATI",
+     "acts": [
+      "44000-P178143"
+     ]
+    },
     {
      "name": "Yemeni Seafood Exporters Association (YSEA)",
      "source": "ISSF",
@@ -13903,7 +13860,8 @@
      "name": "DFAT / Irish Aid",
      "source": "IATI",
      "acts": [
-      "XM-DAC-21-1-2024000660B2ICMPS-MICRO001"
+      "XM-DAC-21-1-2024000660B2ICMPS-MICRO001",
+      "XM-DAC-21-1-2025000683B2ICMPS"
      ],
      "site": "https://www.ireland.ie/en/irish-aid/"
     },
@@ -14126,6 +14084,13 @@
   "VUT": {
    "government": [
     {
+     "name": "Ministry of Fisheries, Oceans, and Maritime Affairs (MFOMA)",
+     "source": "IATI",
+     "acts": [
+      "44000-P513248"
+     ]
+    },
+    {
      "name": "Vanuatu Fisheries Department",
      "source": "IATI",
      "acts": [
@@ -14195,6 +14160,15 @@
      "site": "https://www.fao.org/home/en"
     },
     {
+     "name": "International Development Association",
+     "source": "IATI",
+     "acts": [
+      "44000-P513248"
+     ],
+     "ssf": "https://www.worldbank.org/ext/en/topic/environment/fisheries-aquaculture-and-ocean-economies",
+     "site": "https://ida.worldbank.org/en/home"
+    },
+    {
      "name": "New Zealand Ministry of Foreign Affairs and Trade",
      "source": "IATI",
      "acts": [
@@ -14207,6 +14181,15 @@
      ],
      "ssf": "https://www.mfat.govt.nz/en/environment/oceans-and-fisheries",
      "site": "https://www.mfat.govt.nz/en"
+    }
+   ],
+   "unclassified": [
+    {
+     "name": "Republic of Vanuatu",
+     "source": "IATI",
+     "acts": [
+      "44000-P513248"
+     ]
     }
    ]
   },
@@ -14825,6 +14808,13 @@
    ],
    "national_ngo": [
     {
+     "name": "Asociaci\u00f3n Mozambicana de Armadores",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z03-24-01-22200"
+     ]
+    },
+    {
      "name": "CENTRO LAICI ITALIANI PER LE MISSIONI ONG/ON",
      "source": "IATI",
      "acts": [
@@ -14880,6 +14870,13 @@
    ],
    "donor": [
     {
+     "name": "AECID Agencia Espa\u00f1ola de Cooperaci\u00f3n Internacional para el Desarrollo",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z03-24-01-22200"
+     ]
+    },
+    {
      "name": "AICS - Italian Agency for Cooperation and Development",
      "source": "IATI",
      "acts": [
@@ -14922,7 +14919,8 @@
      "source": "IATI",
      "acts": [
       "XM-DAC-21-1-2022000183B1MOZOP2CHR-MOZOB1CATAL",
-      "XM-DAC-21-1-2024000196B1MOZOP2CHR-MOZOB1CATAL"
+      "XM-DAC-21-1-2024000196B1MOZOP2CHR-MOZOB1CATAL",
+      "XM-DAC-21-1-2025000205B1MOZ25OP6"
      ],
      "site": "https://www.ireland.ie/en/irish-aid/"
     },
@@ -15036,8 +15034,10 @@
      "name": "Sweden",
      "source": "IATI",
      "acts": [
+      "SE-0-SE-6-61050145",
       "SE-0-SE-6-15915",
       "SE-0-SE-6-73000280",
+      "SE-0-SE-29-2020-04692_2",
       "SE-0-SE-29-2022-04797_3",
       "SE-0-SE-6-75007118-1"
      ],
@@ -15048,6 +15048,7 @@
      "name": "Swedish International Development Cooperation Agency",
      "source": "IATI",
      "acts": [
+      "SE-0-SE-6-61050145",
       "SE-0-SE-6-15915",
       "SE-0-SE-6-73000280",
       "SE-0-SE-6-75007118-1"
@@ -15103,6 +15104,7 @@
      "name": "The Swedish Research Council",
      "source": "IATI",
      "acts": [
+      "SE-0-SE-29-2020-04692_2",
       "SE-0-SE-29-2022-04797_3"
      ],
      "site": "https://www.vr.se/english.html"
@@ -15182,6 +15184,7 @@
       "XM-DAC-41301-651680",
       "XM-DAC-41301-654922",
       "XM-DAC-41301-750628",
+      "XM-DAC-41301-763288",
       "XM-DAC-41301-703442",
       "XM-DAC-41301-704382",
       "XM-DAC-41301-643685"
@@ -15557,6 +15560,13 @@
      ]
     },
     {
+     "name": "Asamblea de Cooperaci\u00f3n por la Paz",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z02-25-P1-00011"
+     ]
+    },
+    {
      "name": "CIHEAM - CENTRO INTERNAZIONALE DI ALTI STUDI AGRONOMICI MEDITERR",
      "source": "IATI",
      "acts": [
@@ -15589,6 +15599,13 @@
     }
    ],
    "donor": [
+    {
+     "name": "AECID Agencia Espa\u00f1ola de Cooperaci\u00f3n Internacional para el Desarrollo",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z02-25-P1-00011"
+     ]
+    },
     {
      "name": "AFD",
      "source": "IATI",
@@ -16028,10 +16045,20 @@
      "acts": [
       "XM-DAC-41301-683022",
       "XM-DAC-41301-725902",
+      "XM-DAC-41301-745773",
       "XM-DAC-41301-752112"
      ],
      "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
      "site": "https://www.fao.org/home/en"
+    },
+    {
+     "name": "GEF (FAO) - Global Environment Facility (through FAO)",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-41301-745773"
+     ],
+     "ssf": "https://www.thegef.org/what-we-do/topics/international-waters/marine",
+     "site": "https://www.thegef.org/"
     },
     {
      "name": "Sweden",
@@ -16730,6 +16757,64 @@
     }
    ]
   },
+  "GAB": {
+   "government": [
+    {
+     "name": "Government of Gabon",
+     "source": "IATI",
+     "acts": [
+      "46002-P-GA-AAF-002"
+     ]
+    }
+   ],
+   "national_ngo": [
+    {
+     "name": "Direction G\u00e9n\u00e9rale des P\u00eaches et de l\u2019Aquaculture",
+     "source": "IATI",
+     "acts": [
+      "46002-P-GA-AAF-002"
+     ]
+    }
+   ],
+   "donor": [
+    {
+     "name": "African Development Bank",
+     "source": "IATI",
+     "acts": [
+      "46002-P-GA-AAF-002"
+     ],
+     "site": "https://www.afdb.org/en"
+    },
+    {
+     "name": "Directorate-General for International Partnerships",
+     "source": "IATI",
+     "acts": [
+      "XI-IATI-EC_INTPA-2026-PC-68698"
+     ],
+     "ssf": "https://international-partnerships.ec.europa.eu/policies/climate-environment-and-energy/oceans_en",
+     "site": "https://international-partnerships.ec.europa.eu/index_en"
+    },
+    {
+     "name": "European Commission",
+     "source": "IATI",
+     "acts": [
+      "XI-IATI-EC_INTPA-2026-PC-68698"
+     ],
+     "ssf": "https://oceans-and-fisheries.ec.europa.eu/fisheries-management/small-scale-fisheries_en",
+     "site": "https://commission.europa.eu/index_en"
+    },
+    {
+     "name": "Food and Agriculture Organization (FAO)",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-41301-686881",
+      "XM-DAC-41301-687021"
+     ],
+     "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
+     "site": "https://www.fao.org/home/en"
+    }
+   ]
+  },
   "HRV": {
    "donor": [
     {
@@ -17052,7 +17137,9 @@
      "source": "IATI",
      "acts": [
       "XM-DAC-41114-OUTPUT-01003681",
-      "XM-DAC-41114-PROJECT-01003681"
+      "XM-DAC-41114-OUTPUT-01006117",
+      "XM-DAC-41114-PROJECT-01003681",
+      "XM-DAC-41114-PROJECT-01006117"
      ],
      "ssf": "https://www.undp.org/nature/our-work-areas/ocean-governance",
      "site": "https://www.undp.org/"
@@ -17061,7 +17148,8 @@
      "name": "UNITED NATIONS DEVELOPMENT PROGRAMME",
      "source": "IATI",
      "acts": [
-      "XM-DAC-41114-PROJECT-01003681"
+      "XM-DAC-41114-PROJECT-01003681",
+      "XM-DAC-41114-PROJECT-01006117"
      ],
      "ssf": "https://www.undp.org/nature/our-work-areas/ocean-governance",
      "site": "https://www.undp.org/"
@@ -17082,7 +17170,9 @@
      "source": "IATI",
      "acts": [
       "XM-DAC-41114-OUTPUT-01003681",
-      "XM-DAC-41114-PROJECT-01003681"
+      "XM-DAC-41114-OUTPUT-01006117",
+      "XM-DAC-41114-PROJECT-01003681",
+      "XM-DAC-41114-PROJECT-01006117"
      ]
     }
    ]
@@ -17331,7 +17421,8 @@
       "XM-DAC-41301-641360",
       "XM-DAC-41301-659160",
       "XM-DAC-41301-738262",
-      "XM-DAC-41301-755298"
+      "XM-DAC-41301-755298",
+      "XM-DAC-41301-765321"
      ],
      "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
      "site": "https://www.fao.org/home/en"
@@ -17579,7 +17670,8 @@
      "acts": [
       "XM-DAC-21-1-2024001605B2PROGRAM-CSFPRGFND",
       "XM-DAC-21-1-2024001606B2PROGRAM-CSFPRGFND",
-      "XM-DAC-21-1-2024001607B2PROGRAM-CSFPRGFND"
+      "XM-DAC-21-1-2024001607B2PROGRAM-CSFPRGFND",
+      "XM-DAC-21-1-2025002083B2PROGRAM"
      ],
      "site": "https://www.ireland.ie/en/irish-aid/"
     },
@@ -17632,6 +17724,13 @@
    ],
    "national_ngo": [
     {
+     "name": "Asociaci\u00f3n por la Paz y el Desarrollo",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z02-24-P1-00500"
+     ]
+    },
+    {
      "name": "Associacao Fogo Solidario, AFOSOL",
      "source": "IATI",
      "acts": [
@@ -17672,6 +17771,14 @@
     }
    ],
    "donor": [
+    {
+     "name": "AECID Agencia Espa\u00f1ola de Cooperaci\u00f3n Internacional para el Desarrollo",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z03-25-01-21800",
+      "XM-DAC-50-21-Z02-24-P1-00500"
+     ]
+    },
     {
      "name": "AUSTRALIA",
      "source": "IATI",
@@ -17721,12 +17828,12 @@
      "acts": [
       "XM-DAC-41301-642876",
       "XM-DAC-41301-643301",
+      "XM-DAC-41301-755832",
       "XM-DAC-41301-654965",
       "XM-DAC-41301-686462",
       "XM-DAC-41301-696762",
       "XM-DAC-41301-707362",
-      "XM-DAC-41301-707682",
-      "XM-DAC-41301-755832"
+      "XM-DAC-41301-707682"
      ],
      "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
      "site": "https://www.fao.org/home/en"
@@ -17804,6 +17911,13 @@
       "XM-DAC-5-7-6616919"
      ],
      "site": "https://www.auswaertiges-amt.de/en"
+    },
+    {
+     "name": "Ministerio de Ciencia y Educaci\u00f3n de Etiop\u00eda",
+     "source": "IATI",
+     "acts": [
+      "XM-DAC-50-21-Z03-25-01-21800"
+     ]
     }
    ]
   },
@@ -17903,6 +18017,7 @@
      "source": "IATI",
      "acts": [
       "XM-DAC-6-4-012527-01-1",
+      "XM-DAC-6-4-013283-01-0",
       "XM-DAC-6-4-009756-01-4"
      ],
      "ssf": "https://www.iamb.ciheam.org/education/sustainable-development-of-coastal-communities/",
@@ -17922,6 +18037,7 @@
      "source": "IATI",
      "acts": [
       "XM-DAC-6-4-012527-01-1",
+      "XM-DAC-6-4-013283-01-0",
       "XM-DAC-6-4-009756-01-4"
      ],
      "ssf": "https://www.aics.gov.it/fields-of-action/ambiente-e-uso-del-territorio/mare-e-oceani/?lang=en",
@@ -17991,46 +18107,6 @@
      "acts": [
       "XM-DAC-41301-650354",
       "XM-DAC-41301-744243"
-     ],
-     "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
-     "site": "https://www.fao.org/home/en"
-    }
-   ]
-  },
-  "GAB": {
-   "government": [
-    {
-     "name": "Government of Gabon",
-     "source": "IATI",
-     "acts": [
-      "46002-P-GA-AAF-002"
-     ]
-    }
-   ],
-   "national_ngo": [
-    {
-     "name": "Direction G\u00e9n\u00e9rale des P\u00eaches et de l\u2019Aquaculture",
-     "source": "IATI",
-     "acts": [
-      "46002-P-GA-AAF-002"
-     ]
-    }
-   ],
-   "donor": [
-    {
-     "name": "African Development Bank",
-     "source": "IATI",
-     "acts": [
-      "46002-P-GA-AAF-002"
-     ],
-     "site": "https://www.afdb.org/en"
-    },
-    {
-     "name": "Food and Agriculture Organization (FAO)",
-     "source": "IATI",
-     "acts": [
-      "XM-DAC-41301-686881",
-      "XM-DAC-41301-687021"
      ],
      "ssf": "https://www.fao.org/voluntary-guidelines-small-scale-fisheries/en",
      "site": "https://www.fao.org/home/en"
@@ -19373,7 +19449,6 @@
    "category": "fisher_org",
    "source": "Annex A (WFFP/ICSF, via Rare)",
    "region": "Other / cross-cutting signatories",
-   "site": "https://awfishnet.org/",
    "scope": "Africa (regional)"
   },
   {

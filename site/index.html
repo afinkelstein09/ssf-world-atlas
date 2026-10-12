@@ -172,6 +172,34 @@
   .overlay-toggle.sites.on .dot { background: var(--org); box-shadow: 0 0 0 2px rgba(139,90,43,0.16); }
 
   #legend { margin-top: 12px; }
+  /* Plain text buttons: the table switch under the legend, the tools on a page. */
+  .linkish, .p-tools button, .cite-box button, .p-back {
+    font: inherit; font-size: 11.5px; color: var(--ink-dim); background: none; border: 0; padding: 2px 0; cursor: pointer;
+    text-decoration: underline; text-decoration-color: rgba(23,32,31,0.25); text-underline-offset: 2px;
+  }
+  .linkish:hover, .p-tools button:hover, .cite-box button:hover, .p-back:hover { color: var(--ink); text-decoration-color: currentColor; }
+  #b-table { margin-top: 10px; }
+
+  /* Search: a single line with a hairline under it, and a list that drops below. */
+  .search { position: relative; margin-top: 12px; }
+  #q {
+    width: 100%; font: inherit; font-size: 12.5px; color: var(--ink); padding: 7px 2px 6px;
+    background: transparent; border: 0; border-bottom: 0.5px solid rgba(23,32,31,0.35); border-radius: 0; outline: none;
+  }
+  #q::placeholder { color: var(--ink-faint); }
+  #q:focus { border-bottom-color: var(--ink); }
+  #q-list {
+    position: absolute; left: 0; right: 0; top: 100%; z-index: 30; margin: 2px 0 0; padding: 4px 0; list-style: none;
+    background: #fff; border: 0.5px solid var(--edge); box-shadow: 0 8px 24px rgba(23,32,31,0.10); max-height: 320px; overflow-y: auto;
+  }
+  #q-list[hidden] { display: none; }
+  #q-list li { padding: 6px 10px; cursor: pointer; font-size: 12.5px; color: var(--ink); line-height: 1.3; }
+  #q-list li small { display: block; font-size: 10.5px; color: var(--ink-faint); }
+  #q-list li[aria-selected="true"], #q-list li:hover { background: rgba(23,32,31,0.06); }
+  #q-list li.none { color: var(--ink-faint); cursor: default; }
+
+  /* Waiting for a file from the second wave. */
+  .overlay-toggle.wait::after, .scale button.wait::after { content: ' · loading'; color: var(--ink-faint); font-weight: 400; }
   .legend-title { font-size: 10.5px; color: var(--ink-faint); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 7px; }
   .ramp { display: flex; height: 8px; border-radius: 3px; overflow: hidden; }
   .ramp i { flex: 1; }
@@ -217,6 +245,27 @@
   .p-scroll { overflow-y: auto; padding: 28px 32px 36px; }
   #panel h2 { margin: 0 40px 4px 0; font-size: 22px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; }
   .p-sub { font-size: 12px; color: var(--ink-faint); margin-bottom: 18px; }
+  .p-tools { display: flex; flex-wrap: wrap; gap: 2px 16px; margin: -11px 0 14px; }
+  .cite-box { font-size: 11.5px; line-height: 1.55; color: var(--ink-dim); background: rgba(23,32,31,0.045); border-left: 2px solid var(--ink-faint); padding: 9px 11px; margin: -6px 0 14px; }
+  .cite-box[hidden] { display: none; }
+  .cite-t { color: var(--ink); margin-bottom: 4px; user-select: all; }
+  .cite-n { margin-top: 5px; font-size: 10.5px; color: var(--ink-faint); }
+  .p-back { display: block; margin: -6px 0 10px; }
+
+  /* The ranking table: hairlines only, numbers in the mono face, a sticky head. */
+  .rank { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 2px; }
+  .rank th { text-align: left; font-weight: 500; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint);
+    padding: 7px 4px 6px; border-bottom: 0.5px solid rgba(23,32,31,0.3); position: sticky; top: -28px; background: #fdfdfb; }
+  .rank th button { font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  .rank th button:hover { color: var(--ink); }
+  .rank th.n, .rank td.n { text-align: right; }
+  .rank td { padding: 6px 4px; border-bottom: 0.5px solid var(--edge); color: var(--ink); }
+  .rank td.n { font-family: var(--mono); font-size: 11px; color: var(--ink-dim); white-space: nowrap; }
+  .rank td.gap { color: var(--ink-faint); font-family: var(--sans); font-style: italic; }
+  .rank .rk { width: 2.4em; color: var(--ink-faint); font-family: var(--mono); font-size: 10.5px; }
+  .rank tbody tr { cursor: pointer; }
+  .rank tbody tr:hover td, .rank tbody tr:focus-visible td { background: rgba(23,32,31,0.045); }
+  .rank tbody tr:focus-visible { outline: 2px solid var(--ff); outline-offset: -2px; }
   #close {
     position: absolute; top: 24px; right: 26px; z-index: 2; width: 27px; height: 27px;
     border: 0.5px solid var(--edge); background: rgba(23,32,31,0.05); color: var(--ink-dim);
@@ -390,6 +439,45 @@
   .gb { display: flex; height: 6px; gap: 1px; }
   .gb i { display: block; height: 100%; border-radius: 2px; }
 
+  /* Heatwave forecast: a small bar per month. */
+  .fc-bars { display: flex; gap: 3px; height: 46px; align-items: flex-end; }
+  .fc-b { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; }
+  .fc-b i { display: block; border-radius: 2px 2px 0 0; min-height: 0; }
+  .fc-b span { font-size: 8.5px; font-family: var(--mono); color: var(--ink-faint); text-align: center; margin-top: 2px; line-height: 1; }
+  .fc-slide { display: grid; grid-template-columns: 1fr 1fr; font-size: 10px; color: var(--ink-faint); margin: -2px 0 6px; }
+  .fc-slide input { grid-column: 1 / -1; width: 100%; margin: 0 0 1px; accent-color: #c8703a; }
+  .fc-slide span:last-child { text-align: right; }
+
+  /* Fish in the future: a two-by-two of scenarios and periods, then one dot per run. */
+  .fut { display: grid; gap: 0; font-size: 11.5px; }
+  .fut-row { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 0 10px; align-items: baseline; padding: 6px 0; border-top: 0.5px solid var(--edge); }
+  .fut-row:first-child { border-top: 0; padding-top: 0; }
+  .fut-h { font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
+  .fut-r { color: var(--ink-dim); }
+  .fut b { display: block; font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .fut small { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); }
+  .fut-strip { position: relative; height: 26px; margin-top: 2px; }
+  .fut-strip i { position: absolute; display: block; }
+  .fut-strip .axis { left: 4%; right: 4%; top: 12.5px; height: 1px; background: rgba(23,32,31,0.15); }
+  .fut-strip .zero { top: 4px; width: 1px; height: 18px; background: rgba(23,32,31,0.45); }
+  .fut-strip .med { top: 2px; width: 2px; height: 22px; margin-left: -1px; background: var(--ink); }
+  .fut-strip .run { top: 9px; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; opacity: 0.72; }
+  .fut-strip .run.down { background: #a5532a; }
+  .fut-strip .run.up { background: #3f8796; }
+
+  /* UN access-rights score: one row per round, five squares filled to the score. */
+  .sdg { margin: 4px 0 6px; }
+  .sdg-r { display: flex; align-items: center; gap: 10px; font-size: 11px; color: var(--ink-dim); line-height: 1.9; }
+  .sdg-y { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); width: 2.8em; }
+  .sdg-b { display: inline-flex; gap: 2px; }
+  .sdg-b i { width: 13px; height: 7px; border-radius: 1.5px; background: rgba(23,32,31,0.10); }
+  .sdg-b i.on { background: #7f7f33; }
+  .sdg-v { font-family: var(--mono); font-size: 10.5px; }
+  /* Governance: the arrangements on record, as quiet chips. */
+  .gov-l { display: flex; flex-wrap: wrap; gap: 4px; }
+  .gov-c { font-size: 11.5px; color: var(--ink-dim); background: rgba(23,32,31,0.05); border-radius: 4px; padding: 3px 7px; }
+  .gov-c small { color: var(--ink-faint); font-size: 10.5px; }
+
   .zrow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 10px; margin-bottom: 5px; }
   .zrow .zval { font-size: 11px; color: var(--ink-dim); font-family: var(--mono); }
 
@@ -442,6 +530,10 @@
       border-width: 0 0 0.5px 0; box-shadow: 0 10px 30px rgba(23,32,31,0.06);
     }
     #credit { left: 12px; }
+    /* With a page open the header shrinks to the title and the search box, so a strip
+       of map stays visible between it and the sheet. */
+    body.panel-open #head { max-height: none; padding-bottom: 10px; }
+    body.panel-open #head .sub, body.panel-open #enso, body.panel-open #enso-news, body.panel-open #controls { display: none !important; }
     /* On a phone the rail becomes a bottom sheet. */
     #panel {
       width: 100%; top: auto; height: 58%;
@@ -462,6 +554,11 @@
 <div id="head" class="card">
   <h1>Small-Scale Fisheries World Atlas</h1>
   <p class="sub">A working prototype from public data: catch, value, people, fleets, ocean heat, ecosystems, access rights and news for 282 ocean zones in 178 countries and territories. Gaps are shown, not hidden.</p>
+  <div class="search">
+    <input id="q" type="search" placeholder="Find a country or ocean zone" autocomplete="off" spellcheck="false"
+      role="combobox" aria-expanded="false" aria-controls="q-list" aria-autocomplete="list" aria-label="Find a country or ocean zone" />
+    <ul id="q-list" role="listbox" aria-label="Matching places" hidden></ul>
+  </div>
   <div id="enso"></div>
   <div id="enso-news"></div>
   <div id="controls">
@@ -475,15 +572,18 @@
       <div class="vgrp">Catch and economy</div>
       <button id="b-share" class="view on"><span class="sw" data-ramp="share"></span>Share of catch</button>
       <button id="b-foreign" class="view"><span class="sw" data-ramp="foreign"></span>Whose fleets fish here</button>
-      <div class="vgrp">People</div>
+      <div class="vgrp">People and rights</div>
       <button id="b-people" class="view"><span class="sw" data-ramp="people"></span>People</button>
+      <button id="b-access" class="view"><span class="sw" data-ramp="access"></span>Access rights</button>
       <div class="vgrp">Environment</div>
       <button id="b-heat" class="view"><span class="sw" data-ramp="heat"></span>Marine heatwave</button>
       <button id="b-overfish" class="view"><span class="sw" data-ramp="overfish"></span>Overfishing</button>
+      <button id="b-future" class="view"><span class="sw" data-ramp="future"></span>Fish in the future</button>
       <div class="vgrp">About the data</div>
       <button id="b-conf" class="view"><span class="sw" data-ramp="conf"></span>Data confidence</button>
     </div>
     <div id="legend"></div>
+    <button id="b-table" class="linkish" type="button">See every place ranked in a table ›</button>
     <div class="grp grp-2">Overlay</div>
     <div class="overlays">
       <button id="b-paa" class="overlay-toggle"><span class="dot"></span>Preferential access areas</button>
@@ -500,7 +600,7 @@
 
 
 
-<div id="panel" class="card">
+<div id="panel" class="card" role="region" aria-label="Details">
   <button id="close" aria-label="Close">×</button>
   <div class="p-scroll" id="panel-body"></div>
 </div>
@@ -537,6 +637,14 @@ const ALERT_COLORS = { 0:'#9dc3d4', 1:'#e2c53c', 2:'#c99a38', 3:'#c8703a', 4:'#b
 // 1.3 dE from the palest confidence step, so "we don't know" read as "poor";
 // the hatch is the map convention for a gap and cannot be mistaken for a value.
 const NO_DATA = '#eeeeea';
+// The heatwave forecast is a chance, 0 to 1, on the same cool-to-hot colours as today's view.
+const FC_STOPS = [[0,'#9dc3d4'],[0.25,'#e2c53c'],[0.5,'#c99a38'],[0.75,'#c8703a'],[1,'#a63a31']];
+// Fish in the future runs both ways from a pale middle: rust for a fall, teal for a
+// rise. It is never on screen with the overfishing view's amber.
+const FUTURE_STOPS = [[-40,'#6b2a12'],[-25,'#a5532a'],[-12,'#d39066'],[-4,'#efd5bf'],[0,'#f3eee6'],[4,'#d3e6e8'],[12,'#8dbcc6'],[20,'#3f8796']];
+// Access rights (UN SDG 14.b.1) run pale to deep olive, one step per level. Olive is
+// clear of the green access-area overlay, which is the layer it will be read against.
+const ACCESS_COLORS = { 1:'#f1efd6', 2:'#d8d59d', 3:'#b0ad60', 4:'#7f7f33', 5:'#4d5220' };
 
 const map = new maplibregl.Map({
   container: 'map',
@@ -552,6 +660,14 @@ const map = new maplibregl.Map({
 let COUNTRIES = {}, PEOPLE = {}, CLIMATE = {}, NEWS = {}, PAA = {}, ORGS = null, ISSF = null, FLEETS = {}, PROFILE = null, REG = null;
 let VALUE = {}, VALUE_NAT = {}, VALUE_WORLD = null, ECO = {}, ECO_NAT = {}, OVERFISH_YEAR = null;
 let NEWS_META = null, ACT_BY_ID = null;
+let heatMode = 'now';     // the heatwave view: today's reading, or NOAA's forecast for a month ahead
+let fcLead = null;        // which forecast month the map paints (index into OUTLOOK.mhw_forecast.months)
+let MPA = null;           // MPAtlas, protection on paper and in practice; local only until MCI agrees
+let FUTURE = null;        // FishMIP projections of fish biomass (site/data/future.json)
+let futScen = 'ssp585', futPer = 'end';   // the scenario and period the view paints
+let OUTLOOK = null;       // NOAA's forecasts: El Niño odds and the marine heatwave outlook (site/data/outlook.json)
+let ACCESS = null;        // UN SDG 14.b.1 and the IHH governance case studies (site/data/access.json)
+let SDG_ROUND = null;     // the round the map paints: the latest one
 let layer = 'share', selected = null, paaOn = false, orgOn = false, ffOn = false;
 // The share-of-catch view can be read in tonnes or in dollars. Peru's small boats
 // land a fifth of the tonnes and over two fifths of the value.
@@ -594,7 +710,7 @@ function buildCountryAgg(features) {
     const a = acc[p.iso3] || (acc[p.iso3] = {
       t: 0, ssf_t: 0, fl_t: 0, foreign_t: 0, domestic_t: 0, unknown_t: 0, zones: [], conf: [], mhw: [],
       v: 0, ssf_v: 0, fl_v: 0, foreign_v: 0, unknown_v: 0, suspect: [],
-      of_w: 0, of_sum: 0, of_zones: 0, threatened_max: null,
+      of_w: 0, of_sum: 0, of_zones: 0, threatened_max: null, fcz: [],
       p_ssf_usd: 0, p_ssf_t: 0, p_ind_usd: 0, p_ind_t: 0
     });
     const t = p.total_t || 0;
@@ -649,6 +765,7 @@ function buildCountryAgg(features) {
     if (th != null) a.threatened_max = Math.max(a.threatened_max == null ? 0 : a.threatened_max, th);
     if (p.confidence) a.conf.push([p.confidence, t]);
     if (p.mhw != null) a.mhw.push([p.mhw, t]);
+    a.fcz.push([p, t]);
   });
   // The weakest record and the worst heatwave in a country's waters are worth
   // surfacing - but only from zones that are a real part of the country's
@@ -684,6 +801,15 @@ function buildCountryAgg(features) {
       overfished_zones: a.of_zones,
       of_year: a.of_year || null,
       threatened_max: a.threatened_max,
+      // the heatwave forecast, month by month: the highest chance among the zones that vote
+      fc: (() => {
+        const months = ((OUTLOOK && OUTLOOK.mhw_forecast && OUTLOOK.mhw_forecast.months) || []);
+        const vz = voting(a.fcz, a.t);
+        return months.map((m, i) => {
+          const vals = vz.map(p => p['fc_' + i]).filter(v => v != null);
+          return vals.length ? Math.max(...vals) : null;
+        });
+      })(),
       zones: a.zones
     };
   });
@@ -710,10 +836,13 @@ function hatchImage() {
 // Which features the current view cannot measure. Confidence is the one scale
 // where 0 means "no record" rather than a reading.
 const shareKey = () => (shareBy === 'value' ? 'ssf_value_share' : 'ssf_share');
+const futKey = () => `fut_${futScen}_${futPer}`;
+const FUT_SCEN = { ssp126: 'low emissions', ssp585: 'very high emissions' };
+const FUT_PER = { mid: '2041–2060', end: '2081–2100' };
 
 function noDataFilter() {
-  const base = { share: shareKey(), heat: 'mhw', foreign: 'foreign_pct', conf: 'confidence', overfish: 'overfished' }[layer];
-  const p = layer === 'people' ? 'employed_per_1k' : prop(base);
+  const base = { share: shareKey(), heat: heatMode === 'outlook' ? 'fc_' + fcLead : 'mhw', foreign: 'foreign_pct', conf: 'confidence', overfish: 'overfished', future: futKey() }[layer];
+  const p = layer === 'people' ? 'employed_per_1k' : layer === 'access' ? 'access' : prop(base);
   if (layer === 'conf') return ['<', ['coalesce', ['get', p], 0], 1];
   return ['==', ['typeof', ['get', p]], 'null'];
 }
@@ -725,9 +854,12 @@ function syncNoData() {
 function fillExpr() {
   if (layer === 'share')  return rampExpr(prop(shareKey()), SHARE_STOPS);
   if (layer === 'people') return rampExpr('employed_per_1k', PEOPLE_STOPS);  // already national
+  if (layer === 'access') return matchExpr('access', ACCESS_COLORS);         // national too
+  if (layer === 'heat' && heatMode === 'outlook') return rampExpr(prop('fc_' + fcLead), FC_STOPS);
   if (layer === 'heat')   return matchExpr(prop('mhw'), ALERT_COLORS);
   if (layer === 'foreign') return rampExpr(prop('foreign_pct'), FOREIGN_STOPS);
   if (layer === 'overfish') return rampExpr(prop('overfished'), OVERFISH_STOPS);
+  if (layer === 'future') return rampExpr(prop(futKey()), FUTURE_STOPS);
   return matchExpr(prop('confidence'), CONF_COLORS);
 }
 
@@ -740,13 +872,15 @@ function paintSwatches() {
     foreign: FOREIGN_STOPS.map(s => s[1]),
     overfish: OVERFISH_STOPS.map(s => s[1]),
     heat:    [0,1,2,3,4,5].map(n => ALERT_COLORS[n]),
-    conf:    [1,2,3,4].map(n => CONF_COLORS[n])
+    conf:    [1,2,3,4].map(n => CONF_COLORS[n]),
+    access:  [1,2,3,4,5].map(n => ACCESS_COLORS[n]),
+    future:  FUTURE_STOPS.map(s => s[1])
   };
   document.querySelectorAll('.view .sw').forEach(el => {
     const cols = ramps[el.dataset.ramp];
     if (!cols) return;
     // Hard stops for the categorical scales, a smooth blend for the continuous ones.
-    const stepped = el.dataset.ramp === 'heat' || el.dataset.ramp === 'conf';
+    const stepped = el.dataset.ramp === 'heat' || el.dataset.ramp === 'conf' || el.dataset.ramp === 'access';
     if (stepped) {
       const n = cols.length;
       const parts = cols.map((c, i) => `${c} ${(100*i/n).toFixed(1)}%, ${c} ${(100*(i+1)/n).toFixed(1)}%`);
@@ -755,6 +889,27 @@ function paintSwatches() {
       el.style.background = `linear-gradient(90deg, ${cols.join(', ')})`;
     }
   });
+}
+
+// Today's heatwave or the forecast: a switch in the heatwave view's legend, as tonnes
+// and dollars are in the catch view's.
+function heatSeg() {
+  if (!(OUTLOOK && OUTLOOK.mhw_forecast && OUTLOOK.mhw_forecast.zones)) return '';
+  return `<div class="seg" role="group" aria-label="Heatwave now or forecast">
+    <button data-heat="now" class="${heatMode === 'now' ? 'on' : ''}" aria-pressed="${heatMode === 'now'}">Today</button>
+    <button data-heat="outlook" class="${heatMode === 'outlook' ? 'on' : ''}" aria-pressed="${heatMode === 'outlook'}">Coming months</button></div>`;
+}
+const monthWord = (ym, short) => {
+  const m = /^(\d{4})-(\d{2})/.exec(ym || '');
+  if (!m) return ym || '';
+  return short ? `${MON[+m[2] - 1]} ${m[1].slice(2)}` : `${['January','February','March','April','May','June','July','August','September','October','November','December'][+m[2] - 1]} ${m[1]}`;
+};
+// The forecast starts in the month it was made; months already over are not offered.
+function fcFirst() {
+  const f = OUTLOOK.mhw_forecast, now = new Date();
+  const ym = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+  const i = f.months.findIndex(m => m >= ym);
+  return i < 0 ? 0 : i;
 }
 
 function drawLegend() {
@@ -780,8 +935,36 @@ function drawLegend() {
       '<div class="ramp">' + PEOPLE_STOPS.map(s => `<i style="background:${s[1]}"></i>`).join('') + '</div>' +
       '<div class="ramp-ends"><span>0</span><span>60+ per 1,000 people</span></div>' +
       `<div class="keys">${gap}</div>`;
+  } else if (layer === 'future') {
+    const seg = (key, cur, opts) => `<div class="seg" role="group" aria-label="${key === 'scen' ? 'Emissions' : 'Period'}">` +
+      opts.map(([v, t]) => `<button data-fut="${key}:${v}" class="${cur === v ? 'on' : ''}" aria-pressed="${cur === v}">${t}</button>`).join('') + `</div>`;
+    el.innerHTML = seg('scen', futScen, [['ssp126', 'Low emissions'], ['ssp585', 'Very high emissions']]) +
+      seg('per', futPer, [['mid', '2041–2060'], ['end', '2081–2100']]) +
+      `<div class="legend-title">Change in fish biomass by ${FUT_PER[futPer]}</div>` +
+      `<div class="legend-sub">Median of ${(FUTURE && FUTURE.runs || []).length || 10} FishMIP model runs, ${FUT_SCEN[futScen]}, against 1995–2014, with no fishing. A projection of what the sea could hold, not a catch forecast${scale === 'country' ? '. Countries show their home waters' : ''}</div>` +
+      '<div class="ramp">' + FUTURE_STOPS.map(s => `<i style="background:${s[1]}"></i>`).join('') + '</div>' +
+      '<div class="ramp-ends"><span>a fall of 40% or more</span><span>a rise of 20%+</span></div>' +
+      `<div class="keys">${gap}</div>`;
+  } else if (layer === 'access') {
+    const s = ACCESS && ACCESS.sdg14b1;
+    const d = s && s.latest_distribution;
+    const high = d ? d['4'] + d['5'] : null;
+    el.innerHTML = `<div class="legend-title">Access rights for small-scale fishers${SDG_ROUND ? ', ' + SDG_ROUND : ''}</div>` +
+      `<div class="legend-sub">How far a legal framework recognises and protects them, scored 1 to 5 by each country itself (UN SDG 14.b.1)${d ? `. Worldwide, ${high} of the ${d.reported} countries that reported scored 4 or 5` : ''}. The same score is painted on every zone of a country</div><div class="keys">` +
+      [[5,'5 · very high'],[4,'4 · high'],[3,'3 · medium'],[2,'2 · low'],[1,'1 · very low']]
+        .map(([n,t]) => `<div class="key"><span class="sw" style="background:${ACCESS_COLORS[n]}"></span>${t}</div>`).join('') +
+      `<div class="key"><span class="sw hatch"></span>Not reported in ${SDG_ROUND || 'this round'}</div></div>`;
+  } else if (layer === 'heat' && heatMode === 'outlook') {
+    const f = OUTLOOK.mhw_forecast, first = fcFirst();
+    el.innerHTML = heatSeg() +
+      `<div class="legend-title">Chance of a marine heatwave · ${monthWord(f.months[fcLead])}</div>` +
+      `<label class="fc-slide"><input type="range" id="fc-lead" min="${first}" max="${f.months.length - 1}" value="${fcLead}" aria-label="Forecast month"><span>${monthWord(f.months[first], true)}</span><span>${monthWord(f.months[f.months.length - 1], true)}</span></label>` +
+      `<div class="legend-sub">NOAA's experimental forecast from ${monthWord(f.init)}, seven climate models. Averaged over each zone; a country shows the highest of its main zones</div>` +
+      '<div class="ramp">' + FC_STOPS.map(s => `<i style="background:${s[1]}"></i>`).join('') + '</div>' +
+      '<div class="ramp-ends"><span>0%</span><span>100%</span></div>' +
+      `<div class="keys">${gap}</div>`;
   } else if (layer === 'heat') {
-    el.innerHTML = `<div class="legend-title">Marine heatwave${HEAT_DATE ? ' · ' + shortDate(HEAT_DATE) : ''}</div>` +
+    el.innerHTML = heatSeg() + `<div class="legend-title">Marine heatwave${HEAT_DATE ? ' · ' + shortDate(HEAT_DATE) : ''}</div>` +
       `<div class="legend-sub">Read in one sample area about 130 km across per zone</div><div class="keys">` +
       [[0,'None'],[1,'Moderate'],[2,'Strong'],[3,'Severe'],[4,'Extreme'],[5,'Beyond extreme']]
         .map(([n,t]) => `<div class="key"><span class="sw" style="background:${ALERT_COLORS[n]}"></span>${t}</div>`).join('') +
@@ -856,19 +1039,25 @@ function sparkline(history, span) {
 // every time a zone is clicked.
 function initZoneLinks() {
   document.getElementById('panel-body').addEventListener('click', e => {
+    const tool = e.target.closest('[data-tool]');
+    if (tool) return panelTool(tool);
+    const row = e.target.closest('tr[data-kind]');
+    if (row) return openPlace(row.dataset.kind, row.dataset.key, { fly: true, fromTable: true });
     const tr = e.target.closest('.tr');
     if (tr) return toggleOriginal(tr);
     const chip = e.target.closest('.org[data-zone]');
-    if (chip) return showPanel(chip.dataset.zone);
+    if (chip) return openPlace('zone', chip.dataset.zone);
     const org = e.target.closest('.org[data-org]');
     if (org) toggleOrg(org);
   });
   document.getElementById('panel-body').addEventListener('keydown', e => {
     if (e.key !== 'Enter' && e.key !== ' ') return;
+    const row = e.target.closest('tr[data-kind]');
+    if (row && e.target === row) { e.preventDefault(); return openPlace(row.dataset.kind, row.dataset.key, { fly: true, fromTable: true }); }
     const tr = e.target.closest('.tr');
     if (tr) { e.preventDefault(); return toggleOriginal(tr); }
     const zone = e.target.closest('.org[data-zone]');
-    if (zone) { e.preventDefault(); return showPanel(zone.dataset.zone); }
+    if (zone) { e.preventDefault(); return openPlace('zone', zone.dataset.zone); }
     const org = e.target.closest('.org[data-org]');
     if (org) { e.preventDefault(); toggleOrg(org); }
   });
@@ -985,12 +1174,31 @@ function peopleSection(c) {
   };
 }
 
+// NOAA's heatwave forecast for one place: a bar per month, from this month on.
+function outlookStrip(vals, label) {
+  const f = OUTLOOK && OUTLOOK.mhw_forecast;
+  if (!f || !vals || !vals.some(v => v != null)) return '';
+  const first = fcFirst();
+  const months = f.months.slice(first), v = vals.slice(first);
+  const col = x => { let c = FC_STOPS[0][1]; FC_STOPS.forEach(([t, k]) => { if (x >= t - 1e-9) c = k; }); return c; };
+  const bars = v.map((x, i) => `<div class="fc-b" title="${monthWord(months[i])}: ${x == null ? 'no forecast' : Math.round(x * 100) + '%'}"><i style="height:${x == null ? 0 : Math.max(2, Math.round(x * 100))}%;background:${x == null ? 'transparent' : col(x)}"></i><span>${MON[+months[i].slice(5, 7) - 1][0]}</span></div>`).join('');
+  const peak = v.reduce((b, x, i) => (x != null && (b < 0 || x > v[b]) ? i : b), -1);
+  return `<div class="fc">
+    <div class="sec-h" style="margin-bottom:6px">${label} · chance of a heatwave, month by month</div>
+    <div class="fc-bars" aria-hidden="true">${bars}</div>
+    <div class="reg-n">${v.map((x, i) => x == null ? null : `${monthWord(months[i], true)} ${Math.round(x * 100)}%`).filter(Boolean).join(' · ')}.</div>
+    <div class="reg-n">NOAA's experimental forecast from ${monthWord(f.init)}, from seven North American climate models: the chance that a month's sea surface temperature is in the top tenth for the place and season, against 1991–2020. The later months rest on fewer models.${peak >= 0 && v[peak] >= 0.5 ? ` Highest in ${monthWord(months[peak])}.` : ''}</div>
+  </div>`;
+}
+
 function climateSection(c) {
   const z = CLIMATE.zones && CLIMATE.zones[c.name];
   if (!z || z.mhw == null) {
+    const fz = OUTLOOK && OUTLOOK.mhw_forecast && OUTLOOK.mhw_forecast.zones && OUTLOOK.mhw_forecast.zones[c.name];
     return {
       peek: 'no reading',
-      body: `<div class="gap-note">No heatwave category for this zone: NOAA's heatwave product has no reading in the sampled area on this date. In polar waters that usually means sea ice; elsewhere it is a gap in the satellite record. A gap in the measurement, not a measured calm.</div>`
+      body: `<div class="gap-note">No heatwave category for this zone: NOAA's heatwave product has no reading in the sampled area on this date. In polar waters that usually means sea ice; elsewhere it is a gap in the satellite record. A gap in the measurement, not a measured calm.</div>` +
+        (fz ? `<div style="margin-top:12px">${outlookStrip(fz.p, 'Coming months, whole zone')}</div>` : '')
     };
   }
   const label = (CLIMATE.mhw_labels || {})[z.mhw] || '';
@@ -1025,7 +1233,10 @@ function climateSection(c) {
         Above 4 bleaching becomes likely; above 8, severe bleaching and coral deaths are likely.</div></div>`;
   }
 
-  h += `<div class="gap-note">Read in one sample area about 130 km across inside the zone, not averaged over the whole zone. The heatwave category compares the sea surface temperature on the day measured with this location's own climatology, so it means the same thing in cold water as in warm. Degree heating weeks is calibrated to coral and is only reported within 35° of the equator.</div>`;
+  const fz = OUTLOOK && OUTLOOK.mhw_forecast && OUTLOOK.mhw_forecast.zones && OUTLOOK.mhw_forecast.zones[c.name];
+  if (fz) h += `<div style="margin-top:12px;padding-top:11px;border-top:0.5px solid var(--edge)">${outlookStrip(fz.p, 'Coming months, whole zone')}` +
+    (fz.approx ? `<div class="reg-n">These waters are narrower than the forecast's one-degree grid, so the nearest ocean cells stand in for them${fz.approx_basis === 'nearest' ? ', which can be over 100 km away' : ''}.</div>` : '') + `</div>`;
+  h += `<div class="gap-note">Today's category is read in one sample area about 130 km across inside the zone, not averaged over the whole zone. The heatwave category compares the sea surface temperature on the day measured with this location's own climatology, so it means the same thing in cold water as in warm. Degree heating weeks is calibrated to coral and is only reported within 35° of the equator.</div>`;
 
   return { peek: label, peekColor: z.mhw >= 2 ? col : null, body: h };
 }
@@ -1087,19 +1298,165 @@ const PROFILE_LABELS = {
 const PROFILE_ORDER = ['government', 'fisher_org', 'international_ngo', 'national_ngo',
                        'donor', 'research', 'private_sector', 'unclassified'];
 
-function regulatorySection(c) {
-  if (!REG || !REG.countries) return null;
-  const r = REG.countries[c.iso3];
-  if (!r) return null;
+// ---------------------------------------------------------------------------
+// Fish in the future: FishMIP's projected change in fish biomass, per zone, and per
+// country over its home waters (its overseas territories have their own zones).
+const signed = x => x == null ? '—' : `${x > 0 ? '+' : x < 0 ? '−' : ''}${Math.abs(x) >= 10 ? Math.abs(x).toFixed(0) : Math.abs(x).toFixed(1)}%`;
+function futureRecord(kind, key) {
+  if (!FUTURE) return null;
+  return (kind === 'country' ? (FUTURE.countries || {})[key] : (FUTURE.zones || {})[key]) || null;
+}
+function futureCell(kind, key, scen, per) {
+  const r = futureRecord(kind, key);
+  return r && r[scen || futScen] ? r[scen || futScen][per || futPer] || null : null;
+}
+function futureProps(p, rec, pre) {
+  ['ssp126', 'ssp585'].forEach(sc => ['mid', 'end'].forEach(pe => {
+    const d = rec && rec[sc] && rec[sc][pe];
+    p[`${pre}fut_${sc}_${pe}`] = d && d.median != null ? d.median : null;
+  }));
+}
+function runStrip(d) {
+  const vals = (d.by_run || []).filter(v => v != null);
+  if (vals.length < 2) return '';
+  // drawn in HTML rather than a stretched SVG, so the dots stay round at any width
+  const lo = Math.min(-20, ...vals), hi = Math.max(10, ...vals);
+  const X = v => (4 + (v - lo) / (hi - lo) * 92).toFixed(1) + '%';
+  return `<div class="fut-strip" aria-hidden="true"><i class="axis"></i><i class="zero" style="left:${X(0)}"></i>` +
+    vals.map(v => `<i class="run ${v < 0 ? 'down' : 'up'}" style="left:${X(v)}" title="${signed(v)}"></i>`).join('') +
+    `<i class="med" style="left:${X(d.median)}"></i></div>` +
+    `<div class="ramp-ends"><span>${signed(lo)}</span><span>${signed(hi)}</span></div>`;
+}
+function futureSection(kind, key) {
+  const r = futureRecord(kind, key);
+  if (!r || !r.ssp585) return null;
+  const cell = d => d && d.median != null
+    ? `<b>${signed(d.median)}</b><small>${d.n > 1 ? `${signed(d.lo)} to ${signed(d.hi)}` : 'one run only'}</small>` : '<b>—</b>';
+  let h = `<div class="fut" role="table" aria-label="Projected change in fish biomass">
+    <div role="row" class="fut-row"><span role="columnheader"></span><span role="columnheader" class="fut-h">2041–2060</span><span role="columnheader" class="fut-h">2081–2100</span></div>
+    <div role="row" class="fut-row"><span role="rowheader" class="fut-r">Low emissions</span><span role="cell">${cell(r.ssp126 && r.ssp126.mid)}</span><span role="cell">${cell(r.ssp126 && r.ssp126.end)}</span></div>
+    <div role="row" class="fut-row"><span role="rowheader" class="fut-r">Very high emissions</span><span role="cell">${cell(r.ssp585.mid)}</span><span role="cell">${cell(r.ssp585.end)}</span></div>
+  </div>`;
+  const d = r.ssp585.end;
+  h += `<div class="sec-h" style="margin:12px 0 2px">Each model run, very high emissions, 2081–2100</div>${runStrip(d)}`;
+  const agreeN = Math.round(d.agree * d.n);
+  const w = FUTURE.world && FUTURE.world.ssp585 && FUTURE.world.ssp126;
+  let txt = `${agreeN === d.n ? `All ${d.n} runs agree` : `${agreeN} of ${d.n} runs agree`} on the direction here.`;
+  if (w) txt += ` For the whole ocean the middle figures are ${signed(FUTURE.world.ssp126.end.median)} (low emissions) and ${signed(FUTURE.world.ssp585.end.median)} (very high) by 2081–2100.`;
+  if (d.n < (FUTURE.runs || []).length) txt += ` Only ${d.n} of the ${(FUTURE.runs || []).length} runs model these waters; the others' coarse land masks leave them out, so read this loosely.`;
+  if (r.approx) txt += ` These waters are smaller than the models' one-degree grid, so the nearest ocean cells stand in for them.`;
+  if (kind === 'country' && r.zones) txt += ` Home waters only (${r.zones.map(esc).join(', ')}); overseas territories have their own zone pages.`;
+  h += `<div class="reg-n">${txt}</div>`;
+  h += `<div class="gap-note">Change in the total weight of the sea animals the models represent (fish and, in some models, invertebrates) against 1995–2014, with no fishing, from FishMIP: ${(FUTURE.runs || []).length} runs of six marine ecosystem models driven by two climate models, weighted equally. The large figure is the median of the runs, the small range ${d.n >= 10 ? 'the 10th to 90th percentile' : 'the lowest to the highest run'}. It is what these waters could support, not a forecast of catch, and the models disagree most in coastal and enclosed seas.</div>`;
+  h += `<div class="src-l">${ext('https://doi.org/10.1038/s41558-021-01173-9', 'Tittensor et al. 2021')} · ${ext('https://data.isimip.org', 'ISIMIP3b data')} · CC0</div>`;
+  return { peek: `${signed(d.median)} by 2100, high emissions`, body: h };
+}
 
-  const law = r.access_law;
+// ---------------------------------------------------------------------------
+// Access rights as countries report them to the UN (SDG 14.b.1), and how access is
+// governed on the water, from Illuminating Hidden Harvests' country case studies.
+const sdgRecord = iso => (ACCESS && ACCESS.sdg14b1 && ACCESS.sdg14b1.countries[iso]) || null;
+function sdgScore(iso) {
+  const r = sdgRecord(iso);
+  const v = r && SDG_ROUND ? r.scores[String(SDG_ROUND)] : null;
+  return v == null ? null : v;
+}
+function sdgBlock(c) {
+  const s = ACCESS && ACCESS.sdg14b1;
+  if (!s) return null;
+  const r = s.countries[c.iso3];
+  const head = `<div class="reg-h">Access rights for small-scale fishers · UN SDG 14.b.1</div>`;
+  const who = esc(COUNTRY_NAME[c.iso3] || (r && r.name) || 'This country');
+  if (!r || r.latest == null) {
+    const why = r && r.round_detail ? [...new Set(Object.values(r.round_detail).map(d => d.missing).filter(Boolean))] : [];
+    const reason = why.some(w => /suppressed/i.test(w)) ? ' The UN database marks its value as suppressed.'
+      : why.some(w => /not relevant/i.test(w)) ? ' The UN database marks it as not relevant.' : '';
+    return { peek: 'not reported', body: `<div class="reg">${head}<div class="reg-n">${who} has reported no score in any round, ${s.rounds[0]} to ${s.rounds[s.rounds.length - 1]}.${reason}</div></div>` };
+  }
+  // one row per round: five small squares filled to the score
+  const rows = s.rounds.map(y => {
+    const v = r.scores[String(y)];
+    return `<div class="sdg-r"><span class="sdg-y">${y}</span><span class="sdg-b" aria-hidden="true">${[1, 2, 3, 4, 5].map(i => `<i${v != null && i <= v ? ' class="on"' : ''}></i>`).join('')}</span><span class="sdg-v">${v != null ? v + ' of 5' : 'not reported'}</span></div>`;
+  }).join('');
+  const level = String((s.levels || {})[String(r.latest)] || '').replace(/ of instruments.*$/, '').toLowerCase();
+  const d = s.latest_distribution || {};
+  const eu = (r.eu_derived_rounds || []).includes(r.latest_year)
+    ? ` This score is the European Union's single answer, given to every member state, not ${who}'s own.` : '';
+  const odd = (r.eu_footnote_anomaly_rounds || []).includes(r.latest_year)
+    ? ` The UN database footnotes this score as built from the EU's answers, though ${who} is not an EU member; most likely an error in the database.` : '';
+  const terr = c.iso_kind === 'territory' ? ` This is ${who}'s national score; this zone may be governed separately.` : '';
+  const body = `<div class="reg">${head}<div class="sdg">${rows}</div>
+    <div class="reg-n">${r.latest} of 5 in ${r.latest_year}: ${level || 'see the UN metadata'}. Each country's fisheries administration scores itself, on whether it has laws or policies aimed at small-scale fisheries, work under way on FAO's small-scale fisheries guidelines, and a body where fishers are consulted. It measures frameworks, not who actually holds rights on the water, and most countries give themselves a high score: ${d['4'] + d['5']} of the ${d.reported} that reported in ${s.latest_round} scored 4 or 5. A change between rounds says more than the level.${eu}${odd}${terr}</div>
+    <div class="src-l">${ext('https://unstats.un.org/sdgs/dataportal/database', 'UN SDG Global Database')}, series ${esc(s.series || 'ER_REG_SSFRAR')} · ${ext(s.metadata_url, 'indicator metadata')}</div></div>`;
+  return { peek: `${r.latest} of 5 (${r.latest_year})`, body };
+}
+
+// The shares of small-scale marine catch under each arrangement. Formal rules only:
+// the case studies leave out customary and informal rights.
+const GOV_ACCESS = [['license', 'Licence'], ['historical_use', 'Historical use'], ['residence', 'Place of residence'], ['registration', 'Vessel registration'], ['open_acc', 'Open access']];
+const GOV_RULES = [['vessels', 'Vessel limits'], ['tac', 'Catch limits'], ['size', 'Size limits'], ['sex', 'Limits by sex'], ['gear', 'Gear rules'], ['temporal', 'Closed seasons'], ['spatial', 'Closed or reserved areas']];
+function governanceSection(c) {
+  const g = ACCESS && ACCESS.ihh_governance;
+  const rec = g && g.countries[c.iso3];
+  const m = rec && rec.marine;
+  if (!m || !m.catch_t) return null;
+  const pct = x => (x && x.pct != null ? x.pct : null);
+  const share = x => pct(x) == null ? '' : (x.pct >= 99.95 ? 'all' : x.pct < 0.05 ? 'under 0.1%' : x.pct.toFixed(x.pct < 10 ? 1 : 0) + '%');
+  const who = esc(COUNTRY_NAME[c.iso3] || rec.name);
+  let h = '';
+  if (c.iso_kind === 'territory') h += `<div class="gap-note" style="margin-top:0;margin-bottom:10px">These are ${who}'s national arrangements. This zone is an island or outlying part of the country, so they may not apply here.</div>`;
+  h += `<div class="reg-n" style="margin-top:0">Small-scale marine catch studied: <b style="font-weight:600">${fmt(m.catch_t)} t</b> a year (2013–2017), under the rules recorded in 2019–2020.</div>`;
+
+  // Who may fish, and on what terms
+  const chips = (list, block) => list.map(([k, label]) => {
+    const x = block && block[k];
+    if (!x || !x.present) return '';
+    const sh = share(x);
+    return `<span class="gov-c">${label}${sh && sh !== 'all' ? ` <small>${sh} of catch</small>` : ''}</span>`;
+  }).join('');
+  const acc = chips(GOV_ACCESS, m.access);
+  const noAcc = m.access && m.access.no_info && m.access.no_info.present ? ` <small>No information for ${share(m.access.no_info)} of the catch.</small>` : '';
+  h += `<div class="reg" style="margin-top:10px"><div class="reg-h">Who may fish: access by</div><div class="gov-l">${acc || '<span class="reg-n">none recorded</span>'}</div>${noAcc ? `<div class="reg-n">${noAcc.trim()}</div>` : ''}</div>`;
+  const rules = GOV_RULES.filter(([k]) => m.harvest_rules && m.harvest_rules[k] && m.harvest_rules[k].present);
+  h += `<div class="reg"><div class="reg-h">Rules on the harvest <span style="text-transform:none;letter-spacing:0">· ${rules.length} of 7</span></div><div class="gov-l">${chips(GOV_RULES, m.harvest_rules) || '<span class="reg-n">none recorded</span>'}</div></div>`;
+
+  // Rights held by fishers: the case studies' mutually exclusive breakdown, which adds up to the catch
+  const rb = m.rights_breakdown || {};
+  const dev = m.devolved_any || {};
+  const none = rb.no_rights || {}, unk = rb.not_gov_info || {};
+  const seg = (x, col, t) => pct(x) ? `<i style="width:${x.pct}%;background:${col}" title="${t} ${share(x)}"></i>` : '';
+  h += `<div class="reg"><div class="reg-h">Rights held by fishers themselves</div>
+    <div class="stack">${seg(dev, '#3f8f7a', 'Some right devolved:')}${seg(none, '#dc8a4a', 'No rights:')}${seg(unk, 'rgba(23,32,31,0.16)', 'No information:')}</div>
+    <div class="stack-key">
+      ${pct(dev) ? `<span><i style="background:#3f8f7a"></i>some right ${share(dev)}</span>` : ''}
+      ${pct(none) ? `<span><i style="background:#dc8a4a"></i>no rights ${share(none)}</span>` : ''}
+      ${pct(unk) ? `<span><i style="background:rgba(23,32,31,0.16)"></i>no information ${share(unk)}</span>` : ''}
+    </div>`;
+  const kinds = [['mgmt', 'to take part in managing the fishery'], ['excl', 'to decide who else may fish'], ['trans', 'to pass their rights on']]
+    .filter(([k]) => m.rights && m.rights[k] && m.rights[k].present)
+    .map(([k, t]) => `${t} (${share(m.rights[k])})`);
+  if (kinds.length) h += `<div class="reg-n">Rights held: ${kinds.join('; ')}. A catch can carry more than one.</div>`;
+  h += `</div>`;
+  h += `<div class="gap-note">From the country case studies of Illuminating Hidden Harvests (FAO, Duke University and WorldFish), shares of the small-scale marine catch each arrangement covers. Formal arrangements only: customary and informal rights are not counted, so "no rights" can understate what fishers hold.</div>`;
+  h += `<div class="src-l">${ext(g.url, 'IHH governance data')} · CC BY 4.0</div>`;
+  return { peek: pct(dev) != null ? `rights over ${share(dev)} of catch` : 'recorded', body: h };
+}
+
+function regulatorySection(c) {
+  const r = (REG && REG.countries && REG.countries[c.iso3]) || null;
+  const sdg = sdgBlock(c);
+  if (!r && !sdg) return null;
+
+  const law = r && r.access_law;
   let h = '', peek = [];
 
   if (c.iso_kind === 'territory') {
     h += `<div class="gap-note" style="margin-top:0;margin-bottom:10px">This is ${COUNTRY_NAME[c.iso3] || 'the parent country'}'s national framework. This zone is an island or outlying part of the country, so it may be governed separately.</div>`;
   }
 
-  if (law && law.name) {
+  if (!r) {
+    // the law file arrives in the second wave; the UN score does not wait for it
+  } else if (law && law.name) {
     peek.push(law.year || 'law');
     h += `<div class="reg">
       <div class="reg-h">Access law</div>
@@ -1122,22 +1479,20 @@ function regulatorySection(c) {
     h += `<div class="gap-note">No nearshore access law recorded for this country in the Duke dataset — which excludes locally bounded community rights by definition, so a country can govern small-scale access without appearing here.</div>`;
   }
 
-  if (r.ssf_guidelines) {
+  if (r && r.ssf_guidelines) {
     peek.push('FAO active');
     h += `<div class="reg">
       <div class="reg-h">SSF Guidelines</div>
       <div class="reg-b">FAO reports active support for implementation here.</div></div>`;
   }
 
-  h += `<div class="reg">
+  if (sdg) { h += sdg.body; peek.unshift(sdg.peek); }
+
+  if (r) h += `<div class="reg">
     <div class="reg-h">Search the law</div>
     <div class="reg-b"><a href="${safeUrl(r.faolex_search)}" target="_blank" rel="noopener" style="color:var(--paa)">Fisheries legislation for ${esc(r.country)} in FAOLEX</a></div>
     <div class="reg-n">FAO's database of national fisheries law. Linked rather than harvested — it does not permit automated access.</div>
   </div>`;
-
-  if (REG.missing && REG.missing.sdg_14_b_1) {
-    h += `<div class="gap-note">Missing: ${REG.missing.sdg_14_b_1}</div>`;
-  }
 
   return { peek: peek.join(' · ') || 'link only', body: h };
 }
@@ -1790,6 +2145,41 @@ function nationalBlock(c, cells) {
     <div class="reg-n" style="margin-top:7px">Country-wide totals. They cover every coast of ${esc(country)} and say nothing about this zone on its own.</div></div>`;
 }
 
+// How much protection is in force, not only listed: MPAtlas's assessment against the
+// World Database on Protected Areas. Only while site/data/mpatlas.json is present.
+const pctTxt = x => x == null ? '—' : x === 0 ? '0%' : x < 0.01 ? '<0.01%' : x < 1 ? x.toFixed(2) + '%' : x < 10 ? x.toFixed(1) + '%' : x.toFixed(0) + '%';
+function mpaBlock(c) {
+  if (!MPA || c.iso_kind === 'territory') return '';
+  const m = MPA.countries[c.iso3];
+  if (!m) return '';
+  const who = esc(COUNTRY_NAME[c.iso3] || m.name);
+  // MPAtlas rounds a share to two places, so France's 3.9 km² fully protected arrives as 0.0%
+  const pk = x => x && x.km2 > 0 && !x.pct ? '<0.01%' : pctTxt(x && x.pct);
+  let h = `<div style="margin-top:14px;padding-top:12px;border-top:0.5px solid var(--edge)">
+    <div class="sec-h" style="margin-bottom:8px">Protected on paper and in practice · MPAtlas${c.iso_kind !== 'country' && (((COUNTRY_AGG[c.iso3] || {}).zones || []).length > 1) ? ` · ${who} as a whole` : ''}</div>`;
+  if (!m.assessed) {
+    h += `<div class="reg-n" style="margin-top:0">MPAtlas has not yet assessed ${who}'s protected areas. The World Database on Protected Areas lists ${fmt(m.wdpa_listed && m.wdpa_listed.km2)} km² (${pctTxt(m.wdpa_listed && m.wdpa_listed.pct)} of its waters).</div>`;
+  } else {
+    const st = m.stage || {};
+    h += `<div class="stats">
+      <div class="stat"><div class="n">${pk(m.wdpa_listed)}</div><div class="l">listed as protected (WDPA), ${fmt(m.wdpa_listed && m.wdpa_listed.km2)} km²</div></div>
+      <div class="stat"><div class="n">${pk(st.designated_or_further)}</div><div class="l">designated in law, as MPAtlas counts it</div></div>
+      <div class="stat"><div class="n">${pk(st.implemented)}</div><div class="l">in force, rules applied on the water</div></div>
+      <div class="stat"><div class="n">${pk(m.fully_or_highly)}</div><div class="l">fully or highly protected, ${fmt(m.fully_or_highly && m.fully_or_highly.km2)} km²</div></div>
+    </div>`;
+    const bits = [];
+    if (st.designated_only && st.designated_only.km2 > 0) bits.push(`${fmt(st.designated_only.km2)} km² is designated but not yet in force`);
+    if (st.proposed && st.proposed.km2 > 0) bits.push(`${fmt(st.proposed.km2)} km² is only proposed`);
+    const lv = m.level || {};
+    if (lv.minimally && lv.minimally.km2 > 0) bits.push(`${fmt(lv.minimally.km2)} km² of what is in force is minimally protected or open to activities incompatible with conservation`);
+    h += `<div class="reg-n">${bits.length ? bits.join('; ') + '. ' : ''}Levels follow the MPA Guide; assessed ${shortDate(m.assessment_date)} ${String(m.assessment_date || '').slice(0, 4)}. The listed share uses the WDPA's own measure of the country's waters, the others MPAtlas's.</div>`;
+  }
+  if (m.scope && m.scope.warning) h += `<div class="reg-n">${esc(m.scope.warning)}</div>`;
+  h += `<div class="reg-n" style="color:var(--ff)">Not published: shown only on this computer until Marine Conservation Institute gives permission.</div>`;
+  h += `<div class="src-l">${ext(m.url, 'MPAtlas, ' + esc(m.name))} · Marine Conservation Institute</div></div>`;
+  return h;
+}
+
 function nationalEcoStats(c) {
   if (c.iso_kind === 'territory') return '';
   const n = ECO_NAT[c.iso3];
@@ -1820,7 +2210,7 @@ function ecoLinks(c, e) {
 function ecoSection(c) {
   const e = ECO[c.name];
   const national = nationalEcoStats(c);
-  if (!e && !national) return null;
+  if (!e && !national && !mpaBlock(c)) return null;
   let h = '', peek = '';
   if (e && e.stocks) {
     h += stockBlock(e.stocks);
@@ -1851,6 +2241,7 @@ function ecoSection(c) {
     h += `<div class="reg-n" style="margin-top:9px">This zone: ${bits.join(' · ')}.</div>`;
   }
   h += national;
+  h += mpaBlock(c);
   h += `<div class="gap-note">${ECO_NOTE}</div>` + ecoLinks(c, e);
   return { peek, body: h };
 }
@@ -1873,6 +2264,7 @@ function countryEcoSection(iso, a, c, zones) {
   }).join('');
   if (!national && !rows) return null;
   let h = national ? national.replace('margin-top:9px', 'margin-top:0') : '';
+  h += mpaBlock(c);
   if (rows) h += `<div style="margin-top:${national ? 13 : 0}px"><div class="sec-h" style="margin-bottom:8px">By ocean zone</div>${rows}</div>`;
   h += `<div class="gap-note">The state of fish populations and the species lists are published per ocean zone and do not add up across zones, so they are listed rather than totalled. Click a zone for its full picture. ${ECO_NOTE}</div>`;
   const links = [`<a href="https://obis.org" target="_blank" rel="noopener">OBIS</a>`, `<a href="https://www.seaaroundus.org/data/#/eez" target="_blank" rel="noopener">Sea Around Us</a>`];
@@ -1891,18 +2283,27 @@ function confSection(c) {
   };
 }
 
+// The older index is the number most news stories quote, so the Sources line gives it.
+function ensoClassicNote() {
+  const e = CLIMATE.enso || {}, c = e.oni_classic;
+  if (e.index !== 'RONI' || !c || c.value == null) return '';
+  const code = String(c.season || '').split(' ')[0];
+  return ` (the older Oceanic Niño Index, which most news stories quote, reads ${c.value > 0 ? '+' : ''}${Number(c.value).toFixed(1)} for ${SEASON_WORDS[code] || c.season})`;
+}
+
 function sourcesSection() {
   return {
     peek: '',
     body: `<div class="srcs" style="font-size:11.5px;color:var(--ink-dim);line-height:1.65">
       <b style="font-weight:600">Catch and value</b> — <a href="https://www.seaaroundus.org" target="_blank" rel="noopener">Sea Around Us</a>, UBC. Reconstructions blending reported landings with estimates of unreported catch, not official statistics. Value is priced from a global price database, in 2010 US dollars.<br />
       <b style="font-weight:600">Livelihoods</b> — <a href="https://doi.org/10.4060/cc4576en" target="_blank" rel="noopener">Illuminating Hidden Harvests</a> (FAO/Duke/WorldFish 2023), a one-off 2013–2017 baseline.<br />
-      <b style="font-weight:600">Access rights</b> — <a href="https://doi.org/10.7924/r40s01h5j" target="_blank" rel="noopener">DeLand et al. (2025)</a>, Duke Research Data Repository, CC0.<br />
-      <b style="font-weight:600">Ocean heat</b> — <a href="https://coralreefwatch.noaa.gov/product/marine_heatwave/" target="_blank" rel="noopener">NOAA Coral Reef Watch</a>.<br />
+      <b style="font-weight:600">Access rights</b> — <a href="https://doi.org/10.7924/r40s01h5j" target="_blank" rel="noopener">DeLand et al. (2025)</a>, Duke Research Data Repository, CC0; <a href="https://unstats.un.org/sdgs/dataportal/database" target="_blank" rel="noopener">UN SDG indicator 14.b.1</a>, scored by each country and reported to FAO, rounds 2018 to 2026; how access is governed from the <a href="https://www.fao.org/3/cd3915en/IHH_Governance_data.xlsx" target="_blank" rel="noopener">Illuminating Hidden Harvests governance case studies</a> (51 countries, CC BY 4.0).<br />
+      <b style="font-weight:600">Ocean heat</b> — <a href="https://coralreefwatch.noaa.gov/product/marine_heatwave/" target="_blank" rel="noopener">NOAA Coral Reef Watch</a>; the forecast is NOAA's experimental <a href="https://psl.noaa.gov/marine-heatwaves/" target="_blank" rel="noopener">marine heatwave forecast</a> (Physical Sciences Laboratory, North American Multi-Model Ensemble; <a href="https://doi.org/10.1038/s41586-022-04573-9" target="_blank" rel="noopener">Jacox et al. 2022</a>).<br />
       <b style="font-weight:600">Ecosystem</b> — state of fish populations from Sea Around Us (judged from catch, 2019), threatened species from <a href="https://obis.org" target="_blank" rel="noopener">OBIS</a> using IUCN Red List categories, mangroves from the <a href="https://oceanhealthindex.org" target="_blank" rel="noopener">Ocean Health Index</a>, protected waters from the <a href="https://data.worldbank.org/indicator/ER.MRN.PTMR.ZS" target="_blank" rel="noopener">World Bank</a>.<br />
+      <b style="font-weight:600">Fish in the future</b> — <a href="https://fishmip.org" target="_blank" rel="noopener">FishMIP</a> projections from the <a href="https://data.isimip.org" target="_blank" rel="noopener">ISIMIP3b</a> round (CC0): total consumer biomass from ten runs of six marine ecosystem models, no fishing, against 1995–2014; method after <a href="https://doi.org/10.1038/s41558-021-01173-9" target="_blank" rel="noopener">Tittensor et al. 2021</a>.<br />
       <b style="font-weight:600">Diet and GDP</b> — FAO food balance sheets via <a href="https://ourworldindata.org/grapher/fish-and-seafood-consumption-per-capita" target="_blank" rel="noopener">Our World in Data</a>; <a href="https://unstats.un.org/sdgs/dataportal" target="_blank" rel="noopener">UN SDG indicator 14.7.1</a>.<br />
       <b style="font-weight:600">Organisations and reported activity</b> — IATI aid data via <a href="https://d-portal.org" target="_blank" rel="noopener">d-portal</a>, and <a href="https://issfcloud.toobigtoignore.net" target="_blank" rel="noopener">ISSF</a> (Too Big To Ignore).<br />
-      <b style="font-weight:600">El Niño</b> — <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php" target="_blank" rel="noopener">NOAA Climate Prediction Center</a>, Oceanic Niño Index and weekly Niño 1+2 readings.<br />
+      <b style="font-weight:600">El Niño</b> — <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/" target="_blank" rel="noopener">NOAA Climate Prediction Center</a>, Relative Oceanic Niño Index, NOAA's official measure since February 2026${ensoClassicNote()}, and weekly Niño 1+2 readings. NOAA treats the newest values as estimates and may revise them for two months. The odds are CPC's <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/probabilities/" target="_blank" rel="noopener">official ENSO probabilities</a> and <a href="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/strengths/" target="_blank" rel="noopener">strength probabilities</a>.<br />
       <b style="font-weight:600">News</b> — Google News search and fisheries news feeds (Mongabay, the Guardian, CFFA, the Pacific Islands Forum Fisheries Agency, Blue Ventures, Oceana, Global Fishing Watch, RNZ Pacific, AllAfrica), filtered by keyword; English translations by MyMemory.<br />
       <b style="font-weight:600">Conservation groups</b> — Rare's <a href="https://rare.org/program/fish-forever/" target="_blank" rel="noopener">Fish Forever</a> countries; Blue Ventures' countries from its <a href="https://blueventures.org/where-we-work/" target="_blank" rel="noopener">where-we-work page</a>${GROUPS_META && GROUPS_META.groups && GROUPS_META.groups[0] && GROUPS_META.groups[0].checked ? ', checked ' + shortDate(GROUPS_META.groups[0].checked) : ''}. Being listed says where a group works, nothing about how much.
     </div>`
@@ -1914,7 +2315,7 @@ function sourcesSection() {
 // Which section a page should open with, from the view on the map.
 function openFor() {
   if (layer === 'share') return shareBy === 'value' ? 'worth' : 'catch';
-  return { people: 'people', foreign: 'fleets', heat: 'heat', overfish: 'eco' }[layer] || 'catch';
+  return { people: 'people', access: 'rights', foreign: 'fleets', heat: 'heat', overfish: 'eco', future: 'future' }[layer] || 'catch';
 }
 
 function accordion(title, sec, open) {
@@ -1990,6 +2391,362 @@ function keyFigures(c) {
 }
 
 // ---------------------------------------------------------------------------
+// Share, cite, download. A row of three plain buttons under the title of every
+// page; the citation opens in place.
+function panelTools(csv) {
+  return `<div class="p-tools">
+    <button type="button" data-tool="link">Copy link</button>
+    <button type="button" data-tool="cite" aria-expanded="false">Cite</button>
+    <button type="button" data-tool="${csv === 'table' ? 'tablecsv' : 'csv'}">Download data (CSV)</button>
+  </div><div class="cite-box" hidden></div>`;
+}
+function backToTable() {
+  return fromTable ? `<button type="button" class="p-back" data-tool="table">‹ Back to the table</button>` : '';
+}
+function placeTitle() {
+  if (!current) return '';
+  if (current.kind === 'country') return COUNTRY_NAME[current.key] || current.key;
+  if (current.kind === 'zone') return current.key;
+  return `${VIEW_TITLE[layer] || 'Ranking'}, ${tableScale() === 'country' ? 'by country' : 'by ocean zone'}`;
+}
+const longDate = () => new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+function citationText() {
+  return `Small-Scale Fisheries World Atlas (prototype). ${placeTitle()}. ${shareUrl()} (accessed ${longDate()}).`;
+}
+function panelTool(btn) {
+  const tool = btn.dataset.tool;
+  if (tool === 'link') return copyText(shareUrl(), btn, 'Link copied');
+  if (tool === 'table') return showTable();
+  if (tool === 'cite') {
+    const box = btn.closest('.p-tools').nextElementSibling;
+    const open = box.hidden;
+    box.hidden = !open;
+    btn.setAttribute('aria-expanded', open);
+    if (open) {
+      box.innerHTML = `<div class="cite-t">${esc(citationText())}</div>
+        <button type="button" data-tool="copycite">Copy citation</button>
+        <div class="cite-n">The figures come from the sources named on this page (Sources, at the end). If you reuse one, cite its source as well: Sea Around Us, Illuminating Hidden Harvests, NOAA and the others each ask for credit.</div>`;
+    }
+    return;
+  }
+  if (tool === 'copycite') return copyText(citationText(), btn, 'Citation copied');
+  if (tool === 'csv' && current) return downloadCsv(placeRows(current.kind, current.key), `ssf-atlas-${slug(placeTitle())}.csv`);
+  if (tool === 'tablecsv') return downloadCsv(tableCsvRows(), `ssf-atlas-${slug(placeTitle())}.csv`);
+  if (tool === 'sort') {
+    const col = btn.dataset.col;
+    TABLE_SORT = TABLE_SORT.col === col ? { col, dir: -TABLE_SORT.dir } : { col, dir: col === 'name' ? 1 : -1 };
+    return showTable();
+  }
+}
+
+const slug = s => norm(s).replace(/ /g, '-').slice(0, 60) || 'atlas';
+const csvCell = v => {
+  const t = v == null ? '' : String(v);
+  return /[",\r\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t;
+};
+function downloadCsv(rows, file) {
+  // The byte-order mark makes Excel read the accents (Côte d'Ivoire) correctly.
+  const blob = new Blob(['﻿' + rows.map(r => r.map(csvCell).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = file;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+}
+
+// Every figure a page shows, one per row, with its unit, period and source, so a
+// spreadsheet can be checked against the page. Species are given as counts only:
+// the IUCN Red List does not allow its lists to be passed on.
+const SRC = {
+  sau: 'Sea Around Us, University of British Columbia (seaaroundus.org)',
+  ihh: 'Illuminating Hidden Harvests, FAO, Duke University and WorldFish 2023 (CC BY 4.0)',
+  crw: 'NOAA Coral Reef Watch, via PacIOOS',
+  obis: 'OBIS, with IUCN Red List categories',
+  ohi: 'Ocean Health Index',
+  wb: 'World Bank, ER.MRN.PTMR.ZS',
+  owid: 'FAO food balance sheets via Our World in Data',
+  sdg147: 'UN SDG indicator 14.7.1',
+  duke: 'DeLand et al. 2025, Duke Research Data Repository (CC0)'
+};
+function placeRows(kind, key) {
+  const rows = [['place', 'section', 'measure', 'value', 'unit', 'period or date', 'source', 'note']];
+  const isCountry = kind === 'country';
+  const name = isCountry ? (COUNTRY_NAME[key] || key) : key;
+  const add = (section, measure, value, unit, period, source, note) => {
+    if (value == null || value === '' || (typeof value === 'number' && !isFinite(value))) return;
+    rows.push([name, section, measure, value, unit || '', period == null ? '' : period, source || '', note || '']);
+  };
+  let iso, territory = false, several = false;
+  const label = n => ['None', 'Moderate', 'Strong', 'Severe', 'Extreme', 'Beyond extreme'][n];
+
+  if (isCountry) {
+    const a = COUNTRY_AGG[key];
+    if (!a) return rows;
+    iso = key;
+    const zones = `summed across ${a.zones.length} ocean zone${a.zones.length > 1 ? 's' : ''}`;
+    add('Catch', 'Small-scale share of catch', a.ssf_share, '%', 'average of the last five years of record', SRC.sau, zones);
+    add('Catch', 'Catch, all sectors (landings and discards)', a.total_t, 'tonnes a year', 'average of the last five years of record', SRC.sau, zones);
+    add('Value', 'Landed value', a.value_usd, '2010 US dollars a year', 'last five years of record', SRC.sau, zones);
+    add('Value', 'Small-scale share of landed value', a.ssf_value_share, '%', 'last five years of record', SRC.sau, zones);
+    add('Value', 'Price of small-scale catch', a.usd_per_t && a.usd_per_t.ssf, '2010 US dollars a tonne', 'last five years of record', SRC.sau);
+    add('Value', 'Price of industrial catch', a.usd_per_t && a.usd_per_t.industrial, '2010 US dollars a tonne', 'last five years of record', SRC.sau);
+    if ((a.suspect_value || []).length) add('Value', 'Zones left out of value figures', a.suspect_value.join('; '), '', '', SRC.sau, 'prices under $200 a tonne, not believable');
+    add('Fleets', 'Catch taken by foreign fleets', a.foreign_pct, '%', 'last five years of record', SRC.sau, 'weighted by tonnage across zones');
+    add('Fleets', "Catch taken by the country's own fleet", a.domestic_pct, '%', 'last five years of record', SRC.sau);
+    add('Fleets', 'Catch with no identified fleet', a.unknown_pct, '%', 'last five years of record', SRC.sau);
+    if (a.mhw != null) add('Ocean heat', 'Marine heatwave category, worst of its main zones', `${a.mhw} (${label(a.mhw)})`, 'category 0-5', HEAT_DATE, SRC.crw, 'one sample area about 130 km across per zone');
+    add('Ecosystem', 'Fish populations overfished or collapsed', a.overfished, '%', a.of_year, SRC.sau, `judged from catch; catch-weighted average of ${a.overfished_zones} zone(s)`);
+    add('Ecosystem', 'Threatened species, most in any one zone', a.threatened_max, 'species', '', SRC.obis, 'lists overlap between zones and cannot be summed');
+  } else {
+    const c = COUNTRIES[key];
+    if (!c) return rows;
+    iso = c.iso3;
+    territory = c.iso_kind === 'territory';
+    several = (((COUNTRY_AGG[iso] || {}).zones || []).length > 1);
+    const period = c.years ? `average of the last five years of record, to ${c.years[1]}` : '';
+    add('Catch', 'Small-scale share of catch', c.ssf_share, '%', period, SRC.sau, (c.unknown_sectors || []).length ? 'share of the known catch: ' + c.unknown_sectors.join(', ') + ' series has gaps' : '');
+    add('Catch', 'Catch, all sectors (landings and discards)', c.total_t, 'tonnes a year', period, SRC.sau);
+    Object.entries(c.sectors || {}).forEach(([k, v]) => add('Catch', `Catch, ${k.toLowerCase()} sector`, Math.round(v), 'tonnes a year', period, SRC.sau));
+    const v = VALUE[key];
+    if (v) {
+      const vp = v.years ? `${v.years[0]}–${v.years[1]}` : '';
+      const doubt = v.suspect_price ? `prices for the ${v.suspect_price.join(' and ')} catch are under $200 a tonne and not believable` : '';
+      add('Value', 'Landed value', v.value_usd, '2010 US dollars a year', vp, SRC.sau, doubt);
+      add('Value', 'Small-scale share of landed value', v.ssf_value_share, '%', vp, SRC.sau, doubt);
+      add('Value', 'Price of small-scale catch', v.usd_per_t && v.usd_per_t.ssf, '2010 US dollars a tonne', vp, SRC.sau, doubt);
+      add('Value', 'Price of industrial catch', v.usd_per_t && v.usd_per_t.industrial, '2010 US dollars a tonne', vp, SRC.sau, doubt);
+      if (v.fleets) add('Value', 'Share of value taken by foreign fleets', v.fleets.foreign_value_pct, '%', vp, SRC.sau);
+    }
+    const f = FLEETS[key];
+    if (f) {
+      add('Fleets', 'Catch taken by foreign fleets', f.foreign_pct, '%', 'last five years of record', SRC.sau, 'does not separate licensed access from unlicensed fishing');
+      add('Fleets', "Catch taken by the country's own fleet", f.domestic_pct, '%', 'last five years of record', SRC.sau);
+      add('Fleets', 'Catch with no identified fleet', f.unknown_pct, '%', 'last five years of record', SRC.sau);
+      (f.top_fleets || []).forEach(fl => add('Fleets', `Foreign fleet: ${fl.fleet}`, fl.pct, '% of catch', 'last five years of record', SRC.sau, `${fl.t} tonnes a year`));
+    }
+    const z = CLIMATE.zones && CLIMATE.zones[key];
+    if (z && z.mhw != null) {
+      add('Ocean heat', 'Marine heatwave category', `${z.mhw} (${label(z.mhw)})`, 'category 0-5', z.date, SRC.crw, 'one sample area about 130 km across inside the zone');
+      add('Ocean heat', 'Share of the sampled area in a heatwave', z.mhw_area, '%', z.date, SRC.crw);
+      add('Ocean heat', 'Sea surface temperature against the local average', z.sst_anomaly, '°C', z.date, SRC.crw);
+      if (z.dhw != null && (((ECO[key] || {}).zone || {}).reef_pct_world > 0)) add('Ocean heat', 'Coral heat stress (degree heating weeks)', z.dhw, 'degree heating weeks', z.date, SRC.crw, 'calibrated to coral');
+    }
+    const e = ECO[key];
+    if (e && e.stocks) {
+      const s = e.stocks;
+      add('Ecosystem', 'Fish populations overfished or collapsed', depleted(s), '%', s.year, SRC.sau, `judged from catch, not surveys; ${s.n_year != null ? s.n_year + ' populations classified that year' : 'count classified that year uncertain'}; ${s.n} on record since 1950`);
+      STATUS_ORDER.forEach(k => add('Ecosystem', `Fish populations: ${k.toLowerCase()}`, s.by_count[k], '%', s.year, SRC.sau, 'judged from catch'));
+    }
+    if (e && e.threatened) {
+      const t = e.threatened;
+      add('Ecosystem', 'Threatened species recorded', t.total, 'species', '', SRC.obis, 'surveyed waters have longer lists');
+      add('Ecosystem', 'of which critically endangered', t.cr, 'species', '', SRC.obis);
+      add('Ecosystem', 'of which endangered', t.en, 'species', '', SRC.obis);
+      add('Ecosystem', 'of which vulnerable', t.vu, 'species', '', SRC.obis);
+    }
+    if (e) {
+      add('Ecosystem', 'Catch that goes unreported', e.unreported_pct, '%', e.taxa_year, SRC.sau, 'Sea Around Us estimate');
+      add('Ecosystem', 'Catch discarded at sea', e.discards_pct, '%', e.taxa_year, SRC.sau);
+    }
+  }
+
+  // National figures. A territory gets its parent's, and says so; a zone that is
+  // one of several says the figure covers the whole country.
+  const scope = territory ? `figure for ${COUNTRY_NAME[iso] || iso} as a whole; this zone is a territory`
+    : several ? `figure for ${COUNTRY_NAME[iso] || iso} as a whole, not this zone` : '';
+  const p = PEOPLE[iso];
+  if (p) {
+    const est = p.estimate === 'extrapolated' ? 'extrapolated by IHH from regional patterns' : 'from a national survey';
+    const n = [scope, est].filter(Boolean).join('; ');
+    add('People', 'Employed in small-scale fisheries', p.ssf_workers, 'people', '2013–2017', SRC.ihh, n + '; inland and marine, incl. processing and trade');
+    add('People', 'Employed in small-scale fisheries per 1,000 people', p.employed_per_1k, 'per 1,000 people', '2013–2017', SRC.ihh, n);
+    add('People', 'Women in that workforce', p.women_share, '%', '2013–2017', SRC.ihh, n);
+    add('People', 'Subsistence fishers (counted separately)', p.subsistence_workers, 'people', '2013–2017', SRC.ihh, n);
+    add('People', 'Small-scale share of fishing jobs', p.ssf_workforce_share, '%', '2013–2017', SRC.ihh, n);
+  }
+  if (!territory) {
+    const n = ECO_NAT[iso];
+    if (n && n.mangrove) add('Ecosystem', 'Mangrove area', n.mangrove.km2, 'km²', n.mangrove.year, SRC.ohi, [scope, n.mangrove.change_pct != null ? `${n.mangrove.change_pct}% since ${n.mangrove.base_year}` : ''].filter(Boolean).join('; '));
+    if (n && n.mpa) add('Ecosystem', 'Territorial waters protected', n.mpa.pct, '%', n.mpa.year, SRC.wb, scope);
+    const vn = VALUE_NAT[iso];
+    if (vn && vn.fish_kg != null) add('Value', 'Fish and seafood per person', vn.fish_kg, 'kg a year', vn.fish_year, SRC.owid, scope);
+    if (vn && vn.gdp) add('Value', 'Share of GDP from sustainable fisheries', vn.gdp.pct, '%', vn.gdp.year, SRC.sdg147, scope);
+  }
+  const pa = PAA[iso];
+  if (pa) add('Access', 'Share of the EEZ reserved for small-scale fishing', pa.percent_eez, '%', pa.year, SRC.duke, [scope, pa.expert_reviewed ? 'boundary confirmed by a local expert' : 'boundary reconstructed from the law'].filter(Boolean).join('; '));
+  const reg = REG && REG.countries && REG.countries[iso];
+  if (reg && reg.access_law && reg.access_law.name) add('Access', 'Nearshore access law', reg.access_law.name, '', reg.access_law.year, SRC.duke, scope);
+  const ff = OUTLOOK && OUTLOOK.mhw_forecast;
+  const fvals = ff && (isCountry ? (COUNTRY_AGG[key] || {}).fc : ((ff.zones || {})[key] || {}).p);
+  if (fvals) ff.months.forEach((m, i) => i >= fcFirst() && add('Ocean heat', 'Chance of a marine heatwave (forecast)', fvals[i] == null ? null : Math.round(fvals[i] * 100), '%', m,
+    `NOAA PSL marine heatwave forecast, issued ${ff.init}`, isCountry ? 'highest of its main zones' : 'average over the zone'));
+  const fr = futureRecord(kind, key);
+  if (fr) ['ssp126', 'ssp585'].forEach(sc => ['mid', 'end'].forEach(pe => {
+    const d = fr[sc] && fr[sc][pe];
+    if (d) add('Future', `Change in fish biomass, ${FUT_SCEN[sc]}`, d.median, '% against 1995–2014', FUT_PER[pe], 'FishMIP / ISIMIP3b, Tittensor et al. 2021 (CC0)',
+      `middle of ${d.n} runs, ${d.n >= 10 ? '10th–90th percentile' : 'range'} ${d.lo} to ${d.hi}; ${Math.round(d.agree * d.n)} agree on the direction; no fishing${kind === 'country' ? '; home waters only' : ''}`);
+  }));
+  const sdg = sdgRecord(iso);
+  if (sdg) Object.entries(sdg.scores).forEach(([y, v]) => add('Access', 'Access rights for small-scale fishers, UN SDG 14.b.1', v == null ? 'not reported' : v, 'score 1-5, self-reported', y, 'UN SDG Global Database, series ER_REG_SSFRAR',
+    [scope, (sdg.eu_derived_rounds || []).includes(+y) ? "the EU's single answer for its members" : ''].filter(Boolean).join('; ')));
+  const gov = ACCESS && ACCESS.ihh_governance && ACCESS.ihh_governance.countries[iso];
+  const gm = gov && gov.marine;
+  if (gm && gm.catch_t) {
+    const src = 'Illuminating Hidden Harvests governance case studies (CC BY 4.0)', per = 'catch 2013–2017, rules 2019–2020';
+    add('Access', 'Small-scale marine catch studied', Math.round(gm.catch_t), 'tonnes a year', per, src, scope);
+    GOV_ACCESS.forEach(([k, l]) => gm.access && gm.access[k] && add('Access', `Access by ${l.toLowerCase()}: share of catch`, gm.access[k].pct, '%', per, src));
+    GOV_RULES.forEach(([k, l]) => gm.harvest_rules && gm.harvest_rules[k] && add('Access', `Rule: ${l.toLowerCase()}: share of catch`, gm.harvest_rules[k].pct, '%', per, src));
+    if (gm.devolved_any) add('Access', 'Catch under at least one right held by fishers', gm.devolved_any.pct, '%', per, src, 'formal rights only');
+    const rb = gm.rights_breakdown || {};
+    if (rb.no_rights) add('Access', 'Catch under no rights held by fishers', rb.no_rights.pct, '%', per, src, 'formal rights only');
+    if (rb.not_gov_info) add('Access', 'Catch with no information on rights', rb.not_gov_info.pct, '%', per, src);
+  }
+  return rows;
+}
+
+// ---------------------------------------------------------------------------
+// The ranking table: every zone or country, sorted by what the map shows. It is
+// also the page's text alternative to the map, and every row opens its page.
+const VIEW_TITLE = {
+  share: 'Small-scale share of catch', people: 'Employed in small-scale fisheries', access: 'Access rights for small-scale fishers', heat: 'Marine heatwave',
+  foreign: 'Catch taken by foreign fleets', overfish: 'Fish populations overfished or collapsed', conf: 'Completeness of the catch record',
+  future: 'Change in fish biomass'
+};
+let TABLE_SORT = { col: 'val', dir: -1 };
+// National figures are ranked by country whatever the scale: in zone scale the
+// same number sits on every zone of a country, and ranking them would repeat it.
+const NATIONAL_VIEWS = new Set(['people', 'access']);
+const tableScale = () => (NATIONAL_VIEWS.has(layer) ? 'country' : scale);
+
+// The number a place has in the view on screen, and how to write it.
+function viewValue(kind, key) {
+  const isC = kind === 'country';
+  const a = isC ? COUNTRY_AGG[key] : null;
+  const z = isC ? null : COUNTRIES[key];
+  const p = isC ? null : (ZONE_FEAT[key] || {}).properties || {};
+  const iso = isC ? key : z && z.iso3;
+  if (layer === 'share') {
+    if (shareBy === 'value') {
+      const v = isC ? a.ssf_value_share : p.ssf_value_share;
+      const doubt = isC ? (a.suspect_value || []).length && v == null : (VALUE[key] || {}).suspect_price;
+      return { v, text: v == null ? (doubt ? 'prices not believable' : 'not measured') : v.toFixed(0) + '%' };
+    }
+    const v = isC ? a.ssf_share : z.ssf_share;
+    return { v, text: v == null ? 'not measured' : v.toFixed(0) + '%' };
+  }
+  if (layer === 'people') {
+    const v = (PEOPLE[iso] || {}).employed_per_1k;
+    return { v: v == null ? null : v, text: v == null ? 'not measured' : v + ' per 1,000' };
+  }
+  if (layer === 'future') {
+    const d = futureCell(kind, key);
+    return { v: d ? d.median : null, text: d ? signed(d.median) + (d.n < 5 ? ` (${d.n} runs)` : '') : 'no projection' };
+  }
+  if (layer === 'access') {
+    const v = sdgScore(iso), r = sdgRecord(iso);
+    return { v, text: v != null ? `${v} of 5` : (r && r.latest != null ? `not in ${SDG_ROUND} (${r.latest} in ${r.latest_year})` : 'not reported') };
+  }
+  if (layer === 'heat' && heatMode === 'outlook') {
+    const v = isC ? (a.fc || [])[fcLead] : p['fc_' + fcLead];
+    return { v: v == null ? null : v, text: v == null ? 'no forecast' : Math.round(v * 100) + '%' };
+  }
+  if (layer === 'heat') {
+    const c = isC ? a.mhw : (CLIMATE.zones && CLIMATE.zones[key] || {}).mhw;
+    const area = isC ? 0 : ((CLIMATE.zones && CLIMATE.zones[key]) || {}).mhw_area || 0;
+    if (c == null) return { v: null, text: 'no reading' };
+    // category first, then the share of the sample area, so the table orders within a category
+    return { v: c + area / 1000, text: (['None', 'Moderate', 'Strong', 'Severe', 'Extreme', 'Beyond extreme'][c]) + (isC ? '' : ` · ${area}% of area`) };
+  }
+  if (layer === 'foreign') {
+    const v = isC ? a.foreign_pct : p.foreign_pct;
+    return { v, text: v == null ? 'not measured' : v + '%' };
+  }
+  if (layer === 'overfish') {
+    const v = isC ? a.overfished : p.overfished;
+    return { v, text: v == null ? 'not assessed' : v.toFixed(0) + '%' };
+  }
+  const v = isC ? a.confidence : z.confidence;
+  return { v: v || null, text: v ? (['', 'Poor', 'Thin', 'Fair', 'Good'][v]) : 'no record' };
+}
+
+function tableRows() {
+  const byCountry = tableScale() === 'country';
+  const keys = byCountry ? Object.keys(COUNTRY_AGG) : Object.keys(COUNTRIES);
+  const rows = keys.map(k => {
+    const name = byCountry ? (COUNTRY_NAME[k] || k) : k;
+    return Object.assign({ kind: byCountry ? 'country' : 'zone', key: k, name }, viewValue(byCountry ? 'country' : 'zone', k));
+  });
+  const { col, dir } = TABLE_SORT;
+  rows.sort((x, y) => {
+    if (col === 'name') return dir * x.name.localeCompare(y.name);
+    // places with no reading go to the bottom whichever way the column runs
+    if (x.v == null || y.v == null) return (x.v == null) - (y.v == null) || x.name.localeCompare(y.name);
+    return dir * (x.v - y.v) || x.name.localeCompare(y.name);
+  });
+  return rows;
+}
+
+function showTable() {
+  current = { kind: 'table', key: '1' };
+  fromTable = false;
+  const rows = tableRows();
+  const byCountry = tableScale() === 'country';
+  const measured = rows.filter(r => r.v != null).length;
+  const aria = col => TABLE_SORT.col === col ? ` aria-sort="${TABLE_SORT.dir > 0 ? 'ascending' : 'descending'}"` : '';
+  const arrow = col => TABLE_SORT.col === col ? (TABLE_SORT.dir > 0 ? ' ↑' : ' ↓') : '';
+  const what = VIEW_TITLE[layer] + (layer === 'share' && shareBy === 'value' ? ', by value' : '') +
+    (layer === 'future' ? ` by ${FUT_PER[futPer]}, ${FUT_SCEN[futScen]}` : '') +
+    (layer === 'heat' && heatMode === 'outlook' ? `: chance of one in ${monthWord(OUTLOOK.mhw_forecast.months[fcLead])}` : '');
+  let rank = 0;
+  let h = `<h2>${esc(what)}</h2>
+    <div class="p-sub">${byCountry ? `${rows.length} countries and territories` : `${rows.length} ocean zones`} · ${measured} measured${NATIONAL_VIEWS.has(layer) && scale === 'zone' ? ' · national figures, so ranked by country' : ''}</div>
+    ${panelTools('table')}
+    <table class="rank">
+      <thead><tr><th class="rk" scope="col">#</th>
+        <th scope="col"${aria('name')}><button type="button" data-tool="sort" data-col="name">${byCountry ? 'Country' : 'Ocean zone'}${arrow('name')}</button></th>
+        <th scope="col" class="n"${aria('val')}><button type="button" data-tool="sort" data-col="val">${esc(TABLE_COL[layer] || 'Value')}${arrow('val')}</button></th></tr></thead>
+      <tbody>` + rows.map(r => {
+        if (r.v != null) rank++;
+        return `<tr data-kind="${r.kind}" data-key="${esc(r.key)}" tabindex="0"><td class="rk">${r.v != null && TABLE_SORT.col === 'val' ? rank : ''}</td><td>${esc(r.name)}</td><td class="n${r.v == null ? ' gap' : ''}">${esc(r.text)}</td></tr>`;
+      }).join('') + `</tbody></table>
+    <div class="gap-note">${TABLE_NOTE[layer] || ''} Places with no reading are listed last, not left out. Click a row for its page.</div>`;
+  document.getElementById('panel-body').innerHTML = h;
+  document.getElementById('panel-body').scrollTop = 0;
+  if (selected !== null) { map.setFeatureState({ source: selectedSrc, id: selected }, { selected: false }); selected = null; }
+  openPanel();
+  syncHash();
+}
+const TABLE_COL = { future: 'Change', share: 'Small-scale', people: 'Per 1,000 people', access: 'Score', heat: 'Heatwave', foreign: 'Foreign', overfish: 'Overfished', conf: 'Record' };
+const TABLE_NOTE = {
+  share: 'Average of the last five years of record (Sea Around Us).',
+  people: 'Employed in small-scale fisheries per 1,000 people: national figures, inland and marine, fishing, processing and trade (Illuminating Hidden Harvests, 2013–2017).',
+  access: 'UN SDG indicator 14.b.1: how far a legal framework recognises and protects access rights for small-scale fisheries, 1 (very low) to 5 (very high), scored by each country itself. Most countries give themselves a 4 or 5, and EU members share one EU-wide answer.',
+  heat: 'NOAA Coral Reef Watch, read in one sample area about 130 km across per zone; a country shows the worst of its main zones.',
+  foreign: 'Share of the catch inside the zone taken by fleets of other nationalities (Sea Around Us).',
+  overfish: 'Judged from catch trends by Sea Around Us, not from surveys of the fish; a country shows the catch-weighted average of its zones.',
+  conf: 'How complete the catch record is: missing years, a short series, or a small catch each lower it.',
+  future: 'FishMIP: the middle of ten model runs, against 1995–2014, with no fishing; a projection of what the sea could hold, not a catch forecast. Countries cover their home waters.'
+};
+function tableCsvRows() {
+  const out = [['rank', tableScale() === 'country' ? 'country' : 'ocean zone', 'ISO3', VIEW_TITLE[layer] + (layer === 'share' && shareBy === 'value' ? ' (by value)' : '') +
+    (layer === 'future' ? ` by ${FUT_PER[futPer]}, ${FUT_SCEN[futScen]}` : ''), 'note']];
+  let rank = 0;
+  // ranked highest first whatever order the table is showing
+  const was = TABLE_SORT;
+  TABLE_SORT = { col: 'val', dir: -1 };
+  const rows = tableRows();
+  TABLE_SORT = was;
+  rows.forEach(r => {
+    if (r.v != null) rank++;
+    const iso = r.kind === 'country' ? r.key : (COUNTRIES[r.key] || {}).iso3;
+    out.push([r.v != null ? rank : '', r.name, iso || '', r.v == null ? '' : r.text, r.v == null ? r.text : '']);
+  });
+  out.push([], ['', `Small-Scale Fisheries World Atlas (prototype), ${shareUrl()}, downloaded ${longDate()}. ${TABLE_NOTE[layer] || ''}`]);
+  return out;
+}
+
+// ---------------------------------------------------------------------------
 // El Niño card. The pipeline stores the index, its six-season trajectory, the
 // Niño 1+2 anomaly off Peru and how far back you have to go for a reading this
 // strong; the card writes that as a paragraph and draws the trajectory under it.
@@ -2047,13 +2804,16 @@ function ensoCard(e) {
     ? `, down from ${pk.oni > 0 ? '+' : ''}${Number(pk.oni).toFixed(1)} in ${SEASON_WORDS[String(pk.season).split(' ')[0]] || pk.season}`
     : (e.since ? `, the ${cool ? 'lowest' : 'highest'} since ${e.since}` : '');
   const conditions = warm || cool ? ' conditions' : '';
-  let h = `<p><b>${state}${conditions}.</b> Niño index ${oni} in ${when}${since}.`;
+  // NOAA's official index since 1 Feb 2026 is the relative one; older files say ONI.
+  const idx = e.index === 'RONI' ? 'Relative Niño index' : 'Niño index';
+  let h = `<p><b>${state}${conditions}.</b> ${idx} ${oni} in ${when}${since}.`;
   if (e.nino12_anomaly != null) {
     const a = Number(e.nino12_anomaly);
     h += ` Sea off Peru and Ecuador <span class="val">${a > 0 ? '+' : ''}${a.toFixed(1)} °C</span> ${a >= 0 ? 'above' : 'below'} average${e.week ? ', week of ' + weekLabel(e.week) : ''}.`;
   }
   h += '</p>';
   h += ensoBars(e.oni_recent);
+  h += ensoOdds(warm, cool);
   const link = `<a href="#" class="enso-link" data-zone="${ENSO_CASE.zone}" data-iso="${ENSO_CASE.iso}">Open ${ENSO_CASE.zone} ›</a>`;
   if (warm) {
     h += `<p class="enso-note">Warm water starves the anchoveta: in this atlas's record ${ENSO_CASE.zone}'s catch fell <b>${ENSO_CASE.drop}%</b> from ${ENSO_CASE.from} to ${ENSO_CASE.to}. ${link}</p>`;
@@ -2064,6 +2824,35 @@ function ensoCard(e) {
   }
   return h;
 }
+// NOAA's official odds, one sentence: how long the event is likely to last and, for
+// a strong one, how long it stays very strong. From the forecasters' monthly table.
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function seasonSpan(sn) {
+  const m = (sn && sn.months) || [];
+  if (m.length < 3) return sn ? sn.season : '';
+  const [y0, m0] = m[0].split('-').map(Number), [y1, m1] = m[2].split('-').map(Number);
+  return y0 === y1 ? `${MON[m0 - 1]}–${MON[m1 - 1]} ${y1}` : `${MON[m0 - 1]} ${y0}–${MON[m1 - 1]} ${y1}`;
+}
+function ensoOdds(warm, cool) {
+  const o = OUTLOOK && OUTLOOK.enso_odds;
+  if (!o || !(o.seasons || []).length || !(warm || cool)) return '';
+  const key = warm ? 'el_nino' : 'la_nina', what = warm ? 'El Niño' : 'La Niña';
+  const S = o.seasons;
+  let i = -1;
+  while (i + 1 < S.length && S[i + 1][key] >= 90) i++;
+  if (i < 0) return '';
+  const low = Math.min(...S.slice(0, i + 1).map(x => x[key]));
+  let line = `${what} ${low >= 99 ? 'near-certain' : low + '% or more likely'} through ${seasonSpan(S[i])}`;
+  const st = OUTLOOK.enso_strength && OUTLOOK.enso_strength.seasons;
+  const vk = warm ? 'el_nino_very_strong' : 'la_nina_very_strong';
+  if (st && st.length) {
+    let j = -1;
+    while (j + 1 < st.length && (st[j + 1][vk] || 0) >= 50) j++;
+    if (j >= 0) line += `; very strong (index ${warm ? '+2.0' : '−2.0'} or ${warm ? 'more' : 'less'}) more likely than not through ${seasonSpan(st[j])}`;
+  }
+  return `<p class="enso-note">NOAA's ${esc(o.issued || '')} outlook: ${line}.</p>`;
+}
+
 // The newest fisheries headlines that name the event, machine-collected like the
 // country news. Two at most, in their own block under the card.
 function ensoNews(e) {
@@ -2079,6 +2868,44 @@ function ensoNews(e) {
   const rest = press.slice(1).map((n, i) => item(n, i + 1)).join('');
   return `<span class="lab">${what} in the news <i>from the press, not from this atlas</i></span>` + item(press[0], 0) +
     (rest ? `<details class="en-more"><summary><span class="o">one more headline</span><span class="c">fewer headlines</span></summary>${rest}</details>` : '');
+}
+
+// The card is drawn with the map; the press block when the news file arrives.
+function renderEnsoCard() {
+  const e = CLIMATE.enso;
+  if (!e || !e.state) return;
+  const box = document.getElementById('enso');
+  box.style.display = 'block';
+  const st = String(e.state).toLowerCase();
+  box.className = st.includes('nina') ? 'cool' : (st.includes('nino') ? '' : 'neutral');
+  box.innerHTML = ensoCard(e);
+  box.addEventListener('click', ev => {
+    const a = ev.target.closest('.enso-link');
+    if (!a) return;
+    ev.preventDefault();
+    if (scale === 'country') openPlace('country', a.dataset.iso, { fly: true });
+    else openPlace('zone', a.dataset.zone, { fly: true });
+  });
+}
+function renderEnsoPress() {
+  const e = CLIMATE.enso;
+  if (!e || !e.state) return;
+  const box = document.getElementById('enso');
+  const press = document.getElementById('enso-news');
+  press.innerHTML = ensoNews(e);
+  if (!press.innerHTML) return;
+  press.style.display = 'block';
+  // The press block sits above the El Niño card (Andrew's call, 6 Oct): the
+  // headline first, the atlas's own reading under it.
+  box.before(press);
+  translateHeadlines(press, false);      // only if the browser already has the language
+  press.addEventListener('click', ev => { const tr = ev.target.closest('.tr'); if (tr) toggleOriginal(tr); });
+  press.addEventListener('keydown', ev => {
+    const tr = (ev.key === 'Enter' || ev.key === ' ') && ev.target.closest('.tr');
+    if (tr) { ev.preventDefault(); toggleOriginal(tr); }
+  });
+  // a first click anywhere is the gesture a browser wants before fetching a language pack
+  document.addEventListener('pointerdown', () => translateHeadlines(press, true), { once: true });
 }
 
 const COUNTRY_NAME = {};
@@ -2115,8 +2942,10 @@ function showCountryPanel(iso) {
   const zones = a.zones.map((z, i) => [rank(z), i, z])
     .sort((p, q) => p[0] - q[0] || p[1] - q[1]).map(t => t[2]);
 
-  let html = `<h2>${name}</h2>`;
+  current = { kind: 'country', key: iso };
+  let html = backToTable() + `<h2>${name}</h2>`;
   html += `<div class="p-sub">${zones.length} ocean zone${zones.length > 1 ? 's' : ''} combined · ${zones.slice(0, 3).join(', ')}${zones.length > 3 ? '…' : ''}</div>`;
+  html += panelTools();
   html += groupBadges(c);
 
   if (a.ssf_share != null) {
@@ -2128,10 +2957,13 @@ function showCountryPanel(iso) {
   const focus = openFor();
   html += accordion('What it\'s worth', countryValueSection(iso, a, c), focus === 'worth');
   html += accordion('Whose fleets fish here', countryFleetSection(iso, a), focus === 'fleets');
-  html += accordion('Environment · ecosystem', countryEcoSection(iso, a, c, zones), focus === 'eco' || focus === 'heat');
+  html += accordion('Environment · ecosystem', countryEcoSection(iso, a, c, zones), focus === 'eco');
+  html += accordion('Environment · ocean heat', countryHeatSection(iso, a), focus === 'heat');
+  html += accordion('Fish in the future', futureSection('country', iso), focus === 'future');
   html += accordion('People', peopleSection(c), focus === 'people');
   html += accordion('Preferential access', paaSection(c), false);
-  html += accordion('Regulatory framework', regulatorySection(c), false);
+  html += accordion('Regulatory framework', regulatorySection(c), focus === 'rights');
+  html += accordion('How access is governed', governanceSection(c), focus === 'rights');
   html += accordion('Organisations', profileSection(c), false);
   html += accordion('Reported activity', orgSection(c), false);
   html += accordion('News', newsSection(c), false);
@@ -2146,6 +2978,20 @@ function showCountryPanel(iso) {
   document.getElementById('panel-body').innerHTML = html;
   ['#panel .p-scroll', '#panel-body'].forEach(s => { const el = document.querySelector(s); if (el) el.scrollTop = 0; });
   openPanel();
+  syncHash();
+}
+
+function countryHeatSection(iso, a) {
+  // A country of one zone reads as that zone; with several, the worst of the main ones.
+  const one = a.zones.length === 1;
+  const strip = outlookStrip(a.fc, one ? 'Coming months' : `Coming months, highest of ${a.mhw_n > 1 ? `its ${a.mhw_n} main zones` : 'its main zone'}`);
+  if (a.mhw == null && !strip) return null;
+  const label = a.mhw != null ? (CLIMATE.mhw_labels || {})[a.mhw] : 'no reading';
+  const where = one ? 'read in one sample area' : a.mhw_n > 1 ? `the worst of its ${a.mhw_n} main zones` : 'in its main zone';
+  let h = a.mhw != null ? `<span class="alert-chip" style="background:${ALERT_COLORS[a.mhw]};color:${a.mhw >= 3 ? '#fff' : a.mhw === 0 ? 'var(--ink-dim)' : '#17201f'}">${label}</span>
+    <div class="reg-n" style="margin-top:2px">Today, ${where}${HEAT_DATE ? ', ' + shortDate(HEAT_DATE) : ''}. Open ${one ? 'the zone' : 'a zone'} for the sample area and coral heat stress.</div>` : '';
+  if (strip) h += `<div style="margin-top:12px">${strip}</div>`;
+  return { peek: label, peekColor: a.mhw >= 2 ? ALERT_COLORS[a.mhw] : null, body: h };
 }
 
 function countryFleetSection(iso, a) {
@@ -2168,8 +3014,10 @@ function showPanel(name) {
   if (!c) return;
   const share = c.ssf_share;
 
-  let html = `<h2>${c.name}</h2>`;
+  current = { kind: 'zone', key: name };
+  let html = backToTable() + `<h2>${c.name}</h2>`;
   html += `<div class="p-sub">Exclusive economic zone · ${c.years ? c.years[0] + '–' + c.years[1] : 'no series'}</div>`;
+  html += panelTools();
   html += groupBadges(c);
 
   if (share == null) {
@@ -2197,9 +3045,11 @@ function showPanel(name) {
   html += accordion('Whose fleets fish here', fleetSection(c), focus === 'fleets');
   html += accordion('Environment · ocean heat', climateSection(c), focus === 'heat');
   html += accordion('Environment · ecosystem', ecoSection(c), focus === 'eco');
+  html += accordion('Fish in the future', futureSection('zone', name), focus === 'future');
   html += accordion('People', peopleSection(c), focus === 'people');
   html += accordion('Preferential access', paaSection(c), false);
-  html += accordion('Regulatory framework', regulatorySection(c), false);
+  html += accordion('Regulatory framework', regulatorySection(c), focus === 'rights');
+  html += accordion('How access is governed', governanceSection(c), focus === 'rights');
   html += accordion('Organisations', profileSection(c), false);
   html += accordion('Reported activity', orgSection(c), false);
   html += accordion('News', newsSection(c), false);
@@ -2209,6 +3059,7 @@ function showPanel(name) {
   document.getElementById('panel-body').innerHTML = html;
   ['#panel .p-scroll', '#panel-body'].forEach(s => { const el = document.querySelector(s); if (el) el.scrollTop = 0; });
   openPanel();
+  syncHash();
 }
 function confNote(s) {
   return {
@@ -2245,21 +3096,25 @@ function openPanel() {
   const panel = document.getElementById('panel');
   const wasOpen = panel.classList.contains('open');
   panel.classList.add('open');
+  document.body.classList.add('panel-open');
   if (!wasOpen) applyRailPadding(true, true);
 }
 function closePanel() {
   const panel = document.getElementById('panel');
   if (panel.classList.contains('open')) applyRailPadding(false, true);
   panel.classList.remove('open');
+  document.body.classList.remove('panel-open');
   if (selected !== null) {
     map.setFeatureState({ source: selectedSrc, id: selected }, { selected: false });
     selected = null;
   }
+  current = null; fromTable = false;
+  syncHash();
 }
 document.getElementById('close').onclick = closePanel;
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
 
-const VIEWS = ['share', 'people', 'heat', 'conf', 'foreign', 'overfish'];
+const VIEWS = ['share', 'people', 'access', 'heat', 'conf', 'foreign', 'overfish', 'future'];
 function setLayer(next) {
   layer = next;
   VIEWS.forEach(k =>
@@ -2268,6 +3123,9 @@ function setLayer(next) {
   if (map.getLayer(active)) map.setPaintProperty(active, 'fill-color', fillExpr());
   syncNoData();
   drawLegend();
+  // an open table ranks whatever the map shows
+  if (current && current.kind === 'table') showTable();
+  syncHash();
 }
 VIEWS.forEach(k => {
   document.getElementById('b-' + k).onclick = () => setLayer(k);
@@ -2282,15 +3140,50 @@ function setShareBy(next) {
 }
 // The legend is redrawn on every view change, so the click is caught on its
 // container rather than on buttons that come and go.
+document.getElementById('legend').addEventListener('input', ev => {
+  if (ev.target.id !== 'fc-lead') return;
+  fcLead = +ev.target.value;
+  const active = scale === 'country' ? 'country-fill' : 'eez-fill';
+  if (map.getLayer(active)) map.setPaintProperty(active, 'fill-color', fillExpr());
+  syncNoData();
+  const t = document.querySelector('#legend .legend-title');
+  if (t) t.textContent = 'Chance of a marine heatwave · ' + monthWord(OUTLOOK.mhw_forecast.months[fcLead]);
+  if (current && current.kind === 'table') showTable();
+  syncHash();
+});
 document.getElementById('legend').addEventListener('click', ev => {
   const b = ev.target.closest('[data-by]');
   if (b) setShareBy(b.dataset.by);
+  const hb = ev.target.closest('[data-heat]');
+  if (hb) {
+    heatMode = hb.dataset.heat;
+    if (fcLead == null || fcLead < fcFirst()) fcLead = Math.min(fcFirst() + 3, OUTLOOK.mhw_forecast.months.length - 1);
+    setLayer('heat');
+    const again = document.querySelector(`#legend [data-heat="${heatMode}"]`);
+    if (again) again.focus();
+  }
+  const f = ev.target.closest('[data-fut]');
+  if (f) {
+    const [k, v] = f.dataset.fut.split(':');
+    if (k === 'scen') futScen = v; else futPer = v;
+    setLayer('future');
+    const again = document.querySelector(`#legend [data-fut="${f.dataset.fut}"]`);
+    if (again) again.focus();
+  }
 });
 
-function setScale(next) {
+async function setScale(next) {
   scale = next;
   document.getElementById('s-zone').classList.toggle('on', next === 'zone');
   document.getElementById('s-country').classList.toggle('on', next === 'country');
+  // The land outlines come in the second wave; the first switch may have to wait.
+  if (next === 'country' && !READY.country) {
+    const b = document.getElementById('s-country');
+    b.classList.add('wait');
+    await countryReady();
+    b.classList.remove('wait');
+    if (scale !== next) return;   // switched back while waiting
+  }
 
   // Swap which geometry is painted. Colouring the ocean zones by a country value
   // answers the question in the wrong shape - asked for Indonesia, you should get
@@ -2307,26 +3200,36 @@ function setScale(next) {
   drawLegend();
   const hint = document.getElementById('hint');
   if (hint) hint.textContent = onCountry ? 'Click any country for detail' : 'Click any zone for detail';
-  closePanel();
+  // The table follows the scale; a place page closes, since its outline is gone.
+  if (current && current.kind === 'table') showTable(); else closePanel();
+  syncHash();
 }
 document.getElementById('s-zone').onclick = () => setScale('zone');
 document.getElementById('s-country').onclick = () => setScale('country');
 
 function setPaa(on) {
   paaOn = on;
-  document.getElementById('b-paa').classList.toggle('on', on);
+  const b = document.getElementById('b-paa');
+  b.classList.toggle('on', on);
+  b.setAttribute('aria-pressed', on);
+  b.classList.toggle('wait', on && !READY.paa);
   ['paa-fill', 'paa-line'].forEach(id => {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
   });
+  syncHash();
 }
 document.getElementById('b-paa').onclick = () => setPaa(!paaOn);
 
 function setOrg(on) {
   orgOn = on;
-  document.getElementById('b-org').classList.toggle('on', on);
+  const b = document.getElementById('b-org');
+  b.classList.toggle('on', on);
+  b.setAttribute('aria-pressed', on);
+  b.classList.toggle('wait', on && !READY.sites);
   ['org-point', 'org-halo', 'issf-point', 'issf-halo'].forEach(id => {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
   });
+  syncHash();
 }
 document.getElementById('b-org').onclick = () => setOrg(!orgOn);
 
@@ -2373,10 +3276,13 @@ function syncFf() {
 function setFf(on) {
   ffOn = on;
   document.getElementById('b-ff').classList.toggle('on', on);
+  document.getElementById('b-ff').setAttribute('aria-pressed', on);
   document.getElementById('cg-key').hidden = !on;
   syncFf();
+  syncHash();
 }
 document.getElementById('b-ff').onclick = () => setFf(!ffOn);
+document.getElementById('b-table').onclick = () => showTable();
 
 const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 8 });
 let hovered = null, hoveredSrc = 'eez', selectedSrc = 'eez';
@@ -2405,26 +3311,76 @@ function optional(path) {
   return fetch(path, NOCACHE).then(r => r.ok ? r.json() : null).catch(() => null);
 }
 
+// ---------------------------------------------------------------------------
+// Loading in two waves. The first picture needs the zone outlines and the figures
+// the views paint, about a third of the atlas's weight. The land outlines, the
+// overlays and the files only the panel reads follow once the map is on screen:
+// on a slow phone connection that is a map in about five seconds instead of
+// thirteen (measured on the live site, 11 Oct 2026).
+const LATE = {};
+function late(file) { return LATE[file] || (LATE[file] = optional('data/' + file)); }
+const READY = { country: false, paa: false, sites: false };
+let GEO = null;                 // the zone outlines, kept for search and fly-to
+const ZONE_FEAT = {};           // zone name -> feature
+const COUNTRY_FID = {};         // ISO3 -> feature id in the land outlines
+let under;                      // the first basemap label layer: data is drawn beneath it
+let countryP = null, paaP = null, sitesP = null;
+function countryReady() { return countryP || (countryP = late('country.geojson').then(addCountryLayers)); }
+function paaReady() { return paaP || (paaP = late('paa.geojson').then(addPaaLayers)); }
+function sitesReady() { return sitesP || (sitesP = Promise.all([late('orgs.json'), late('issf.json')]).then(([o, i]) => addSiteLayers(o, i))); }
+
+function loadLate() {
+  countryReady();
+  late('regulatory.json').then(d => { REG = d || null; panelDataArrived(); });
+  late('profile.json').then(d => { PROFILE = d || null; panelDataArrived(); });
+  late('news.json').then(d => {
+    NEWS = (d && d.countries) || {};
+    NEWS_META = d || null;
+    renderEnsoPress();
+    panelDataArrived();
+  });
+  sitesReady();
+  paaReady();
+  // Not in the repository or on the live site (see .gitignore): present only where it was built.
+  late('mpatlas.json').then(d => { MPA = d && d.countries ? d : null; panelDataArrived(); });
+}
+
+// A page opened before its files arrived is drawn again when they do, with the
+// same sections open and the same scroll position.
+let refreshTimer = null;
+function panelDataArrived() {
+  clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(() => {
+    if (!current || !document.getElementById('panel').classList.contains('open')) return;
+    const body = document.getElementById('panel-body');
+    const top = body.scrollTop;
+    const open = [...body.querySelectorAll('details.acc[open] .acc-t')].map(e => e.textContent);
+    renderCurrent();
+    body.querySelectorAll('details.acc').forEach(d => {
+      const t = d.querySelector('.acc-t');
+      d.open = !!(t && open.includes(t.textContent));
+    });
+    body.scrollTop = top;
+  }, 60);
+}
+
 async function init() {
-  const [[geo, meta], people, climate, news, paaMeta, paaGeo, orgData, issfData, fleetData, profileData, regData, countryGeo, valueData, ecoData, groupsData] = await Promise.all([
+  const [[geo, meta], names, people, climate, paaMeta, fleetData, valueData, ecoData, groupsData, accessData, outlookData, futureData] = await Promise.all([
     Promise.all([
       fetch('data/eez.geojson', NOCACHE).then(r => r.json()),
       fetch('data/countries.json', NOCACHE).then(r => r.json())
     ]),
+    optional('data/names.json'),
     optional('data/people.json'),
     optional('data/climate.json'),
-    optional('data/news.json'),
     optional('data/paa.json'),
-    optional('data/paa.geojson'),
-    optional('data/orgs.json'),
-    optional('data/issf.json'),
     optional('data/fleets.json'),
-    optional('data/profile.json'),
-    optional('data/regulatory.json'),
-    optional('data/country.geojson'),
     optional('data/value.json'),
     optional('data/ecosystem.json'),
     optional('data/groups.json'),
+    optional('data/access.json'),
+    optional('data/outlook.json'),
+    optional('data/future.json'),
     styleReady()
   ]);
 
@@ -2437,16 +3393,12 @@ async function init() {
     if (g.key === 'blue_ventures') (g.iso3 || []).forEach(iso => BV_ISO.add(iso));
   });
 
-  // Country names come from the country geometry, which carries real names. Deriving
-  // them from zone labels picked whichever was shortest, so the United Kingdom was
-  // displayed as "Pitcairn" and the Netherlands as "Bonaire" - the territory beat the
-  // country on string length.
-  if (countryGeo && countryGeo.features) {
-    countryGeo.features.forEach(f => {
-      if (f.properties.iso3 && f.properties.name) COUNTRY_NAME[f.properties.iso3] = f.properties.name;
-    });
-  }
-  // Fall back to a zone label only where no polygon exists, preferring a zone whose
+  // Country names come from the land outlines, which carry real names; names.json
+  // is those names on their own, so the map and search need not wait for 2 MB of
+  // outlines. Deriving them from zone labels picked whichever was shortest, so the
+  // United Kingdom was displayed as "Pitcairn" and the Netherlands as "Bonaire".
+  if (names) Object.entries(names).forEach(([iso, n]) => { if (n) COUNTRY_NAME[iso] = n; });
+  // Fall back to a zone label only where no outline exists, preferring a zone whose
   // name has no parenthetical - that is the country, not one of its territories.
   meta.countries.forEach(c => {
     if (!c.iso3 || COUNTRY_NAME[c.iso3]) return;
@@ -2459,26 +3411,27 @@ async function init() {
   PEOPLE  = (people  && people.countries)  || {};
   CLIMATE = climate || {};
   HEAT_DATE = ((Object.values(CLIMATE.zones || {}).find(z => z && z.date) || {}).date) || CLIMATE.generated || '';
-  NEWS    = (news    && news.countries)    || {};
-  NEWS_META = news || null;
   PAA     = (paaMeta && paaMeta.countries) || {};
-  ORGS    = orgData || null;
-  ISSF    = issfData || null;
   FLEETS  = (fleetData && fleetData.zones) || {};
-  PROFILE = profileData || null;
-  REG     = regData || null;
   VALUE       = (valueData && valueData.zones) || {};
   VALUE_NAT   = (valueData && valueData.countries) || {};
   VALUE_WORLD = (valueData && valueData.world) || null;
   ECO     = (ecoData && ecoData.zones) || {};
   OVERFISH_YEAR = Object.values(ECO).reduce((y, e) => (e && e.stocks && e.stocks.year > (y || 0)) ? e.stocks.year : y, null);
   ECO_NAT = (ecoData && ecoData.countries) || {};
+  ACCESS = accessData || null;
+  OUTLOOK = outlookData || null;
+  FUTURE = futureData || null;
+  if (!FUTURE || !FUTURE.zones) document.getElementById('b-future').style.display = 'none';
+  SDG_ROUND = ACCESS && ACCESS.sdg14b1 ? ACCESS.sdg14b1.latest_round : null;
+  if (!ACCESS || !ACCESS.sdg14b1) document.getElementById('b-access').style.display = 'none';
 
   // Fold the extra layers into feature properties so MapLibre can colour by them
   // directly - the paint expressions only see the geojson, not our JS objects.
   geo.features.forEach((f, i) => {
     f.id = i;
     const p = f.properties;
+    ZONE_FEAT[p.name] = f;
     const person = PEOPLE[p.iso3];
     p.employed_per_1k = person && person.employed_per_1k != null ? person.employed_per_1k : null;
     const z = CLIMATE.zones && CLIMATE.zones[p.name];
@@ -2490,6 +3443,12 @@ async function init() {
     const st = (ECO[p.name] || {}).stocks;
     p.overfished = st ? Math.round(10 * depleted(st)) / 10 : null;
     p.blue_ventures = BV_ISO.has(p.iso3) && (COUNTRIES[p.name] || {}).iso_kind !== 'territory';
+    p.access = sdgScore(p.iso3);
+    futureProps(p, (FUTURE && FUTURE.zones || {})[p.name], '');
+    const fz = OUTLOOK && OUTLOOK.mhw_forecast && OUTLOOK.mhw_forecast.zones && OUTLOOK.mhw_forecast.zones[p.name];
+    ((OUTLOOK && OUTLOOK.mhw_forecast && OUTLOOK.mhw_forecast.months) || []).forEach((m, i) => {
+      p['fc_' + i] = fz && fz.p && fz.p[i] != null ? fz.p[i] : null;
+    });
   });
 
   // Second pass: every zone also carries its country's rolled-up figures, so the
@@ -2504,52 +3463,19 @@ async function init() {
     p.c_foreign_pct = a ? a.foreign_pct : null;
     p.c_confidence = a ? a.confidence : 0;
     p.c_mhw = a && a.mhw != null ? a.mhw : null;
+    futureProps(p, (FUTURE && FUTURE.countries || {})[p.iso3], 'c_');
+    (a && a.fc || []).forEach((v, i) => { p['c_fc_' + i] = v; });
   });
+  GEO = geo;
 
-  const e = CLIMATE.enso;
-  if (e && e.state) {
-    const box = document.getElementById('enso');
-    box.style.display = 'block';
-    const st = String(e.state).toLowerCase();
-    box.className = st.includes('nina') ? 'cool' : (st.includes('nino') ? '' : 'neutral');
-    box.innerHTML = ensoCard(e);
-    const press = document.getElementById('enso-news');
-    press.innerHTML = ensoNews(e);
-    if (press.innerHTML) {
-      press.style.display = 'block';
-      // The press block sits above the El Niño card (Andrew's call, 6 Oct): the
-      // headline first, the atlas's own reading under it.
-      box.before(press);
-      translateHeadlines(press, false);      // only if the browser already has the language
-      press.addEventListener('click', ev => { const tr = ev.target.closest('.tr'); if (tr) toggleOriginal(tr); });
-      press.addEventListener('keydown', ev => {
-        const tr = (ev.key === 'Enter' || ev.key === ' ') && ev.target.closest('.tr');
-        if (tr) { ev.preventDefault(); toggleOriginal(tr); }
-      });
-      // a first click anywhere is the gesture a browser wants before fetching a language pack
-      document.addEventListener('pointerdown', () => translateHeadlines(press, true), { once: true });
-    }
-    box.addEventListener('click', ev => {
-      const a = ev.target.closest('.enso-link');
-      if (!a) return;
-      ev.preventDefault();
-      if (scale === 'country') showCountryPanel(a.dataset.iso); else showPanel(a.dataset.zone);
-    });
-  }
+  renderEnsoCard();
 
   map.addSource('eez', { type: 'geojson', data: geo });
-
-  // Country landmasses, for the 'by country' scale. Same ISO3 codes as the zones,
-  // so both scales paint the same numbers on different shapes.
-  if (countryGeo && countryGeo.features) {
-    countryGeo.features.forEach((f, i) => { f.id = i; });
-    map.addSource('country', { type: 'geojson', data: countryGeo });
-  }
 
   const styleLayers = map.getStyle().layers;
   const waterIdx = styleLayers.findIndex(l => l.id === 'water');
   const label = styleLayers.find((l, i) => l.type === 'symbol' && i > waterIdx);
-  const under = label ? label.id : undefined;
+  under = label ? label.id : undefined;
 
   map.addLayer({
     id: 'eez-fill', type: 'fill', source: 'eez',
@@ -2587,36 +3513,158 @@ async function init() {
   // the yellow dashed over the orange, which reads as a two-colour stripe and matches the key.
   groupLayers('eez', '').forEach(l => map.addLayer(l, under));
 
-  // Preferential access areas sit on top of the choropleth rather than replacing
-  // it: they answer a different question (who has the right to fish here) and are
-  // most useful read against the catch and people layers, not instead of them.
-  if (paaGeo && paaGeo.features) {
-    // Default simplification on purpose. With it off, a coastal band with
-    // thousands of island holes (Greenland) defeats the triangulator and the
-    // whole island fills green. The hole count is kept down in fetch_paa.py.
-    map.addSource('paa', { type: 'geojson', data: paaGeo });
-    map.addLayer({
-      id: 'paa-fill', type: 'fill', source: 'paa',
-      layout: { visibility: 'none' },
-      // No anti-aliasing on the fill: where a hole's edge meets a tile edge the
-      // two coincide, and anti-aliasing drew that seam as a hairline straight
-      // across Greenland. The line layer below draws the real edges.
-      paint: { 'fill-color': '#12b886', 'fill-opacity': 0.34, 'fill-antialias': false }
-    }, under);
-    map.addLayer({
-      id: 'paa-line', type: 'line', source: 'paa',
-      layout: { visibility: 'none' },
-      // Thinner when the whole world is on screen, so a fjord coast does not
-      // read as a green scribble.
-      paint: { 'line-color': '#007f4e', 'line-width': ['interpolate', ['linear'], ['zoom'], 1, 0.5, 4, 0.9, 7, 1.4], 'line-opacity': 1 }
-    }, under);
-  } else {
-    document.getElementById('b-paa').style.display = 'none';
-  }
+  // CARTO's light basemap sets place labels in a pale grey that all but vanishes
+  // once coloured polygons sit underneath them. Darken every text layer and give
+  // it a white halo so country and ocean names stay legible over the data.
+  map.getStyle().layers.forEach(l => {
+    if (l.type !== 'symbol') return;
+    try {
+      map.setPaintProperty(l.id, 'text-color', '#1d2726');
+      map.setPaintProperty(l.id, 'text-halo-color', 'rgba(255,255,255,0.9)');
+      map.setPaintProperty(l.id, 'text-halo-width', 1.4);
+    } catch (e) { /* layer has no text; nothing to darken */ }
+  });
 
-  // Aid-funded project sites. Only 28% of activities carry coordinates, so this
-  // layer is a sample of the sample - it shows where reported work is, not where
-  // work is. The panel says so on every country.
+  drawLegend();
+  paintSwatches();
+  initScrubber();
+  initZoneLinks();
+  initSearch();
+  map.resize();
+  const isOpen = () => document.getElementById('panel').classList.contains('open');
+  applyRailPadding(false, false);
+  map.once('idle', () => applyRailPadding(isOpen(), false));  // after the first full layout
+  if (window.ResizeObserver) new ResizeObserver(() => map.resize()).observe(document.getElementById('map'));
+  window.addEventListener('resize', () => { map.resize(); applyRailPadding(isOpen(), false); });
+
+  await new Promise(resolve => {
+    if (map.isSourceLoaded('eez')) return resolve();
+    const check = () => {
+      if (map.isSourceLoaded('eez')) { map.off('sourcedata', check); map.off('idle', check); resolve(); }
+    };
+    map.on('sourcedata', check); map.on('idle', check);
+    setTimeout(resolve, 15000);
+  });
+
+  const l = document.getElementById('loading');
+  l.style.opacity = 0;
+  setTimeout(() => l.remove(), 500);
+
+  wireFill('eez-fill');
+  // A click anywhere that is not a dot closes the site card, open sea included.
+  map.on('click', ev => { if (!siteHit(ev.point)) sitePopup.remove(); });
+
+  loadLate();
+  // A link opens the atlas where it was sent from.
+  if (location.hash.length > 1) applyHash();
+  window.addEventListener('hashchange', () => { if (!hashWriting) applyHash(); });
+}
+
+// ---------------------------------------------------------------------------
+// Map layers that arrive in the second wave.
+
+// Country landmasses, for the 'by country' scale. Same ISO3 codes as the zones,
+// so both scales paint the same numbers on different shapes.
+function addCountryLayers(countryGeo) {
+  if (!countryGeo || !countryGeo.features) {
+    const b = document.getElementById('s-country');
+    b.disabled = true; b.title = 'The country outlines did not load';
+    return;
+  }
+  countryGeo.features.forEach((f, i) => {
+    f.id = i;
+    const p = f.properties;
+    if (p.iso3 && COUNTRY_FID[p.iso3] == null) COUNTRY_FID[p.iso3] = i;
+    const a = COUNTRY_AGG[p.iso3];
+    p.c_ssf_share = a ? a.ssf_share : null;
+    p.c_ssf_value_share = a ? a.ssf_value_share : null;
+    p.c_overfished = a ? a.overfished : null;
+    p.c_foreign_pct = a ? a.foreign_pct : null;
+    p.c_confidence = a ? a.confidence : 0;
+    p.c_mhw = a && a.mhw != null ? a.mhw : null;
+    const person = PEOPLE[p.iso3];
+    p.employed_per_1k = person && person.employed_per_1k != null ? person.employed_per_1k : null;
+    p.access = sdgScore(p.iso3);
+    futureProps(p, (FUTURE && FUTURE.countries || {})[p.iso3], 'c_');
+    (a && a.fc || []).forEach((v, i) => { p['c_fc_' + i] = v; });
+    p.fish_forever = FF_ISO.has(p.iso3);
+    p.blue_ventures = BV_ISO.has(p.iso3);
+    // A country with no ocean zone (Chad, Uganda...) is not part of this atlas:
+    // painting it with its inland fishing jobs, or hatching it "not measured",
+    // both said something untrue. It is left as plain land.
+    p.coastal = !!COUNTRY_AGG[p.iso3];
+  });
+  map.addSource('country', { type: 'geojson', data: countryGeo });
+  const vis = scale === 'country' ? 'visible' : 'none';
+  map.addLayer({
+    id: 'country-fill', type: 'fill', source: 'country',
+    filter: ['==', ['get', 'coastal'], true],
+    layout: { visibility: vis },
+    paint: {
+      'fill-color': fillExpr(),
+      'fill-opacity': ['case',
+        ['boolean', ['feature-state', 'hover'], false], 0.92, 0.78]
+    }
+  }, under);
+  map.addLayer({
+    id: 'country-nodata', type: 'fill', source: 'country',
+    filter: ['all', ['==', ['get', 'coastal'], true], noDataFilter()],
+    layout: { visibility: vis },
+    paint: { 'fill-pattern': 'hatch', 'fill-opacity': 0.9 }
+  }, under);
+  map.addLayer({
+    id: 'country-line', type: 'line', source: 'country',
+    layout: { visibility: vis },
+    paint: { 'line-color': 'rgba(23,32,31,0.3)', 'line-width': 0.5 }
+  }, under);
+  groupLayers('country', 'country-').forEach(l => map.addLayer(l, under));
+  syncFf();
+  wireFill('country-fill');
+  READY.country = true;
+}
+
+// Preferential access areas sit on top of the choropleth rather than replacing
+// it: they answer a different question (who has the right to fish here) and are
+// most useful read against the catch and people layers, not instead of them.
+function addPaaLayers(paaGeo) {
+  const btn = document.getElementById('b-paa');
+  if (!paaGeo || !paaGeo.features) { btn.style.display = 'none'; return; }
+  // Default simplification on purpose. With it off, a coastal band with
+  // thousands of island holes (Greenland) defeats the triangulator and the
+  // whole island fills green. The hole count is kept down in fetch_paa.py.
+  map.addSource('paa', { type: 'geojson', data: paaGeo });
+  const vis = paaOn ? 'visible' : 'none';
+  map.addLayer({
+    id: 'paa-fill', type: 'fill', source: 'paa',
+    layout: { visibility: vis },
+    // No anti-aliasing on the fill: where a hole's edge meets a tile edge the
+    // two coincide, and anti-aliasing drew that seam as a hairline straight
+    // across Greenland. The line layer below draws the real edges.
+    paint: { 'fill-color': '#12b886', 'fill-opacity': 0.34, 'fill-antialias': false }
+  }, under);
+  map.addLayer({
+    id: 'paa-line', type: 'line', source: 'paa',
+    layout: { visibility: vis },
+    // Thinner when the whole world is on screen, so a fjord coast does not
+    // read as a green scribble.
+    paint: { 'line-color': '#007f4e', 'line-width': ['interpolate', ['linear'], ['zoom'], 1, 0.5, 4, 0.9, 7, 1.4], 'line-opacity': 1 }
+  }, under);
+  READY.paa = true;
+  btn.classList.remove('wait');
+}
+
+// Aid-funded project sites. Only 28% of activities carry coordinates, so this
+// layer is a sample of the sample - it shows where reported work is, not where
+// work is. The panel says so on every country.
+// ISSF records: community profiles and organisations, contributed by researchers
+// rather than derived from aid reporting. Drawn alongside the IATI points because
+// the two sources see different halves of the same field - and where one has
+// records and the other doesn't is itself the finding.
+const SITE_LAYERS = [];
+function addSiteLayers(orgData, issfData) {
+  ORGS = orgData || null;
+  ISSF = issfData || null;
+  const vis = orgOn ? 'visible' : 'none';
   if (ORGS && ORGS.activities) {
     const feats = [];
     const seenPt = new Set();  // the same activity reported twice at one spot is one dot
@@ -2644,7 +3692,7 @@ async function init() {
     map.addSource('orgs', { type: 'geojson', data: { type: 'FeatureCollection', features: feats } });
     map.addLayer({
       id: 'org-halo', type: 'circle', source: 'orgs',
-      layout: { visibility: 'none' },
+      layout: { visibility: vis },
       paint: {
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 4, 6, 9],
         'circle-color': '#8b5a2b', 'circle-opacity': 0.16
@@ -2652,7 +3700,7 @@ async function init() {
     });
     map.addLayer({
       id: 'org-point', type: 'circle', source: 'orgs',
-      layout: { visibility: 'none' },
+      layout: { visibility: vis },
       paint: {
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 1.8, 6, 4],
         'circle-color': '#7a4a1e',
@@ -2663,14 +3711,10 @@ async function init() {
         'circle-stroke-color': 'rgba(255,255,255,0.9)'
       }
     });
+    SITE_LAYERS.push('org-point', 'org-halo');
   } else {
     document.getElementById('b-org').style.display = 'none';
   }
-
-  // ISSF records: community profiles and organisations, contributed by researchers
-  // rather than derived from aid reporting. Drawn alongside the IATI points because
-  // the two sources see different halves of the same field - and where one has
-  // records and the other doesn't is itself the finding.
   if (ISSF && ISSF.records) {
     const feats = [];
     ISSF.records.forEach(r => {
@@ -2692,7 +3736,7 @@ async function init() {
     map.addSource('issf', { type: 'geojson', data: { type: 'FeatureCollection', features: feats } });
     map.addLayer({
       id: 'issf-halo', type: 'circle', source: 'issf',
-      layout: { visibility: 'none' },
+      layout: { visibility: vis },
       paint: {
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 4, 6, 9],
         'circle-color': '#8b5a2b', 'circle-opacity': 0.15
@@ -2700,7 +3744,7 @@ async function init() {
     });
     map.addLayer({
       id: 'issf-point', type: 'circle', source: 'issf',
-      layout: { visibility: 'none' },
+      layout: { visibility: vis },
       paint: {
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 1.8, 6, 4],
         'circle-color': '#7a4a1e',
@@ -2711,159 +3755,9 @@ async function init() {
         'circle-stroke-color': 'rgba(255,255,255,0.9)'
       }
     });
+    SITE_LAYERS.push('issf-point', 'issf-halo');
   }
-
-  // CARTO's light basemap sets place labels in a pale grey that all but vanishes
-  // once coloured polygons sit underneath them. Darken every text layer and give
-  // it a white halo so country and ocean names stay legible over the data.
-  map.getStyle().layers.forEach(l => {
-    if (l.type !== 'symbol') return;
-    try {
-      map.setPaintProperty(l.id, 'text-color', '#1d2726');
-      map.setPaintProperty(l.id, 'text-halo-color', 'rgba(255,255,255,0.9)');
-      map.setPaintProperty(l.id, 'text-halo-width', 1.4);
-    } catch (e) { /* layer has no text; nothing to darken */ }
-  });
-
-  // Attach the rollup to the country polygons and add their layers. This happens
-  // after buildCountryAgg so both scales are painting the same numbers.
-  if (map.getSource('country')) {
-    const cg = map.getSource('country')._data;
-    cg.features.forEach((f, i) => {
-      f.id = i;
-      const a = COUNTRY_AGG[f.properties.iso3];
-      const p = f.properties;
-      p.c_ssf_share = a ? a.ssf_share : null;
-      p.c_ssf_value_share = a ? a.ssf_value_share : null;
-      p.c_overfished = a ? a.overfished : null;
-      p.c_foreign_pct = a ? a.foreign_pct : null;
-      p.c_confidence = a ? a.confidence : 0;
-      p.c_mhw = a && a.mhw != null ? a.mhw : null;
-      const person = PEOPLE[p.iso3];
-      p.employed_per_1k = person && person.employed_per_1k != null ? person.employed_per_1k : null;
-      p.fish_forever = FF_ISO.has(p.iso3);
-      p.blue_ventures = BV_ISO.has(p.iso3);
-      // A country with no ocean zone (Chad, Uganda...) is not part of this atlas:
-      // painting it with its inland fishing jobs, or hatching it "not measured",
-      // both said something untrue. It is left as plain land.
-      p.coastal = !!COUNTRY_AGG[p.iso3];
-    });
-    map.getSource('country').setData(cg);
-
-    map.addLayer({
-      id: 'country-fill', type: 'fill', source: 'country',
-      filter: ['==', ['get', 'coastal'], true],
-      layout: { visibility: 'none' },
-      paint: {
-        'fill-color': fillExpr(),
-        'fill-opacity': ['case',
-          ['boolean', ['feature-state', 'hover'], false], 0.92, 0.78]
-      }
-    }, under);
-    map.addLayer({
-      id: 'country-nodata', type: 'fill', source: 'country',
-      filter: ['all', ['==', ['get', 'coastal'], true], noDataFilter()],
-      layout: { visibility: 'none' },
-      paint: { 'fill-pattern': 'hatch', 'fill-opacity': 0.9 }
-    }, under);
-    map.addLayer({
-      id: 'country-line', type: 'line', source: 'country',
-      layout: { visibility: 'none' },
-      paint: { 'line-color': 'rgba(23,32,31,0.3)', 'line-width': 0.5 }
-    }, under);
-    groupLayers('country', 'country-').forEach(l => map.addLayer(l, under));
-  }
-
-  drawLegend();
-  paintSwatches();
-  initScrubber();
-  initZoneLinks();
-  map.resize();
-  const isOpen = () => document.getElementById('panel').classList.contains('open');
-  applyRailPadding(false, false);
-  map.once('idle', () => applyRailPadding(isOpen(), false));  // after the first full layout
-  if (window.ResizeObserver) new ResizeObserver(() => map.resize()).observe(document.getElementById('map'));
-  window.addEventListener('resize', () => { map.resize(); applyRailPadding(isOpen(), false); });
-
-  await new Promise(resolve => {
-    if (map.isSourceLoaded('eez')) return resolve();
-    const check = () => {
-      if (map.isSourceLoaded('eez')) { map.off('sourcedata', check); map.off('idle', check); resolve(); }
-    };
-    map.on('sourcedata', check); map.on('idle', check);
-    setTimeout(resolve, 15000);
-  });
-
-  const l = document.getElementById('loading');
-  l.style.opacity = 0;
-  setTimeout(() => l.remove(), 500);
-
-  ['eez-fill', 'country-fill'].forEach(lyr => map.getLayer(lyr) && map.on('mousemove', lyr, ev => {
-    const f = ev.features[0];
-    const src = lyr === 'country-fill' ? 'country' : 'eez';
-    // No pointer where a click would open nothing: inland countries have a
-    // landmass but no ocean zone.
-    map.getCanvas().style.cursor = (src === 'country' && !COUNTRY_AGG[f.properties.iso3]) ? 'default' : 'pointer';
-    if (hovered !== null && hovered !== f.id) map.setFeatureState({ source: hoveredSrc, id: hovered }, { hover:false });
-    hovered = f.id; hoveredSrc = src;
-    map.setFeatureState({ source: src, id: hovered }, { hover:true });
-    const p = f.properties;
-    let val;
-    const g = k => p[scale === 'country' ? 'c_' + k : k];
-    if (layer === 'share' && shareBy === 'value') {
-      const doubtful = scale === 'country'
-        ? ((COUNTRY_AGG[p.iso3] || {}).suspect_value || []).length
-        : (VALUE[p.name] || {}).suspect_price;
-      val = g('ssf_value_share') == null ? (doubtful ? 'value not reliable here' : 'no value data')
-        : g('ssf_value_share').toFixed(0) + '% of catch value small-scale';
-    }
-    else if (layer === 'share')  val = g('ssf_share') == null ? 'no catch data' : g('ssf_share').toFixed(0) + '% small-scale';
-    else if (layer === 'people') val = p.employed_per_1k == null ? 'no livelihoods data' : p.employed_per_1k + ' per 1,000 people, national, inland and marine' +
-      (scale !== 'country' && (COUNTRIES[p.name] || {}).iso_kind === 'territory' ? ` (${COUNTRY_NAME[p.iso3] || p.iso3}'s figure)` : '');
-    else if (layer === 'heat')   val = g('mhw') == null ? 'no heatwave reading' : (CLIMATE.mhw_labels || {})[g('mhw')] + (scale === 'country' ? ' (worst of its main zones)' : ' (sample area)');
-    else if (layer === 'foreign') val = g('foreign_pct') == null ? 'no fleet data' : g('foreign_pct') + '% foreign fleets';
-    else if (layer === 'overfish') val = g('overfished') == null ? 'fish populations not assessed here'
-      : g('overfished').toFixed(0) + '% of fish populations overfished or collapsed, judged from catch' + (OVERFISH_YEAR ? ', ' + OVERFISH_YEAR : '') + (scale === 'country' ? ' (catch-weighted zone average)' : '');
-    else val = g('confidence') ? 'confidence ' + g('confidence') + '/4' : 'no catch data';
-    const label = scale === 'country' ? (COUNTRY_NAME[p.iso3] || p.name) : p.name;
-    popup.setLngLat(ev.lngLat).setHTML(`<strong>${label}</strong><br /><span style="color:#5c6a6d">${val}</span>`).addTo(map);
-  }));
-
-  ['eez-fill', 'country-fill'].forEach(lyr => map.getLayer(lyr) && map.on('mouseleave', lyr, () => {
-    map.getCanvas().style.cursor = '';
-    if (hovered !== null) map.setFeatureState({ source: hoveredSrc, id: hovered }, { hover:false });
-    hovered = null; popup.remove();
-  }));
-
-  // A site dot opens a small card of its own; the zone under it does not open too.
-  const siteLayers = ['org-point', 'org-halo', 'issf-point', 'issf-halo'].filter(l => map.getLayer(l));
-  // Closed by hand below rather than with closeOnClick: the library's own close
-  // listener ran after the click that reopened the same card and shut it again.
-  const sitePopup = new maplibregl.Popup({ closeButton: true, closeOnClick: false, offset: 8, maxWidth: '280px' });
-  const ISSF_KIND = { organization: ['organization', 'Organisation'], profile: ['profile', 'Fishery profile'], blue_justice: ['bluejustice', 'Blue justice case'], case_study: ['casestudy', 'Case study'] };
-  function siteCard(f) {
-    const p = f.properties;
-    if (f.source === 'orgs') {
-      const who = [p.implementing, p.funding].filter(Boolean).join(' · ');
-      const y0 = (p.start || '').slice(0, 4), y1 = (p.end || '').slice(0, 4);
-      const when = y0 && y1 ? (y0 === y1 ? y0 : `${y0}–${y1}`) : y0 ? `from ${y0}` : y1 ? `to ${y1}` : '';
-      return `<div class="site-h">${esc(p.title)}</div>
-        <div class="site-m">Aid-funded project${p.place ? (p.approx ? ' in ' : ' at ') + esc(p.place) : ''}${when ? ' · ' + esc(when) : ''}</div>
-        ${p.approx ? `<div class="site-m">Approximate location: the record gives a region, a capital or the country, not a site.</div>` : ''}
-        ${who ? `<div class="site-m">${esc(who)}</div>` : ''}
-        <div class="site-m">Reported to IATI by ${esc(p.reporter || 'not stated')}${p.id ? ' · ' + ext('https://d-portal.org/ctrack.html#view=act&aid=' + encodeURIComponent(p.id), 'Open the record') : ''}</div>`;
-    }
-    const kind = ISSF_KIND[p.kind] || [String(p.kind || ''), 'Record'];
-    return `<div class="site-h">${esc(p.label)}</div>
-      <div class="site-m">${esc(kind[1])} in the Too Big To Ignore network${p.scope ? ' · ' + esc(p.scope) : ''}${p.date ? ' · added ' + esc(String(p.date).slice(0, 4)) : ''}</div>
-      ${p.approx ? `<div class="site-m">Approximate location: no usable coordinates on record, so it is placed at the country's centre.</div>` : ''}
-      ${p.id ? `<div class="site-m">${ext('https://issfcloud.toobigtoignore.net/details/' + kind[0] + '/' + encodeURIComponent(p.id), 'Open the record in ISSF')}</div>` : ''}`;
-  }
-  // A click anywhere that is not a dot closes the card, open sea included.
-  map.on('click', ev => {
-    if (!(siteLayers.length && map.queryRenderedFeatures(ev.point, { layers: siteLayers }).length)) sitePopup.remove();
-  });
-  siteLayers.forEach(lyr => {
+  SITE_LAYERS.forEach(lyr => {
     map.on('mouseenter', lyr, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', lyr, () => { map.getCanvas().style.cursor = ''; });
     map.on('click', lyr, ev => {
@@ -2873,19 +3767,348 @@ async function init() {
       sitePopup.setLngLat(f.geometry.coordinates).setHTML(`<div class="site">${siteCard(f)}</div>`).addTo(map);
     });
   });
-  ['eez-fill', 'country-fill'].forEach(lyr => map.getLayer(lyr) && map.on('click', lyr, ev => {
-    if (siteLayers.length && map.queryRenderedFeatures(ev.point, { layers: siteLayers }).length) return;
-    sitePopup.remove();
+  READY.sites = true;
+  document.getElementById('b-org').classList.remove('wait');
+  panelDataArrived();
+}
+
+// A site dot opens a small card of its own; the zone under it does not open too.
+// Closed by hand rather than with closeOnClick: the library's own close listener
+// ran after the click that reopened the same card and shut it again.
+const sitePopup = new maplibregl.Popup({ closeButton: true, closeOnClick: false, offset: 8, maxWidth: '280px' });
+const ISSF_KIND = { organization: ['organization', 'Organisation'], profile: ['profile', 'Fishery profile'], blue_justice: ['bluejustice', 'Blue justice case'], case_study: ['casestudy', 'Case study'] };
+const siteHit = point => SITE_LAYERS.length > 0 && map.queryRenderedFeatures(point, { layers: SITE_LAYERS.filter(l => map.getLayer(l)) }).length > 0;
+function siteCard(f) {
+  const p = f.properties;
+  if (f.source === 'orgs') {
+    const who = [p.implementing, p.funding].filter(Boolean).join(' · ');
+    const y0 = (p.start || '').slice(0, 4), y1 = (p.end || '').slice(0, 4);
+    const when = y0 && y1 ? (y0 === y1 ? y0 : `${y0}–${y1}`) : y0 ? `from ${y0}` : y1 ? `to ${y1}` : '';
+    return `<div class="site-h">${esc(p.title)}</div>
+      <div class="site-m">Aid-funded project${p.place ? (p.approx ? ' in ' : ' at ') + esc(p.place) : ''}${when ? ' · ' + esc(when) : ''}</div>
+      ${p.approx ? `<div class="site-m">Approximate location: the record gives a region, a capital or the country, not a site.</div>` : ''}
+      ${who ? `<div class="site-m">${esc(who)}</div>` : ''}
+      <div class="site-m">Reported to IATI by ${esc(p.reporter || 'not stated')}${p.id ? ' · ' + ext('https://d-portal.org/ctrack.html#view=act&aid=' + encodeURIComponent(p.id), 'Open the record') : ''}</div>`;
+  }
+  const kind = ISSF_KIND[p.kind] || [String(p.kind || ''), 'Record'];
+  return `<div class="site-h">${esc(p.label)}</div>
+    <div class="site-m">${esc(kind[1])} in the Too Big To Ignore network${p.scope ? ' · ' + esc(p.scope) : ''}${p.date ? ' · added ' + esc(String(p.date).slice(0, 4)) : ''}</div>
+    ${p.approx ? `<div class="site-m">Approximate location: no usable coordinates on record, so it is placed at the country's centre.</div>` : ''}
+    ${p.id ? `<div class="site-m">${ext('https://issfcloud.toobigtoignore.net/details/' + kind[0] + '/' + encodeURIComponent(p.id), 'Open the record in ISSF')}</div>` : ''}`;
+}
+
+// What the hover box says over a zone or a country, for the view on screen.
+function hoverText(p) {
+  const g = k => p[scale === 'country' ? 'c_' + k : k];
+  if (layer === 'share' && shareBy === 'value') {
+    const doubtful = scale === 'country'
+      ? ((COUNTRY_AGG[p.iso3] || {}).suspect_value || []).length
+      : (VALUE[p.name] || {}).suspect_price;
+    return g('ssf_value_share') == null ? (doubtful ? 'value not reliable here' : 'no value data')
+      : g('ssf_value_share').toFixed(0) + '% of catch value small-scale';
+  }
+  if (layer === 'share')  return g('ssf_share') == null ? 'no catch data' : g('ssf_share').toFixed(0) + '% small-scale';
+  if (layer === 'people') return p.employed_per_1k == null ? 'no livelihoods data' : p.employed_per_1k + ' per 1,000 people, national, inland and marine' +
+    (scale !== 'country' && (COUNTRIES[p.name] || {}).iso_kind === 'territory' ? ` (${COUNTRY_NAME[p.iso3] || p.iso3}'s figure)` : '');
+  if (layer === 'future') {
+    const d = futureCell(scale === 'country' ? 'country' : 'zone', scale === 'country' ? p.iso3 : p.name);
+    if (!d) return 'no projection';
+    return `${signed(d.median)} fish biomass by ${FUT_PER[futPer]}, ${FUT_SCEN[futScen]} (${Math.round(d.agree * d.n)} of ${d.n} runs agree on the direction)`;
+  }
+  if (layer === 'access') {
+    const r = sdgRecord(p.iso3);
+    if (p.access == null) return r && r.latest != null ? `not reported in ${SDG_ROUND}; ${r.latest} of 5 in ${r.latest_year}` : 'not reported';
+    return `${p.access} of 5, as the country reports it` + (scale !== 'country' && (COUNTRIES[p.name] || {}).iso_kind === 'territory' ? ` (${COUNTRY_NAME[p.iso3] || p.iso3}'s score)` : '');
+  }
+  if (layer === 'heat' && heatMode === 'outlook') {
+    const v = g('fc_' + fcLead);
+    return v == null ? 'no forecast' : `${Math.round(v * 100)}% chance of a heatwave in ${monthWord(OUTLOOK.mhw_forecast.months[fcLead])}` + (scale === 'country' ? ' (highest of its main zones)' : ' (zone average)');
+  }
+  if (layer === 'heat')   return g('mhw') == null ? 'no heatwave reading' : (CLIMATE.mhw_labels || {})[g('mhw')] + (scale === 'country' ? ' (worst of its main zones)' : ' (sample area)');
+  if (layer === 'foreign') return g('foreign_pct') == null ? 'no fleet data' : g('foreign_pct') + '% foreign fleets';
+  if (layer === 'overfish') return g('overfished') == null ? 'fish populations not assessed here'
+    : g('overfished').toFixed(0) + '% of fish populations overfished or collapsed, judged from catch' + (OVERFISH_YEAR ? ', ' + OVERFISH_YEAR : '') + (scale === 'country' ? ' (catch-weighted zone average)' : '');
+  return g('confidence') ? 'confidence ' + g('confidence') + '/4' : 'no catch data';
+}
+
+function wireFill(lyr) {
+  map.on('mousemove', lyr, ev => {
     const f = ev.features[0];
     const src = lyr === 'country-fill' ? 'country' : 'eez';
-    if (selected !== null) map.setFeatureState({ source: selectedSrc, id: selected }, { selected:false });
-    selected = f.id; selectedSrc = src;
-    map.setFeatureState({ source: src, id: selected }, { selected:true });
-    if (scale === 'country' && f.properties.iso3) showCountryPanel(f.properties.iso3);
-    else showPanel(f.properties.name);
+    // No pointer where a click would open nothing: inland countries have a
+    // landmass but no ocean zone.
+    map.getCanvas().style.cursor = (src === 'country' && !COUNTRY_AGG[f.properties.iso3]) ? 'default' : 'pointer';
+    if (hovered !== null && hovered !== f.id) map.setFeatureState({ source: hoveredSrc, id: hovered }, { hover:false });
+    hovered = f.id; hoveredSrc = src;
+    map.setFeatureState({ source: src, id: hovered }, { hover:true });
+    const p = f.properties;
+    const label = scale === 'country' ? (COUNTRY_NAME[p.iso3] || p.name) : p.name;
+    popup.setLngLat(ev.lngLat).setHTML(`<strong>${esc(label)}</strong><br /><span style="color:#5c6a6d">${hoverText(p)}</span>`).addTo(map);
+  });
+  map.on('mouseleave', lyr, () => {
+    map.getCanvas().style.cursor = '';
+    if (hovered !== null) map.setFeatureState({ source: hoveredSrc, id: hovered }, { hover:false });
+    hovered = null; popup.remove();
+  });
+  map.on('click', lyr, ev => {
+    if (siteHit(ev.point)) return;
+    sitePopup.remove();
+    const p = ev.features[0].properties;
+    if (lyr === 'country-fill') { if (p.iso3 && COUNTRY_AGG[p.iso3]) openPlace('country', p.iso3); }
+    else openPlace('zone', p.name);
     const h = document.getElementById('hint');
     if (h) h.style.opacity = 0;
-  }));
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Opening a place: the page, the outline on the map, and (from search or a link)
+// a move to bring it on screen.
+function markSelected(kind, key) {
+  if (selected !== null) map.setFeatureState({ source: selectedSrc, id: selected }, { selected: false });
+  selected = null;
+  // The outline belongs to the shape on screen: the zone in zone scale, the land in country scale.
+  if (kind === 'zone' && scale === 'zone' && ZONE_FEAT[key]) { selected = ZONE_FEAT[key].id; selectedSrc = 'eez'; }
+  if (kind === 'country' && scale === 'country' && COUNTRY_FID[key] != null) { selected = COUNTRY_FID[key]; selectedSrc = 'country'; }
+  if (selected !== null) map.setFeatureState({ source: selectedSrc, id: selected }, { selected: true });
+}
+
+function openPlace(kind, key, opts) {
+  opts = opts || {};
+  fromTable = !!opts.fromTable;
+  if (kind === 'country') showCountryPanel(key); else showPanel(key);
+  markSelected(kind, key);
+  if (opts.fly) flyToPlace(kind, key);
+}
+
+// The box around a set of outlines. A zone across the date line (Fiji, Kiribati,
+// the US in the Pacific) would otherwise stretch round the whole globe, so its
+// western longitudes are moved past 180 and the box is taken again.
+function boundsOf(geoms) {
+  const lons = [], lats = [];
+  const walk = c => { if (typeof c[0] === 'number') { lons.push(c[0]); lats.push(c[1]); } else c.forEach(walk); };
+  geoms.forEach(g => g && walk(g.coordinates));
+  if (!lons.length) return null;
+  let w = Math.min(...lons), e = Math.max(...lons);
+  if (e - w > 180) {
+    const shifted = lons.map(x => x < 0 ? x + 360 : x);
+    w = Math.min(...shifted); e = Math.max(...shifted);
+  }
+  return [[w, Math.max(-85, Math.min(...lats))], [e, Math.min(85, Math.max(...lats))]];
+}
+function flyToPlace(kind, key) {
+  const zones = kind === 'zone' ? [key] : ((COUNTRY_AGG[key] || {}).zones || []);
+  const b = boundsOf(zones.map(z => ZONE_FEAT[z] && ZONE_FEAT[z].geometry));
+  if (!b) return;
+  const go = () => {
+    const duration = document.hidden ? 0 : 700;
+    // On a phone the sheet leaves little map, and a large country may not fit at all;
+    // then it is centred at a middling zoom rather than not moved.
+    const cam = map.cameraForBounds(b, { padding: window.innerWidth > 820 ? 36 : 12, maxZoom: 5.5 });
+    if (cam) map.easeTo(Object.assign({}, cam, { duration }));
+    else map.easeTo({ center: [(b[0][0] + b[1][0]) / 2, (b[0][1] + b[1][1]) / 2], zoom: 2.5, duration });
+  };
+  // the side panel is still easing open; fit once it has, so it is counted
+  if (map.isEasing()) map.once('moveend', go); else go();
+}
+
+let current = null;     // the page that is open: { kind: 'zone' | 'country' | 'table', key }
+let fromTable = false;  // opened from the ranking table, so the page offers the way back
+
+function renderCurrent() {
+  if (!current) return;
+  if (current.kind === 'zone') showPanel(current.key);
+  else if (current.kind === 'country') showCountryPanel(current.key);
+  else if (current.kind === 'table') showTable();
+}
+
+// ---------------------------------------------------------------------------
+// Links. The address carries the view, the scale, the overlays and the open page,
+// so a link pasted into an email opens the atlas the way it was when copied.
+let hashWriting = false;
+function stateHash() {
+  const q = new URLSearchParams();
+  if (layer !== 'share') q.set('view', layer);
+  if (layer === 'share' && shareBy === 'value') q.set('by', 'value');
+  if (layer === 'heat' && heatMode === 'outlook') q.set('forecast', OUTLOOK.mhw_forecast.months[fcLead]);
+  if (layer === 'future' && futScen !== 'ssp585') q.set('emissions', 'low');
+  if (layer === 'future' && futPer !== 'end') q.set('period', '2041-2060');
+  if (scale === 'country') q.set('scale', 'country');
+  const ov = [paaOn && 'access', orgOn && 'sites', ffOn && 'groups'].filter(Boolean);
+  if (ov.length) q.set('overlays', ov.join(','));
+  if (current) q.set(current.kind, current.key);
+  // commas and brackets are safe after the #, and a link reads better with them
+  return q.toString().replace(/%2C/g, ',').replace(/%28/g, '(').replace(/%29/g, ')');
+}
+// Written a moment after the last change, not on every one: dragging the forecast
+// slider changes the state many times a second, and browsers throttle a page that
+// rewrites its address that often.
+let hashTimer = null;
+function syncHash() {
+  if (applyingHash) return;
+  clearTimeout(hashTimer);
+  hashTimer = setTimeout(() => {
+    const h = stateHash();
+    if (h === location.hash.slice(1)) return;
+    hashWriting = true;
+    history.replaceState(null, '', location.pathname + location.search + (h ? '#' + h : ''));
+    hashWriting = false;
+  }, 150);
+}
+function shareUrl() {
+  const h = stateHash();
+  return location.origin + location.pathname + (h ? '#' + h : '');
+}
+let applyingHash = false;
+async function applyHash() {
+  const q = new URLSearchParams(location.hash.slice(1));
+  applyingHash = true;
+  try {
+    const sc = q.get('scale') === 'country' ? 'country' : 'zone';
+    if (sc !== scale) await setScale(sc);
+    shareBy = q.get('by') === 'value' ? 'value' : 'tonnes';
+    futScen = q.get('emissions') === 'low' ? 'ssp126' : 'ssp585';
+    futPer = q.get('period') === '2041-2060' ? 'mid' : 'end';
+    const fm = q.get('forecast'), fi = fm && OUTLOOK && OUTLOOK.mhw_forecast ? OUTLOOK.mhw_forecast.months.indexOf(fm) : -1;
+    // a link to a month that has since passed opens today's view instead
+    heatMode = fi >= 0 && fi >= fcFirst() ? 'outlook' : 'now';
+    if (heatMode === 'outlook') fcLead = fi;
+    const v = q.get('view');
+    setLayer(VIEWS.includes(v) ? v : 'share');
+    const ov = (q.get('overlays') || '').split(',');
+    setPaa(ov.includes('access'));
+    setOrg(ov.includes('sites'));
+    setFf(ov.includes('groups'));
+    const c = q.get('country'), z = q.get('zone');
+    if (c && COUNTRY_AGG[c]) openPlace('country', c, { fly: true });
+    else if (z && COUNTRIES[z]) openPlace('zone', z, { fly: true });
+    else if (q.get('table')) showTable();
+    else closePanel();
+  } finally {
+    applyingHash = false;
+    syncHash();
+  }
+}
+
+async function copyText(text, btn, done) {
+  let ok = false;
+  try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {
+    // Older browsers and some embedded views have no clipboard access.
+    const t = document.createElement('textarea');
+    t.value = text; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+    document.body.appendChild(t); t.select();
+    try { ok = document.execCommand('copy'); } catch (e2) { ok = false; }
+    t.remove();
+  }
+  if (btn) {
+    const was = btn.dataset.label || btn.textContent;
+    btn.dataset.label = was;
+    btn.textContent = ok ? done : 'Copy failed: select the text instead';
+    setTimeout(() => { btn.textContent = was; }, 1600);
+  }
+  return ok;
+}
+
+// ---------------------------------------------------------------------------
+// Search. The only way into a page without a mouse, and the quickest with one.
+// Countries match by name, ISO code and common other names; zones by name.
+const ALIASES = {
+  USA: ['United States of America', 'US', 'America'], GBR: ['UK', 'Britain', 'Great Britain', 'England', 'Scotland', 'Wales'],
+  CIV: ['Ivory Coast'], MMR: ['Burma'], TLS: ['East Timor', 'Timor Leste'], KOR: ['South Korea'], PRK: ['North Korea'],
+  RUS: ['Russian Federation'], VNM: ['Viet Nam'], FSM: ['Micronesia'], COD: ['DRC', 'Congo-Kinshasa', 'Democratic Republic of the Congo'],
+  COG: ['Congo-Brazzaville', 'Republic of the Congo'], CPV: ['Cape Verde'], TZA: ['United Republic of Tanzania'], IRN: ['Persia'],
+  NLD: ['Holland'], GMB: ['Gambia'], BHS: ['Bahamas'], TUR: ['Türkiye'], CHN: ["People's Republic of China", 'PRC'], TWN: ['Taiwan'],
+  ARE: ['UAE', 'Emirates'], SAU: ['Saudi'], PNG: ['PNG'], SLB: ['Solomons'], MHL: ['Marshalls'], DOM: ['DR'], GNQ: ['Equatorial Guinea'],
+  STP: ['Sao Tome'], VCT: ['St Vincent'], KNA: ['St Kitts'], LCA: ['St Lucia'], SYR: ['Syrian Arab Republic']
+};
+const norm = s => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+let SEARCH = [];
+function buildSearch() {
+  SEARCH = [];
+  Object.entries(COUNTRY_AGG).forEach(([iso, a]) => {
+    const name = COUNTRY_NAME[iso] || iso;
+    SEARCH.push({ kind: 'country', key: iso, name, sub: `country · ${a.zones.length} ocean zone${a.zones.length > 1 ? 's' : ''}`,
+      terms: [name, iso, ...(ALIASES[iso] || [])].map(norm) });
+  });
+  Object.values(COUNTRIES).forEach(c => {
+    const parent = COUNTRY_NAME[c.iso3] || '';
+    SEARCH.push({ kind: 'zone', key: c.name, name: c.name, sub: `ocean zone${parent && parent !== c.name ? ' · ' + parent : ''}`,
+      terms: [c.name].map(norm) });
+  });
+}
+function searchFor(text) {
+  const q = norm(text);
+  if (!q) return [];
+  const scored = [];
+  SEARCH.forEach(e => {
+    let best = 9;
+    e.terms.forEach(t => {
+      if (t === q) best = Math.min(best, 0);
+      else if (t.startsWith(q)) best = Math.min(best, 1);
+      else if ((' ' + t).includes(' ' + q)) best = Math.min(best, 2);
+      else if (q.length >= 3 && t.includes(q)) best = Math.min(best, 3);
+    });
+    // a country before its zones unless a zone matches clearly better ("korea"
+    // finds North and South Korea before the three Korean zones)
+    if (best < 9) scored.push([best + (e.kind === 'zone' ? 1.1 : 0), e]);
+  });
+  return scored.sort((a, b) => a[0] - b[0] || a[1].name.localeCompare(b[1].name)).slice(0, 8).map(s => s[1]);
+}
+function initSearch() {
+  buildSearch();
+  const box = document.getElementById('q'), list = document.getElementById('q-list');
+  let hits = [], active = -1;
+  const close = () => { list.hidden = true; box.setAttribute('aria-expanded', 'false'); box.removeAttribute('aria-activedescendant'); active = -1; };
+  const paint = () => {
+    list.innerHTML = hits.length
+      ? hits.map((e, i) => `<li id="q-${i}" role="option" aria-selected="${i === active}" data-i="${i}"><span>${esc(e.name)}</span><small>${esc(e.sub)}</small></li>`).join('')
+      : `<li class="none" role="option" aria-disabled="true">Nothing matches. Try a country or sea name.</li>`;
+    list.hidden = false;
+    box.setAttribute('aria-expanded', 'true');
+    if (active >= 0) box.setAttribute('aria-activedescendant', 'q-' + active); else box.removeAttribute('aria-activedescendant');
+  };
+  const pick = e => {
+    if (!e) return;
+    box.value = '';
+    close();
+    openPlace(e.kind, e.key, { fly: true });
+    // focus moves to the page that opened, so a keyboard reader carries on there
+    const h = document.querySelector('#panel-body h2');
+    if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+  };
+  box.addEventListener('input', () => {
+    hits = searchFor(box.value); active = hits.length ? 0 : -1;
+    if (!box.value.trim()) return close();
+    paint();
+  });
+  box.addEventListener('keydown', ev => {
+    if (ev.key === 'ArrowDown' || ev.key === 'ArrowUp') {
+      if (!hits.length) return;
+      ev.preventDefault();
+      active = (active + (ev.key === 'ArrowDown' ? 1 : -1) + hits.length) % hits.length;
+      paint();
+    } else if (ev.key === 'Enter') {
+      ev.preventDefault();
+      pick(hits[active >= 0 ? active : 0]);
+    } else if (ev.key === 'Escape') {
+      ev.stopPropagation();   // Escape here clears the box; it does not also close the page
+      box.value = ''; close();
+    }
+  });
+  list.addEventListener('pointerdown', ev => {
+    const li = ev.target.closest('li[data-i]');
+    if (!li) return;
+    ev.preventDefault();      // keep the focus in the box until the pick is made
+    pick(hits[+li.dataset.i]);
+  });
+  box.addEventListener('blur', () => setTimeout(close, 120));
+  // "/" jumps to the search box, as on most sites with one
+  document.addEventListener('keydown', ev => {
+    if (ev.key !== '/' || ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    const t = ev.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    ev.preventDefault(); box.focus();
+  });
 }
 
 init().catch(err => {
