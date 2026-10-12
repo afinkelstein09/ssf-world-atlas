@@ -448,22 +448,18 @@
   .fc-slide input { grid-column: 1 / -1; width: 100%; margin: 0 0 1px; accent-color: #c8703a; }
   .fc-slide span:last-child { text-align: right; }
 
-  /* Fish in the future: a two-by-two of scenarios and periods, then one dot per run. */
-  .fut { display: grid; gap: 0; font-size: 11.5px; }
-  .fut-row { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 0 10px; align-items: baseline; padding: 6px 0; border-top: 0.5px solid var(--edge); }
-  .fut-row:first-child { border-top: 0; padding-top: 0; }
-  .fut-h { font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-faint); }
-  .fut-r { color: var(--ink-dim); }
-  .fut b { display: block; font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
-  .fut small { font-family: var(--mono); font-size: 10px; color: var(--ink-faint); }
-  .fut-strip { position: relative; height: 26px; margin-top: 2px; }
-  .fut-strip i { position: absolute; display: block; }
-  .fut-strip .axis { left: 4%; right: 4%; top: 12.5px; height: 1px; background: rgba(23,32,31,0.15); }
-  .fut-strip .zero { top: 4px; width: 1px; height: 18px; background: rgba(23,32,31,0.45); }
-  .fut-strip .med { top: 2px; width: 2px; height: 22px; margin-left: -1px; background: var(--ink); }
-  .fut-strip .run { top: 9px; width: 7px; height: 7px; margin-left: -3.5px; border-radius: 50%; opacity: 0.72; }
-  .fut-strip .run.down { background: #a5532a; }
-  .fut-strip .run.up { background: #3f8796; }
+  /* Fish in the future: one sentence, then the two paths drawn in the page's own type. */
+  .fut-lede { margin: 0 0 8px; font-size: 13px; line-height: 1.55; color: var(--ink); }
+  .fut-lede b { font-weight: 600; }
+  .fut-chart { display: block; margin: 2px 0 0; overflow: visible; font-family: var(--sans); }
+  .fut-chart .base { stroke: rgba(23,32,31,0.55); stroke-width: 0.8; }
+  .fut-chart .ref { stroke: rgba(23,32,31,0.16); stroke-width: 0.7; stroke-dasharray: 1.5 3; }
+  .fut-chart .tick { font-family: var(--mono); font-size: 9.5px; fill: var(--ink-faint); }
+  .fut-chart .tick.strong { fill: var(--ink-dim); }
+  .fut-chart .mid { font-family: var(--mono); font-size: 9.5px; font-weight: 500; }
+  .fut-chart .end { font-size: 15px; font-weight: 600; letter-spacing: -0.02em; }
+  .fut-chart .lab { font-size: 10px; fill: var(--ink-dim); }
+  .fut-key { font-size: 10.5px; color: var(--ink-faint); line-height: 1.5; margin: 2px 0 8px; }
 
   /* UN access-rights score: one row per round, five squares filled to the score. */
   .sdg { margin: 4px 0 6px; }
@@ -1316,40 +1312,87 @@ function futureProps(p, rec, pre) {
     p[`${pre}fut_${sc}_${pe}`] = d && d.median != null ? d.median : null;
   }));
 }
-function runStrip(d) {
-  const vals = (d.by_run || []).filter(v => v != null);
-  if (vals.length < 2) return '';
-  // drawn in HTML rather than a stretched SVG, so the dots stay round at any width
-  const lo = Math.min(-20, ...vals), hi = Math.max(10, ...vals);
-  const X = v => (4 + (v - lo) / (hi - lo) * 92).toFixed(1) + '%';
-  return `<div class="fut-strip" aria-hidden="true"><i class="axis"></i><i class="zero" style="left:${X(0)}"></i>` +
-    vals.map(v => `<i class="run ${v < 0 ? 'down' : 'up'}" style="left:${X(v)}" title="${signed(v)}"></i>`).join('') +
-    `<i class="med" style="left:${X(d.median)}"></i></div>` +
-    `<div class="ramp-ends"><span>${signed(lo)}</span><span>${signed(hi)}</span></div>`;
+// The two paths, drawn by hand in the page's own type: today's level as 100, one line
+// per future, the spread of the models as a faint band, and the end values written
+// beside the lines instead of a legend. Points are 20-year averages.
+const FUT_COL = { ssp585: '#a5532a', ssp126: '#3f8796' };
+function lessMore(v) {
+  if (v == null) return '';
+  const n = Math.round(Math.abs(v));
+  return n < 1 ? 'about the same' : `about ${n}% ${v < 0 ? 'less' : 'more'}`;
+}
+function futureChart(r) {
+  // A narrow drawing, so the type stays readable in a 380-pixel panel and on a phone.
+  const W = 340, H = 170, x0 = 34, x1 = 250, top = 12, bottom = H - 26;
+  const X = { base: x0, mid: x0 + (2050 - 2005) / (2090 - 2005) * (x1 - x0), end: x1 };
+  const series = ['ssp126', 'ssp585'].filter(sc => r[sc] && r[sc].end && r[sc].end.median != null);
+  const vals = [100];
+  series.forEach(sc => ['mid', 'end'].forEach(pe => {
+    const d = r[sc][pe];
+    if (d) vals.push(100 + d.median, 100 + (d.lo != null ? d.lo : d.median), 100 + (d.hi != null ? d.hi : d.median));
+  }));
+  const lo = Math.floor((Math.min(...vals) - 3) / 10) * 10, hi = Math.ceil((Math.max(...vals) + 3) / 10) * 10;
+  const Y = v => bottom - (v - lo) / (hi - lo) * (bottom - top);
+  const f = n => n.toFixed(1);
+  let s = `<svg class="fut-chart" viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Fish these waters could hold, against 100 for 1995 to 2014: ${series.map(sc => `${FUT_SCEN[sc]} ${Math.round(100 + r[sc].mid.median)} by 2041 to 2060 and ${Math.round(100 + r[sc].end.median)} by 2081 to 2100`).join('; ')}.">`;
+  // reference lines: today's level solid, a few others dotted and quiet
+  const step = hi - lo > 40 ? 20 : 10;
+  for (let v = 100 - Math.ceil((100 - lo) / step) * step; v <= hi; v += step) {
+    if (v === 100 || v < lo) continue;
+    s += `<line x1="${x0}" x2="${x1}" y1="${f(Y(v))}" y2="${f(Y(v))}" class="ref"/><text x="${x0 - 8}" y="${f(Y(v) + 4)}" class="tick" text-anchor="end">${v}</text>`;
+  }
+  s += `<line x1="${x0}" x2="${x1}" y1="${f(Y(100))}" y2="${f(Y(100))}" class="base"/><text x="${x0 - 8}" y="${f(Y(100) + 4)}" class="tick strong" text-anchor="end">100</text>`;
+  // bands first, then lines, so the lines sit on top
+  series.forEach(sc => {
+    const m = r[sc].mid, e = r[sc].end;
+    const up = [[X.base, 100], [X.mid, 100 + (m.hi != null ? m.hi : m.median)], [X.end, 100 + (e.hi != null ? e.hi : e.median)]];
+    const dn = [[X.end, 100 + (e.lo != null ? e.lo : e.median)], [X.mid, 100 + (m.lo != null ? m.lo : m.median)]];
+    s += `<polygon points="${up.concat(dn).map(([x, v]) => `${f(x)},${f(Y(v))}`).join(' ')}" fill="${FUT_COL[sc]}" fill-opacity="0.11"/>`;
+  });
+  const ends = [];
+  // the middle values: the higher line's above it, the lower line's below, so they never touch
+  const midTop = series.slice().sort((a, b) => r[b].mid.median - r[a].mid.median)[0];
+  series.forEach(sc => {
+    const m = r[sc].mid, e = r[sc].end;
+    const pts = [[X.base, 100], [X.mid, 100 + m.median], [X.end, 100 + e.median]];
+    s += `<polyline points="${pts.map(([x, v]) => `${f(x)},${f(Y(v))}`).join(' ')}" fill="none" stroke="${FUT_COL[sc]}" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>`;
+    pts.slice(1).forEach(([x, v]) => { s += `<circle cx="${f(x)}" cy="${f(Y(v))}" r="2.6" fill="${FUT_COL[sc]}"/>`; });
+    s += `<text x="${f(X.mid)}" y="${f(Y(100 + m.median) + (sc === midTop && series.length > 1 ? -7 : 14))}" class="mid" text-anchor="middle" fill="${FUT_COL[sc]}">${Math.round(100 + m.median)}</text>`;
+    ends.push({ sc, y: Y(100 + e.median), v: Math.round(100 + e.median) });
+  });
+  // labels at the line ends, pushed apart if they would touch
+  ends.sort((a, b) => a.y - b.y);
+  for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 32) ends[i].y = ends[i - 1].y + 32;
+  ends.forEach(({ sc, y, v }) => {
+    s += `<text x="${x1 + 10}" y="${f(y + 3)}" class="end" fill="${FUT_COL[sc]}">${v}</text>` +
+      `<text x="${x1 + 10}" y="${f(y + 16)}" class="lab">${sc === 'ssp585' ? 'very high' : 'low'} emissions</text>`;
+  });
+  s += `<text x="${X.base}" y="${H - 6}" class="tick" text-anchor="start">1995–2014</text>` +
+    `<text x="${f(X.mid)}" y="${H - 6}" class="tick" text-anchor="middle">2041–2060</text>` +
+    `<text x="${X.end}" y="${H - 6}" class="tick" text-anchor="end">2081–2100</text></svg>`;
+  return s;
 }
 function futureSection(kind, key) {
   const r = futureRecord(kind, key);
-  if (!r || !r.ssp585) return null;
-  const cell = d => d && d.median != null
-    ? `<b>${signed(d.median)}</b><small>${d.n > 1 ? `${signed(d.lo)} to ${signed(d.hi)}` : 'one run only'}</small>` : '<b>—</b>';
-  let h = `<div class="fut" role="table" aria-label="Projected change in fish biomass">
-    <div role="row" class="fut-row"><span role="columnheader"></span><span role="columnheader" class="fut-h">2041–2060</span><span role="columnheader" class="fut-h">2081–2100</span></div>
-    <div role="row" class="fut-row"><span role="rowheader" class="fut-r">Low emissions</span><span role="cell">${cell(r.ssp126 && r.ssp126.mid)}</span><span role="cell">${cell(r.ssp126 && r.ssp126.end)}</span></div>
-    <div role="row" class="fut-row"><span role="rowheader" class="fut-r">Very high emissions</span><span role="cell">${cell(r.ssp585.mid)}</span><span role="cell">${cell(r.ssp585.end)}</span></div>
-  </div>`;
-  const d = r.ssp585.end;
-  h += `<div class="sec-h" style="margin:12px 0 2px">Each model run, very high emissions, 2081–2100</div>${runStrip(d)}`;
-  const agreeN = Math.round(d.agree * d.n);
-  const w = FUTURE.world && FUTURE.world.ssp585 && FUTURE.world.ssp126;
-  let txt = `${agreeN === d.n ? `All ${d.n} runs agree` : `${agreeN} of ${d.n} runs agree`} on the direction here.`;
-  if (w) txt += ` For the whole ocean the middle figures are ${signed(FUTURE.world.ssp126.end.median)} (low emissions) and ${signed(FUTURE.world.ssp585.end.median)} (very high) by 2081–2100.`;
-  if (d.n < (FUTURE.runs || []).length) txt += ` Only ${d.n} of the ${(FUTURE.runs || []).length} runs model these waters; the others' coarse land masks leave them out, so read this loosely.`;
+  if (!r || !r.ssp585 || !r.ssp585.end) return null;
+  const hiE = r.ssp585.end, loE = r.ssp126 && r.ssp126.end;
+  const runs = (FUTURE.runs || []).length;
+  const hold = Math.round(Math.abs(hiE.median)) < 1 ? 'about as many fish as' : `${lessMore(hiE.median)} fish`;
+  let h = `<p class="fut-lede">If emissions stay very high, these waters could hold <b>${hold}</b> by 2081–2100 ${Math.round(Math.abs(hiE.median)) < 1 ? '' : 'than '}in 1995–2014.${loE ? ` If the world cuts emissions fast, ${lessMore(loE.median)}.` : ''}</p>`;
+  h += futureChart(r);
+  h += `<div class="fut-key">Fish for every 100 in 1995–2014. Points are 20-year averages; the shading shows where most of the ${runs} model runs land.</div>`;
+  const agreeN = Math.round(hiE.agree * hiE.n);
+  const dir = hiE.median < 0 ? 'a decline' : 'a rise';
+  let txt = agreeN === hiE.n ? `${hiE.n === 2 ? 'Both' : 'All ' + hiE.n} model runs agree on ${dir} here.` : `${agreeN} of ${hiE.n} model runs agree on ${dir} here, so read it loosely.`;
+  const w = FUTURE.world;
+  if (w && w.ssp585 && w.ssp126) txt += ` For the whole ocean: ${lessMore(w.ssp126.end.median)} with low emissions, ${lessMore(w.ssp585.end.median)} with very high.`;
+  if (hiE.n < runs) txt += ` Only ${hiE.n} of the ${runs} runs cover these waters; the others' coarse coastlines leave them out.`;
   if (r.approx) txt += ` These waters are smaller than the models' one-degree grid, so the nearest ocean cells stand in for them.`;
   if (kind === 'country' && r.zones) txt += ` Home waters only (${r.zones.map(esc).join(', ')}); overseas territories have their own zone pages.`;
   h += `<div class="reg-n">${txt}</div>`;
-  h += `<div class="gap-note">Change in the total weight of the sea animals the models represent (fish and, in some models, invertebrates) against 1995–2014, with no fishing, from FishMIP: ${(FUTURE.runs || []).length} runs of six marine ecosystem models driven by two climate models, weighted equally. The large figure is the median of the runs, the small range ${d.n >= 10 ? 'the 10th to 90th percentile' : 'the lowest to the highest run'}. It is what these waters could support, not a forecast of catch, and the models disagree most in coastal and enclosed seas.</div>`;
+  h += `<div class="gap-note">Computer models of ocean life (FishMIP: ${runs} runs of six ecosystem models driven by two climate models), run without fishing to show climate change alone. They count all the sea animals each model represents, mostly fish. A projection of what these waters could support, not a forecast of catch.</div>`;
   h += `<div class="src-l">${ext('https://doi.org/10.1038/s41558-021-01173-9', 'Tittensor et al. 2021')} · ${ext('https://data.isimip.org', 'ISIMIP3b data')} · CC0</div>`;
-  return { peek: `${signed(d.median)} by 2100, high emissions`, body: h };
+  return { peek: `${signed(hiE.median)} by 2100, high emissions`, body: h };
 }
 
 // ---------------------------------------------------------------------------
