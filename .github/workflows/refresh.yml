@@ -1,0 +1,74 @@
+# Weekly refresh of the live parts of the atlas: ocean heat and El Niño, the
+# forecasts, and the news. Everything else changes once a year or less and is
+# rebuilt by hand.
+#
+# Weekly, not daily: every commit to main is a Netlify deploy, each deploy costs
+# 15 of the free plan's 300 monthly credits, and running out takes the site
+# offline until the month ends. Weekly is about 65 credits a month.
+#
+# A source that does not answer keeps its last good file (the scripts refuse to
+# write a worse one). Whatever did refresh is still committed, and the run is
+# then marked failed so GitHub emails whoever owns the schedule.
+
+name: Weekly data refresh
+
+on:
+  schedule:
+    - cron: "17 9 * * 1"      # Mondays 09:17 UTC; off the hour, because GitHub delays on-the-hour runs
+  workflow_dispatch: {}        # and a "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Ocean heat and El Niño (NOAA)
+        id: climate
+        continue-on-error: true
+        run: python scripts/fetch_climate.py
+
+      - name: Heatwave forecast and El Niño odds (NOAA)
+        id: outlook
+        continue-on-error: true
+        run: |
+          if [ -f scripts/fetch_outlook.py ]; then python scripts/fetch_outlook.py; fi
+
+      - name: News
+        id: news
+        continue-on-error: true
+        run: python scripts/fetch_news.py
+
+      - name: Check the files
+        run: python scripts/check_data.py
+
+      - name: Commit what changed
+        run: |
+          git config user.name "atlas-refresh"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/climate.json site/data/news.json
+          [ -f site/data/outlook.json ] && git add site/data/outlook.json
+          if git diff --cached --quiet; then
+            echo "Nothing new this week."
+          else
+            git commit -m "Weekly data refresh: ocean heat, forecasts, news"
+            git push
+          fi
+
+      - name: Report a source that did not answer
+        if: steps.climate.outcome == 'failure' || steps.outlook.outcome == 'failure' || steps.news.outcome == 'failure'
+        run: |
+          echo "::error::A source did not answer (climate: ${{ steps.climate.outcome }}, outlook: ${{ steps.outlook.outcome }}, news: ${{ steps.news.outcome }}). Its last good file was kept."
+          exit 1
