@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11",
+ "generated": "2026-10-12",
  "sources": {
   "enso": "NOAA Climate Prediction Center, Relative Oceanic Nino Index (official since 1 Feb 2026) and weekly Nino 1+2 (public domain)",
   "heat": "NOAA Coral Reef Watch 5km, marine heatwave and degree heating weeks, via PacIOOS ERDDAP"
@@ -57,9 +57,9 @@
   "state": "Strong El Nino",
   "note": "Major disruption to eastern Pacific fisheries likely.",
   "since": "2015\u201316",
-  "week": "30SEP2026",
-  "nino12_anomaly": 5.3,
-  "nino34_anomaly": 3.2
+  "week": "07OCT2026",
+  "nino12_anomaly": 5.2,
+  "nino34_anomaly": 3.3
  },
  "zones": {
   "Comoros Isl.": {

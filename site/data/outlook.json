@@ -1,11 +1,11 @@
 {
- "generated": "2026-10-11",
+ "generated": "2026-10-12",
  "enso_odds": {
   "source": "NOAA Climate Prediction Center, official ENSO probabilities",
   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/probabilities/",
   "issued": "October 2026",
   "issued_month": "2026-10",
-  "fetched": "2026-10-11",
+  "fetched": "2026-10-12",
   "index": "RONI",
   "index_url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/",
   "index_notice": "https://www.weather.gov/media/notification/pdf_2026/pns26-05_Relative_ONI.pdf",
@@ -83,7 +83,7 @@
   "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso/roni/strengths/",
   "issued": "October 2026",
   "issued_month": "2026-10",
-  "fetched": "2026-10-11",
+  "fetched": "2026-10-12",
   "index": "RONI",
   "categories": {
    "la_nina_very_strong": "Index ≤ -2.0°C",
@@ -228,7 +228,7 @@
   "variant": "with trend (not detrended)",
   "threshold": "90th percentile",
   "init": "2026-09",
-  "fetched": "2026-10-11",
+  "fetched": "2026-10-12",
   "leads": [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5],
   "months": ["2026-09", "2026-10", "2026-11", "2026-12", "2027-01", "2027-02", "2027-03", "2027-04", "2027-05", "2027-06", "2027-07", "2027-08"],
   "models": "CanESM5, GEM5.2-NEMO, GFDL-SPEAR-regridded, NASA-GEOSS2S, COLA-RSMAS-CCSM4, COLA-RSMAS-CESM1, NCEP-CFSv2",
